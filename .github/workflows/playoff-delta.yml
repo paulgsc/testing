@@ -1,0 +1,98 @@
+# Weekly: fetch the season's ESPN scoreboards, run paulgsc/server's
+# `playoff-delta` job, and commit the story JSON the some-ui stage fetches.
+#
+# The math lives in paulgsc/server (`crates/playoff_delta`); this repository
+# only holds its output. The job builds without a database and does no network
+# I/O itself, so the same scoreboards always give the same file: a week with
+# no new final results makes no commit.
+name: Playoff Delta
+
+on:
+  schedule:
+    # Tuesdays, September to January: Monday night's game closes the week.
+    - cron: "17 11 * 9-12,1 2"
+  workflow_dispatch:
+    inputs:
+      server_ref:
+        description: "paulgsc/server ref to build the job from"
+        default: main
+
+permissions: {}
+
+concurrency:
+  group: playoff-delta
+  cancel-in-progress: false
+
+jobs:
+  story:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TEAM: SF
+      RIVALS: DAL,SEA
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: paulgsc/server
+          ref: ${{ inputs.server_ref || 'main' }}
+          path: server
+
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.94.1
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            server/target
+          key: playoff-delta-${{ hashFiles('server/Cargo.lock') }}
+
+      - name: Build the job
+        working-directory: server
+        run: cargo build --release --locked -p playoff_delta_job
+
+      # The regular season runs September to early January, so January
+      # belongs to the season that started the year before.
+      - name: Pick the season
+        run: |
+          year=$(date -u +%Y)
+          month=$(date -u +%-m)
+          if [ "$month" -lt 6 ]; then year=$((year - 1)); fi
+          echo "SEASON=$year" >> "$GITHUB_ENV"
+
+      - name: Fetch ESPN scoreboards
+        run: |
+          scripts/fetch-espn.sh "$SEASON" "$RUNNER_TEMP/espn/$SEASON"
+          scripts/fetch-espn.sh "$((SEASON - 1))" "$RUNNER_TEMP/espn/$((SEASON - 1))"
+
+      - name: Evaluate
+        run: |
+          played=$(jq '[.events[] | select(.status.type.completed)] | length' "$RUNNER_TEMP/espn/$SEASON/week-01.json")
+          if [ "$played" -eq 0 ]; then
+            echo "No final games in $SEASON yet; nothing to write." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          mkdir -p "playoff-delta/$SEASON"
+          server/target/release/playoff-delta \
+            --season "$SEASON" --team "$TEAM" --rivals "$RIVALS" \
+            --scoreboards "$RUNNER_TEMP/espn/$SEASON" \
+            --previous "$RUNNER_TEMP/espn/$((SEASON - 1))" \
+            > "playoff-delta/$SEASON/$TEAM.json"
+
+      - name: Commit when it changed
+        run: |
+          git add playoff-delta
+          if git diff --cached --quiet; then
+            echo "No change." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          weeks=$(jq '.weeks | length' "playoff-delta/$SEASON/$TEAM.json")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data(playoff-delta): $SEASON $TEAM, $weeks weeks"
+          git push
