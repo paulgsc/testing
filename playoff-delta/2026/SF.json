@@ -1194,7 +1194,7 @@
         ],
         "after": [
           3,
-          2,
+          3,
           1,
           1,
           1
@@ -1209,7 +1209,7 @@
             "opponent": "BUF",
             "won": false,
             "yourWay": true,
-            "moved": "helped"
+            "moved": null
           },
           {
             "team": "SEA",
@@ -1223,7 +1223,7 @@
             "opponent": "DET",
             "won": false,
             "yourWay": true,
-            "moved": "helped"
+            "moved": null
           }
         ],
         "rivals": [
@@ -1232,7 +1232,7 @@
             "opponent": "TB",
             "won": false,
             "yourWay": true,
-            "moved": "helped"
+            "moved": null
           },
           {
             "team": "SEA",
@@ -1249,7 +1249,7 @@
             "opponent": "JAX",
             "won": false,
             "yourWay": true,
-            "moved": "helped"
+            "moved": null
           },
           {
             "team": "ATL",
@@ -1263,7 +1263,7 @@
             "opponent": "BUF",
             "won": false,
             "yourWay": true,
-            "moved": "helped"
+            "moved": null
           }
         ],
         "spoilers": [],
@@ -1272,8 +1272,8 @@
             "team": "TB",
             "opponent": "DAL",
             "won": true,
-            "yourWay": true,
-            "moved": "helped"
+            "yourWay": null,
+            "moved": null
           },
           {
             "team": "WAS",
@@ -1300,8 +1300,8 @@
             "team": "DET",
             "opponent": "ARI",
             "won": true,
-            "yourWay": true,
-            "moved": "helped"
+            "yourWay": null,
+            "moved": null
           }
         ]
       },
@@ -1430,9 +1430,9 @@
           "seed": 4
         },
         "lowestBar": {
-          "team": "NYG",
+          "team": "ATL",
           "wins": 4,
-          "seed": 3
+          "seed": 4
         }
       }
     }
