@@ -1435,6 +1435,262 @@
           "seed": 4
         }
       }
+    },
+    {
+      "week": 6,
+      "record": {
+        "w": 5,
+        "l": 0
+      },
+      "game": {
+        "opponent": "WAS",
+        "won": true,
+        "relation": "conference"
+      },
+      "paths": {
+        "before": [
+          3,
+          3,
+          1,
+          1,
+          1
+        ],
+        "after": [
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "winsBefore": 5,
+        "winsAfter": 6
+      },
+      "templates": {
+        "division": [
+          {
+            "team": "LAR",
+            "opponent": "ARI",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          },
+          {
+            "team": "SEA",
+            "opponent": "DEN",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          },
+          {
+            "team": "ARI",
+            "opponent": "LAR",
+            "won": true,
+            "yourWay": false,
+            "moved": null
+          }
+        ],
+        "rivals": [
+          {
+            "team": "DAL",
+            "opponent": "GB",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          },
+          {
+            "team": "SEA",
+            "opponent": "DEN",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          }
+        ],
+        "above": [],
+        "exported": [
+          {
+            "team": "SEA",
+            "opponent": "DEN",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          },
+          {
+            "team": "TB",
+            "opponent": "PIT",
+            "won": false,
+            "yourWay": true,
+            "moved": null
+          }
+        ],
+        "spoilers": [],
+        "forced": [
+          {
+            "team": "CAR",
+            "opponent": "PHI",
+            "won": true,
+            "yourWay": null,
+            "moved": null
+          },
+          {
+            "team": "NO",
+            "opponent": "NYG",
+            "won": true,
+            "yourWay": null,
+            "moved": null
+          },
+          {
+            "team": "GB",
+            "opponent": "DAL",
+            "won": true,
+            "yourWay": null,
+            "moved": null
+          },
+          {
+            "team": "CHI",
+            "opponent": "ATL",
+            "won": true,
+            "yourWay": null,
+            "moved": null
+          },
+          {
+            "team": "ARI",
+            "opponent": "LAR",
+            "won": true,
+            "yourWay": null,
+            "moved": null
+          }
+        ]
+      },
+      "path": {
+        "extraWins": 0,
+        "seed": 3,
+        "needs": [
+          {
+            "team": "DAL",
+            "rest": {
+              "w": 8,
+              "l": 3
+            },
+            "rival": true
+          },
+          {
+            "team": "SEA",
+            "rest": {
+              "w": 3,
+              "l": 8
+            },
+            "rival": true
+          },
+          {
+            "team": "LAR",
+            "rest": {
+              "w": 2,
+              "l": 9
+            },
+            "rival": false
+          },
+          {
+            "team": "ARI",
+            "rest": {
+              "w": 2,
+              "l": 9
+            },
+            "rival": false
+          },
+          {
+            "team": "CAR",
+            "rest": {
+              "w": 3,
+              "l": 9
+            },
+            "rival": false
+          },
+          {
+            "team": "NO",
+            "rest": {
+              "w": 3,
+              "l": 8
+            },
+            "rival": false
+          }
+        ]
+      },
+      "rivals": [
+        {
+          "team": "DAL",
+          "game": {
+            "opponent": "GB",
+            "won": false
+          },
+          "before": {
+            "in": true,
+            "wins": 2,
+            "extraWins": 3,
+            "seed": 3
+          },
+          "after": {
+            "in": true,
+            "wins": 2,
+            "extraWins": 3,
+            "seed": 3
+          },
+          "worst": {
+            "in": true,
+            "wins": 2,
+            "extraWins": 3,
+            "seed": 3
+          }
+        },
+        {
+          "team": "SEA",
+          "game": {
+            "opponent": "DEN",
+            "won": false
+          },
+          "before": {
+            "in": true,
+            "wins": 3,
+            "extraWins": 2,
+            "seed": 3
+          },
+          "after": {
+            "in": true,
+            "wins": 3,
+            "extraWins": 2,
+            "seed": 6
+          },
+          "worst": {
+            "in": true,
+            "wins": 3,
+            "extraWins": 2,
+            "seed": 6
+          }
+        }
+      ],
+      "collisions": [],
+      "points": {
+        "week": {
+          "scored": 3,
+          "possible": 3
+        },
+        "season": {
+          "scored": 15,
+          "possible": 22
+        }
+      },
+      "benchmark": {
+        "lastSeason": {
+          "in": true,
+          "wins": 4,
+          "extraWins": 1,
+          "seed": 7
+        },
+        "lowestBar": {
+          "team": "NYG",
+          "wins": 4,
+          "seed": 4
+        }
+      }
     }
   ]
 }
