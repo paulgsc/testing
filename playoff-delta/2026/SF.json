@@ -1878,6 +1878,279 @@
           "seed": 4
         }
       }
+    },
+    {
+      "week": 7,
+      "record": {
+        "w": 6,
+        "l": 0
+      },
+      "game": {
+        "opponent": "ATL",
+        "won": false,
+        "relation": "conference"
+      },
+      "paths": {
+        "before": [
+          3,
+          1,
+          1,
+          1,
+          1
+        ],
+        "after": [
+          3,
+          2,
+          1,
+          1,
+          1
+        ],
+        "winsBefore": 6,
+        "winsAfter": 6
+      },
+      "share": {
+        "before": 0.9683,
+        "after": 0.9393,
+        "own": -0.0196,
+        "league": -0.0094,
+        "exact": false
+      },
+      "pending": {
+        "before": 179,
+        "after": 165
+      },
+      "results": [
+        {
+          "winner": "ATL",
+          "loser": "SF",
+          "kind": "own",
+          "leverage": -0.0451,
+          "moved": null
+        },
+        {
+          "winner": "SEA",
+          "loser": "KC",
+          "kind": "exported",
+          "leverage": -0.0108,
+          "moved": null
+        },
+        {
+          "winner": "LAR",
+          "loser": "LV",
+          "kind": "exported",
+          "leverage": -0.0075,
+          "moved": null
+        },
+        {
+          "winner": "DEN",
+          "loser": "ARI",
+          "kind": "exported",
+          "leverage": 0.0073,
+          "moved": null
+        },
+        {
+          "winner": "CHI",
+          "loser": "NE",
+          "kind": "exported",
+          "leverage": -0.0065,
+          "moved": null
+        },
+        {
+          "winner": "NYG",
+          "loser": "HOU",
+          "kind": "exported",
+          "leverage": -0.0031,
+          "moved": null
+        },
+        {
+          "winner": "MIN",
+          "loser": "IND",
+          "kind": "exported",
+          "leverage": -0.0029,
+          "moved": null
+        },
+        {
+          "winner": "PIT",
+          "loser": "NO",
+          "kind": "exported",
+          "leverage": 0.0016,
+          "moved": null
+        },
+        {
+          "winner": "TB",
+          "loser": "CAR",
+          "kind": "inside",
+          "leverage": 0.0013,
+          "moved": null
+        },
+        {
+          "winner": "DAL",
+          "loser": "PHI",
+          "kind": "inside",
+          "leverage": 0.0001,
+          "moved": null
+        },
+        {
+          "winner": "DET",
+          "loser": "GB",
+          "kind": "inside",
+          "leverage": 0.0,
+          "moved": null
+        }
+      ],
+      "next": [
+        {
+          "home": "LAR",
+          "away": "LAC",
+          "rootFor": "LAC",
+          "swing": 0.0096
+        },
+        {
+          "home": "SEA",
+          "away": "CHI",
+          "rootFor": "CHI",
+          "swing": 0.0057
+        },
+        {
+          "home": "DET",
+          "away": "MIN",
+          "rootFor": "MIN",
+          "swing": 0.0054
+        }
+      ],
+      "path": {
+        "extraWins": 0,
+        "seed": 3,
+        "needs": [
+          {
+            "team": "DAL",
+            "rest": {
+              "w": 8,
+              "l": 2
+            },
+            "rival": true,
+            "free": true
+          },
+          {
+            "team": "SEA",
+            "rest": {
+              "w": 2,
+              "l": 8
+            },
+            "rival": true,
+            "free": false
+          },
+          {
+            "team": "LAR",
+            "rest": {
+              "w": 3,
+              "l": 7
+            },
+            "rival": false,
+            "free": false
+          },
+          {
+            "team": "ARI",
+            "rest": {
+              "w": 2,
+              "l": 8
+            },
+            "rival": false,
+            "free": false
+          },
+          {
+            "team": "ATL",
+            "rest": {
+              "w": 2,
+              "l": 8
+            },
+            "rival": false,
+            "free": false
+          },
+          {
+            "team": "CAR",
+            "rest": {
+              "w": 3,
+              "l": 8
+            },
+            "rival": false,
+            "free": false
+          }
+        ]
+      },
+      "boundary": null,
+      "rivals": [
+        {
+          "team": "DAL",
+          "game": {
+            "opponent": "PHI",
+            "won": true
+          },
+          "before": {
+            "in": true,
+            "wins": 2,
+            "extraWins": 3,
+            "seed": 3
+          },
+          "after": {
+            "in": true,
+            "wins": 3,
+            "extraWins": 2,
+            "seed": 3
+          },
+          "share": {
+            "before": 0.3104,
+            "after": 0.3781
+          }
+        },
+        {
+          "team": "SEA",
+          "game": {
+            "opponent": "KC",
+            "won": true
+          },
+          "before": {
+            "in": true,
+            "wins": 3,
+            "extraWins": 2,
+            "seed": 6
+          },
+          "after": {
+            "in": true,
+            "wins": 4,
+            "extraWins": 1,
+            "seed": 7
+          },
+          "share": {
+            "before": 0.5051,
+            "after": 0.5951
+          }
+        }
+      ],
+      "collisions": [],
+      "points": {
+        "week": {
+          "scored": 1,
+          "possible": 4
+        },
+        "season": {
+          "scored": 14,
+          "possible": 24
+        }
+      },
+      "benchmark": {
+        "lastSeason": {
+          "in": true,
+          "wins": 5,
+          "extraWins": 1,
+          "seed": 5
+        },
+        "lowestBar": {
+          "team": "ATL",
+          "wins": 5,
+          "seed": 3
+        }
+      }
     }
   ]
 }
