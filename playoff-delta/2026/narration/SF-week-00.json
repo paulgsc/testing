@@ -1,0 +1,34 @@
+{
+  "schema": "some-ui.pd-narration/1",
+  "season": "2026",
+  "team": "SF",
+  "week": 0,
+  "format": { "id": "playoff-delta-legend", "version": 1 },
+  "sha256": "d7acf997b564bc91da6b8c3dea973489d4c15c5ab0a061d28e74d335fc7246b3",
+  "scenes": [
+    {
+      "id": "legend",
+      "said": "This is the legend: the handful of words every week of Playoff Delta uses. Think of the season as a drive across town. Every game is a light we either make or miss. Each week I'll give you two numbers about our rivals, the best case and the worst case, and tell you which way the week moved us between them."
+    },
+    {
+      "id": "pieces",
+      "said": "First, the pieces. A game is named only by who plays it, and that never changes. Our light is our own game: a win always helps. A one-way is a rival playing the other conference: their loss can only help us or do nothing, their win can only hurt us or do nothing. A crossroads is two rivals playing each other, so one of them is guaranteed a win, and the only question is which. And a side street is two teams outside our conference. It is never on our route."
+    },
+    {
+      "id": "poles",
+      "said": "Now the poles. The floor asks: if everything goes our way, what is the fewest wins our best rival can be held to? The bloc is its proof, rivals who still play each other, so however those games go, one of them gets there. The ceiling asks the opposite: if everything goes against us, what is the most wins a rival can still reach? Before a snap this season, the floor is 2 for our division and 6 for our conference, and on paper the Niners can still go 17 and 0."
+    },
+    {
+      "id": "moves",
+      "said": "Each week, every result gets a label. Toward the best case means it lowered a rival's reach or won us a game. Toward the worst case means it raised the floor or a rival's reach, or cost us a game. Forced means two rivals played, so somebody had to win. Idle means neither pole moved. And when neither floor rose and our best finish held, that's a clean run."
+    },
+    {
+      "id": "objectives",
+      "said": "We play for two things: the division and the number one seed. Each can be clinched, meaning ours however the rest goes. In our hands, meaning win out and it's ours. Needs help, meaning still possible if other results break our way. Or out. Two countdowns track each. Greens to go is how far we are from locking it up. Reds to spare is how many games we can still drop before the floor catches us."
+    },
+    {
+      "id": "calls",
+      "said": "Last, the ladder, best first: the number one seed, a division title, a wild card, or out. Each week I'll name the best rung we can still reach and the worst one we've already secured. While those are apart, the call is keep driving: there is more to see. When they meet on a seat, we've arrived. And if no seat is left, it's a dead end."
+    }
+  ]
+}
