@@ -1,0 +1,38 @@
+{
+  "schema": "some-ui.pd-narration/1",
+  "season": "2026",
+  "team": "SF",
+  "week": 8,
+  "format": { "id": "playoff-delta-week", "version": 1 },
+  "sha256": "d5d7e433a9ad25fe41ea5d5cd6315325f30d02b6b86124c6a001b7e57ce1ddc1",
+  "scenes": [
+    {
+      "id": "division",
+      "said": "Start with the division. The floor held at 5. That's LAR and SEA: between them they have 8 wins banked and still play each other twice, so however those two games go, one of them gets to 5. The ceiling came down from 14 to 13, and LAR is the one who can still reach it. For us, anything from 6 to 16 wins is still on the table."
+    },
+    {
+      "id": "conference",
+      "said": "Across the conference, the floor rose from 7 to 8, and that's the north: DET, GB, MIN and CHI have 22 wins banked and 7 games left against each other, so one of them is guaranteed to get there. The ceiling came down from 17 to 16, and MIN is the team that can still reach it."
+    },
+    {
+      "id": "results",
+      "said": "This week was mostly crossroads. Six results were forced, rivals playing rivals where somebody had to win. One moved nothing at all."
+    },
+    {
+      "id": "standings",
+      "said": "Here's the good news: both goals are in our hands. Win out and the division is ours, with 7 greens to go and 11 reds to spare. The number one seed is in our hands too, with 10 greens to go and 8 reds to spare."
+    },
+    {
+      "id": "ladder",
+      "said": "So the ladder is still wide open: as good as the number one seed, as bad as out. Keep driving."
+    },
+    {
+      "id": "season",
+      "said": "Eight weeks in, the envelope keeps closing. In our division the floor has climbed from 2 to 5, and the ceiling has come down from 17 to 13. In the conference, the floor went from 6 to 8 and the ceiling from 17 to 16. All told, that's 7 steps our way and 3 steps against us."
+    },
+    {
+      "id": "outro",
+      "said": "Week 8 in one breath: 1 step our way, 1 step against us. The division and the number one seed are both in our hands, and the ladder still runs from the top seed down to out. Keep driving. Next week, we drive again."
+    }
+  ]
+}
