@@ -1,0 +1,90 @@
+{
+ "schema": "some-ui.session-note/1",
+ "session": "session_01LDpdUGZZqDqM1951WsEQuC",
+ "ended": "2026-11-08",
+ "epics": [
+  "SFEED",
+  "HYPER"
+ ],
+ "pulls": [
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2765
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2774
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2789
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2790
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2792
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2771
+  }
+ ],
+ "did": "Made the look of the call and Playoff Delta for video, and their sound. Mochi Night, the palette the research derived from what YouTube does to colour, is now an app theme and the call's and Playoff Delta's template theme, in version 3, and the renderer is BT.709 end to end. The music bed and the six sound cues are made by our own code, the same bytes anywhere, and the owner has laid them on home. Studio's template page now lets the owner choose the mark's theme. The brand's animated open and close draw the app's own mark in the template's theme. On the way, the renderer's sound stopped losing a cue or a take on CI's ffmpeg 9, which had turned renderer pull requests red at random.",
+ "calls": [
+  {
+   "title": "The music bed's music",
+   "options": [
+    "a slow major progression with pad, bass and bells",
+    "a drone",
+    "a busier groove"
+   ],
+   "chose": 0,
+   "why": "It moves without competing with the voice, and a drone tires over eight minutes.",
+   "undo": "Change music-bed.ts; its sum, file name and the series that pin it move together."
+  },
+  {
+   "title": "Mochi Night's accents held to contrast on the ground only",
+   "options": [
+    "on the ground only",
+    "on the ground and on cards"
+   ],
+   "chose": 0,
+   "why": "A video frame is the ground; the warning, weaker on a card, always comes with a word.",
+   "undo": "Measure on the surface too in videoPaletteProblems and change the warning's colour."
+  },
+  {
+   "title": "Every video's colour moves to BT.709 from the next render",
+   "options": [
+    "every video",
+    "only new template versions"
+   ],
+   "chose": 0,
+   "why": "Players read HD as BT.709, so every untagged video shifted a little before.",
+   "undo": "Revert TO_VIDEO and BT709 in plan.ts."
+  },
+  {
+   "title": "The six sound cues' character, and where the promo plays them",
+   "options": [
+    "synthesised cues on the dry run's beats",
+    "no cues until the owner places them"
+   ],
+   "chose": 0,
+   "why": "The owner asked for sounds we make ourselves and described none; the dry run's sheet put each on a visible beat.",
+   "undo": "Change cues.ts, or CUE_AT in promo.ts."
+  }
+ ],
+ "left": [
+  "The call's and Playoff Delta's brand slides are still captured from the web stage; moving them onto the animated open and close needs new template versions and recorder changes (#2728).",
+  "Home's call stage runs www 0.1.60, older than Mochi Night, so a version 3 week would record in the old look until www 0.1.61 is published (#2741), and the server moves its pins after it."
+ ],
+ "waits": []
+}
