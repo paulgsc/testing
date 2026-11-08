@@ -1,0 +1,45 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHNHxYGYNionu2L2kj",
+  "ended": "2026-11-08",
+  "epics": ["SFEED", "STUDIO"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2795 },
+    { "repo": "some-ui", "kind": "pr", "number": 2778 },
+    { "repo": "some-ui", "kind": "pr", "number": 2802 },
+    { "repo": "some-ui", "kind": "pr", "number": 2801 },
+    { "repo": "some-ui", "kind": "pr", "number": 2803 },
+    { "repo": "some-ui", "kind": "pr", "number": 2804 }
+  ],
+  "did": "The Preview button on a template's page in Studio is live on the phone: it asks home for a short preview, says how far home has got, and brings the video over a part at a time to play. The promise that a preview asked for is made or says why it failed now holds, and the preview prune is listed among the places home deletes things. Notes left on an episode now go home once on their own, the Feedback page says which are on home and since when, and the morning routine files each note as pending issues, one per place it goes. On Ideas on home, an answer can be said again and sent again; the idea grows, the old take is set aside on home, and nothing already kept can be lost on the way.",
+  "calls": [
+    {
+      "title": "A note on an episode is filed as one issue per place it goes",
+      "options": [
+        "One issue per note, listing every place it goes",
+        "One issue per place it goes"
+      ],
+      "chose": 1,
+      "why": "A note can go to more than one place, and an issue that is both a broken slide and a story change has no one kind.",
+      "undo": "Make the filing give one item per note with every place, recorded as call C28."
+    },
+    {
+      "title": "Where Say it again and Send it again sit on an idea's answers",
+      "options": [
+        "Say it again under each said answer, one Send it again for the idea",
+        "Say it again and send on each answer alone"
+      ],
+      "chose": 0,
+      "why": "An idea goes home as one bundle, so its new answers go together, as call C29 records.",
+      "undo": "Move Send it again onto each answer in Ideas on home."
+    }
+  ],
+  "left": [
+    "The preview's second promise, at most one per template and none past a day, stays unproven until a test on home holds the 500 MB size bound (server#752).",
+    "Playoff Delta's templates can't be previewed until they have a sample narration, and the video itself doesn't yet mark that it is sample data.",
+    "A spoken note on an episode isn't built: the note form has no recorder yet, so every note goes home without one.",
+    "A take said again on an idea that is then set aside on home waits on the phone with nothing to send it (#2805).",
+    "The notes' filing is done when the next reflections run files a real note left at a moment of an episode."
+  ],
+  "waits": []
+}
