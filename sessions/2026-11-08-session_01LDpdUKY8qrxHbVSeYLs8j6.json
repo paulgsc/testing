@@ -75,8 +75,7 @@
   "left": [
     "The SOME_UI_COMMIT bump for the call's music bed waits on some-ui #2774's merge commit, which SFEED-look will send.",
     "No test proves the render worker's 500 MB video limit, so PV2 can't move to holds yet: server #752.",
-    "The render image at the new pins hasn't been built anywhere. The first make up on home builds it.",
-    "The promo's sound kit still has to go in home's brand folder, under sounds, before make promo has its cues.",
+    "The render image at some-ui 1505684 (the recorders, for previews) hasn't been built yet. make promo has already proven the motion pin acc0912 on home, rendering the same bytes twice.",
     "PV1 and PV2 move to holds now that server #743 has merged. The proof list is on some-ui #2757."
   ],
   "waits": []
