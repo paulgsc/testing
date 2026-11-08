@@ -1,0 +1,17 @@
+{
+  "schema": "some-ui.pd-narration-index/1",
+  "fills": [
+    {
+      "season": "2026",
+      "team": "SF",
+      "week": 0,
+      "sha256": "6df0535114a2a59780bb3daedaa28faf6e774461988ab7b07fd1a96c5cb429f2"
+    },
+    {
+      "season": "2026",
+      "team": "SF",
+      "week": 8,
+      "sha256": "973ec49839af687b38672cc6513aa3bbb648d9778bf07d4c681cae4ae4edf058"
+    }
+  ]
+}
