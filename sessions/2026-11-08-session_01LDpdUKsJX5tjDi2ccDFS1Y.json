@@ -1,0 +1,17 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKsJX5tjDi2ccDFS1Y",
+  "ended": "2026-11-08",
+  "epics": [
+    "SFEED"
+  ],
+  "pulls": [],
+  "did": "Watched the www release until it took in the preview mark and Playoff Delta's previews, and told the coordinating session it was ready for the owner's merge. The render image builds at that commit. Wrote the small fix that lets a Playoff Delta preview show its template version, and pushed it to a branch. The session wound down at the owner's word before the release was merged, so the pin move is written up as server issue 756 for the next session.",
+  "calls": [],
+  "left": [
+    "Moving home's pins to www 0.1.63 waits on the owner merging some-ui's www release PR. Then one server PR moves the recorder, the motion and call-stage together, and home runs the four commands. Server issue 756 has every step. Moving only the recorder breaks every preview; episodes are unaffected either way.",
+    "The fix that shows a Playoff Delta preview's version is on server branch claude/pins-v5-preview-version, not yet a PR: its tests and clippy hadn't finished when the session wound down.",
+    "Server issue 756's handoff could not be posted on some-ui's SFEED epic, because this session had no some-ui access. The coordinating session was asked to link it there."
+  ],
+  "waits": []
+}
