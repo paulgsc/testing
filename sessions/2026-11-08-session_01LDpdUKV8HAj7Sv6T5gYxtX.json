@@ -1,0 +1,47 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKV8HAj7Sv6T5gYxtX",
+  "ended": "2026-11-08",
+  "epics": ["SFEED"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2750 },
+    { "repo": "some-ui", "kind": "pr", "number": 2752 },
+    { "repo": "some-ui", "kind": "pr", "number": 2760 },
+    { "repo": "some-ui", "kind": "pr", "number": 2767 },
+    { "repo": "some-ui", "kind": "pr", "number": 2783 }
+  ],
+  "did": "Three Studio stories moved. An ask can now be answered by voice on its page in Studio: the take goes home, and the morning reflections routine files it as a pending issue in the ask's repository, in its own words, leaving the ask open. Every episode now writes its chapters beside the video, each marked section and each ask its own chapter, and the phone shows them with a Copy for the YouTube description. Studio's Templates page shows each template's caption look with a control for every part and a preview, and files a changed look as a GitHub issue for a session to land, which closed SFEED11.",
+  "calls": [
+    {
+      "title": "How a caption look set in Studio reaches the code",
+      "options": ["A prefilled GitHub issue the owner files", "A pending issue filed by the morning routine", "Kept on home as a numbered version"],
+      "chose": 0,
+      "why": "The look is code (ask 2708, option 1), it carries nothing private, and the owner's own tap on GitHub is the send.",
+      "undo": "Route it through the routine's part E as a new kind of pending issue."
+    },
+    {
+      "title": "Whether a spoken answer can be fixed or typed before it is filed",
+      "options": ["No: the take is the answer", "Confirm, fix or type the words as idea answers do"],
+      "chose": 0,
+      "why": "The routine reads home's transcript, so fixed or typed words would reach nobody.",
+      "undo": "Send typed answers home as a note of their own, which is a server story."
+    },
+    {
+      "title": "What the first chapter of an episode is called",
+      "options": ["Opening", "The week"],
+      "chose": 0,
+      "why": "It covers the locked intro and the brand intro, which come before any section.",
+      "undo": "Change OPENING in video-render's chapters.ts."
+    }
+  ],
+  "left": [
+    "SFEED5's done-when waits on the owner: the first answer said on an ask's page, and the morning run filing it.",
+    "SFEED4's done-when waits on the next renders: Tue Nov 10's Playoff Delta week and Fri Nov 13's call write their chapters, and YouTube shows them.",
+    "The first render on home with burn-in captions is the owner's to watch."
+  ],
+  "waits": [
+    { "repo": "some-ui", "kind": "issue", "number": 2673 },
+    { "repo": "some-ui", "kind": "issue", "number": 2674 },
+    { "repo": "some-ui", "kind": "issue", "number": 2676 }
+  ]
+}
