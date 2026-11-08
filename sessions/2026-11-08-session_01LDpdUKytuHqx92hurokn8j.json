@@ -1,0 +1,53 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKytuHqx92hurokn8j",
+  "ended": "2026-11-08",
+  "epics": ["FEED", "SFEED", "HYPER", "LANE", "ORCH"],
+  "pulls": [],
+  "did": "I coordinated the day's work on My feed, Studio for my feed and HyperFrames. I split the stories into thirteen sessions of a few pull requests each, briefed each with what was theirs and what wasn't, and steered them through a GitHub download outage, two flaky checks, a ledger check that went red twice when a pull request merged too early, and three moves of home's pins. About seventy pull requests merged across the two repositories, and you redeployed home three times. Home now renders version four of the call and Playoff Delta, with Mochi Night, a music bed and sounds we make ourselves, and the moving mark, all proven there. I recorded your answers on the asks, filed the issues the sessions surfaced, kept the ledger in step at the end of the day, and filed a recon of this whole run for next week, so the next coordinator runs leaner.",
+  "calls": [
+    {
+      "title": "Who builds the server half when a session can't push there",
+      "options": [
+        "Route it through one session started in the server repository",
+        "Wait for the owner to grant push to each session"
+      ],
+      "chose": 0,
+      "why": "You were asleep, and the permission check refused cross-repository push, so waiting would have stalled the night's work.",
+      "undo": "Grant each session push to both repositories at the start; the recon issue #2814 tests this."
+    },
+    {
+      "title": "When the held re-runs were released during GitHub's download outage",
+      "options": [
+        "Wait for twenty clean minutes of downloads",
+        "Release one re-run each once failures were rare, since the downloads already retry three times"
+      ],
+      "chose": 1,
+      "why": "Downloads flapped for hours; a perfectly clean window might never have come, and every session's work was queued behind it.",
+      "undo": "Hold re-runs until a fixed clean window passes."
+    },
+    {
+      "title": "Previews may move to the old look until the next release, rather than move one pin alone",
+      "options": [
+        "Leave home's pins together on the last release until www carries the preview mark",
+        "Move the recorder ahead of the stage"
+      ],
+      "chose": 0,
+      "why": "Moving only the recorder makes every preview fail; leaving both behind only means previews lack the new mark for a while.",
+      "undo": "Move both pins as soon as the release is merged (written on #2670)."
+    }
+  ],
+  "left": [
+    "Home's pin move for the preview mark waits on your merge of the www 0.1.63 release; the steps are on #2670.",
+    "Three Studio checks need your own use: your first spoken note on an episode, your first answer by voice, and Tuesday's and Friday's chapters on YouTube.",
+    "The mission wording waits on Tuesday's first Kokoro-voiced Playoff Delta week (#2756).",
+    "The recon of this run, so the next coordinator runs leaner, is #2814 for next week.",
+    "Your review of the broken /resync on the route snapshot pull request (#2791), and the CLI progress rule (#2793) for later."
+  ],
+  "waits": [
+    {"repo": "some-ui", "kind": "issue", "number": 2745},
+    {"repo": "some-ui", "kind": "issue", "number": 2746},
+    {"repo": "some-ui", "kind": "issue", "number": 2763},
+    {"repo": "some-ui", "kind": "issue", "number": 2791}
+  ]
+}
