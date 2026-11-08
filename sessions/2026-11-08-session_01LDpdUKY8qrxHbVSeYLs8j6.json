@@ -1,0 +1,83 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKY8qrxHbVSeYLs8j6",
+  "ended": "2026-11-08",
+  "epics": [
+    "SFEED",
+    "HYPER",
+    "LANE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 735
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 736
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 737
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 743
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 746
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 749
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 750
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 751
+    }
+  ],
+  "did": "Home now does its half of several of today's Studio stories. It keeps the notes you leave on an episode and files them for the mailbox. It gives the phone each episode's chapters. When you ask from the phone, it makes a short preview of a template from its sample, under the lane, and clears it away after a day. make promo now plays the release's own sound cues from home's brand folder, and it no longer fails on curl inside the dev shell. The render worker's test no longer goes red on a busy runner, because it keeps its own time. The steward and CLAUDE.md now say a session leaves its clip and its note before it is archived.",
+  "calls": [
+    {
+      "title": "The render image's recorders moved to some-ui 1505684 while call-stage stays on www 0.1.60",
+      "options": [
+        "Wait for a www release at or after 1505684 and move both pins together",
+        "Move only the recorders, after checking that the stage pages they drive are unchanged"
+      ],
+      "chose": 1,
+      "why": "Previews need record:preview, which only 1505684 has. The /call and /burn-ins pages the recorders drive are the same at both commits; only Studio's pages moved.",
+      "undo": "Publish www from 1505684 or later and move call-stage's image pin in infra/compose/call-render.yml to it, or set SOME_UI_COMMIT in infra/docker/Dockerfile.render back to 031ca48 and give up previews until then."
+    },
+    {
+      "title": "Merged the promo's sound cues without building the render image",
+      "options": [
+        "Hold server #750 until the render image is built on home",
+        "Merge, since video-motion's package.json and the lockfile are unchanged since the last pin"
+      ],
+      "chose": 1,
+      "why": "CI doesn't build the render image and this session had no Docker. The motion install step resolves exactly what HYPER3's pin already built.",
+      "undo": "Set MOTION_COMMIT in infra/docker/Dockerfile.render back to 9e73952 and drop --brand /brand from make promo."
+    }
+  ],
+  "left": [
+    "The SOME_UI_COMMIT bump for the call's music bed waits on some-ui #2774's merge commit, which SFEED-look will send.",
+    "No test proves the render worker's 500 MB video limit, so PV2 can't move to holds yet: server #752.",
+    "The render image at the new pins hasn't been built anywhere. The first make up on home builds it.",
+    "The promo's sound kit still has to go in home's brand folder, under sounds, before make promo has its cues.",
+    "PV1 and PV2 move to holds now that server #743 has merged. The proof list is on some-ui #2757."
+  ],
+  "waits": []
+}
