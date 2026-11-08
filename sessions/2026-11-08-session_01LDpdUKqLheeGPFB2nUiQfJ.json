@@ -1,0 +1,56 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKqLheeGPFB2nUiQfJ",
+  "ended": "2026-11-08",
+  "epics": [
+    "SFEED"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2751
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2755
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2770
+    }
+  ],
+  "did": "Studio's Templates page now draws every frame of an episode before anything is filled, with the AI's part shown as grey bars. Studio has a Library of clips, each showing what a change built as a user sees it, and every user-facing change is now meant to leave one. And a session now writes a short note like this one before it is archived, so the weekly call hears what it did.",
+  "calls": [
+    {
+      "title": "Every storyboard is pinned as a file",
+      "options": [
+        "Pin each template's storyboard beside its formats",
+        "Compute it live on the phone"
+      ],
+      "chose": 0,
+      "why": "The phone can't carry the code that makes the call's or Playoff Delta's episodes, so it reads a pinned copy that tests hold equal to that code.",
+      "undo": "Once a template's code is on the phone's path, compute its storyboard live and drop the pin."
+    },
+    {
+      "title": "Clips are stills with labels, not video",
+      "options": [
+        "Each side of a clip is labelled stills",
+        "Each side of a clip is a video"
+      ],
+      "chose": 0,
+      "why": "Stills are what the walk command already writes, and they are a HyperFrames scene's input as they stand; a video would need captions and a recorder the phone doesn't have.",
+      "undo": "Add a video side to the clip index's schema and to the Library's clip page."
+    }
+  ],
+  "left": [
+    "The first real clip: no change has left one yet; the next user-facing change makes it.",
+    "Command-line clips wait on the CARDS epic.",
+    "Picking a clip for an episode isn't built; the Library only lists them.",
+    "The clip check reads a walk with its own small schema; it could share the walk command's now that it has landed.",
+    "The call's facts command doesn't read session notes yet; the routine reads them by hand."
+  ],
+  "waits": []
+}
