@@ -1,0 +1,25 @@
+{
+  "schema": "some-ui.clip-index/1",
+  "clips": [
+    {
+      "id": "studio-release-promo",
+      "title": "Studio's Templates page shows the release promo: its three scenes and what the AI writes",
+      "app": "studio",
+      "change": { "repo": "some-ui", "kind": "pr", "number": 2810 },
+      "landed": "2026-11-08",
+      "before": {
+        "made": "session",
+        "snips": [
+          { "file": "before/01-templates.png", "label": "Templates lists the three episode templates" }
+        ]
+      },
+      "after": {
+        "made": "session",
+        "snips": [
+          { "file": "after/01-templates.png", "label": "Templates now ends with the release promo" },
+          { "file": "after/02-release-promo.png", "label": "The promo's page: its three scenes in order, and what the AI writes for a release" }
+        ]
+      }
+    }
+  ]
+}
