@@ -1,0 +1,135 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJFE5DYVpzREirtTRA",
+  "ended": "2026-11-08",
+  "epics": [
+    "FEED",
+    "STUDIO"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 731
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 732
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 733
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2759
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2772
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2773
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2779
+    }
+  ],
+  "did": "I finished my share of My feed's Claude work. The call's readers now stop at one megabyte, so a runaway answer can't fill home's memory, and the call weeks promise holds. The render worker has a test of what it keeps and moves. The old call video routes are gone, now that the feed's videos replace them. Every gray-area call an agent makes is now written down with who made it, so a later change to one reads as you moving a story. Episodes no longer ask for your voice: home voices them, and Studio offers only Watch and Finish for an episode.",
+  "calls": [
+    {
+      "title": "Only the call's readers are capped, not the game feed",
+      "options": [
+        "cap only the 1 MiB readers",
+        "cap the game feed too"
+      ],
+      "chose": 0,
+      "why": "The game feed keeps every response raw, so capping it means deciding what a refused one keeps, which GA3 (server#534) owns.",
+      "undo": "Read the game feed through get_at_most with a cap in game_feed/pass.rs."
+    },
+    {
+      "title": "How the render worker's test runs one pass",
+      "options": [
+        "source the script and run a pass",
+        "an environment switch for one pass",
+        "split the script into files"
+      ],
+      "chose": 0,
+      "why": "Any of them gives one pass without the hourly sleep, and L4c (server#708) rewrites that loop next.",
+      "undo": "Replace the sourced guard in render-calls.sh and adapt render-calls.test.sh."
+    },
+    {
+      "title": "Where a gray-area call is recorded",
+      "options": [
+        "a commit trailer alone",
+        "a label and an issue per call, as asks have",
+        "a record file in the repo"
+      ],
+      "chose": 2,
+      "why": "#2637 left where the record lives to the owner or the session that builds it; a trailer alone can't hold the options and the undo in 100-character lines.",
+      "undo": "Move the entries to whichever home the owner picks and drop check:calls."
+    },
+    {
+      "title": "Which calls the weekly call reads out",
+      "options": [
+        "the week's new calls",
+        "every call the owner hasn't agreed to yet"
+      ],
+      "chose": 0,
+      "why": "#2637 left open whether the call voices only calls the owner hasn't heard; a new call is one they haven't.",
+      "undo": "Change which entries callsEntered hands the routine (call-facts.ts)."
+    },
+    {
+      "title": "A working definition of a gray area until yours",
+      "options": [
+        "the working definition from #2637",
+        "no definition until the owner's"
+      ],
+      "chose": 0,
+      "why": "The owner said they'd want to work out the definition themselves.",
+      "undo": "Replace the definition in CLAUDE.md, \"Two kinds of pull request\"."
+    },
+    {
+      "title": "An episode already in Studio stays, to watch and finish",
+      "options": [
+        "keep stored episodes, watch-only",
+        "delete the whole episode-in-Studio path and home's queue for it",
+        "keep Record on a stored episode"
+      ],
+      "chose": 0,
+      "why": "A stored episode holds takes you recorded, and deleting them is your call, so ask #2782 puts it to you.",
+      "undo": "Bring back Record in startView and the take kind in finish.ts, or delete the episode branches and home's queue if #2782 says so."
+    },
+    {
+      "title": "Who says a scene is a field of the shot",
+      "options": [
+        "shots.speaker on the shot",
+        "a field on the take"
+      ],
+      "chose": 0,
+      "why": "The steps' own test only accepts top-level or shots.<key> fields.",
+      "undo": "Move speaker onto the take and widen the steps test."
+    }
+  ],
+  "left": [
+    "FEED6's two calls are in this note and #2772's body, not yet entries in docs/calls.json.",
+    "CW5 is still unproven (#2659): nothing yet proves the lane's retry, the caps handed to the recorder, or the pinned speaker and stage.",
+    "CW6's growth per week waits on a few weeks of the call's numbers on home (#2659).",
+    "#2756 waits on the first Kokoro-voiced Playoff Delta week (Tue Nov 10): then /mission and the two mandates say you're the audience of your videos."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2782
+    }
+  ]
+}
