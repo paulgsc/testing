@@ -5,13 +5,35 @@
   "epics": [
     "SFEED"
   ],
-  "pulls": [],
-  "did": "Watched the www release until it took in the preview mark and Playoff Delta's previews, and told the coordinating session it was ready for the owner's merge. The render image builds at that commit. Wrote the small fix that lets a Playoff Delta preview show its template version, and pushed it to a branch. The session wound down at the owner's word before the release was merged, so the pin move is written up as server issue 756 for the next session.",
-  "calls": [],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 757
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 758
+    }
+  ],
+  "did": "Home's pins moved to www 0.1.63 together, so the preview mark and Playoff Delta's previews now work on home once the owner runs four commands. After the owner merged the www release, one server pull request moved the recorders, the motion and the call stage in one step. Before it merged, all three templates' previews were recorded and rendered under home's limits, each with the preview mark on every frame. A second pull request lets a Playoff Delta preview show its template version in Studio.",
+  "calls": [
+    {
+      "title": "Pinned the motion to the release's merge commit, not to the preview mark's own commit",
+      "options": [
+        "Move SOME_UI_COMMIT and MOTION_COMMIT to 76c41ab, the preview mark's commit",
+        "Move both to 6acfde6, the release's merge, the commit www 0.1.63 is published from"
+      ],
+      "chose": 1,
+      "why": "The stage image is published from the release's merge, so pinning the recorders to that same commit keeps the stage and the recorders one version, as the two earlier pin moves did. Its code differs from 76c41ab only in www's version number.",
+      "undo": "Set SOME_UI_COMMIT and MOTION_COMMIT in infra/docker/Dockerfile.render to 76c41ab and rebuild the render image."
+    }
+  ],
   "left": [
-    "Moving home's pins to www 0.1.63 waits on the owner merging some-ui's www release PR. Then one server PR moves the recorder, the motion and call-stage together, and home runs the four commands. Server issue 756 has every step. Moving only the recorder breaks every preview; episodes are unaffected either way.",
-    "The fix that shows a Playoff Delta preview's version is on server branch claude/pins-v5-preview-version, not yet a PR: its tests and clippy hadn't finished when the session wound down.",
-    "Server issue 756's handoff could not be posted on some-ui's SFEED epic, because this session had no some-ui access. The coordinating session was asked to link it there."
+    "The owner runs the home commands written on server issue 756: git pull, pull call-stage, build render, make up. Until then home makes no previews of the new kind; episodes are unaffected.",
+    "Publishing file_host with the preview version fix waits on the owner merging server bot pull request 759, which bundles other pending images too.",
+    "A voiced preview, with Kokoro speaking, is proven only on home; the local runs were silent."
   ],
   "waits": []
 }
