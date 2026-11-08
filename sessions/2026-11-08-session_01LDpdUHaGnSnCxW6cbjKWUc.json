@@ -1,0 +1,51 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHaGnSnCxW6cbjKWUc",
+  "ended": "2026-11-08",
+  "epics": [
+    "HYPER",
+    "SFEED",
+    "LANE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 754
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 755
+    }
+  ],
+  "did": "Home can now render the call and Playoff Delta in template version 4, where the brand's open and close are the moving mark. The call stage and its recorders moved together to www 0.1.62, once that release took in the moving mark. Before merging, the render image was built here and run under home's limits. It recorded a whole v4 call preview against the new stage, the brand's open and close drawn by the recorders themselves. The render worker's test now proves the 500 MB video cap, the caps, stage and speaker the recorders are handed, and the hourly retry on the worker's own clock.",
+  "calls": [
+    {
+      "title": "Pinned the motion to the same commit as the recorders",
+      "options": [
+        "Move MOTION_COMMIT only as far as de273ce, the moving mark's commit",
+        "Move SOME_UI_COMMIT and MOTION_COMMIT both to e6fd9c2, the release's merge"
+      ],
+      "chose": 1,
+      "why": "Since the moving mark, the recorders draw compositions from their own checkout, so one commit for both keeps motion prove and a real render drawing the same thing. The render image was built and run at e6fd9c2 before merging.",
+      "undo": "Set MOTION_COMMIT in infra/docker/Dockerfile.render back to acc0912 and rebuild the render image."
+    },
+    {
+      "title": "Moved the worker's loop into a function so a test can run it",
+      "options": [
+        "Leave the loop at the bottom of render-calls.sh and keep testing one pass at a time",
+        "Move it into serve, unchanged, so the test runs the real loop on a short clock"
+      ],
+      "chose": 1,
+      "why": "The proof of the hourly retry had said the test ran each pass by hand. The loop's body is unchanged, and the script still runs it the same way.",
+      "undo": "Inline serve's body back under the trap at the end of infra/render/render-calls.sh, and drop the serve case from render-calls.test.sh."
+    }
+  ],
+  "left": [
+    "Home needs git pull, make compose ARGS=\"pull call-stage\", make compose ARGS=\"build render\" and make up for server #754. Only home can show a voiced v4 render and a real Playoff Delta v4 episode.",
+    "Some-ui's ledger names server #755's checks as proof for PV2 and CW5. The LEFTOVERS session has the check names.",
+    "The lane pausing and stopping the real recorder is still proven only on home, not in CI, so CW5's last clause stays open."
+  ],
+  "waits": []
+}
