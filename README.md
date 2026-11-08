@@ -1,7 +1,7 @@
 # Published data for some-ui's stages
 
-Two sets of data, each fetched by a stage in `paulgsc/some-ui`:
-Playoff Delta's season, and the weekly call's weeks.
+Three sets of data, each read by `paulgsc/some-ui`: Playoff Delta's season,
+the weekly call's weeks, and each release promo's fill and sample.
 
 ## Playoff Delta
 
@@ -64,4 +64,22 @@ home's.
 
 ```
 https://raw.githubusercontent.com/paulgsc/testing/main/call/index.json
+```
+
+## Release promos
+
+A 9:16 vertical for a release of one of the apps or extensions
+(`paulgsc/some-ui`, `packages/video-motion`, HYPER3): the app walked in a
+sandbox that holds only the sample below, and rendered on home. A session
+writes the words, checked before they land.
+
+| Path | What |
+|---|---|
+| `promo/<app>/<version>/release.json` | The release and the words drawn over it (`some-ui.promo/1`) |
+| `promo/<app>/<version>/sample.json` | What the app shows in the sandbox walk, made up (`some-ui.walk-sample/<app>/1`) |
+
+On home, from `paulgsc/server` (its Makefile's `promo` target):
+
+```
+make promo APP=suspender-ledger VERSION=0.3.1
 ```
