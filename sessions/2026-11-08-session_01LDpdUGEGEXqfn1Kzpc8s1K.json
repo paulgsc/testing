@@ -1,0 +1,70 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGEGEXqfn1Kzpc8s1K",
+  "ended": "2026-11-08",
+  "epics": [
+    "LANE",
+    "SFEED"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 734
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 738
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 748
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2776
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2786
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2788
+    }
+  ],
+  "did": "Home's render worker now obeys the lane: a weekly call or a Playoff Delta episode starts only when home has room and nothing you're waiting on needs it, pauses or gives way the moment something does, and picks up from the steps it had finished, with the same video in the end. Home also answers what it is rendering, what waits, what couldn't finish, what finished and what's coming, and the phone shows it on Studio › Renders, with a rough bar and a line above Studio's tiles. The assurance ledger's CW5 and PK5 now say a render waits for the lane, not for the next hour.",
+  "calls": [
+    {
+      "title": "The line above Studio's tiles is always there on the phone",
+      "options": [
+        "Show it only while home is making something",
+        "Show it always, with words for every state, one line tall"
+      ],
+      "chose": 1,
+      "why": "A line that came and went moved the tiles while you used them, and a board holding only what couldn't finish had no way in.",
+      "undo": "Make RendersLine in components/studio/renders.tsx return null when liveLine has nothing under way."
+    },
+    {
+      "title": "Started the route snapshot sync by hand when /resync failed",
+      "options": [
+        "Wait for someone to fix /resync",
+        "Run paulgsc/server's routes workflow on main directly, which is all /resync does"
+      ],
+      "chose": 1,
+      "why": "The snapshot PR was stuck on a merge commit built before the CW5 amendment, and /resync failed before it dispatched.",
+      "undo": "Nothing to undo; the coordinator filed /resync's failure for you."
+    }
+  ],
+  "left": [
+    "Settings › Running's row opening Studio › Renders isn't built; it is written up on some-ui #2761.",
+    "Without a share, the progress bar pulses rather than sweeps.",
+    "Two flaky cases in the render worker's test (server #745, #747) are fixed by another session's server #746 and #749; I closed my own #748 for #749."
+  ],
+  "waits": []
+}
