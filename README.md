@@ -22,6 +22,7 @@ it by hand from the Actions tab ("Run workflow").
 |---|---|
 | `playoff-delta/<season>/<team>.json` | The story so far: one entry per completed week the team played |
 | `playoff-delta/<season>/narration/<team>-week-NN.json` | What is said over each scene of week NN's episode (`some-ui.pd-narration/1`); week 00 is the legend |
+| `playoff-delta/index.json` | Every fill above, by season, team and week, with its file's SHA-256 (`some-ui.pd-narration-index/1`): what home reads to keep each one |
 
 ## Narration
 
@@ -30,7 +31,9 @@ session each Tuesday in season, after the week's data lands, following
 `packages/ui/playoff-delta/NARRATION-ROUTINE.md` in `paulgsc/some-ui`. It
 fills the weeks due (the legend once, then each new week), checks every
 fill with `pnpm --filter @some-ui/playoff-delta narration check` before it
-lands, and never edits a fill already here. Each fill is pinned to the
+lands, rewrites `playoff-delta/index.json` with `narration index`, and never
+edits a fill already here. Home reads the index hourly and keeps every fill,
+with its season file as served, for good. Each fill is pinned to the
 season up to its week, so it still checks as later weeks are added.
 
 ## Fetching
