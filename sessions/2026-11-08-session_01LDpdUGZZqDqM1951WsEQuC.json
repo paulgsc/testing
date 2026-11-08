@@ -36,9 +36,24 @@
    "repo": "some-ui",
    "kind": "pr",
    "number": 2771
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2798
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2799
+  },
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 2800
   }
  ],
- "did": "Made the look of the call and Playoff Delta for video, and their sound. Mochi Night, the palette the research derived from what YouTube does to colour, is now an app theme and the call's and Playoff Delta's template theme, in version 3, and the renderer is BT.709 end to end. The music bed and the six sound cues are made by our own code, the same bytes anywhere, and the owner has laid them on home. Studio's template page now lets the owner choose the mark's theme. The brand's animated open and close draw the app's own mark in the template's theme. On the way, the renderer's sound stopped losing a cue or a take on CI's ffmpeg 9, which had turned renderer pull requests red at random.",
+ "did": "Made the look of the call and Playoff Delta for video, and their sound. Mochi Night, the palette the research derived from what YouTube does to colour, is now an app theme and the call's and Playoff Delta's template theme, in version 3, and the renderer is BT.709 end to end. The music bed and the six sound cues are made by our own code, the same bytes anywhere, and the owner has laid them on home. Studio's template page now lets the owner choose the mark's theme. The brand's animated open and close draw the app's own mark in the template's theme. On the way, the renderer's sound stopped losing a cue or a take on CI's ffmpeg 9, which had turned renderer pull requests red at random. Later the same day: each stage now refuses a template version newer than it knows, and the recorders fail with its words, so a stage behind its recorders can no longer draw a new week in the old look (VS1). The call and Playoff Delta have a version 4 whose open and close are the animated mark in the mark's theme, rendered by video-motion beside the stills. And the phone's status page has a row for what home is making, opening Studio's Renders page, whose bar now sweeps while home gives no share.",
  "calls": [
   {
    "title": "The music bed's music",
@@ -80,11 +95,22 @@
    "chose": 0,
    "why": "The owner asked for sounds we make ourselves and described none; the dry run's sheet put each on a visible beat.",
    "undo": "Change cues.ts, or CUE_AT in promo.ts."
+  },
+  {
+   "title": "Where the status page shows home's renders",
+   "options": [
+    "its own Studio group",
+    "a row under Sending to home",
+    "a line outside the groups"
+   ],
+   "chose": 0,
+   "why": "Renders are home's work for Studio, neither something this phone sends nor a send needing a hand.",
+   "undo": "Move renderRow's group to home and drop studio from the board's groups (C27)."
   }
  ],
  "left": [
-  "The call's and Playoff Delta's brand slides are still captured from the web stage; moving them onto the animated open and close needs new template versions and recorder changes (#2728).",
-  "Home's call stage runs www 0.1.60, older than Mochi Night, so a version 3 week would record in the old look until www 0.1.61 is published (#2741), and the server moves its pins after it."
+  "Home renders version 4 only once its render image carries video-motion at or after #2799's merge, with a Chromium headless shell (MOTION_COMMIT, SERVER-halves), and the next www release carries #2798 and #2799 together with both pins.",
+  "The Renders bar moves by time, not steps, until the recorder reports its steps (paulgsc/server#739)."
  ],
  "waits": []
 }
