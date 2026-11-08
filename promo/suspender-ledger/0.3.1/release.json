@@ -1,0 +1,17 @@
+{
+  "schema": "some-ui.promo/1",
+  "app": "suspender-ledger",
+  "version": "0.3.1",
+  "platform": "Firefox",
+  "stage": "Approved on AMO",
+  "fill": {
+    "title": "Suspender|Ledger",
+    "captions": [
+      "Every control shows,|even if a read fails.",
+      "Keep a site awake|with one switch.",
+      "Suspend a tab.|It keeps its place."
+    ],
+    "cta": "Free for|Firefox",
+    "badges": ["No sign-in", "Source is public"]
+  }
+}

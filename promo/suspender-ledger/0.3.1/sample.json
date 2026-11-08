@@ -1,0 +1,9 @@
+{
+  "schema": "some-ui.walk-sample/suspender-ledger/1",
+  "tab": { "title": "Slow-cooked beans, the long way", "url": "https://recipes.example.org/beans" },
+  "settings": { "idle-timeout": 300, "period": 600, "number": 6, "whitelist": [] },
+  "shortcuts": [
+    { "description": "Suspend this tab", "shortcut": "Alt+Shift+S" },
+    { "description": "Suspend all other tabs", "shortcut": "Alt+Shift+O" }
+  ]
+}
