@@ -47,19 +47,24 @@
       "repo": "server",
       "kind": "pr",
       "number": 751
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 753
     }
   ],
-  "did": "Home now does its half of several of today's Studio stories. It keeps the notes you leave on an episode and files them for the mailbox. It gives the phone each episode's chapters. When you ask from the phone, it makes a short preview of a template from its sample, under the lane, and clears it away after a day. make promo now plays the release's own sound cues from home's brand folder, and it no longer fails on curl inside the dev shell. The render worker's test no longer goes red on a busy runner, because it keeps its own time. The steward and CLAUDE.md now say a session leaves its clip and its note before it is archived.",
+  "did": "Home now does its half of several of today's Studio stories. It keeps the notes you leave on an episode and files them for the mailbox. It gives the phone each episode's chapters. When you ask from the phone, it makes a short preview of a template from its sample, under the lane, and clears it away after a day. make promo now plays the release's own sound cues from home's brand folder, and it no longer fails on curl inside the dev shell. The render worker's test no longer goes red on a busy runner, because it keeps its own time. The steward and CLAUDE.md now say a session leaves its clip and its note before it is archived. Home's call stage and its recorders now move together to www 0.1.61, so the call and Playoff Delta can render in the new Mochi Night look with the music bed.",
   "calls": [
     {
-      "title": "The render image's recorders moved to some-ui 1505684 while call-stage stays on www 0.1.60",
+      "title": "Held the music-bed pin until the call's stage could move with it",
       "options": [
-        "Wait for a www release at or after 1505684 and move both pins together",
-        "Move only the recorders, after checking that the stage pages they drive are unchanged"
+        "Move only SOME_UI_COMMIT to some-ui 256b68b, as asked",
+        "Wait for www 0.1.61 and move SOME_UI_COMMIT and call-stage's image in one PR"
       ],
       "chose": 1,
-      "why": "Previews need record:preview, which only 1505684 has. The /call and /burn-ins pages the recorders drive are the same at both commits; only Studio's pages moved.",
-      "undo": "Publish www from 1505684 or later and move call-stage's image pin in infra/compose/call-render.yml to it, or set SOME_UI_COMMIT in infra/docker/Dockerfile.render back to 031ca48 and give up previews until then."
+      "why": "Some-ui #2774 changed both stages, the call's and Playoff Delta's. Newer recorders driving the old 0.1.60 stage would have drawn v3 weeks in the old look with no error.",
+      "undo": "Set call-stage's image in infra/compose/call-render.yml and SOME_UI_COMMIT in infra/docker/Dockerfile.render back to what server #753 replaced."
     },
     {
       "title": "Merged the promo's sound cues without building the render image",
@@ -73,9 +78,8 @@
     }
   ],
   "left": [
-    "The SOME_UI_COMMIT bump for the call's music bed waits on some-ui #2774's merge commit, which SFEED-look will send.",
     "No test proves the render worker's 500 MB video limit, so PV2 can't move to holds yet: server #752.",
-    "The render image at some-ui 1505684 (the recorders, for previews) hasn't been built yet. make promo has already proven the motion pin acc0912 on home, rendering the same bytes twice.",
+    "Home needs git pull, make compose ARGS=\"pull call-stage\", make compose ARGS=\"build render\" and make up for server #753. The render image at some-ui b219a5b hasn't been built yet.",
     "PV1 and PV2 move to holds now that server #743 has merged. The proof list is on some-ui #2757."
   ],
   "waits": []
