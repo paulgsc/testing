@@ -1,0 +1,77 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFs2Yd9cyxXmRXtvrf",
+  "ended": "2026-11-08",
+  "epics": ["SFEED", "FEED", "HYPER", "STUDIO"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2806 },
+    { "repo": "some-ui", "kind": "pr", "number": 2807 },
+    { "repo": "some-ui", "kind": "pr", "number": 2808 },
+    { "repo": "some-ui", "kind": "pr", "number": 2810 },
+    { "repo": "some-ui", "kind": "pr", "number": 2811 },
+    { "repo": "some-ui", "kind": "pr", "number": 2812 },
+    { "repo": "some-ui", "kind": "pr", "number": 2813 }
+  ],
+  "did": "A note left on an episode can now carry what you said, kept as one of your takes. An idea set aside on home takes the answers you said again with it, set aside and kept. Studio's Templates page shows the release promo: its three scenes and what the AI writes for it. Playoff Delta's templates can be previewed, and every preview says it is a preview of sample data on the video itself. The ledger now holds that a preview never outgrows its cap, and names the render worker's new tests for the weekly call.",
+  "calls": [
+    {
+      "title": "A note's spoken part is a library take",
+      "options": [
+        "Record it as a library take, the note naming the newest",
+        "A desk of the note's own, deleting the take if the note isn't kept"
+      ],
+      "chose": 0,
+      "why": "Every take said is kept, as your record asks, and it goes home the way every library take already does.",
+      "undo": "Give the note form its own desk that holds a take until Keep the note, and wire it home as a library take."
+    },
+    {
+      "title": "Waiting answers of an idea set aside go home set aside",
+      "options": [
+        "Offer them where waiting takes are seen",
+        "Send them home as library takes",
+        "Send them home set aside with their idea"
+      ],
+      "chose": 2,
+      "why": "Nothing could send them any more; this keeps them and keeps them out of what routines read, with no new screen.",
+      "undo": "Drop the set-aside step on Ideas on home, and the takes wait again."
+    },
+    {
+      "title": "The release promo is its own entry on Templates",
+      "options": [
+        "A promo entry read from one table of its shape",
+        "Pin the promo as a template format with a composition picture kind"
+      ],
+      "chose": 0,
+      "why": "Its scenes are compositions and one lasts as long as the app's run-through, which a template format can't hold; pinning it would also have made home's previews take it.",
+      "undo": "Delete the promo's page and pin it as a template format."
+    },
+    {
+      "title": "Where a preview's mark sits",
+      "options": [
+        "A strip under the safe area, at its left",
+        "The header's top-right corner",
+        "Centred under the safe area"
+      ],
+      "chose": 0,
+      "why": "Every stage fills the frame, so the mark sits where no stage draws and below where captions are drawn.",
+      "undo": "Draw the mark as a new design in another place."
+    },
+    {
+      "title": "Playoff Delta's previews show the sample's newest week",
+      "options": ["The sample's newest week", "An earlier, more open week"],
+      "chose": 0,
+      "why": "It shows the format at its newest with real stakes; its words, which Claude wrote, are checked against the sample's facts.",
+      "undo": "Pick another sample week and rewrite its words until the check passes."
+    }
+  ],
+  "left": [
+    "The first spoken note: it needs you to leave one on an episode after the next release, and the next reflections run to file it.",
+    "Pins: once the preview mark lands, home's recorder and the call stage must move together with the next release, or previews fail.",
+    "The weekly call's render promise stays unproven for one clause: a real pause and stop on home, which only home can show.",
+    "The call's growth per week waits on a few weeks of the dashboard.",
+    "No clip of the note's recorder: it only shows under a video fetched from a paired home, and no walk reaches it yet.",
+    "An idea set aside just as you leave the screen keeps its waiting answers waiting, kept but unsent.",
+    "Home doesn't yet show a Playoff Delta preview's version; a small server change would."
+  ],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 2756 }]
+}
