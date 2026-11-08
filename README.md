@@ -70,9 +70,8 @@ https://raw.githubusercontent.com/paulgsc/testing/main/call/index.json
 
 A 9:16 vertical for a release of one of the apps or extensions
 (`paulgsc/some-ui`, `packages/video-motion`, HYPER3): the app walked in a
-sandbox that holds only the sample below, drawn in three HyperFrames scenes
-and rendered on home. The template is code; per release, a session writes
-only the words, checked against the template before they land.
+sandbox that holds only the sample below, and rendered on home. A session
+writes the words, checked before they land.
 
 | Path | What |
 |---|---|
