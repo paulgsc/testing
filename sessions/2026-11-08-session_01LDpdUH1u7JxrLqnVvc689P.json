@@ -1,0 +1,34 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUH1u7JxrLqnVvc689P",
+  "ended": "2026-11-08",
+  "epics": ["SFEED"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2762 },
+    { "repo": "some-ui", "kind": "pr", "number": 2778 },
+    { "repo": "some-ui", "kind": "pr", "number": 2781 },
+    { "repo": "some-ui", "kind": "pr", "number": 2787 },
+    { "repo": "some-ui", "kind": "pr", "number": 2794 }
+  ],
+  "did": "A template in Studio can now be previewed: code cuts its sample episode down to 15 to 30 seconds, the intro, the brand slides and the first section, and home's render worker can record that cut as a short video from the sample alone. The preview is placed in the promises ledger: a preview asked for is made or says why it failed, and home keeps at most one per template, gone after a day. Home's routes and prune are built in the server's pull request, and the phone's Preview button is built but waits for those routes to reach main.",
+  "calls": [
+    {
+      "title": "Home's keeping of previews is a promise about what it keeps",
+      "options": [
+        "A promise about what home keeps, and for how long",
+        "A deadline on each preview"
+      ],
+      "chose": 0,
+      "why": "The owner's words were about keeping: newest per template only, gone 24 hours after it is made.",
+      "undo": "Change PV2's kind in the ledger, as an amendment."
+    }
+  ],
+  "left": [
+    "The phone's Preview button (#2778) stays a draft until home serves its routes and the route snapshot reaches main; its contract lands with it.",
+    "The two preview promises move to holding once the server's pull request is on main, naming its tests; the size bound has no test yet, filed on the server.",
+    "Playoff Delta's templates can't be previewed until they have a sample narration that passes its fact check.",
+    "The video itself doesn't mark it is a preview of sample data; only its title says so. That needs a burn-in design.",
+    "The discard-sites entry for the preview prune waits on the prune reaching main."
+  ],
+  "waits": []
+}
