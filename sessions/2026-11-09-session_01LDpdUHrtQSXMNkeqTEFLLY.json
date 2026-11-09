@@ -1,0 +1,67 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHrtQSXMNkeqTEFLLY",
+  "ended": "2026-11-09",
+  "epics": ["RUST-ROUNDS", "ORCH"],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2826
+    }
+  ],
+  "did": "Built the Rust Rounds essay's template beside the weekly call, and a stage at /essay that plays its sample essay one scene at a time in the call's look: two bubbles, the speaker lit. Each ticket gets its question, the take or the silence, a best fit, the two side by side on SOLO's whole scale, and two deep dives on the biggest gaps; then the weeks and next week. The call's frame is now shared by both stages, and the call's own video didn't change. Every scene of the sample fits its frame.",
+  "calls": [
+    {
+      "title": "The essay stays off Studio's template list until home can render it",
+      "options": [
+        "pinned and not listed in Studio until RR16",
+        "listed in Studio now, with no preview home can make"
+      ],
+      "chose": 0,
+      "why": "A template Studio lists is one Studio offers a preview of, and home can't make an essay yet.",
+      "undo": "Move rust-essay from TEMPLATES_NOT_LISTED into TEMPLATE_IDS with its storyboard, series and preview recorder (C44)."
+    },
+    {
+      "title": "The sample essay's role line, on the Dreyfus stages, drawn by hand",
+      "options": [
+        "Dreyfus's stages, hand-drawn for the sample",
+        "a public engineering career framework",
+        "no role line until RR19"
+      ],
+      "chose": 0,
+      "why": "The role line needs a published ladder and RR19's derivation, which isn't built; the sample shows its place on the frame.",
+      "undo": "Replace weeks.role and the chart's cells in sample-essay.json with RR19's derivation (C45)."
+    },
+    {
+      "title": "Your bubble in the essay is a plain person icon",
+      "options": [
+        "the prototype's plain person icon",
+        "the owner's brand mark",
+        "a photo or avatar of the owner"
+      ],
+      "chose": 0,
+      "why": "The issue named a neutral tutor icon and said nothing of yours; the brand mark stays on the open and close.",
+      "undo": "Draw another icon in YouIcon, essay-stage.tsx (C46)."
+    },
+    {
+      "title": "A chapter slide opens each ticket, and Over the weeks",
+      "options": [
+        "a chapter per ticket and one for Over the weeks",
+        "a chapter per section, as the call has",
+        "no chapters"
+      ],
+      "chose": 0,
+      "why": "The essay's sections repeat per ticket, so the call's chapter-per-section would come back with each ticket.",
+      "undo": "A new essay format version whose shape lists other chapters (C47)."
+    }
+  ],
+  "left": [
+    "The stage plays only the sample: reading an essay from home and recording it is RR16, and the essay reaching home through the mailbox is RR18.",
+    "The essay has no storyboard or preview, and isn't on Studio's template list, until RR16.",
+    "The chart and role line are hand-drawn in the sample until RR19 derives them; 'may have faded' isn't drawn yet.",
+    "essay.ts restates the week id, ticket key, SOLO's citation and the ticket counts from the Rust Rounds package, which video-render can't import; a shared module would remove the copies.",
+    "Nothing holds a deep dive to two to five minutes; the routine's words decide its length (RR18)."
+  ],
+  "waits": []
+}
