@@ -1,0 +1,46 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHPBnWL4yyCF8uuFTz",
+  "ended": "2026-11-09",
+  "epics": ["RUST-ROUNDS", "ORCH"],
+  "pulls": [{ "repo": "server", "kind": "pr", "number": 763 }],
+  "did": "Built home's half of RR14: each week of Rust Rounds is now kept on home as one record, silence included. The phone sends the week as Send kept it, once, and home refuses a Send after the deadline because a take not sent by then doesn't count. A paste of the owner's own error is kept per week, and the old card-era log is kept session by session, growing but never rewritten. Home reads the week's record on request, showing each ticket answered or not, how often it was opened, and every ticket nobody answered. The opens come from the phone's existing engagement events, so there is no second counter. Codex found two real ordering bugs, both timestamps with an offset compared as text, and both are fixed. It merged on server main after the some-ui ledger placement, in the order the run's coordinator set.",
+  "calls": [
+    {
+      "title": "No per-record delete for a week's answers",
+      "options": [
+        "Build a My data delete with a receipt now",
+        "Keep them until the account goes, with no delete route"
+      ],
+      "chose": 1,
+      "why": "The issue says deletable only from My data, but your MY-DATA rule is that the work is never deleted, and a week's answers are the work. The coordinator agreed: if ever, only from My data.",
+      "undo": "Ask for a My data delete story for the week record, and it gets built behind its own switch, as Studio takes are."
+    },
+    {
+      "title": "Ticket opens are counted from the phone's leave events, not a counter of their own",
+      "options": [
+        "Add a ticket id to every engagement event",
+        "Count each ticket card's leave event at its position in the week"
+      ],
+      "chose": 1,
+      "why": "It keeps the app event shape unchanged and gives one counter, which RR14 asked for. An open the app was killed during, with no leave sent, isn't counted.",
+      "undo": "Say opens must count every start, and the phone sends a taken event with a place instead."
+    },
+    {
+      "title": "A paste is kept after the deadline",
+      "options": [
+        "Refuse pastes after the deadline, like takes",
+        "Keep a paste whenever it is made"
+      ],
+      "chose": 1,
+      "why": "The deadline rule is for takes. A paste is your own code's error, not an answer to a ticket.",
+      "undo": "Say pastes follow the deadline too, and home refuses them past it with a 422."
+    }
+  ],
+  "left": [
+    "The comment on some-ui#2689 and the epic's Where we are lines: this session could only read some-ui, so RR14-phone posts them.",
+    "Home's steps (migrate, pull the image, restart) wait for you to be home. They are on #2823.",
+    "The SQLite advisory RUSTSEC-2026-0459 shows red on every server PR. It needs an sqlx release on libsqlite3-sys 0.39 or a dated ignore. Filed as server#764."
+  ],
+  "waits": [{ "repo": "server", "kind": "issue", "number": 764 }]
+}
