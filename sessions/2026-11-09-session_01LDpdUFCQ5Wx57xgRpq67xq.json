@@ -1,0 +1,29 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFCQ5Wx57xgRpq67xq",
+  "ended": "2026-11-09",
+  "epics": ["RUST-ROUNDS"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2828 },
+    { "repo": "some-ui", "kind": "pr", "number": 2829 },
+    { "repo": "some-ui", "kind": "pr", "number": 2830 }
+  ],
+  "did": "I built the phone half of RR14, so what Rust Rounds keeps now goes home for good: each week you send, each error you paste, and what you did on the cards before the weekly shape. Home makes each week's record from what you sent, and a week you didn't send counts as unanswered there. The phone never lets go of its own copy. Opening a ticket is now counted through the same app events every screen uses, by its place in the week, never its name. Before that I placed home's three new tables in the assurance ledger so the server's change could merge, and I merged the route snapshot. Review caught real bugs on the way: the first version forgot which home it was paired with, and treated a phone clock a little ahead of home's as a permanent refusal. Both are fixed, and the sending now reuses the home link's existing parts instead of a copy of them.",
+  "calls": [
+    {
+      "title": "How a ticket's opens are counted",
+      "options": [
+        "Engagement events by the ticket's place in the week, counted on home",
+        "A per-ticket open counter kept on the phone and sent with the week"
+      ],
+      "chose": 0,
+      "why": "An event may not carry item content, so it names the place (first ticket, second) rather than the ticket, and home counts within the week's dates; that keeps one pipe and no second counter, as the story asked.",
+      "undo": "Add a counter to the week's record on the phone and a field on home, and drop the week-ticket affordance."
+    }
+  ],
+  "left": [
+    "Nothing was checked against a real home: the owner is away. Once home runs server#763's image and the new APK is installed, a sent week's record, ticket opens, the card log and My data's counts need a look.",
+    "A week sent or a paste kept goes at the lane's next run (the app coming to the front, or a pull), not the moment it is kept, because those stores tell no one of a write."
+  ],
+  "waits": []
+}
