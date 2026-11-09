@@ -1,0 +1,27 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHGcPbjn48UvXZurbE",
+  "ended": "2026-11-09",
+  "epics": ["ORCH"],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 2825 }],
+  "did": "Made each some-ui pull request cost fewer of the runners both repositories share. The eleven repo-wide guards now run as one job, so a push starts 14 jobs instead of 24, and the guards take 2 billed minutes instead of about 20. A draft pull request now runs nothing until it is marked ready, and shows a red gate meanwhile. I also measured where the waiting came from: about 20 jobs at once is the cap, and the server's PR gate holds one runner for up to an hour while it waits.",
+  "calls": [
+    {
+      "title": "What a draft pull request shows when its CI is skipped",
+      "options": [
+        "the gate fails, so a draft shows a red check until it is ready",
+        "the gate is skipped, so a draft shows no failure",
+        "drafts keep running all of CI"
+      ],
+      "chose": 0,
+      "why": "A skipped required check counts as passed, and when a draft is marked ready its old gate is the only one on that commit until the new run reaches it, so a skip could let it merge unchecked.",
+      "undo": "Drop ready_for_review and the draft conditions from pr.yml, extension.yml and pages.yml (call C43)."
+    }
+  ],
+  "left": [
+    "The server's PR gate still holds a runner while it waits on the other checks; the event-driven fix is server issue 762, filed by the coordinator, because this session could not push to the server.",
+    "Whether a merge queue is offered on these repositories is unknown: the docs don't say, so issue 2824 asks for a one-minute look at the ruleset's rule list.",
+    "magic-nix-cache sometimes spends minutes saving the Nix toolchain to a pull request's own cache; the action has no read-only mode, so it was left on."
+  ],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 2824 }]
+}
