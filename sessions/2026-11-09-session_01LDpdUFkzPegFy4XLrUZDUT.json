@@ -1,0 +1,52 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFkzPegFy4XLrUZDUT",
+  "ended": "2026-11-09",
+  "epics": ["RUST-ROUNDS", "ORCH"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2825 },
+    { "repo": "some-ui", "kind": "pr", "number": 2826 },
+    { "repo": "server", "kind": "pr", "number": 763 },
+    { "repo": "some-ui", "kind": "pr", "number": 2828 },
+    { "repo": "some-ui", "kind": "pr", "number": 2829 },
+    { "repo": "some-ui", "kind": "pr", "number": 2830 }
+  ],
+  "did": "Coordinated four sessions on Rust Rounds and CI, writing no code itself. First it measured why parallel pull requests jam: both repos share one pool of about 20 runners, a some-ui push took 24 jobs, and main now requires branches to be up to date, so every merge re-ran every other open PR. It answered with a merge train: sessions verify locally, and only one PR per repo is in CI at a time. A CI session went first and cut a push to 14 jobs. RR15 landed the essay's template, and RR14 landed each week kept on home, in a home half and a phone half, with the ledger trap sequenced so it never fired. The coordinator was the only ledger writer, pushed the session notes sessions couldn't, kept one list of home steps while you were away, and missed a 1 h 45 m stall that you caught.",
+  "calls": [
+    {
+      "title": "A merge train, one PR per repo in CI at a time",
+      "options": [
+        "Let every session open PRs when ready",
+        "One PR per repo in CI, sessions verify locally and wait for go"
+      ],
+      "chose": 1,
+      "why": "Under the up-to-date rule, parallel PRs re-run each other's CI after every merge, and both repos share one runner pool.",
+      "undo": "Drop rules 2 and 3 on #2823 in the next run's brief."
+    },
+    {
+      "title": "RR14 split into a home half and a phone half",
+      "options": ["One session for both repos", "One session per repo"],
+      "chose": 1,
+      "why": "Nov 8's sessions were refused push to the other repo; starting each in the repo it pushes to avoids it.",
+      "undo": "Give one session both repos up front next time."
+    },
+    {
+      "title": "No per-record delete for a week's answers",
+      "options": [
+        "A My data delete with a receipt now",
+        "Kept until the account goes"
+      ],
+      "chose": 1,
+      "why": "Your MY-DATA rule (#2474) says the work is never deleted, and the server's delete code already holds it.",
+      "undo": "Ask for a My data delete story for the week record."
+    }
+  ],
+  "left": [
+    "Your home steps for RR14 and the checks after them: some-ui #2823, When you're home.",
+    "Merge the server's image-publishing bot PR from the phone before going home.",
+    "server #762 (the PR gate holds a runner while it polls), server #764 (an SQLite advisory, a warning), #2824 (is a merge queue offered).",
+    "Next week's recon of both coordinator runs, #2814, including the stall and the three-role ledger format.",
+    "RR16 #2691 is the next Rust Rounds story."
+  ],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 2824 }]
+}
