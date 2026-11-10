@@ -1,0 +1,14 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFnnoD85JQR7D2jnJB",
+  "ended": "2026-11-10",
+  "epics": ["RUST-ROUNDS", "ORCH"],
+  "pulls": [{ "repo": "server", "kind": "pr", "number": 768 }],
+  "did": "Fixed home's Rust Rounds runner, which had refused every request since recording was switched on on Nov 7, so no week's programs were ever recorded. The runner checks which user is calling, and the library it used misread that whenever the caller sat in another container, which is how home runs. It now reads the caller's user directly and serves file-host as intended. A test proves it from a separate process space, and the sandbox check now asks the runner from a second container, the shape home runs; both fail on the old code with exactly what the owner saw on the box. On GitHub's runner the test needs sudo to make its process space, which the owner chose over changing a security setting.",
+  "calls": [],
+  "left": [
+    "The owner pulls the new rust-runner image and runs make up; until then home still refuses.",
+    "An upstream report to the rustix library is drafted, not filed: filing is the owner's call."
+  ],
+  "waits": []
+}

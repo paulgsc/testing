@@ -1,0 +1,14 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGYhF865ePEQHzU7Ym",
+  "ended": "2026-11-10",
+  "epics": ["RUST-ROUNDS", "ORCH"],
+  "pulls": [{ "repo": "server", "kind": "pr", "number": 770 }],
+  "did": "Built home's half of RR22: a week stays open until its Sunday deadline. Each send before then is a draft that replaces the last, and only what stands at the deadline becomes final and is kept for good, which was the owner's own model, chosen mid-run over keeping every send. The owner's first real send of week 46 is untouched and becomes that week's first draft. Codex found two real races at the deadline, a send landing beside a final and a record briefly reading as nothing sent, and both were fixed before merge. The ledger entry for the two new tables merged first, in the order the coordinator set.",
+  "calls": [],
+  "left": [
+    "The owner pulls file-host's next image and then runs the migration by hand; until then a week's send or record answers with an error and the phone keeps the draft.",
+    "The calls C52 to C54 are recorded in some-ui's calls file by the coordinator's bookkeeping pull request."
+  ],
+  "waits": []
+}
