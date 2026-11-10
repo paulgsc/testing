@@ -1,0 +1,66 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFduWZam7ccm6tqdDE",
+  "ended": "2026-11-10",
+  "epics": [
+    "RUST-ROUNDS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2838
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2841
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2842
+    }
+  ],
+  "did": "Built the phone side of the Rust Rounds essay video, alongside a session doing home's side. The essay page now plays a given week's essay, and a new recorder makes the video with each of my answers played whole in my own voice and captioned, credited to me rather than the synthetic tutor. The essay is now on Studio's Templates list with its storyboard and a preview, where a second synthetic voice reads the sample's made-up answers and says so. A full local render in home's own folder layout gave a ten-minute video with each take in place. The weekly call's page is unchanged, byte for byte. I also placed the essay render in the promises ledger, ahead of home's change, then filled in its evidence once home's change merged. Every promise stays open where the tests stop short, and each one says what is missing.",
+  "calls": [
+    {
+      "title": "In the sample essay, a second synthetic voice reads the answers",
+      "options": [
+        "A second synthetic voice reads them, and the intro says it's a sample",
+        "The answer scenes stay silent",
+        "The tutor's voice reads them too"
+      ],
+      "chose": 0,
+      "why": "No one said the sample's answers, and the intro otherwise says the other voice is mine.",
+      "undo": "Change the sample voice or the sample intro in essay.ts and record the preview again."
+    },
+    {
+      "title": "The essay page shows nothing for a week it can't read",
+      "options": [
+        "Say why and show nothing",
+        "Show the sample instead, as the call's page does"
+      ],
+      "chose": 0,
+      "why": "An essay holds my own words, so a sample in its place would read as mine.",
+      "undo": "Fall back to the sample outside a recording, as the call's page does."
+    },
+    {
+      "title": "A take without word times is captioned by spreading its words",
+      "options": [
+        "Spread the transcript across the take by letter count",
+        "No captions without home's word times",
+        "The whole transcript on screen for the take"
+      ],
+      "chose": 0,
+      "why": "My takes have no synthetic word times, and captions are part of every essay.",
+      "undo": "Change spreadWords in video-render, or refuse a take with no word times."
+    }
+  ],
+  "left": [
+    "One www release that carries the essay page and recorder, then home's render pins move to it; until then home can't render an essay.",
+    "Studio and My data don't list essay videos yet (RR17), including the line saying the video holds my voice.",
+    "Two promises need a test or a narrower wording before they hold: transcripts are never compared with the record, and nothing shows a week I let go is never rendered again."
+  ],
+  "waits": []
+}
