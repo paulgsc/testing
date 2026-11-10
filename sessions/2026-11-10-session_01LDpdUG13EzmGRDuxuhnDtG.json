@@ -1,0 +1,50 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUG13EzmGRDuxuhnDtG",
+  "ended": "2026-11-10",
+  "epics": [
+    "MBP",
+    "RUST-ROUNDS",
+    "ORCH"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2834
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2835
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2837
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2840
+    }
+  ],
+  "did": "I built the mailbox's bell and put it live. Home can now hold a connection open to the mailbox, and the mailbox rings it with just a folder name when the routine puts a new digest, word set, drama, run record or LeetType session there, or asks for an archived file back. Only home's token can listen, and the ring never carries a file. I measured the cost on the live mailbox: about five rings a day, twelve on the busiest, against a free allowance of a hundred thousand. Then I let the mailbox take a Rust Rounds essay's script, so the routine can hand home the essay for a week and home can render it. It rides the folder home already reads every pass, so it costs no extra requests, and a correction goes under a new name since nothing put there is ever replaced. I put both live and checked them with status codes only, without putting anything for good. I also carried the records that the sessions working on home's server couldn't write here themselves. The calls they made about the merge gate, the bell and the weekly Rust Rounds record are now in the call record. The promises page now says that home reads the mailbox the moment it rings, and every fifteen minutes when the bell is down or hourly when it's held, so a file still reaches home within twenty minutes and a quiet day stays within its old request limit.",
+  "calls": [
+    {
+      "title": "The essay's script rides the brief folder rather than a folder of its own (C65)",
+      "options": [
+        "a rust-essay folder of its own, as the answer on #2684 names",
+        "the brief folder, as the weeks of Rust Rounds do"
+      ],
+      "chose": 1,
+      "why": "Your answer was that the script stays on home and in the mailbox. A folder of its own would add a request to every pass home makes, and home's side was built to read brief.",
+      "undo": "Give the essay its own folder in the mailbox and in what home reads each pass, and move it out of brief."
+    }
+  ],
+  "left": [
+    "The live check with home's own token (a real socket getting pong and a ring) wasn't run here, because this session has no home token. It is for home's session or you on the box, and it passed locally under wrangler dev.",
+    "Nothing has yet put a real essay in the mailbox, so its rules are proved by tests only. The routine's first essay put is the first live proof."
+  ],
+  "waits": []
+}
