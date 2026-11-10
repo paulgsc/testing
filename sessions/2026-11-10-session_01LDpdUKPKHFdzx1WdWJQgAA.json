@@ -1,0 +1,15 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKPKHFdzx1WdWJQgAA",
+  "ended": "2026-11-10",
+  "epics": ["MBP", "ORCH"],
+  "pulls": [{ "repo": "server", "kind": "pr", "number": 771 }],
+  "did": "Built home's half of the mailbox bell. Home now keeps a connection open to the mailbox, and a ring, a file home filed, or a transcript it heard runs a pass at once instead of waiting up to fifteen minutes. The safety-net poll follows the bell: hourly while the bell is held, as the owner chose, and every fifteen minutes while it is not, so the twenty-minute delivery promise still holds when the bell is down, and an idle day never exceeds ninety-six passes even if the bell keeps dropping. The poller alert now hears a stopped loop within about five minutes through a heartbeat, the overdue-run alert keeps its thirty minutes, and a bell down for thirty minutes reaches Slack. Codex found two real latency bugs, both fixed with tests.",
+  "calls": [],
+  "left": [
+    "The owner's check on home after the next file-host deploy: the log says the bell is connected, and a routine put shows a pass caused by a ring within seconds.",
+    "The ledger wording and calls C60 to C64 land in some-ui's bookkeeping pull request.",
+    "promtool can't run in a cloud session, so the alert rule tests first ran in CI, where they passed."
+  ],
+  "waits": []
+}
