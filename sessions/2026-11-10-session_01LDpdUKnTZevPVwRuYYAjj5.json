@@ -1,0 +1,40 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKnTZevPVwRuYYAjj5",
+  "ended": "2026-11-10",
+  "epics": ["ORCH"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2846 },
+    { "repo": "some-ui", "kind": "pr", "number": 2848 }
+  ],
+  "did": "I placed home's on-demand deploy in the assurance ledger. It is a new family, Home catches up with the app, with two promises. The first is that home pulls a newer server only when the app asks, and within its bounds. The second is that a deploy that fails or never starts reaches you. I also got the route snapshot with home's new ask through. Then I built the phone's side: when a paired phone starts, comes back to the front, or is pulled down, it asks home whether home works with this version of the app. The sharing marks then say so: home is updating, home can't work with it yet, or the app is older than home.",
+  "calls": [
+    {
+      "title": "Home's deploy unit runs as root and runs make as you (C83)",
+      "options": [
+        "root, with make run as you",
+        "your user throughout, with the deploy folder made group-writable",
+        "root throughout, with sops pointed at your key"
+      ],
+      "chose": 0,
+      "why": "The deploy folder belongs to the server's own user, and the secrets key is yours. Nothing settled a host unit that needs both.",
+      "undo": "Run the unit as you, keep its runtime folder, and make the deploy folder writable for you."
+    },
+    {
+      "title": "The deploy's ask gets a family and two promises of its own (C84)",
+      "options": [
+        "a family of its own, with new promises",
+        "fold it into Home is up as an exception",
+        "count it as a request that owes nothing later"
+      ],
+      "chose": 0,
+      "why": "Home is up spans everything, so no single process may carry it. The deploy's bounds are about wasted work, not uptime. And the ask does owe a later deploy.",
+      "undo": "Retire the two promises with your decision, and move the ask under Home is up."
+    }
+  ],
+  "left": [
+    "No clip of the new marks on the phone: I couldn't record the phone's screen from this session.",
+    "Three server follow-ups wait in server#782: the alerts still name the uptime promise; an ask home could not write down reaches no one; and nothing tests the deploy's 30-minute stop."
+  ],
+  "waits": []
+}
