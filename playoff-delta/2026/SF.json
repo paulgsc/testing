@@ -2052,6 +2052,271 @@
           }
         }
       ]
+    },
+    {
+      "week": 9,
+      "record": {
+        "w": 6,
+        "l": 1
+      },
+      "game": {
+        "opponent": "LV",
+        "won": true,
+        "relation": "other"
+      },
+      "pending": {
+        "before": 151,
+        "after": 136
+      },
+      "poles": {
+        "before": {
+          "us": {
+            "low": 6.0,
+            "high": 16.0
+          },
+          "division": {
+            "floor": 5.0,
+            "bloc": {
+              "teams": [
+                "LAR",
+                "SEA"
+              ],
+              "banked": 8.0,
+              "games": 2
+            },
+            "ceiling": {
+              "lose": 13.0,
+              "win": 12.0,
+              "team": "LAR"
+            }
+          },
+          "conference": {
+            "floor": 8.0,
+            "bloc": {
+              "teams": [
+                "DET",
+                "GB",
+                "MIN",
+                "CHI"
+              ],
+              "banked": 22.0,
+              "games": 7
+            },
+            "ceiling": {
+              "lose": 16.0,
+              "win": 15.0,
+              "team": "MIN"
+            }
+          },
+          "held": 8.0,
+          "seeds": {
+            "best": 1,
+            "worst": null
+          }
+        },
+        "after": {
+          "us": {
+            "low": 7.0,
+            "high": 16.0
+          },
+          "division": {
+            "floor": 6.0,
+            "bloc": {
+              "teams": [
+                "LAR",
+                "SEA"
+              ],
+              "banked": 10.0,
+              "games": 2
+            },
+            "ceiling": {
+              "lose": 13.0,
+              "win": 12.0,
+              "team": "LAR"
+            }
+          },
+          "conference": {
+            "floor": 8.0,
+            "bloc": {
+              "teams": [
+                "GB",
+                "MIN",
+                "CHI"
+              ],
+              "banked": 19.0,
+              "games": 3
+            },
+            "ceiling": {
+              "lose": 15.0,
+              "win": 15.0,
+              "team": "DET"
+            }
+          },
+          "held": 9.0,
+          "seeds": {
+            "best": 1,
+            "worst": null
+          }
+        }
+      },
+      "results": [
+        {
+          "home": "ATL",
+          "away": "CIN",
+          "winner": "CIN",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "MIA",
+          "away": "DET",
+          "winner": "DET",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "IND",
+          "away": "DAL",
+          "winner": "DAL",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "PHI",
+          "away": "NYG",
+          "winner": "NYG",
+          "kind": "inside",
+          "division": null,
+          "conference": {
+            "cohort": "forced",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "WAS",
+          "away": "LAR",
+          "winner": "LAR",
+          "kind": "inside",
+          "division": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          },
+          "conference": {
+            "cohort": "forced",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "NO",
+          "away": "CLE",
+          "winner": "NO",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "CAR",
+          "away": "DEN",
+          "winner": "DEN",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "NE",
+          "away": "GB",
+          "winner": "GB",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "idle",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "SF",
+          "away": "LV",
+          "winner": "SF",
+          "kind": "own",
+          "division": {
+            "cohort": "best",
+            "floor": 0.0,
+            "ceiling": 0.0
+          },
+          "conference": {
+            "cohort": "best",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "SEA",
+          "away": "ARI",
+          "winner": "SEA",
+          "kind": "inside",
+          "division": {
+            "cohort": "forced",
+            "floor": 0.0,
+            "ceiling": 0.0
+          },
+          "conference": {
+            "cohort": "forced",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "CHI",
+          "away": "TB",
+          "winner": "CHI",
+          "kind": "inside",
+          "division": null,
+          "conference": {
+            "cohort": "forced",
+            "floor": 0.0,
+            "ceiling": 0.0
+          }
+        },
+        {
+          "home": "MIN",
+          "away": "BUF",
+          "winner": "BUF",
+          "kind": "exported",
+          "division": null,
+          "conference": {
+            "cohort": "best",
+            "floor": -1.0,
+            "ceiling": -1.0
+          }
+        }
+      ]
     }
   ]
 }
