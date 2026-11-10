@@ -20,9 +20,14 @@
       "repo": "some-ui",
       "kind": "pr",
       "number": 2842
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2844
     }
   ],
-  "did": "Built the phone side of the Rust Rounds essay video, alongside a session doing home's side. The essay page now plays a given week's essay, and a new recorder makes the video with each of my answers played whole in my own voice and captioned, credited to me rather than the synthetic tutor. The essay is now on Studio's Templates list with its storyboard and a preview, where a second synthetic voice reads the sample's made-up answers and says so. A full local render in home's own folder layout gave a ten-minute video with each take in place. The weekly call's page is unchanged, byte for byte. I also placed the essay render in the promises ledger, ahead of home's change, then filled in its evidence once home's change merged. Every promise stays open where the tests stop short, and each one says what is missing.",
+  "did": "Built the phone side of the Rust Rounds essay video, alongside a session doing home's side. The essay page now plays a given week's essay, and a new recorder makes the video with each of my answers played whole in my own voice and captioned, credited to me rather than the synthetic tutor. The essay is now on Studio's Templates list with its storyboard and a preview, where a second synthetic voice reads the sample's made-up answers and says so. A full local render in home's own folder layout gave a ten-minute video with each take in place. The weekly call's page is unchanged, byte for byte. I also placed the essay render in the promises ledger, ahead of home's change, then filled in its evidence once home's change merged. Every promise stays open where the tests stop short, and each one says what is missing. Afterwards, for another session's change that makes home migrate its database on start and roll back a bad image, I recorded that work in the same ledger and noted its backup prune with the owner's ruling. A check against the code corrected three details before it merged.",
   "calls": [
     {
       "title": "In the sample essay, a second synthetic voice reads the answers",
@@ -60,7 +65,8 @@
   "left": [
     "One www release that carries the essay page and recorder, then home's render pins move to it; until then home can't render an essay.",
     "Studio and My data don't list essay videos yet (RR17), including the line saying the video holds my voice.",
-    "Two promises need a test or a narrower wording before they hold: transcripts are never compared with the record, and nothing shows a week I let go is never rendered again."
+    "Two promises need a test or a narrower wording before they hold: transcripts are never compared with the record, and nothing shows a week I let go is never rendered again.",
+    "No test yet shows that home refuses a database backup that fails its check."
   ],
   "waits": []
 }
