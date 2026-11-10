@@ -1,0 +1,36 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHDhXdQe5izP8Vs1gh",
+  "ended": "2026-11-10",
+  "epics": [
+    "RUST-ROUNDS"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 774
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 777
+    }
+  ],
+  "did": "Built home's side of the Rust Rounds essay video. Home now reads a week's essay from the mailbox, but only once the week is final and only if the essay matches what I actually sent; otherwise it refuses and says why. It gathers my takes for that week, and the render job turns them into a video kept on home and listed alongside the other feeds and on the Renders board. A deleted take withdraws the week for good and leaves a receipt, and everything about the essay leaves with the account, under the one named exception to the rule about my files that the owner chose. The CALL dashboard has an essays row with alerts for a failed, overdue or refused render. Then I moved home's render pins to the www release that carries the essay page.",
+  "calls": [],
+  "left": [
+    "The render image at the new pin has never been built: no CI job builds it, and this session had no Docker. Home's first build is the test; if it fails, the old render keeps running.",
+    "A take can't yet be deleted from My data, so the withdrawal on a deleted take is guarded by tests, not used.",
+    "Essays are put in the mailbox by hand until the routine that writes them (RR18).",
+    "Re-rendering a video already made is RR17's.",
+    "On home, once the server image PR publishes: make home-deploy, then make compose ARGS=\"up -d --build render call-stage\", then check render's log shows four jobs and the CALL dashboard has the essays row. Then put the sample essay as brief/rust-essay-2026-w46.json once week 46 holds a QM-311 take; it renders on the first pass after week 46's deadline."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2691
+    }
+  ]
+}
