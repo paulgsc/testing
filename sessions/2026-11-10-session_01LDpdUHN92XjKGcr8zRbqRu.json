@@ -1,0 +1,27 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHN92XjKGcr8zRbqRu",
+  "ended": "2026-11-10",
+  "epics": [],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 776
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 779
+    }
+  ],
+  "did": "Made deploying home's server need no hand steps. Home's server now applies its own database changes when it starts, after taking and checking a backup and keeping the newest five, and one command pulls a new image and puts the old one back if the new one doesn't come up healthy. Then, as the owner asked, home pulls a newer server only when an app needs one: each build of the apps carries a number saying which server it needs, home answers whether it serves it, and only if not does it pull, once at a time, at least ten minutes apart, waiting six hours when nothing newer is published, and never for a number past a ceiling. A failed or stuck deploy reaches the owner, and a dashboard row shows how often it pulls and how much the backups take. Both were rehearsed against real Docker. The plan began as a timer that checked for a new image every fifteen minutes; the owner corrected it twice to this.",
+  "calls": [],
+  "left": [
+    "Once, in the dotfiles: enable the deploy unit (two lines, in the server README under Deploying to home), then rebuild. Until then a deploy is `make home-deploy` by hand.",
+    "Nothing has run on home itself yet: the real unit, secrets and switching user are proved by the first real deploy, and its alerts say if it breaks.",
+    "The app's side, a mark when home doesn't serve this build, is another session's (some-ui #2843).",
+    "No test yet for a backup that fails its check (server #780), and one runner test breaks when backtraces are on (server #775)."
+  ],
+  "waits": []
+}
