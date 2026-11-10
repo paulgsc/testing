@@ -2,25 +2,87 @@
   "schema": "some-ui.session-note/1",
   "session": "session_01LDpdUKM1N9Rs7d3PyQQHix",
   "ended": "2026-11-10",
-  "epics": ["RUST-ROUNDS"],
-  "pulls": [
-    { "repo": "server", "kind": "pr", "number": 767 },
-    { "repo": "server", "kind": "pr", "number": 768 },
-    { "repo": "server", "kind": "pr", "number": 769 },
-    { "repo": "server", "kind": "pr", "number": 770 },
-    { "repo": "server", "kind": "pr", "number": 771 },
-    { "repo": "server", "kind": "pr", "number": 773 },
-    { "repo": "server", "kind": "pr", "number": 774 },
-    { "repo": "server", "kind": "pr", "number": 776 },
-    { "repo": "server", "kind": "pr", "number": 777 },
-    { "repo": "server", "kind": "pr", "number": 779 },
-    { "repo": "some-ui", "kind": "pr", "number": 2827 },
-    { "repo": "some-ui", "kind": "pr", "number": 2844 },
-    { "repo": "some-ui", "kind": "pr", "number": 2846 },
-    { "repo": "some-ui", "kind": "pr", "number": 2847 },
-    { "repo": "some-ui", "kind": "pr", "number": 2848 }
+  "epics": [
+    "RUST-ROUNDS"
   ],
-  "did": "Coordinated the Nov 10 run: started the sessions that did the work, steered them, and merged their pull requests, while the owner decided what only they could and then slept. I put the first real Rust Rounds week in the mailbox, and that week showed two problems: home's runner refused every request from home, and sending one take locked the week. Both were fixed. A week now stays open and can be sent again until its deadline, then reads back. Home renders the week's video essay with my takes in it. The mailbox now rings home when a file lands instead of home asking every fifteen minutes, and the server's merge check stopped holding a runner for up to an hour. After the owner asked, home's server now applies its own database changes when it starts, after a backup, rolls a bad image back, and pulls a newer server only when an app needs one; the app shows a mark when home doesn't serve its build. The owner corrected how I ran the queue of pull requests (let in as many as there are free runners, not one at a time) and how I relayed the deploy design (twice); both corrections are written up for next week's review of the run.",
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 767
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 768
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 769
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 770
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 771
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 773
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 774
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 776
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 777
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 779
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2827
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2844
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2846
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2847
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2848
+    }
+  ],
+  "did": "Coordinated the Nov 10 run: started the sessions that did the work, steered them, and merged their pull requests, while the owner decided what only they could and then slept. I put the first real Rust Rounds week in the mailbox, and that week showed two problems: home's runner refused every request from home, and sending one take locked the week. Both were fixed. A week now stays open and can be sent again until its deadline, then reads back. Home renders the week's video essay with my takes in it. The mailbox now rings home when a file lands instead of home asking every fifteen minutes, and the server's merge check stopped holding a runner for up to an hour. After the owner asked, home's server now applies its own database changes when it starts, after a backup, rolls a bad image back, and pulls a newer server only when an app needs one; the app shows a mark when home doesn't serve its build. The owner corrected how I ran the queue of pull requests (let in as many as there are free runners, not one at a time) and how I relayed the deploy design (twice); both corrections are written up for next week's review of the run. After the owner's approval in the morning, the Residual Ledger was brought up to date, with a new item for home's deploy.",
   "calls": [
     {
       "title": "Merge DEPLOY's first pull request without a fourth review round",
@@ -37,11 +99,18 @@
     "On home: make home-deploy, then make compose ARGS=\"up -d --build render call-stage\", then the checks on #2231 and #2833, then install the APK with RR22.",
     "Optional, once: the two dotfiles lines from the server README's Deploying to home, so deploys start themselves when an app needs a newer server.",
     "The server's scheduled sweep for its merge check has never run (server #772): a repository setting only the owner can see.",
-    "The Residual Ledger wasn't updated overnight, because each write needs the owner's approval: Rust Rounds, assurance, CI throughput, mailbox push, orchestration and a new deploy item.",
     "Follow-ups filed: server #775, #778, #780, #782."
   ],
   "waits": [
-    { "repo": "some-ui", "kind": "issue", "number": 2833 },
-    { "repo": "server", "kind": "issue", "number": 772 }
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2833
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 772
+    }
   ]
 }
