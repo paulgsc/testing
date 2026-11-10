@@ -1,0 +1,52 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKs77i9P2yZQPqASTD",
+  "ended": "2026-11-10",
+  "epics": ["KPLAY", "TALK"],
+  "pulls": [],
+  "did": "An ideation session about Korean, with no code. It began with what 'because it rained, I stayed home' is called in Korean grammar and ended as one design. All Korean practice happens in one drama world where every scene stands alone, and every session is memoryless. It has four parts. Shop: say a hunch in English and find the phrases and scenes that do it, from a library you own. Mine: catch a native speaker saying a phrase in a real clip. Focus: each scene declares what it teaches, and code proves it. Play: listen to the setup and the scene, then reach for the phrase in a new situation, in Korean or English. A model only writes text ahead of time, code checks everything, and the voice is AI with labelled native spans. It was filed as epic KPLAY with ten stories and two asks. TALK8 was folded into it, and #1986's sources question is answered there.",
+  "calls": [
+    {
+      "title": "How TALK8 joined KPLAY",
+      "options": [
+        "Move TALK8 under KPLAY as a sub-issue",
+        "Close TALK8 as a duplicate of KP8, with a comment",
+        "Leave TALK8 open under TALK and cross-link it"
+      ],
+      "chose": 1,
+      "why": "Moving a sub-issue needs an id the session's tools don't return, and KP8 carries everything TALK8 asked for, with D4 answered.",
+      "undo": "Reopen #2553 and add it under #2849, or back under #2545."
+    },
+    {
+      "title": "Where a native span plays in a line",
+      "options": [
+        "In place in Listen, as an echo in Reach and Read along",
+        "Always in place",
+        "Always as an echo after the line"
+      ],
+      "chose": 0,
+      "why": "Listen is about the flow of real speech; Reach and Read along are about a model to copy.",
+      "undo": "Say which on KP9 #2858 before it's built."
+    },
+    {
+      "title": "What counts as a match when you reach for a phrase",
+      "options": [
+        "One of the scene's accepted wordings, or the focus tool used in the situation, plus a 'mine was fine too' press",
+        "Accepted wordings only",
+        "A model judges whether it means the same"
+      ],
+      "chose": 0,
+      "why": "It keeps the live path free of a model while letting valid variants into the library later, through the routine and your acceptance.",
+      "undo": "Say which on KP8 #2857 before it's built."
+    }
+  ],
+  "left": [
+    "Nothing is built. KP1 #2850 and KP2 #2851 come next and wait on nothing.",
+    "The three calls above aren't in some-ui's docs/calls.json, because the session made no commit there. The first session to commit KPLAY code should record them.",
+    "TALK #2545's Where we are was amended by a comment, not by editing its body."
+  ],
+  "waits": [
+    { "repo": "some-ui", "kind": "issue", "number": 2860 },
+    { "repo": "some-ui", "kind": "issue", "number": 2861 }
+  ]
+}
