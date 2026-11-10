@@ -20,6 +20,22 @@
           { "file": "after/02-release-promo.png", "label": "The promo's page: its three scenes in order, and what the AI writes for a release" }
         ]
       }
+    },
+    {
+      "id": "rust-essay-recorded",
+      "title": "A week's Rust Rounds essay recorded as a video, each answer played in the owner's own voice",
+      "app": "studio",
+      "change": { "repo": "some-ui", "kind": "pr", "number": 2838 },
+      "landed": "2026-11-10",
+      "before": null,
+      "after": {
+        "made": "session",
+        "snips": [
+          { "file": "after/01-intro.png", "label": "The essay opens on who made it: the tutor's voice is synthetic, the other is the owner's own" },
+          { "file": "after/02-answer.png", "label": "An answer plays the owner's take whole, captioned word by word" },
+          { "file": "after/03-beside.png", "label": "The best fit beside the answer, on SOLO's whole scale" }
+        ]
+      }
     }
   ]
 }
