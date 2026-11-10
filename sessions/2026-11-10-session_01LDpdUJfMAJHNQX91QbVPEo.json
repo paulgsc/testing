@@ -1,0 +1,25 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJfMAJHNQX91QbVPEo",
+  "ended": "2026-11-10",
+  "epics": [],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 767 },
+    { "repo": "server", "kind": "pr", "number": 773 }
+  ],
+  "did": "The server's PR gate used to hold a runner for up to an hour while it polled every other check. Now short jobs decide it: one when the pull request changes, and one each time another check finishes, so no runner waits and a re-run of a failed check updates the gate by itself. It was proven red then green on its own pull request and on RR22's #770, where a failure turned green twenty seconds after a re-run with nobody touching the gate. Review found and I fixed five real bugs along the way, the last one live: when CodeQL finished last, the gate stayed pending, so a second pull request fixed that and added a sweep you can run by hand. The fifteen-minute schedule meant as a backstop has never fired, and that is filed for you as #772.",
+  "calls": [
+    { "title": "Keep the sixty-minute limit, per run, though #762 said it goes away", "options": ["Drop the limit, as #762 proposed", "Keep it per run, so nothing passes that used to fail"], "chose": 1, "why": "The run's rule was that no pull request may go green that would have been red before, and dropping the limit would let a sixty-one-minute run pass.", "undo": "Remove the over-an-hour check in judge() in scripts/pr_gate.py and its self-tests." },
+    { "title": "Fall back to waiting in the job when main's listener can't hear every workflow", "options": ["No fallback, leaving the gate pending on such pull requests", "Merge in two pull requests", "Fall back to waiting in the job, as before"], "chose": 2, "why": "GitHub runs main's copy of the verdict workflow, so the pull request that adds it, or adds a new workflow, would otherwise never be decided.", "undo": "Drop the base_listens branch and wait() from open_gate() in scripts/pr_gate.py." },
+    { "title": "A check_run trigger for other apps' checks, later found dead", "options": ["Rely on workflow runs alone", "Also trigger on check_run from other apps"], "chose": 1, "why": "It was meant to hear code scanning's CodeQL check; review then showed GitHub never fires it for commits GitHub Actions runs on, so it was removed and replaced by the sweep.", "undo": "Already removed in #767; nothing to undo." },
+    { "title": "A fifteen-minute sweep that re-judges unfinished gates", "options": ["Document that a gate can stay pending and file a follow-up", "Add a scheduled sweep that dispatches re-judging", "Keep polling in a job while other apps' checks run"], "chose": 1, "why": "The point of the change is that nobody babysits the gate; the coordinator chose it, at 96 short runs a day.", "undo": "Remove the schedule and the sweep job from gate-verdict.yml and sweep() from scripts/pr_gate.py." },
+    { "title": "Let the sweep be run by hand from an empty dispatch", "options": ["Prove the sweep only on its schedule", "A separate workflow for a manual sweep", "An empty dispatch of the verdict workflow runs the sweep"], "chose": 2, "why": "The schedule never fired, so this was the only way to prove the sweep works, and it gives a sweep-now button.", "undo": "Make the dispatch inputs required again and restore the jobs' if: lines in gate-verdict.yml." }
+  ],
+  "left": [
+    "The fifteen-minute schedule has never fired, even after the workflow was re-pushed; it waits on you to check the repository's Actions settings, issue #772.",
+    "A pull request whose last check is CodeQL hasn't yet been seen deciding its own gate on the fixed path; the next one to finish that way shows it.",
+    "The branch claude/pr-gate-event-driven-762-pending needs deleting; this session's proxy refuses branch deletes.",
+    "Old pull requests #301, #340, #392 and #769 now carry a PR gate check from the first sweep; it is accurate, but you'll see it there."
+  ],
+  "waits": [ { "repo": "server", "kind": "issue", "number": 772 } ]
+}
