@@ -1,0 +1,45 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGSH3Uw4hboVXr9Byx",
+  "ended": "2026-11-11",
+  "epics": [
+    "RELEASE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 786
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 806
+    }
+  ],
+  "did": "make home-deploy failed on home because it ran a python script, and home has no python. I moved the deploy into envctl as `envctl deploy`, in Rust. It behaves the same: it pulls, waits for the new server to be ready, puts the old one back if it isn't, and handles the on-demand marker. All of the script's tests came across with the same names. A new check fails if anything home runs calls python, and the NixOS test checks the unit has none. Once the ledger pointed at the Rust file, the python script was deleted.",
+  "calls": [
+    {
+      "title": "How the on-demand unit gets the envctl binary (C93)",
+      "options": [
+        "Build envctl as the checkout's owner before each run, then run that binary as root",
+        "Package envctl in the flake and run it from the nix store",
+        "Run the whole unit as the owner, with root only for docker and storage"
+      ],
+      "chose": 0,
+      "why": "It is the same trust as before, since root already ran the checkout's python script and make up already built envctl as the owner. It also keeps a git pull on home as what decides the deploy's version, rather than the flake input dotfiles pins.",
+      "undo": "Add a flake package for envctl and point the unit's ExecStart at it from the store, dropping the ExecStartPre build step."
+    }
+  ],
+  "left": [
+    "Not run on home itself. This sandbox has no real systemd, docker, sops or runuser, so the owner's own make home-deploy is the last check.",
+    "cargo sqlx prepare was not run, because sqlx-cli isn't installed here; neither pull request changed any SQL."
+  ],
+  "waits": [
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 787
+    }
+  ]
+}
