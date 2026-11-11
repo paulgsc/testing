@@ -1,0 +1,28 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGPc49uiLXR8zxAsGz",
+  "ended": "2026-11-11",
+  "epics": ["ORCH"],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 2866 }],
+  "did": "Moved home's render worker into one image this repository builds and publishes, pgathondu/render, as the owner chose (B prime). It carries the recorders, the motion compositions and a recording stage of just the four pages they capture, which the recorders serve themselves from /opt/stage, so the separate call-stage container and its pin go away and a recorder can no longer run against an older stage. ffmpeg is pinned to noble's own build through a dated Ubuntu snapshot. Each push to main that reaches the render graph builds the image, proves it offline (the sample composition and the weekly call's preview, each the same bytes twice) and pushes that same image. Before it merged, every template's preview came out byte for byte the same from the stage alone as from the whole app, so no episode changes. The first publish landed from main 9453523 as digest sha256:4e72af280f9d6063416a3a352a3762f3bc8f763bd06a5383af9833bdb01e5070, and its CI preview matched the local one byte for byte.",
+  "calls": [
+    {
+      "title": "The render image publishes from main without a release PR (C109)",
+      "options": [
+        "publish from main, gated by the byte proof on the very image pushed",
+        "a standing release PR as www's image has, merged by hand before each publish",
+        "publish only on a manual dispatch"
+      ],
+      "chose": 0,
+      "why": "The image is served to no one and home runs it only by a digest moved on the server, so a second gate before Docker Hub is the owner's judgment either way.",
+      "undo": "Drop the push trigger from render-docker-release.yml, or put a release PR in front of its publish job."
+    }
+  ],
+  "left": [
+    "A guard that fails when a recorder opens a page the stage lacks; today only the CI preview of the weekly call would catch it.",
+    "The assurance ledger could name render-docker-release as a check that runs the template preview.",
+    "The stage still carries honeycomb's lazy chunks, which nothing loads, because the web surface's door is one module.",
+    "Phase 2, a slim render base: the image still carries Firefox and WebKit from Playwright's base, about 1.1 GB; out of scope by the owner's choice."
+  ],
+  "waits": []
+}
