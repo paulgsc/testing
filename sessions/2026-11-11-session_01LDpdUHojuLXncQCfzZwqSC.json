@@ -1,0 +1,14 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHojuLXncQCfzZwqSC",
+  "ended": "2026-11-11",
+  "epics": ["FEED"],
+  "pulls": [],
+  "did": "PD-FILL in the Nov 11 coordinator run. Playoff Delta's week 9 episode never reached home because the Nov 10 narration routine (cse_01LDpdUKMvBVL3K3vyTuwQ2b) wrote the fill and the check said ready, but its push to this repository was refused. I took the fill it kept in the Residual Ledger's log, wrote it as playoff-delta/2026/narration/SF-week-09.json formatted as week 8's, ran narration check against 2026/SF.json week 9 (ready), and rewrote the index (3 fills; week 9's SHA-256 matches the file). narration due named only week 9 before, and nothing after. Testing PR #5 merged as ac99b04. Home's fills pass reads the index hourly, keeps the fill, and its render worker records the episode once the lane gives room.",
+  "calls": [],
+  "left": [
+    "The routine's exact bytes went with its container, so the file is the ledger's JSON formatted like week 8; the words and pins are the routine's, and home checks the index's hash of this file.",
+    "Routine sessions still can't push to paulgsc/testing (no add_repo, and testing isn't in their sources); the next week will strand the same way until the routine's sources include it."
+  ],
+  "waits": []
+}
