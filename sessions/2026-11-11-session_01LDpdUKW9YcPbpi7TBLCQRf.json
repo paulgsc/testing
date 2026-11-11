@@ -1,0 +1,15 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKW9YcPbpi7TBLCQRf",
+  "ended": "2026-11-11",
+  "epics": [],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 2897 }],
+  "did": "You were told Suspender Ledger had been released to Mozilla without your approval. I traced it: nothing went to Mozilla on Nov 11. The only recent submission was 0.3.1 on Nov 4, unlisted, and it went out because a Claude session merged the release pull request, and merging alone sent it. Your words to that session never named the release. I opened a fix you review and merge yourself. With it, nothing reaches Mozilla until you approve it in GitHub's amo-release environment, and a check keeps every path to Mozilla behind that approval.",
+  "calls": [],
+  "left": [
+    "I did nothing on Mozilla's site. Disabling or deleting version 0.3.1 is yours to decide.",
+    "I did not create the amo-release environment, since that is your setting. Until you do, every Mozilla release stops at the approval step.",
+    "The fix stays unmerged, as you asked. Merging it is yours."
+  ],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 2896 }]
+}
