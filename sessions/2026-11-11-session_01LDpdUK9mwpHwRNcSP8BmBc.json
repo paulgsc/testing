@@ -1,0 +1,112 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUK9mwpHwRNcSP8BmBc",
+  "ended": "2026-11-11",
+  "epics": [
+    "RUST-ROUNDS",
+    "ORCH"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 781
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 783
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 784
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 785
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 786
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 798
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 799
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2863
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2864
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2866
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2868
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2870
+    }
+  ],
+  "did": "Coordinated the first half of the Nov 11 run (#2885): started the sessions that did the work, settled their technical questions, relayed the owner's decisions, and merged their pull requests after checking each head. Landed: the PR gate now decides bot PRs on its own (server #783, closing #772); the SQLite advisory is ignored with a written invariant (server #784, closing #764); make home-deploy is Rust with no python3 on home (server #786); RR17's essays in Studio and RR18's mailbox index and Monday routine code; the render image published by some-ui CI with a byte proof (some-ui #2866); every compose image read from one release file (server #799); a size and media guard on paulgsc/testing (testing #6); and Playoff Delta week 9's stranded narration, landed (testing #5). Filed with the owner: the release set (server #787), the take conveyor (#2872, pizza names), and Playoff Delta as questions and answers (#2877). Handed the rest of the queue to a second coordinator at about 80% context.",
+  "calls": [
+    {
+      "title": "Release runs reconcile instead of carrying their images",
+      "options": [
+        "each run rebuilds the whole release from what main published",
+        "each run carries its own images, with a lease and retries"
+      ],
+      "chose": 0,
+      "why": "Two Codex rounds found races in the same mechanism, the shape signal in server CLAUDE.md; a run that derives the set from the sources of truth can be dropped or reordered without loss.",
+      "undo": "Go back to input-carrying runs on one shared branch with a lease (server #804's earlier heads)."
+    },
+    {
+      "title": "Clip frames: home makes walks, session frames are not kept",
+      "options": [
+        "home renders walk frames itself and keeps the legacy six; session-taken frames keep only labels",
+        "carry frames through the mailbox as base64 in brief"
+      ],
+      "chose": 0,
+      "why": "The mailbox refuses encoded bytes by design and a new folder needs the owner; the owner agreed to the recommendation (C125).",
+      "undo": "Build the brief amendment TESTING-GUARD's brief spells out."
+    }
+  ],
+  "left": [
+    "The merge queue in #2885: server #800, #801 (timed after some-ui #2884), #802, #803, #804, #806; some-ui #2865, #2867, #2869, #2871; testing #7 held until installed builds read clip-index/2.",
+    "Create the Monday Rust Rounds scheduled task after some-ui #2865 merges (owner-approved).",
+    "The owner: RELEASE_BOT_TOKEN, the Pages and Mobile APK approvals on main, the home steps after server #802 and #806, and PDA1 #2878.",
+    "File RENDER-IMAGE's four follow-ups; update the rust-rounds and render-shape ledger items."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2885
+    },
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2878
+    }
+  ]
+}

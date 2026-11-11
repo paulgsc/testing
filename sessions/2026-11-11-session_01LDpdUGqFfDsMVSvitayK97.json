@@ -1,0 +1,48 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGqFfDsMVSvitayK97",
+  "ended": "2026-11-11",
+  "epics": [
+    "RUST-ROUNDS"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 798
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 800
+    }
+  ],
+  "did": "Home now hands the Monday essay routine each week's final record through the mailbox. After a week's deadline, the next mailbox pass makes the week final on its own and puts the record as index-rust in the index folder, in the same shape the phone's record route answers. That's server#798; RR18 added the rust routine to the mailbox Worker first. Then, for RR17, server#800 added the missing EV5 test that a week let go is never given to the renderer again. It also showed that the suspected bug, a withdrawn week listed as waiting forever, isn't there, and pinned that with a test.",
+  "calls": [
+    {
+      "title": "How many weeks the rust index carries",
+      "options": [
+        "Only the week that just went final",
+        "Every final week among the newest four weeks home holds"
+      ],
+      "chose": 1,
+      "why": "The mailbox keeps only the latest index per routine, so a routine that missed a Monday would lose the week it still owes. Four weeks stays small and bounded per pass.",
+      "undo": "Lower NEWEST_WEEKS in apps/servers/file_host/src/mailbox/index/rust.rs to 1."
+    },
+    {
+      "title": "RR17's suspected listing bug",
+      "options": [
+        "Write a defect fix as asked",
+        "Pin the existing behaviour with a test, since the bug isn't there"
+      ],
+      "chose": 1,
+      "why": "The video feed has left withdrawn weeks out since server#774, so there was nothing to fix. A defect commit would have recorded a failure that never happened.",
+      "undo": "None needed: it adds only a test."
+    }
+  ],
+  "left": [
+    "The real proof of the rust index is w46: its record should reach the mailbox within about an hour of Sun Nov 15 23:59 Pacific, which no session has seen yet.",
+    "The suggested ledger wording for MI5, MI6, the mailbox store and EV5 went to the coordinator for the ledger session; I didn't land it myself."
+  ],
+  "waits": []
+}
