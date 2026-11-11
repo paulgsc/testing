@@ -91,6 +91,9 @@ jobs:
             echo "No change." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
+          # This commit starts no workflow (GITHUB_TOKEN), so the guard
+          # runs here: a season over its budget fails the run instead.
+          python3 scripts/guard.py --staged
           weeks=$(jq '.weeks | length' "playoff-delta/$SEASON/$TEAM.json")
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

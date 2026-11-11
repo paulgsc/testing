@@ -23,6 +23,7 @@ it by hand from the Actions tab ("Run workflow").
 | `playoff-delta/<season>/<team>.json` | The story so far: one entry per completed week the team played |
 | `playoff-delta/<season>/narration/<team>-week-NN.json` | What is said over each scene of week NN's episode (`some-ui.pd-narration/1`); week 00 is the legend |
 | `playoff-delta/index.json` | Every fill above, by season, team and week, with its file's SHA-256 (`some-ui.pd-narration-index/1`): what home reads to keep each one |
+| `call/`, `promo/`, `sessions/`, `clips/index.json` | Below |
 
 ## Narration
 
@@ -82,4 +83,32 @@ On home, from `paulgsc/server` (its Makefile's `promo` target):
 
 ```
 make promo APP=suspender-ledger VERSION=0.3.1
+```
+
+## What this repository keeps: the guard
+
+Small, versioned JSON and a little text, nothing else.
+`scripts/guard.py` holds every file to it, standard-library Python, on
+every push (main included) and every pull request (`.github/workflows/guard.yml`),
+and before Playoff Delta's weekly commit. A failure on main opens an issue.
+
+| Kind | Which files | Budget |
+|---|---|---|
+| JSON | `.json`, which must parse | 256 KB each (today's largest: a call week, 81 KB) |
+| Text | `.md` `.txt` `.sh` `.py` `.yml` `.yaml` | 64 KB each |
+| Media and binaries | images, audio, video, archives, PDFs, fonts, executables: by extension, and by their first bytes whatever their name | Refused |
+| Anything else | another extension, a symlink, a submodule | Refused until the guard names its kind |
+| The whole tree | everything at HEAD | 4 MB, with a warning at 75% |
+
+The clips' frames under `clips/<clip>/{before,after}/` are the only media
+here: six PNGs from before the guard, each held to its exact bytes in the
+guard's `LEGACY_MEDIA`. Nothing joins that list, and a frame leaves it once it
+has a new home.
+
+Run it before you push:
+
+```
+python3 scripts/guard.py --staged   # what you are about to commit
+python3 scripts/guard.py            # every tracked file
+python3 scripts/guard.py --self-test
 ```
