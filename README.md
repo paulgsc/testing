@@ -105,6 +105,11 @@ here: six PNGs from before the guard, each held to its exact bytes in the
 guard's `LEGACY_MEDIA`. Nothing joins that list, and a frame leaves it once it
 has a new home.
 
+A clip lands here as `clips/index.json` alone (`some-ui.clip-index/2`, which
+`render clip-check` in `paulgsc/some-ui` checks): its frames are kept on the
+owner's home, which makes a walk's frames from the sample the index names. A
+walk's sample is the one other file a clip may add here, as JSON in its folder.
+
 Run it before you push:
 
 ```
