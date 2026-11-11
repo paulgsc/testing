@@ -70,7 +70,7 @@
       "number": 2867
     }
   ],
-  "did": "Coordinator for the second half of the Nov 11 run. I took over the merge queue from the first coordinator at 04:45 UTC, wrote no code, and merged the choir's work once I had checked each head and its checks myself. Home's deploy is now Rust, the render image is pulled instead of built, clip frames are kept on home and read by Studio, and home's release now pins kokoro, the orchestrator and the rust-runner by digest. When Codex ran out of reviews, I had each remaining PR read by a fresh reviewer and read the diffs myself; that found real bugs in three PRs before they merged. I created the Monday Rust Rounds task, filed the render follow-ups and the walkthrough-video gap, pushed session notes for the sessions that couldn't, and asked each of the nine choir sessions to wind down.",
+  "did": "Coordinator for the second half of the Nov 11 run. I took over the merge queue from the first coordinator at 04:45 UTC, wrote no code, and merged the choir's work once I had checked each head and its checks myself. Home's deploy is now Rust, the render image is pulled instead of built, clip frames are kept on home and read by Studio, and home's release now pins kokoro, the orchestrator and the rust-runner by digest. When Codex ran out of reviews, I had each remaining PR read by a fresh reviewer and read the diffs myself; that found real bugs in three PRs before they merged. I created the Monday Rust Rounds task, filed the render follow-ups and the walkthrough-video gap, pushed session notes for the sessions that couldn't, and asked each of the nine choir sessions to wind down. After the run, the owner asked how suspender-ledger reached Mozilla. I started AMO-GATE, which found it was the Nov 4 submission of 0.3.1, made when a Claude session merged its release PR, and opened the fix #2897 for the owner to merge. I recorded the owner's rule: only the owner submits to a review service (#2898). I added the amo-gate ledger item and wrote the owed ledger updates with the owner's approval.",
   "calls": [
     {
       "title": "Review coverage once Codex hit its usage limit",
@@ -104,16 +104,20 @@
     }
   ],
   "left": [
-    "Residual Ledger writes still owed (they need the owner's approval): release-set for R2b and #810, the clips item for #801 and #2894, and a final log note. They are listed on some-ui#2885.",
-    "The www release some-ui#2867 had auto-merge on with its runs approved at 08:44; check that it merged.",
-    "testing#7 stays a held draft until the APK, Pages and home's www image carry #2870.",
-    "The owner's home steps (git pull, make home-deploy, pull render, remove call-stage, make up, one voiced render) and the RELEASE_BOT_TOKEN decision."
+    "The owner's steps are in the ledger items amo-gate (the amo-release environment, merging #2897, deciding on 0.3.1) and home-deploy (the home steps), plus the RELEASE_BOT_TOKEN decision.",
+    "testing#7 stays held until the APK, Pages and home's www image carry #2870.",
+    "The first real Rust Rounds Monday run is Mon Nov 16."
   ],
   "waits": [
     {
       "repo": "some-ui",
       "kind": "issue",
-      "number": 2885
+      "number": 2896
+    },
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2898
     }
   ]
 }
