@@ -1,0 +1,72 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJ51vPQQHcd7B5hibJ",
+  "ended": "2026-11-11",
+  "epics": [
+    "RUST-ROUNDS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2864
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2865
+    }
+  ],
+  "did": "RR18: the Monday routine for Rust Rounds. Code now reads the mailbox, works out which weeks are owed an essay or still wait, restates every fact and what home heard in each take, chooses next week's topics, runs each program with a real rustc, and checks both files with the app's own parsers before putting them. The model writes only the words and the new week's scenario. The mailbox takes home's final record of each week as a new rust index, and that Worker is deployed. A sample week turned into an essay and a next week, offline, with nothing put in the live mailbox.",
+  "calls": [
+    {
+      "title": "The essay's chart until the decay record exists",
+      "options": [
+        "code draws it from the mailbox's weeks and essays",
+        "only this week's column",
+        "hold every essay until RR19"
+      ],
+      "chose": 0,
+      "why": "The essay needs a chart, and RR19, which derives it, isn't built (C101).",
+      "undo": "Replace chartOf in the routine's finish step with RR19's derivation."
+    },
+    {
+      "title": "The role line until the decay record exists",
+      "options": [
+        "a fixed line saying it isn't worked out yet",
+        "a role the model judges each week",
+        "hold every essay until RR19"
+      ],
+      "chose": 0,
+      "why": "Your answer on #2694 says the routine doesn't write the role; RR19 derives it (C102).",
+      "undo": "Replace ROLE_NOT_YET with RR19's derived line."
+    },
+    {
+      "title": "Holding deep dives to two to five minutes",
+      "options": [
+        "a word bound in the routine's finish step",
+        "a bound in the essay's format",
+        "no bound until Kokoro's pace is measured"
+      ],
+      "chose": 0,
+      "why": "300 to 750 words at an estimated 150 a minute; a format bound would refuse the template's sample (C103).",
+      "undo": "Drop the word check, or set the words-a-minute to what a rendered essay measures."
+    },
+    {
+      "title": "Pasted errors in the rust index's audio scan",
+      "options": [
+        "leave each paste's text out of the encoded-run scan, held to its own checks",
+        "scan the whole index as every other index"
+      ],
+      "chose": 0,
+      "why": "A linker symbol in one paste could get the whole index refused for four weeks (C104).",
+      "undo": "Drop rustScanned and the paste checks from the mailbox's rust index."
+    }
+  ],
+  "left": [
+    "The first real Monday: it needs home putting the rust index (RR18-home's server PR) and a week going final with real takes.",
+    "Kokoro's real pace against the 150 words a minute the dive bound assumes.",
+    "RR19's decay record, which plugs in as prepare's --due and replaces the chart and role line."
+  ],
+  "waits": []
+}
