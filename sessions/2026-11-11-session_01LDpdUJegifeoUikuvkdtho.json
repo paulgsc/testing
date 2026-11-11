@@ -49,7 +49,7 @@
     "Studio still reads clip frames from testing until CLIPS-UI's reader lands and reads them from home.",
     "No real walk has run yet: testing's clip index stays at the first schema until the owner's builds read the second, and only the second can name a walk.",
     "Issue 807 measures a rendered walk's frames, so the ledger's growth promise CL4 can move from unproven to holds.",
-    "Clips have no metrics or Slack alert yet, only the pass's log line and the Renders board. No issue was filed.",
+    "Clips have no metrics or Slack alert yet, only the pass's log line and the Renders board: server issue 809 adds them, so a failing clips pass reaches the owner.",
     "The calls above aren't in some-ui's docs/calls.json. This session was given C128 to C130 for them."
   ],
   "waits": []
