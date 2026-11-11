@@ -1,0 +1,41 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJayjLZBxZZHPMtGKV",
+  "ended": "2026-11-11",
+  "epics": [],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 784 }
+  ],
+  "did": "An advisory session in the Nov 11 coordinator run, on server #764: the deny advisories job had been red on every PR for RUSTSEC-2026-0459, a flaw in the SQLite that sqlx 0.8.6 bundles. Measured first: the build compiles in sqlx's bundled SQLite 3.46.0, so every image carries it, whatever SQLite the image installs. No sqlx release reaches the fixed libsqlite3-sys 0.39: every 0.8.x pins ^0.30.1, and 0.9.0 stops below 0.38. So the session added a dated, reasoned ignore to deny.toml, after checking that every SQLite file the code opens is one this deployment wrote, including the read-only reopen of migrate's own VACUUM INTO backup. It wrote that down as an invariant in docs/storage.md, 'Which SQLite files are opened', which the ignore rests on. PR #784 went green with no Codex findings, the coordinator merged it as fdbfa96, and that closed #764.",
+  "calls": [
+    {
+      "title": "How to clear RUSTSEC-2026-0459",
+      "options": [
+        "A dated, reasoned ignore in deny.toml, backed by a written invariant",
+        "Upgrade sqlx to 0.9",
+        "Leave the advisories job red"
+      ],
+      "chose": 0,
+      "why": "No sqlx release reaches libsqlite3-sys 0.39; 0.9.0 caps below 0.38. The flaw needs a database and -wal pair a less-trusted party wrote, and nothing here opens one.",
+      "undo": "Drop the RUSTSEC-2026-0459 entry from deny.toml once a sqlx-sqlite release accepts libsqlite3-sys >= 0.39, then bump sqlx."
+    },
+    {
+      "title": "Where the invariant the ignore rests on lives",
+      "options": [
+        "docs/storage.md, as a new section",
+        "A Tolerance in docs/home-compute.md",
+        "Only in deny.toml's comment"
+      ],
+      "chose": 0,
+      "why": "It constrains which SQLite files are opened, not how much of home a service takes, and a comment in deny.toml is not where someone adding an import would look.",
+      "undo": "Move the section; deny.toml's comment points at it by name."
+    }
+  ],
+  "left": [
+    "The ignore has a revisit date of 2027-02-11. Watch for a sqlx-sqlite release that accepts libsqlite3-sys >= 0.39, then bump sqlx and drop the entry.",
+    "Any future path that opens a database someone else supplied (an import, an uploaded backup) breaks docs/storage.md's invariant and must remove the ignore first.",
+    "cargo deny also warns that yoke-derive 0.8.3 is yanked. It is a warning only, and cargo update -p yoke-derive clears it. No issue was filed.",
+    "The calls above aren't in some-ui's docs/calls.json. The coordinator was offered C89-C92 for them."
+  ],
+  "waits": []
+}
