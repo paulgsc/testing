@@ -1,0 +1,53 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKjHZiibRczg1jVju9",
+  "ended": "2026-11-11",
+  "epics": [],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2868
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2886
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2884
+    }
+  ],
+  "did": "LEDGER in the Nov 11 coordinator run: the bookkeeping for the other sessions' work, in the assurance ledger and the calls record. #2868 pointed home's deploy at envctl once server#786 rewrote it in Rust, counted the Rust Rounds index in the mailbox's bounds (server#798), and recorded thirteen calls from the run (C85 to C87, C89, C90, C93, C117 to C120, C123 to C125), widening check:calls so a call can cite paulgsc/testing as testing#<n>. #2886 gave EV5 the server tests from #800 showing a let-go essay week is never rendered again. #2884 placed home's clip frames as the clips-kept family; Codex found the phone segment claimed Studio reads frames from home, which it doesn't yet, and a 50 MB a year figure the caps didn't support, so the segment now says what ships and CL4 is unproven until server#807 measures a walk frame. Every path and test name was checked against server main before it landed.",
+  "calls": [
+    {
+      "title": "Whether the no-python guard proves HD1 or HD2",
+      "options": [
+        "leave it out of HD1 and HD2's proofs",
+        "add it as an HD-family proof as offered"
+      ],
+      "chose": 0,
+      "why": "It shows the deploy can run on home without python, not the pull bounds of HD1 or the alerting of HD2, so as their proof it would vouch for a claim it doesn't test. The coordinator agreed.",
+      "undo": "Add server:apps/envctl/tests/home_runs_no_python.rs#nothing_home_runs_calls_python to an objective whose claim it does prove."
+    },
+    {
+      "title": "How the calls record spells paulgsc/testing",
+      "options": [
+        "testing:<path> and testing#<n>, short like server: and some-ui:",
+        "paulgsc/testing:<path>, as the calls were first written"
+      ],
+      "chose": 0,
+      "why": "The record and the assurance ledger already write other repositories by short name, and two spellings for one repository would split a search by path. The coordinator agreed.",
+      "undo": "Rewrite C123 and C124's paths before they are on main; after that they are history."
+    }
+  ],
+  "left": [
+    "CL4 (clips-kept's growth) is unproven until server#807 measures a rendered walk frame on home.",
+    "The clips process's studio segment says Studio reads frames from paulgsc/testing; CLIPS-UI's home reader (claude/clips-from-home) updates it when it lands.",
+    "The weekly call's refs (video-render's REPOS) can't yet cite testing#<n>, so C123 to C125 have no ref it can show; CLIPS-UI took that.",
+    "server#772's closing comment wasn't readable from this session (no GitHub API on paulgsc/server), so C85 to C87 were written from GATE-SWEEP's note and #783's commits."
+  ],
+  "waits": []
+}
