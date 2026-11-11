@@ -1,0 +1,56 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJegifeoUikuvkdtho",
+  "ended": "2026-11-11",
+  "epics": [
+    "SFEED"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 801
+    }
+  ],
+  "did": "CLIPS-HOME in the Nov 11 coordinator run. Testing keeps no media now, so this session made home keep each clip's frames, as the owner decided. Server PR 801 adds an hourly worker that reads testing's clip index. It keeps the six legacy screenshots, but only if each is byte for byte the one pinned in testing's guard. A walk side goes to a new job on home's render lane, which replays the app's scripted walk with the motion. Its frames are kept only once their files and labels match the index. Frames are written once and never replaced, synced to disk, with a row each in a new append-only table. The paired phone reads them by their hash. Codex found three real bugs, and two independent reviewers found the power-loss gaps after Codex ran out of quota. All of them were fixed before the merge. The 50 MB a year claim was wrong and came out; issue 807 measures the real growth. The ledger entries landed in some-ui 2884, just before the merge.",
+  "calls": [
+    {
+      "title": "What happens to a walk that doesn't match the clip index",
+      "options": [
+        "Remove its render output, so the worker draws it again an hour later",
+        "Keep the rejected output and wait for a person to clear it"
+      ],
+      "chose": 0,
+      "why": "The worker skips any walk whose walk.json exists, so a rejected walk could never recover, even once a newer render image drew it right. Redrawing costs one short walk an hour while it stays wrong.",
+      "undo": "In clips/pass.rs take_walk, stop removing the walk's folder on mismatch."
+    },
+    {
+      "title": "How a walk's frames are kept beside the render output they were checked from",
+      "options": [
+        "Copy them, so a walk side is on the drive twice, at most 24 MiB",
+        "Hard-link them to the render output, kept once"
+      ],
+      "chose": 0,
+      "why": "A copy keeps the kept frame's file independent of the render worker's folder, which the pass now deletes when a walk is rejected. Issue 807 weighs whether the doubled space matters once a real walk is measured.",
+      "undo": "Hard-link in put() instead of writing the bytes again, once issue 807 shows the space matters."
+    },
+    {
+      "title": "Where the walk job runs the motion from",
+      "options": [
+        "The published render image's own motion, beside the recorders",
+        "A separately pinned motion checkout"
+      ],
+      "chose": 0,
+      "why": "Server 802 replaced the old image, which had the separate checkout, with some-ui's published one, which builds the motion and the recorders at one commit.",
+      "undo": "Point MOTION_DIR in infra/render/render-calls.sh at another checkout."
+    }
+  ],
+  "left": [
+    "Studio still reads clip frames from testing until CLIPS-UI's reader lands and reads them from home.",
+    "No real walk has run yet: testing's clip index stays at the first schema until the owner's builds read the second, and only the second can name a walk.",
+    "Issue 807 measures a rendered walk's frames, so the ledger's growth promise CL4 can move from unproven to holds.",
+    "Clips have no metrics or Slack alert yet, only the pass's log line and the Renders board. No issue was filed.",
+    "The calls above aren't in some-ui's docs/calls.json. This session was given C128 to C130 for them."
+  ],
+  "waits": []
+}
