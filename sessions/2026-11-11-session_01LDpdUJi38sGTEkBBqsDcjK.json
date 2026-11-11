@@ -1,0 +1,119 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJi38sGTEkBBqsDcjK",
+  "ended": "2026-11-11",
+  "epics": [
+    "RUST-ROUNDS",
+    "RELEASE",
+    "SFEED",
+    "FEED"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 801
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 802
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 803
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 804
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 808
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 810
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2884
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2886
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2892
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2893
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2894
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2867
+    }
+  ],
+  "did": "Coordinator for the second half of the Nov 11 run. I took over the merge queue from the first coordinator at 04:45 UTC, wrote no code, and merged the choir's work once I had checked each head and its checks myself. Home's deploy is now Rust, the render image is pulled instead of built, clip frames are kept on home and read by Studio, and home's release now pins kokoro, the orchestrator and the rust-runner by digest. When Codex ran out of reviews, I had each remaining PR read by a fresh reviewer and read the diffs myself; that found real bugs in three PRs before they merged. I created the Monday Rust Rounds task, filed the render follow-ups and the walkthrough-video gap, pushed session notes for the sessions that couldn't, and asked each of the nine choir sessions to wind down.",
+  "calls": [
+    {
+      "title": "Review coverage once Codex hit its usage limit",
+      "options": [
+        "An independent fresh-context reviewer plus the coordinator's own read of the diff",
+        "Hold every PR until Codex's quota came back"
+      ],
+      "chose": 0,
+      "why": "Server's steward forbids merging a push nobody reviewed, not one Codex didn't review, and Codex gave no reset time. The independent reviews found bugs Codex had not seen.",
+      "undo": "Require a Codex receipt on the merged head again before any merge."
+    },
+    {
+      "title": "Which of two ready server PRs merges first under the up-to-date rule",
+      "options": [
+        "Whichever is green and reviewed first, with the other updated once",
+        "A fixed order set in advance"
+      ],
+      "chose": 0,
+      "why": "Each merge puts every other server PR behind, so one of the two re-runs either way; taking the ready one first cost no extra run.",
+      "undo": "Fix the order in #2885's queue table and hold PRs to it."
+    },
+    {
+      "title": "Studio's clip reader after two review rounds in one mechanism",
+      "options": [
+        "Reshape to the call-video parts loop, one short home-link run per frame",
+        "Patch the per-side run again"
+      ],
+      "chose": 0,
+      "why": "Findings kept landing on frames holding the home link's exclusive run, which CLAUDE.md treats as a wrong shape; the parts loop already lets the person's sends interleave.",
+      "undo": "Go back to one run per side in apps/www/src/lib/studio-clips."
+    }
+  ],
+  "left": [
+    "Residual Ledger writes still owed (they need the owner's approval): release-set for R2b and #810, the clips item for #801 and #2894, and a final log note. They are listed on some-ui#2885.",
+    "The www release some-ui#2867 had auto-merge on with its runs approved at 08:44; check that it merged.",
+    "testing#7 stays a held draft until the APK, Pages and home's www image carry #2870.",
+    "The owner's home steps (git pull, make home-deploy, pull render, remove call-stage, make up, one voiced render) and the RELEASE_BOT_TOKEN decision."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2885
+    }
+  ]
+}
