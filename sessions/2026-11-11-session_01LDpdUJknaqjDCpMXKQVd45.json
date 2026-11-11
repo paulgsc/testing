@@ -1,0 +1,37 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJknaqjDCpMXKQVd45",
+  "ended": "2026-11-11",
+  "epics": ["RELEASE"],
+  "pulls": [
+    {"repo": "server", "kind": "pr", "number": 799},
+    {"repo": "server", "kind": "pr", "number": 804},
+    {"repo": "server", "kind": "pr", "number": 808}
+  ],
+  "did": "Designed how home deploys one set of images instead of a combination of separately pulled ones, and the owner chose the lockfile shape. Filed the RELEASE epic with ten stories and four calls. Landed R1: every compose image now comes from one file, deploy/home/release.json, which envctl fills in and checks. Landed R2: CI keeps that file in step with what has been published, by digest, and opens one release pull request that merges itself. Opened R2b, which publishes kokoro from CI so home stops building it, and wrote down the release's invariants in docs/release.md.",
+  "calls": [
+    {
+      "title": "Release PRs reconcile from the sources instead of carrying each run's images",
+      "options": ["each run carries the images that started it, queued or leased", "each run derives the whole release from main's changesets and Docker Hub"],
+      "chose": 1,
+      "why": "Two review rounds lost images in the carrying shape, through a cancelled queued run and a race before the PR existed. Deriving everything makes runs idempotent and order-free; the coordinator raised it and I agreed.",
+      "undo": "Revert release_lock.py and release-lock.yml to the shape at 31fa0d2 on server#804."
+    },
+    {
+      "title": "render and www are not followed by the release until the set check exists",
+      "options": ["follow every published image now", "follow server-built images now, cross-repo ones after R3"],
+      "chose": 1,
+      "why": "Docker Hub already had a www release ahead of the render it must match, which is the break from server#756 waiting to happen.",
+      "undo": "Add render and www to SOURCES in scripts/release_lock.py."
+    }
+  ],
+  "left": [
+    "R2b, server#808: green and independently reviewed, waiting for its merge; Codex could not review it because the account hit its usage limit.",
+    "R3, server#790, the set check that refuses images that do not fit together: written up for a fresh session, since this one was near its context limit.",
+    "R4 to R7 and the some-ui stories under server#787: not started, in the order the epic gives."
+  ],
+  "waits": [
+    {"repo": "server", "kind": "issue", "number": 787},
+    {"repo": "server", "kind": "issue", "number": 795}
+  ]
+}
