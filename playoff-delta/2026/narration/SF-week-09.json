@@ -1,0 +1,38 @@
+{
+  "schema": "some-ui.pd-narration/1",
+  "season": "2026",
+  "team": "SF",
+  "week": 9,
+  "format": { "id": "playoff-delta-week", "version": 4 },
+  "sha256": "ea024c76885f5492d7e554c86ff8675b4519be131155ce357879658151872a5f",
+  "scenes": [
+    {
+      "id": "division",
+      "said": "In our division, the floor rose to 6, from 5, and the ceiling held at 13. The Rams and the Seahawks have 10 wins banked between them and 2 games left against each other, so however those go, one of them reaches 6. The Rams can still reach 13, and we can finish anywhere from 7 to 16 wins."
+    },
+    {
+      "id": "conference",
+      "said": "Across the conference, the floor held at 8, and the ceiling came down to 15, from 16. The Packers, the Vikings and the Bears have 19 wins banked and 3 games left against each other, so one of them reaches 8 however those go. The Lions can still reach 15. And if we hold our division to its floor, the conference floor rises to 9."
+    },
+    {
+      "id": "results",
+      "said": "This week, two results moved us toward the best case, and nothing pushed us toward the worst. Four were forced: two rivals met, and one of them had to win. Six were idle, and neither pole moved."
+    },
+    {
+      "id": "standings",
+      "said": "The division is in our hands, with 6 greens to go and 10 reds to spare. The number one seed is in our hands too, with 8 greens to go and 8 reds to spare. Win out, and both are ours, whatever else happens."
+    },
+    {
+      "id": "ladder",
+      "said": "On the ladder, the best we can still finish is the number one seed, and the worst is out. The top rung and the bottom are still apart, so there is more to see. Keep driving."
+    },
+    {
+      "id": "season",
+      "said": "Nine weeks followed now. Our division's floor has climbed from 2 to 6, and its ceiling has come down from 17 to 13. In the conference, the floor went from 6 to 8, and the ceiling from 17 to 15. All told, that is 9 steps our way and 3 against us."
+    },
+    {
+      "id": "outro",
+      "said": "The week in one breath: 2 steps our way, and none against us. The division and the number one seed are both in our hands, and we can still finish anywhere from the number one seed to out. Keep driving. Next week, we drive again."
+    }
+  ]
+}
