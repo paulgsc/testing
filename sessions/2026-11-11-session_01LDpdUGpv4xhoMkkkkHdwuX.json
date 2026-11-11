@@ -1,0 +1,42 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGpv4xhoMkkkkHdwuX",
+  "ended": "2026-11-11",
+  "epics": [
+    "RUST-ROUNDS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2863
+    }
+  ],
+  "did": "Each week's Rust Rounds essay now shows in Studio beside the weekly call. You can watch it on the phone, share it to YouTube and save its link, then let home's copy go from My data, the video first and then the rest, each with a receipt. Every list of essays says the video holds your voice. After a week's deadline, the Rust Rounds card on Practice Home still opens the week, with a link under it to watch its essay. Home already served essays the way it serves the call, so none of this needed a server change.",
+  "calls": [
+    {
+      "title": "What the essay feed is called in Studio, and how an essay is named when shared",
+      "options": [
+        "\"The Rust Rounds essay\", fed \"Keep my sharpness and intuition when I look at Rust code, now that I rarely write it\", every Monday, each essay \"Rust Rounds, 2026, week 46\"",
+        "a \"Rust Rounds\" feed named after the series",
+        "your own words of 2026-10-29, quoted whole, as the intuition"
+      ],
+      "chose": 0,
+      "why": "Studio shows a feed's name and intuition as yours, and the YouTube share title is public; nothing earlier named them. The intuition is paraphrased from your words on the epic (call C97).",
+      "undo": "Change the essay's name and wording in Studio's words table; nothing stores them."
+    }
+  ],
+  "left": [
+    "Nothing has run on a phone yet: no APK was built here. Once home is redeployed and an essay renders, watch one, share it, save its link and let it go to close RR17.",
+    "Deleting a take that an essay plays should also delete that essay's video, with a receipt. Home does that already, but Rust Rounds takes can't be deleted from My data yet, so the phone has nothing to show.",
+    "Home has no test that a week you let go is never rendered again (the code already skips it), and a week withdrawn for a deleted take would show as still being made. Both are for a server session.",
+    "The promise that transcripts are compared with the week's record goes to RR18, or gets narrower wording, which is your call."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2692
+    }
+  ]
+}
