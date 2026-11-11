@@ -1,0 +1,51 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJ9ATN6Vu7vMVBJu4C",
+  "ended": "2026-11-11",
+  "epics": [],
+  "pulls": [],
+  "did": "TESTING-GUARD in the Nov 11 coordinator run. The owner asked for a size guard and a media guard folded into one. In testing#6, this session added scripts/guard.py, standard-library Python with a self-test. JSON must parse and stays under 256 KB a file; the largest today is a call week at 81 KB. Text stays under 64 KB. Media and binaries are refused by extension and by their first bytes, and unknown kinds, symlinks and submodules are refused. The tree has a 4 MB budget with a warning at 75%; it is 1.39 MB today. The six clips PNGs stay, each held to its SHA-256 in LEGACY_MEDIA, which the owner kept. guard.yml runs the guard on every push and pull request against every commit in the range, and opens an issue when main fails. playoff-delta.yml runs it before its own commit, since a GITHUB_TOKEN commit starts no workflow. A local test of the workflow step found a missing pipefail before the PR merged. The coordinator merged testing#6 as 13e4c85, and the guard's first run on main was green. The session then traced the clips' readers: only Studio's Library reads them, and the promo and server don't. It also found that the mailbox takes JSON only. From that it wrote the build brief for the owner's choice (a), which keeps clip frames on home.",
+  "calls": [
+    {
+      "title": "Media in testing",
+      "options": [
+        "Refuse all media; the six existing PNGs held to their bytes in one named list",
+        "A small media budget in one place",
+        "Refuse all media and delete the existing PNGs"
+      ],
+      "chose": 0,
+      "why": "The owner said to reject media in general, and the record is append-only. The owner confirmed keeping the legacy list.",
+      "undo": "Remove an entry from LEGACY_MEDIA once home holds that frame and the owner lets it leave HEAD."
+    },
+    {
+      "title": "How the owner hears of a guard failure",
+      "options": [
+        "Fail the run and open one issue when main fails, with no required-check rule",
+        "A ruleset requiring the guard on main",
+        "Reuse some-ui's Slack webhook"
+      ],
+      "chose": 0,
+      "why": "A required check would block the choir's direct pushes and the GITHUB_TOKEN commit, which can't be a bypass actor. some-ui's Slack step is commented out with no secret behind it.",
+      "undo": "The owner can add a ruleset once every writer goes through pull requests."
+    },
+    {
+      "title": "How clip frames reach home",
+      "options": [
+        "Home makes walk frames itself; session-taken frames are not kept, only their labels",
+        "Amend the mailbox's brief to carry base64 frames",
+        "A new mailbox folder"
+      ],
+      "chose": 0,
+      "why": "The mailbox takes only JSON under 1 MiB and refuses bytes by design. A walk is deterministic, and home already runs motion. This is a recommendation; the owner decides.",
+      "undo": "Take the brief-amendment route in the build brief instead."
+    }
+  ],
+  "left": [
+    "Owner questions in the brief: session-taken frames, either (i) amend brief or (ii) not kept; whether home makes walk frames; and whether the six legacy PNGs leave HEAD later.",
+    "The one-line guard additions for NARRATION-ROUTINE.md, CALL-ROUTINE.md, CLAUDE.md:833 / session-note.ts and Rust Rounds' ROUTINE.md went to the coordinator for a some-ui session.",
+    "Until frames have a home, a new clip with PNGs fails the guard by design, and steward sessions should know.",
+    "No ruleset requires the guard. That is the owner's setting.",
+    "The calls above were offered to the coordinator as C123-C125 for some-ui's docs/calls.json."
+  ],
+  "waits": []
+}
