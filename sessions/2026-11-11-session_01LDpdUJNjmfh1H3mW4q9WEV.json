@@ -4,8 +4,7 @@
   "ended": "2026-11-11",
   "epics": [],
   "pulls": [
-    { "repo": "server", "kind": "pr", "number": 783 },
-    { "repo": "server", "kind": "issue", "number": 772 }
+    { "repo": "server", "kind": "pr", "number": 783 }
   ],
   "did": "GATE-SWEEP in the Nov 11 coordinator run, on server #772 (priority: high). The issue said PR gate's 15-minute sweep never fired, but it did fire, just rarely: 3 runs in 13 hours. The real hole was the image bot's pull requests. GitHub creates their runs approval-required, keeps github-actions[bot] as their actor after approval, and fires no workflow_run when they finish, because GITHUB_TOKEN events start no workflow apart from workflow_dispatch and repository_dispatch. So only that throttled schedule could ever decide their gate (#781). PR #783 gave every pull-request workflow a last job, Tell PR gate. It needs every other job, runs only for the bot on this repository's own heads, and workflow_dispatches the verdict. A dispatched verdict waits at most 3 minutes for runs whose only unfinished job is that one, then judges as before. pr_gate.py fails a workflow without the job, and its self-test holds this and the wait. Codex found two edge cases: fork heads have a read-only token, and a run's status can lag its jobs. Both were fixed, and the coordinator merged #783 as 4333e2b. Proven on bot PR #785: 6 Tell PR gate jobs, then a dispatched verdict wrote PR gate success 12 s after the last check, with no sweep involved. #772 is closed.",
   "calls": [
