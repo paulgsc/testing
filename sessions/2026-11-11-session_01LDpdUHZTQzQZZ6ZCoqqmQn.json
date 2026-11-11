@@ -1,0 +1,40 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHZTQzQZZ6ZCoqqmQn",
+  "ended": "2026-11-11",
+  "epics": [],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 802 }
+  ],
+  "did": "I looked at what the render and its stage really need, laid out folding the stage into www against giving it its own build, and recommended one published render image that carries the recorders, the motion and only the four stage pages. You chose that. Once some-ui published the image, I pinned it in home's release, removed the call-stage container and the render build from home, and lowered the render's declared memory peak by the stage's 256 MiB. That landed as server 802. Home now pulls one image and builds nothing for the render.",
+  "calls": [
+    {
+      "title": "Where the render worker's loop script lives",
+      "options": [
+        "Mount render-calls.sh from server into the published image",
+        "Bake render-calls.sh into a thin server-side image on top of it"
+      ],
+      "chose": 0,
+      "why": "Mounting it means home builds nothing, and a change to the loop needs no new image.",
+      "undo": "Add a small Dockerfile that copies the script in, and pin that image instead."
+    },
+    {
+      "title": "The stage step on the PIPELINES dashboard",
+      "options": [
+        "Keep the stage node, now reading the render's restarts",
+        "Drop the stage node and its ledger segment"
+      ],
+      "chose": 0,
+      "why": "The ledger still has a stage step, and the graph check requires the dashboard to match the ledger. The stage still exists, just inside the render's container.",
+      "undo": "Remove the stage segment from the ledger, then the node and edge from pipelines.json."
+    }
+  ],
+  "left": [
+    "A voiced render on home against the pulled image: no session can run it, so only home can prove it end to end.",
+    "A slimmer Chromium-only base and the recorders in their own workspace: not chosen now, filed as some-ui 2890.",
+    "Publishing kokoro: not chosen now; RELEASE has it as server 805."
+  ],
+  "waits": [
+    { "repo": "server", "kind": "issue", "number": 718 }
+  ]
+}
