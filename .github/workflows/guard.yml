@@ -1,0 +1,83 @@
+# The size and media guard (scripts/guard.py): every file within its kind's
+# budget, no media, the tree within its budget. Runs on every push, main
+# included (session notes land there directly), and on every pull request
+# (the routines open theirs and merge them themselves). Every commit pushed
+# is checked, not only the last, since a file added and then removed still
+# stays in the history.
+#
+# A failure on main also opens one issue, or comments on the open one, so
+# the owner hears of it. Playoff Delta's own commits don't start workflows
+# (GITHUB_TOKEN), so playoff-delta.yml runs the guard before it commits.
+name: Guard
+
+on:
+  push:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Self-test
+        run: python3 scripts/guard.py --self-test
+
+      - name: Every commit pushed
+        env:
+          BEFORE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          AFTER: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -o pipefail
+          if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            commits="$AFTER"
+          else
+            commits=$(git rev-list --reverse "$BEFORE..$AFTER")
+          fi
+          status=0
+          for c in $commits; do
+            echo "::group::$(git log -1 --format='%h %s' "$c")"
+            python3 scripts/guard.py --ref "$c" | tee -a "$RUNNER_TEMP/guard.txt" || status=1
+            echo "::endgroup::"
+          done
+          {
+            echo '### Guard'
+            echo '```'
+            python3 scripts/guard.py --ref "$AFTER" || true
+            grep '^problem:' "$RUNNER_TEMP/guard.txt" | sort -u || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+  tell-the-owner:
+    needs: guard
+    if: failure() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - name: Open or comment on the guard's issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SHA: ${{ github.sha }}
+        run: |
+          title="guard: main holds what it shouldn't"
+          body="The size and media guard failed on main at $SHA: $RUN
+
+          See the README's rule. Fix it on main, then close this issue."
+          n=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
