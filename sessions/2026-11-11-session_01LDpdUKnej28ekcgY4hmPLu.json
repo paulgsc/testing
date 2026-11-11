@@ -1,0 +1,55 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKnej28ekcgY4hmPLu",
+  "ended": "2026-11-11",
+  "epics": ["SFEED"],
+  "pulls": [
+    { "repo": "some-ui", "kind": "pr", "number": 2869 },
+    { "repo": "some-ui", "kind": "pr", "number": 2870 },
+    { "repo": "some-ui", "kind": "pr", "number": 2871 },
+    { "repo": "some-ui", "kind": "pr", "number": 2892 },
+    { "repo": "some-ui", "kind": "pr", "number": 2894 },
+    { "repo": "testing", "kind": "pr", "number": 7 }
+  ],
+  "did": "CLIPS-UI in the Nov 11 coordinator run: Studio's clips moved to frames kept on home, now that testing holds no media. #2870 made the clip index /2 (a walk names the sample home replays, an optional sha256) and holds clip-check to testing's six legacy frames. #2869 changed the steward rule so a session commits only clips/index.json and runs testing's guard before every push. #2871 lets a ref point to testing while asks are still read from some-ui and server. #2892 recorded calls C128 to C131. #2894 makes Studio's clip page read each frame from home through the paired link, in the Android build only: a frame home doesn't hold shows its label and why, and away from home the page lists the labels. Three reviews and CI reshaped #2894: frames came back as text until the phone asked for bytes, the web builds shipped native-only code until the frames moved to phone-only modules, and frames fought over the home link until they came one at a time, as a video's parts do.",
+  "calls": [
+    {
+      "title": "When testing's clip index moves to /2",
+      "options": [
+        "keep it at /1 until every shipped reader reads /2",
+        "make the reader accept the new fields and move it now",
+        "move it now and let older builds show no Library until rebuilt"
+      ],
+      "chose": 0,
+      "why": "Every build made before #2870 refuses /2 on its schema string alone, so a looser reader saves no build already in use, and both clips listed today are valid /1 as they are. Recorded as C131.",
+      "undo": "Mark testing#7 ready and merge it; builds older than #2870 then show no Library until rebuilt."
+    },
+    {
+      "title": "What a clip frame home doesn't hold says",
+      "options": [
+        "its label and why, told apart for a walk side and a session side",
+        "its label and one shared line",
+        "its label alone"
+      ],
+      "chose": 0,
+      "why": "A screen a session took is never kept, so saying home hasn't taken it yet would promise a frame that never comes. Recorded as C132.",
+      "undo": "Use one line for both in missing() in clip-frames.tsx and drop notKept from the clips words."
+    },
+    {
+      "title": "What a clip's page shows away from home",
+      "options": [
+        "labels only, saying why",
+        "testing's six legacy frames, and labels for the rest",
+        "nothing until the phone is paired"
+      ],
+      "chose": 0,
+      "why": "A fallback would show some clips and not others for a reason the page couldn't state plainly, and those frames leave testing later anyway. Recorded as C133.",
+      "undo": "In ClipFrames, read a legacy frame from TESTING_DATA when the phone isn't paired."
+    }
+  ],
+  "left": [
+    "testing#7, which moves clips/index.json to /2, stays a draft until the owner's APK, the Pages build and home's www image all carry #2870's reader.",
+    "#2895: on the clip page, a busy link reads as home not answering, frames appear only once all have come, and settled frames are fetched again on each visit."
+  ],
+  "waits": []
+}
