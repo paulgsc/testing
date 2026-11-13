@@ -1,0 +1,25 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHPri7MknyXKFCvGv3",
+  "ended": "2026-11-13",
+  "epics": [],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 845
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 848
+    }
+  ],
+  "did": "server#775: found the real cause of rust_runner's recording flake (panic thread ids counted in stderr_bytes, not RUST_BACKTRACE), reproduced it with the variable unset via ns_last_pid, fixed the count in the runner and proved it in the test (#845). server#837: replaced envctl's bare IMAGE_ prefix with release::set_by_release, the IMAGE_ variables of services that start from an image, in every caller, with a stray-IMAGE_QUALITY test per caller; this also narrowed #836's class check to imaged services (#848). Fallback fresh-context review recorded on every head of both PRs (Codex out of credits).",
+  "calls": [],
+  "left": [
+    "envctl: no test covers a build-only service's IMAGE_ name needing a class (latent, nit)",
+    "rust_runner: a cut stderr stream's count can still carry thread ids from before its kept tail (documented)"
+  ],
+  "waits": []
+}
