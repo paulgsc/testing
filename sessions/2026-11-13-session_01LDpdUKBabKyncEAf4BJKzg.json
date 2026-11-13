@@ -1,0 +1,68 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKBabKyncEAf4BJKzg",
+  "ended": "2026-11-13",
+  "epics": [
+    "ENGAGE"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2910
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2912
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2913
+    }
+  ],
+  "did": "ENGAGE in the Nov 13 coordinator run. Three pull requests, each green and handed to the coordinator to merge. First, the weekly engagement report's writer (#2910): code writes each week's report from home's counts with no AI, comparing this week with last week, a quarter ago and a year ago, and your rule is code with its own test. Counts under 5 read 'fewer than 5', no times of day or stop answers, aph and Jobs as one line, and a week with no record reads 'no data', never zero. Weeks run Monday to Monday on your Pacific clock, and home's new week read (server #819) agreed to the same. Second, aph now says which of its views, missed days and their figures were offered and which you took (#2912). Third, LeetType's phone sessions now speak the same words, read from the session log it already keeps rather than a second record (#2913). An independent review found real bugs in each before merge, all fixed: a save counted as opening History, the log offered on the wrong side of the form, and a reading counted as taken only when its source was opened.",
+  "calls": [
+    {
+      "title": "When a weekly change shows its number",
+      "options": [
+        "the difference only where both weeks are 5 or more",
+        "the difference always, beside a banded count",
+        "no difference at all, only up, down or flat"
+      ],
+      "chose": 0,
+      "why": "A difference beside a 'fewer than 5' would give the banded count away (C143).",
+      "undo": "Change publicChange in packages/video-render/src/engagement-report.ts."
+    },
+    {
+      "title": "Each count banded on its own",
+      "options": [
+        "band each count on its own, as your rule reads",
+        "band offered and taken too whenever passed over is under 5",
+        "leave passed over out of the report"
+      ],
+      "chose": 0,
+      "why": "Offered minus taken roughly gives passed over away, but hiding it would hide counts your own example shows, like 'Drama: offered 12, taken 0' (C144).",
+      "undo": "In publicLines, band offered and taken for a week whose passed over is under 5."
+    },
+    {
+      "title": "When aph's log counts as taken",
+      "options": [
+        "when a figure of mine is saved",
+        "when the form is first touched",
+        "whenever the Log view opens"
+      ],
+      "chose": 0,
+      "why": "aph opens on the Log view, so counting the opening would make every visit a take (C145).",
+      "undo": "Move the take in AphLog from the save to where the form is first changed."
+    }
+  ],
+  "left": [
+    "ENG12 step 3, the /report stage and recorder, went to its own session (#2915); steps 4 and 5 wait on it.",
+    "ENG6 Honeycomb and LeetType's desktop typing game are planned on #2539, not started.",
+    "aph's 'entry started but not kept' needs the registry to name places first (#2542).",
+    "ENG3's rest, ENG4, ENG7, ENG8, ENG10 and ENG11 are not started."
+  ],
+  "waits": []
+}
