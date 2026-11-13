@@ -1,0 +1,23 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKgMDRUwtDQamwzJKk",
+  "ended": "2026-11-13",
+  "epics": [
+    "CARDS"
+  ],
+  "pulls": [],
+  "did": "Published a private prototype artifact, https://claude.ai/artifact/2TuYJyTj8Cuh2vUk1R37w9. It plays two cheat-sheet videos ('NixOS: how this machine upgrades itself' and 'Rust scratchpad') built from the CARDS card kinds. Each frame is a pure renderAt(t), status badges reveal their definitions on first appearance, and every frame carries an 'as of' stamp. Checked every card line read-only against paulgsc/dotfiles@91cb11b (nixos/auto-upgrade/default.nix, docs/auto-upgrade.md, .github/workflows/update-flake-lock.yml, docs/rust-scratchpad.md, pkgs/vim/scratch.vim, home-manager/shell/tmux) and paulgsc/scratch@8468230 (README.md, flake.nix, scratch.sh). Put epic #2465's three open decisions beside the player, each with its recommended answer.",
+  "calls": [],
+  "left": [
+    "dotfiles tmux 'prefix r' sources ~/.tmux.conf, but home-manager writes ~/.config/tmux/tmux.conf. Not filed; worth a kind:defect issue on paulgsc/dotfiles.",
+    "The prototype lives only as an artifact; no repo code changed. CARDS1 starts once decision 1 is answered.",
+    "Owner: epic #2465 decisions 1–3, answered while looking at the prototype."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2465
+    }
+  ]
+}

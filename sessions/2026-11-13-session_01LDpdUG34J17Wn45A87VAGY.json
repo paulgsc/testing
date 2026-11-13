@@ -2,29 +2,79 @@
   "schema": "some-ui.session-note/1",
   "session": "session_01LDpdUG34J17Wn45A87VAGY",
   "ended": "2026-11-13",
-  "epics": ["ORCH", "ENGAGE", "LANE", "GWB", "SETTINGS-MAP"],
+  "epics": [
+    "ORCH",
+    "ENGAGE",
+    "LANE",
+    "GWB",
+    "SETTINGS-MAP"
+  ],
   "pulls": [
-    { "repo": "some-ui", "kind": "pr", "number": 2862 },
-    { "repo": "server", "kind": "pr", "number": 820 },
-    { "repo": "some-ui", "kind": "pr", "number": 2909 },
-    { "repo": "server", "kind": "pr", "number": 819 },
-    { "repo": "server", "kind": "pr", "number": 827 },
-    { "repo": "server", "kind": "pr", "number": 828 },
-    { "repo": "server", "kind": "pr", "number": 822 },
-    { "repo": "some-ui", "kind": "pr", "number": 2916 },
-    { "repo": "some-ui", "kind": "pr", "number": 2919 },
-    { "repo": "some-ui", "kind": "pr", "number": 2920 }
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2862
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 820
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2909
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 819
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 827
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 828
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 822
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2916
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2919
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2920
+    }
   ],
   "did": "I coordinated the Nov 13 run: up to ten worker sessions at a time, across both repos. Server's high-priority gate bug was fixed (#815). The node-forge, vite and seroval updates landed. So did your Settings answer (#2151 folded into #2357), the engagement report's week read on home, home's contention guard, a restart cap, and the root cause of the render test that failed at random. GWB3 passed its replay, 66 of 68 right. The coordinate skill now holds the coordinator rules that used to live only in issue comments, and both repos' CLAUDE.md point to it. I got the merge train wrong twice before following your Nov 10 rule and the #2885 protocol, and I recorded those lessons in the skill. I'm handing the desk to a successor, with the full state on #2918.",
   "calls": [],
   "left": [
-    { "repo": "some-ui", "kind": "issue", "number": 2918 },
-    { "repo": "server", "kind": "pr", "number": 826 },
-    { "repo": "server", "kind": "issue", "number": 821 },
-    { "repo": "some-ui", "kind": "issue", "number": 2122 }
+    "paulgsc/some-ui#2918 (issue)",
+    "paulgsc/server#826 (pull request)",
+    "paulgsc/server#821 (issue)",
+    "paulgsc/some-ui#2122 (issue)",
+    "Waits on the owner: paulgsc/some-ui#2897 (pull request)"
   ],
   "waits": [
-    { "repo": "some-ui", "kind": "pr", "number": 2897 },
-    { "repo": "some-ui", "kind": "issue", "number": 2824 }
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2824
+    }
   ]
 }
