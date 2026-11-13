@@ -1,0 +1,41 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKNNUExuKEyDkQUNMy",
+  "ended": "2026-11-13",
+  "epics": [],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 815
+    }
+  ],
+  "did": "GATE-CODEQL in the Nov 13 coordinator run, on server #814 (priority: high). I fixed the stuck PR gate on the image bot's pull requests (#814). When CodeQL finished after every other check, nothing judged the gate again, and the 15-minute sweep that was meant to catch it runs only a few times a day, so #813 sat blocked until someone swept by hand. Now the verdict the bot's runs send waits for CodeQL once nothing else is still working, up to an hour, then decides. On #815 I rehearsed it live: it waited out CodeQL and decided 14 seconds after it finished. The sweep stays, now described as best effort. #815 is merged.",
+  "calls": [
+    {
+      "title": "How the gate hears CodeQL on a bot's pull request",
+      "options": [
+        "the verdict waits for CodeQL, bounded by the hour a check may take",
+        "move the tell step after CodeQL by switching CodeQL to a workflow file here",
+        "only call the schedule best effort"
+      ],
+      "chose": 0,
+      "why": "It is the one fix I could prove, and switching CodeQL's setup is a repository setting that is yours to make.",
+      "undo": "Revert #815; the bot's gates then wait on the sweep or a hand dispatch again."
+    },
+    {
+      "title": "A runner may now wait, on one path",
+      "options": [
+        "allow one bounded wait and say so in docs/assurance.md",
+        "keep no runner waiting at all"
+      ],
+      "chose": 0,
+      "why": "The wait happens only on a bot's head, only for CodeQL, and only once nothing else is working, so it usually lasts minutes, and the other choice is a gate nobody decides.",
+      "undo": "Revert #815 and pick another of #814's options."
+    }
+  ],
+  "left": [
+    "#816: the gate's own check shows up as a job of CodeQL's run, so each verdict carries one false warning; the verdict itself is right."
+  ],
+  "waits": []
+}
