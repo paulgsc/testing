@@ -1,0 +1,76 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKAZaBHV3ZnJgynfEh",
+  "ended": "2026-11-13",
+  "epics": [
+    "GWB"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 817
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2907
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 818
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 824
+    }
+  ],
+  "did": "Game Week Bites, at your word to go with the recommended. I stepped through the replay of NE at CHI in your place and judged the scenario engine right on 66 of 68 moments, against a bar of 7 in 10, and closed GWB3 with the table on #2077. One fix came out of it: the coin toss no longer leads the first snap after the opening kickoff (server #817). The game feed stays off in code, because home's deploy file states it; turning it on is your one sops line, written in the game-feed doc. The live push to the phone (GWB4) is in review on the server side: #818 reads the snap to come, and #824 adds the game day socket, with two review findings fixed along the way.",
+  "calls": [
+    {
+      "title": "Who judges GWB3's 7 in 10",
+      "options": [
+        "the agent judges the replay, at your word",
+        "wait for you to step through it"
+      ],
+      "chose": 0,
+      "why": "You said to go with the recommended, and the replay met the bar clearly: 66 of 68 moments.",
+      "undo": "Reopen #2077 and step through the replay file yourself."
+    },
+    {
+      "title": "How just happened counts",
+      "options": [
+        "scenario entries, as built",
+        "one entry per play"
+      ],
+      "chose": 0,
+      "why": "No recommendation was written, the replay meets 8 in 10 either way, and a touchdown's two entries are two ways to file a bite about it.",
+      "undo": "Keep the first entry per play in the engine's just-happened rule."
+    },
+    {
+      "title": "How the game feed gets turned on",
+      "options": [
+        "your one-line sops edit, documented",
+        "flip the code default to on"
+      ],
+      "chose": 0,
+      "why": "Home's deploy file states the setting, so the code default is never read there, and no session holds the key to edit it.",
+      "undo": "Make the code default on in the server's config and its env schema."
+    }
+  ],
+  "left": [
+    "GWB4's phone half (#2078): it has to be reworked onto the take-based recorder, and it merges after server #818, #824 and the route snapshot sync.",
+    "GWB7 (#2081) and GWB12's library half (#2086): each is about a session, and neither was started.",
+    "An onside kick has no scenario in the catalog (#2908).",
+    "A render test that fails now and then on CI came back (server #825)."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 2074
+    }
+  ]
+}
