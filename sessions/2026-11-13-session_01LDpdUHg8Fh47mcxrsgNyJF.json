@@ -1,0 +1,58 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHg8Fh47mcxrsgNyJF",
+  "ended": "2026-11-13",
+  "epics": ["LANE"],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 822 },
+    { "repo": "server", "kind": "pr", "number": 820 },
+    { "repo": "server", "kind": "pr", "number": 823 },
+    { "repo": "server", "kind": "pr", "number": 827 },
+    { "repo": "some-ui", "kind": "pr", "number": 2914 }
+  ],
+  "did": "Home's heavy work, in the Nov 13 coordinator run. A busy box no longer counts against you: when another service holds home's CPU, or the kernel kills something for memory, a Rust Rounds program that runs out of time or loses the runner, and a voice note that runs past its deadline, are not blamed. They are asked again on the next pass, at most three times in a row, and a time measured on a busy box is marked as such (#822, with a new panel on the CALL dashboard). A render that keeps killing its own container is now taken as failed after three restarts nobody asked for, instead of being resumed forever; a deploy's restart doesn't count (#820). Home's compute rules are written down in one place (#823), and the promises that every kill for memory reaches you and that renders take turns are now on the assurance page (some-ui #2914). A render test that fails now and then on CI is labelled priority high, and #827 makes its next failure say why. Codex reviewed most of it before running out of credits; a fresh agent reviewed the rest.",
+  "calls": [
+    {
+      "title": "How busy the box must be before a result is excused",
+      "options": [
+        "some task waiting for a CPU a tenth of the time or more",
+        "a quarter of the time or more"
+      ],
+      "chose": 0,
+      "why": "A false 'busy' only costs a retry a minute later, while a false 'calm' blames a program or a note for good, so the line leans towards excusing.",
+      "undo": "Change CONTENDED_SHARE in file_host's contention module."
+    },
+    {
+      "title": "When the box never calms down",
+      "options": [
+        "excuse a program or note three times in a row, then judge it as on a calm box",
+        "keep excusing it until the box calms"
+      ],
+      "chose": 0,
+      "why": "Excusing forever would let a busy box hold the queue for good; the bound keeps it moving and says so with a warning.",
+      "undo": "Raise NOBODYS in the contention module."
+    },
+    {
+      "title": "The deploy-time check of home's memory caps",
+      "options": [
+        "wait for home's RAM to be published and your word on ollama, then start as a warning",
+        "build a check that refuses the deploy now"
+      ],
+      "chose": 0,
+      "why": "Home's RAM is written nowhere, and the caps include ollama's 8 GB, so a refusing check built blind could stop home's next deploy.",
+      "undo": "Build the refusing check from #709's plan."
+    }
+  ],
+  "left": [
+    "#822, #820, #823, #827 and some-ui #2914 are with the coordinator to merge; #823 waits for #822.",
+    "#825: the render test's stop case sometimes leaves a process alive after a kill; #827's output names the cause at the next failure.",
+    "#709: home's facts published nightly from dotfiles, then the memory-caps check as a warning.",
+    "#712: what the render cache saves and what it pays twice, once its step trace (#714) is there.",
+    "#739: the recorder's cache-hit lines and a sign of life while rendering.",
+    "#740: whether the measured render peak buys anything over the declared one, from home's own numbers.",
+    "#822's dashboard clip, for a session that has a Grafana."
+  ],
+  "waits": [
+    { "repo": "server", "kind": "issue", "number": 705 }
+  ]
+}
