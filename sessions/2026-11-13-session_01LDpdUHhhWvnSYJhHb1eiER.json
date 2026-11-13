@@ -1,0 +1,31 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHhhWvnSYJhHb1eiER",
+  "ended": "2026-11-13",
+  "epics": [],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 846 },
+    { "repo": "server", "kind": "pr", "number": 849 }
+  ],
+  "did": "I closed two small home-deploy follow-ups the ledger had found. First, a test now proves that when file_host's pre-migration backup fails its integrity check, nothing is applied, the bad copy is deleted, and the error names it; that is new evidence for AV1. Second, the deploy alerts now name HD2 instead of AV1, a new alert tells you when home could not even record an app's ask for a newer server, and the deploy's 30-minute stop is now tested. I also drafted the matching ledger edit for AV1, HD1 and HD2 and handed it to the coordinator to land.",
+  "calls": [
+    {
+      "title": "Also test the deploy's 30-minute stop, which #782 marked optional",
+      "options": ["Add the TimeoutStartSec check to test.nix", "Leave it untested"],
+      "chose": 0,
+      "why": "It is one line, it closes the gap HD1 named, and the standing instruction was to go with the recommended choice.",
+      "undo": "Delete the 'a hung deploy is stopped at 30 minutes' line from nix/modules/test.nix and the matching HD1 proof."
+    },
+    {
+      "title": "Three optional wording nits from #849's closing review",
+      "options": ["Leave them, recorded on the PR", "Push another round for them"],
+      "chose": 0,
+      "why": "This repo's rule is that optional findings never start a push; none changes what the alert does.",
+      "undo": "Ask for a small follow-up PR with the three wording fixes listed on #849."
+    }
+  ],
+  "left": [
+    "Three optional nits on #849, recorded there: the README's make-dev example names the wrong deploy folder (older than this work); the alert says 'no deploy will run' where 'no deploy was requested' is more exact; and the new alert can miss a single failed ask in the minute after a cold start."
+  ],
+  "waits": []
+}
