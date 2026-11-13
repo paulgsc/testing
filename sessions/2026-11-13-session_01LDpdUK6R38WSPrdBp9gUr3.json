@@ -1,0 +1,47 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUK6R38WSPrdBp9gUr3",
+  "ended": "2026-11-13",
+  "epics": ["ENGAGE"],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 819 }
+  ],
+  "did": "ENG12's server half, in the Nov 13 coordinator run. Home can now read a week of engagement beside last week, the same week a quarter ago and a year ago: GET /app-events/weeks/:week on #819. It gives raw counts of what was offered, taken, passed over and left for each pipeline, and the first and last day each was used. A week from before home held anything says no data rather than zero. Weeks run Monday midnight to Monday midnight on your clock, the same as the report writer in some-ui #2910. Banding and the Self and work line stay with that writer, so home sends nothing time-of-day and nothing you said. Rendering the video, step 4, is planned on #821 and waits for the report's stage and recorder in some-ui. Codex ran out of credits partway, so a fresh agent reviewed the last change and found no bugs.",
+  "calls": [
+    {
+      "title": "Where the public-safety banding lives",
+      "options": [
+        "in some-ui's report writer, with home sending raw counts",
+        "on home, before anything leaves the server"
+      ],
+      "chose": 0,
+      "why": "#2700 says the writer applies the rule, which keeps it in one typed, tested place. The route is your own, as the existing summary already is.",
+      "undo": "Ask for the rule to move to home's period read; the writer's adapter would then take banded values."
+    },
+    {
+      "title": "Which clock a week runs on",
+      "options": [
+        "your Pacific clock, Monday midnight",
+        "UTC Monday midnight"
+      ],
+      "chose": 0,
+      "why": "Your days are Pacific everywhere else on home, and the writer already counts that way, so a Sunday evening never lands in next week.",
+      "undo": "Change ZONE in app_event_repo's weeks.rs and the writer's week edges together."
+    },
+    {
+      "title": "Building step 4's home worker before the recorder exists",
+      "options": [
+        "wait for some-ui's stage, recorder and ledger entry",
+        "build the folder writer now"
+      ],
+      "chose": 0,
+      "why": "A new worker fails server's ledger check until some-ui places it, and without the recorder it would write files nothing reads.",
+      "undo": "Start #821 now; the ledger placement comes first."
+    }
+  ],
+  "left": [
+    "#821: home writes each week's report file and the render worker makes the video. It waits on some-ui's /report stage, recorder and ledger placement, which a fresh some-ui session has.",
+    "Three small test and comment touches from the review of #819, logged on #821."
+  ],
+  "waits": []
+}
