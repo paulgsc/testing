@@ -1,0 +1,22 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJedFBJKuUEqMxNZcr",
+  "ended": "2026-11-13",
+  "epics": ["JOBS-FRICTION"],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 2906 }],
+  "did": "In the Nov 13 coordinator run, I settled your two calls on how the Jobs cards say where a file went (#2013). You had said to go with the recommendation, and both are kept as they are. The first was moot: since the share sheet went away, nothing in Jobs asks whether a file arrived. Every file is now filed with home at once. For the second, a reinstalled phone briefly shows a file as missed by the morning run. I proved with a new test that it fixes itself on the next exchange with home, without a tap, so home's record needed no change. #2906 is merged.",
+  "calls": [
+    {
+      "title": "A reinstalled phone forgets where each Jobs file began",
+      "options": [
+        "keep it on the phone; the next exchange with home fixes the card on its own",
+        "send it home too, which changes home's record and needs a deploy you approve"
+      ],
+      "chose": 0,
+      "why": "You said to go with the recommendation, and the state is rare and fixes itself without a tap.",
+      "undo": "Follow C144's undo in docs/calls.json: add the field on home first, then have the phone send it."
+    }
+  ],
+  "left": [],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 2009 }]
+}
