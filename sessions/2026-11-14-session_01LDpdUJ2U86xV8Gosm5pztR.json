@@ -1,0 +1,76 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJ2U86xV8Gosm5pztR",
+  "ended": "2026-11-14",
+  "epics": [
+    "CONVEYOR"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 851
+    }
+  ],
+  "did": "Built home's half of CONVEYOR3 in server#851: home files a Studio take's pickup (its labels and what was heard, never its comment or audio) once heard, built once so a retry resends the same bytes, and reads the routine's picked answer to move the take to picked-up only from the ready move it names by number; three fresh-context review rounds converged, and the follow-ups are filed as server#850 and server#852.",
+  "calls": [
+    {
+      "title": "Where a pickup's bytes live",
+      "options": [
+        "a new pickup table",
+        "the existing mailbox_outgoing, keyed by name"
+      ],
+      "chose": 1,
+      "why": "mailbox_outgoing is already append-only, holds one body per name and is handed until answered, which is exactly keeping the first bytes; no new store for the ledger",
+      "undo": "add a table and backfill it from mailbox_outgoing where folder='pickup'"
+    },
+    {
+      "title": "The picked-up move's at",
+      "options": [
+        "home's clock when the answer is kept",
+        "readyAt",
+        "a time the routine sends"
+      ],
+      "chose": 0,
+      "why": "picked carries no time; invariant 2 never orders by at; home's clock is when home learned it",
+      "undo": "one line in voice_repo::conveyor::pick_up"
+    },
+    {
+      "title": "Archive pickup and picked now",
+      "options": [
+        "archive both",
+        "leave them live and file an issue"
+      ],
+      "chose": 1,
+      "why": "the Worker's archive role for these folders is unknown, and archiving would add two listings to every idle pass beyond the agreed six",
+      "undo": "server#850"
+    },
+    {
+      "title": "A picked answer for a ready move the take has left",
+      "options": [
+        "keep it and move nothing",
+        "refuse it",
+        "move the take anyway"
+      ],
+      "chose": 0,
+      "why": "the agreed shape moves the take only while that seq is newest, and keeping the file keeps the record that the issue exists",
+      "undo": "add a refusal kind in mailbox::pass::keep"
+    },
+    {
+      "title": "Renaming the MI6 idle-pass test",
+      "options": [
+        "keep the stale name",
+        "rename it and keep the old name in a doc line"
+      ],
+      "chose": 1,
+      "why": "the count is now 26, and text containment keeps any ledger proof holding through the switch",
+      "undo": "drop the doc line once the ledger names the new test"
+    }
+  ],
+  "left": [
+    "server#850: archive the pickup and picked folders, or decide they stay live",
+    "server#852: a refused pickup is final and silent; match home's label rule to the Worker's",
+    "drop the old MI6 test name from pass.rs's doc comment once some-ui's ledger names the new one"
+  ],
+  "waits": []
+}
