@@ -1,0 +1,28 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHLTKgoTz5SG8paFiR",
+  "ended": "2026-11-14",
+  "epics": [
+    "INTERVIEW-WEEK"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2966
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2967
+    }
+  ],
+  "did": "Built the interview week's format some-ui.interview-week/1 and readWeek, holding IW1's id rules (lowercase week id, kebab slugs of at most 64 characters, no question named read, Monday-to-Sunday Pacific dates). Built the interview week's own Monday routine (pull, render call-facts, prepare, finish, put): code chooses each family's variant, each decision question's call and each card's source and situation, least recently asked first; the model writes only the words, and finish checks lengths, schema and real employer names. Moved the routines' mailbox client to video-render/node, weekAround to core-utils, and the shared file helpers to video-render/node; Rust Rounds' sample Monday output stayed byte-identical. Mailbox Worker: takes brief/interview-week-<id>.json and home's index-interview, amended MB2, deployed version 9b2dd3fb. Contracts for home's four /interview-weeks routes, checked against the server source. Calls C277-C280 are in docs/calls.json.",
+  "calls": [],
+  "left": [
+    "index-interview acceptance not exercised live: it needs home's token, and home's first put is after 2026-w47 is due.",
+    "Nits: bundle.ts header lost its LEVERS #2162 link; MB2's IW4 note says 'fourth' kind where it is third in the array.",
+    "One shared word counter across rust-rounds, job-desk and interview-week was suggested and not done."
+  ],
+  "waits": []
+}
