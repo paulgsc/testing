@@ -1,0 +1,2529 @@
+{
+  "schema": "some-ui.call-week/1",
+  "template": {
+    "id": "conference-call",
+    "version": 4
+  },
+  "week": {
+    "from": "2026-11-06",
+    "to": "2026-11-13"
+  },
+  "read": {
+    "some-ui": "6c38f04c68776c2cf46bc1d54eda6da9afc7f481",
+    "server": "3e8910c98ecf176eb554ac3a9c9dc237b105e787"
+  },
+  "open": {
+    "said": "This is the weekly call for November sixth to thirteenth, eight days, since the run moved to Saturday. Two hundred and sixty-one pull requests merged by hand across both repositories, and twenty-three of them fixed a defect."
+  },
+  "board": {
+    "said": "Forty-eight items are open on your ledger. Twenty-three wait on you to decide or do something, forty-four steps in all, and most are a deploy or a quick check. Four are filed as asks, and you'll hear them at the end.",
+    "rows": [
+      {
+        "ledger": "from-reflection-issues",
+        "title": "What your study reflections asked for",
+        "status": "decide",
+        "waitsOnYou": 7
+      },
+      {
+        "ledger": "drift-server",
+        "title": "Server: one owner and a guard per concern",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "drift-some-ui",
+        "title": "some-ui: one owner and a guard per concern",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "home-first",
+        "title": "Home is mine",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "server-config-declared-once",
+        "title": "Server config, declared once",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "studio-feed",
+        "title": "Studio for my feed",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "talk",
+        "title": "A session is a conversation",
+        "status": "decide",
+        "waitsOnYou": 3
+      },
+      {
+        "ledger": "censor-music-mix",
+        "title": "YouTube radio under some-censor",
+        "status": "decide",
+        "waitsOnYou": 2
+      },
+      {
+        "ledger": "kplay",
+        "title": "Korean in one drama world",
+        "status": "decide",
+        "waitsOnYou": 2
+      },
+      {
+        "ledger": "amo-gate",
+        "title": "Releases go out when you send them",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "assurance",
+        "title": "Every promise, with its evidence",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "cards-palette",
+        "title": "Rendered cards as a palette",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "home-deploy",
+        "title": "Home keeps itself current",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "jobs-friction",
+        "title": "Jobs in five minutes, on the move",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "jobs-run-never-silent",
+        "title": "Jobs says what the morning run did",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "mailbox-push",
+        "title": "The mailbox rings home",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "nfl-fan-reaction",
+        "title": "Game Week Bites",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "release-set",
+        "title": "Home deploys one release",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "sl-popup-blank",
+        "title": "Suspender Ledger's popup",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "transcribe-on-home",
+        "title": "Voice notes transcribed on home",
+        "status": "decide",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "feed",
+        "title": "My feed",
+        "status": "decide",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "playoff-delta-maths",
+        "title": "Playoff Delta as questions and answers",
+        "status": "decide",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "storage-trajectory",
+        "title": "How fast home's storage grows",
+        "status": "decide",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "env-secrets-set-once",
+        "title": "Env as encrypted constants",
+        "status": "doing",
+        "waitsOnYou": 2
+      },
+      {
+        "ledger": "administration",
+        "title": "Administration from the web app",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "engagement",
+        "title": "Every pipeline says whether you use it",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "gesture-pager",
+        "title": "Paged cards swipe the same way",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "home-lane",
+        "title": "Home's heavy work takes turns",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "interview-week",
+        "title": "Interview week",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "korean-on-home",
+        "title": "Korean on home",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "my-data",
+        "title": "My data: see and delete what you keep",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "runtime-checks",
+        "title": "Know it works while it runs",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "settings-no-silent-caps",
+        "title": "Settings: no silent caps",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "take-conveyor",
+        "title": "Studio takes on a conveyor",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "voice-kit",
+        "title": "One way to record your voice",
+        "status": "doing",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "mailbox-catch-up",
+        "title": "Drive-to-mailbox catch-up out of the model",
+        "status": "open",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "polish",
+        "title": "A redesign of the phone's look",
+        "status": "open",
+        "waitsOnYou": 1
+      },
+      {
+        "ledger": "cli-progress",
+        "title": "Long commands show their progress",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "home-capacity-sim",
+        "title": "Buy the second box on data",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "jobs-scout-readable",
+        "title": "A scout the morning run can read",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "jobs-script",
+        "title": "Jobs search and odds as a script",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "leetype-mailbox",
+        "title": "LeetType through the mailbox",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "longitudinal-vlogs",
+        "title": "Longitudinal vlogs",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "prepare-finish",
+        "title": "Routines split into prepare, write, finish",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "routine-levers",
+        "title": "The model fills values, never judges",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "rust-rounds",
+        "title": "Rust Rounds",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "server-hook-claim",
+        "title": "The priority sweep as a hook",
+        "status": "open",
+        "waitsOnYou": 0
+      },
+      {
+        "ledger": "session-desk-code",
+        "title": "Code carries the Session Desk's bookkeeping",
+        "status": "open",
+        "waitsOnYou": 0
+      }
+    ]
+  },
+  "moved": [
+    {
+      "id": "studio-where",
+      "tag": "STUDIO",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2248
+      },
+      "said": "Your first template, the weekly call, landed and runs on home. This call is the routine doing its part.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2624
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2631
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2679
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 687
+        }
+      ],
+      "next": [
+        "The call's later template versions as you watch it"
+      ]
+    },
+    {
+      "id": "feed-where",
+      "tag": "FEED",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2643
+      },
+      "said": "Playoff Delta and the call are both feeds now, voiced by home and watched on the phone. Your own voice was retired from episodes.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2651
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2654
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2703
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2718
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 722
+        }
+      ],
+      "next": [
+        "Let the routines push to the testing repository from their environment"
+      ]
+    },
+    {
+      "id": "sfeed-where",
+      "tag": "SFEED",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2670
+      },
+      "said": "All fourteen Studio-for-my-feed stories landed, then clips moved to home and Renders became a conveyor of pizza stations.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2770
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2894
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2900
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2901
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 801
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 811
+        }
+      ],
+      "next": [
+        "One more home deploy, then use it: a spoken note, an answer by voice, chapters pasted into YouTube"
+      ]
+    },
+    {
+      "id": "hyper-where",
+      "tag": "HYPER",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2722
+      },
+      "said": "Motion is in the video pipeline, made the same bytes every run. The release promo is one command on home.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2734
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2738
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2743
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2799
+        }
+      ],
+      "next": [
+        "Your one check on home that the sample proves"
+      ]
+    },
+    {
+      "id": "rust-where",
+      "tag": "RUST-ROUNDS",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2231
+      },
+      "said": "The decay record landed, so the essay can say what you keep and what fades. Monday's run now makes both the new round and the last essay, which was your stop point.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2839
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2865
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2947
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 770
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 774
+        }
+      ],
+      "next": [
+        "The first live Monday run, November sixteenth",
+        "Then Rust Rounds goes back in the queue"
+      ]
+    },
+    {
+      "id": "lane-where",
+      "tag": "LANE",
+      "epic": {
+        "repo": "server",
+        "kind": "issue",
+        "number": 705
+      },
+      "said": "Home's heavy work takes turns: the lane decides, the render obeys it and resumes, and a busy box is nobody's fault.",
+      "landed": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 711
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 713
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 721
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 734
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 822
+        }
+      ],
+      "next": [
+        "Publish home's real cores and memory nightly",
+        "Cache economics, once renders are traced"
+      ]
+    },
+    {
+      "id": "release-where",
+      "tag": "RELEASE",
+      "epic": {
+        "repo": "server",
+        "kind": "issue",
+        "number": 787
+      },
+      "said": "Home deploys one release, every image by digest, kept current by a pull request that merges itself.",
+      "landed": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 799
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 804
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 808
+        }
+      ],
+      "next": [
+        "Labels for what each image provides and needs, and the set check"
+      ]
+    },
+    {
+      "id": "engage-where",
+      "tag": "ENGAGE",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2533
+      },
+      "said": "Four apps now say what they offered and what you took, and the weekly report has its writer and stage.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2681
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2683
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2910
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2915
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2912
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2913
+        }
+      ],
+      "next": [
+        "Home's worker that renders the report each week",
+        "The phone offering the report"
+      ]
+    },
+    {
+      "id": "gwb-where",
+      "tag": "GWB",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2074
+      },
+      "said": "The replay check passed, sixty-six of sixty-eight moments, and live offers reach the phone during a game.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2907
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2917
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 817
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 824
+        }
+      ],
+      "next": [
+        "Your home deploy, then a look at Game day during a real game"
+      ]
+    },
+    {
+      "id": "mydata-where",
+      "tag": "MY-DATA",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2473
+      },
+      "said": "Every row in My data says what it is and plays, from the phone or from home.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2930
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 838
+        }
+      ],
+      "next": [
+        "Archiving Korean word sets from My data, in review"
+      ]
+    },
+    {
+      "id": "admin-where",
+      "tag": "ADMIN",
+      "epic": {
+        "repo": "some-ui",
+        "kind": "issue",
+        "number": 2357
+      },
+      "said": "The first lever landed: Rust Rounds recording is on or paused from the home web app. The older settings epic folded in at your word.",
+      "landed": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2712
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 716
+        }
+      ],
+      "next": [
+        "The Is it working page",
+        "Home's settings carried to the cloud routines"
+      ]
+    },
+    {
+      "id": "env-where",
+      "tag": "ENV",
+      "epic": {
+        "repo": "server",
+        "kind": "issue",
+        "number": 613
+      },
+      "said": "Every server setting now carries its class, and the game feed left env for your switch.",
+      "landed": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 835
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 836
+        }
+      ],
+      "next": [
+        "One lever story per setting still to move out of env"
+      ]
+    }
+  ],
+  "done": [
+    {
+      "id": "weekly-call",
+      "title": "The weekly call, from a template to home's video",
+      "said": "The weekly call went from an idea to a video home makes on its own. The weeks live in the testing repository, home's Kokoro voice says them with subtitles, and home records and renders each week within its memory and drive caps.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2624,
+          "title": "The weekly call, the first template, and its stage at /call (ST29)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2631,
+          "title": "Asks, the week's facts, the recorder, and the first live weekly call (ST29)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2636,
+          "title": "The call's weeks are read from paulgsc/testing, not kept here (ST36)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2638,
+          "title": "Home's call index, and where the call's weeks are kept (ST36)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2641,
+          "title": "The call is said by home's Kokoro speaker (ST36)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2642,
+          "title": "Record the call from a running app and a week file (ST36)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2655,
+          "title": "Home's render step for the weekly call in the ledger (ST36)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2660,
+          "title": "The weekly call's first render on home is CW5's evidence",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2672,
+          "title": "A call's scene shows its whole still and holds it (CV1)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2679,
+          "title": "The call's template v2: locked intro, brand, chapters said aloud, subtitles",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 685,
+          "title": "Home keeps every week of the weekly call (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 686,
+          "title": "A Kokoro speaker on home that says the same words the same way (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 687,
+          "title": "Home's render worker records and renders each week of the call (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 689,
+          "title": "The call's data on home's database drive, watched on Slack (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 691,
+          "title": "The speaker stops growing until it's killed, and a crash reaches Slack (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 694,
+          "title": "The render finishes in its memory and yields the CPU (ST36)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 695,
+          "title": "What the call takes of the drive is measured and a passed cap reaches Slack (CW6)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 697,
+          "title": "The render worker passes the owner's caps to the recorder (CW5, CW6)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 701,
+          "title": "/timed says a line with each word's place, for the call's subtitles"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 703,
+          "title": "Record with the call's template v2, and read the owner's brand folder"
+        }
+      ]
+    },
+    {
+      "id": "feed-videos",
+      "title": "Playoff Delta joins the call on your phone",
+      "said": "Playoff Delta became a weekly fill that home voices and renders, like the call. Both feeds' videos now play on the phone, and you can let a week go from My data.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2651,
+          "title": "What is said over a week is a fill, with its packet and its check (FEED1)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2654,
+          "title": "The weekly narration routine, the weeks due, and a lasting pin (FEED2)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2703,
+          "title": "A week of Playoff Delta, said by Kokoro in the shape (FEED3)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2713,
+          "title": "The index of fills home reads, and its store in the ledger (FEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2717,
+          "title": "Home makes each voiced Playoff Delta fill's video (FEED4, PK5)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2718,
+          "title": "The phone plays and lets go of each feed's videos, Playoff Delta's too (FEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2662,
+          "title": "The call's videos are kept until let go from the phone (ST38)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2666,
+          "title": "The weekly call's video is watched and shared from Studio (ST38)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2667,
+          "title": "My data lets a week of the call go from home, the video then the rest (ST38)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 698,
+          "title": "The phone watches, links and lets go of the call's videos (ST38)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 717,
+          "title": "Home keeps every fill of Playoff Delta, with its season (FEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 722,
+          "title": "The render worker's second job, Playoff Delta (FEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 724,
+          "title": "Each feed's videos on the phone, Playoff Delta's beside the call's (FEED4)",
+          "change": "story"
+        }
+      ]
+    },
+    {
+      "id": "studio-feed",
+      "title": "Studio for your feed",
+      "said": "Studio grew into a place for everything the feeds make: templates you can preview, episodes with chapters to paste into YouTube, notes you leave at a moment in an episode, answers to asks by voice, clips of what a change built, and a Renders board that shows what home is making.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2735,
+          "title": "Studio opens on its eight kinds, A to Z (SFEED1)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2747,
+          "title": "Leave a note on an episode at a moment in it (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2769,
+          "title": "A feedback folder for notes on an episode (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2777,
+          "title": "Home keeps notes on the feeds' episodes (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2801,
+          "title": "Each note on an episode goes home once, and Feedback says where it is (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2803,
+          "title": "The routine files each note on an episode as pending issues (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2806,
+          "title": "A note on an episode can carry what you said (SFEED6)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2750,
+          "title": "The reflections routine files Studio's answers as pending issues (SFEED5)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2752,
+          "title": "Answer an ask by voice on its page in Studio (SFEED5)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2767,
+          "title": "Every episode's chapters, written for its YouTube description (SFEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2783,
+          "title": "An episode's chapters on its page, to copy into YouTube (SFEED4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2770,
+          "title": "Clips of what a change built, and Studio's Library (SFEED7)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2894,
+          "title": "Studio's clips show each frame from home, and their labels away from it",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2762,
+          "title": "A template's preview, cut by code to 15–30 s (SFEED12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2781,
+          "title": "Record a template's preview, as home's render worker will (SFEED12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2778,
+          "title": "Preview a template from its Templates page (SFEED12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2786,
+          "title": "Show what home is making on Studio › Renders, with a rough bar (SFEED13)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2800,
+          "title": "The status page opens Studio › Renders, and the bar sweeps (SFEED13)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2900,
+          "title": "Renders names what home makes and opens it; a preview asks first",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2901,
+          "title": "Renders moves along a conveyor of pizza-named stations",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2760,
+          "title": "Set a template's caption look in Studio (SFEED11)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2737,
+          "title": "The call and Playoff Delta caption in their look (SFEED11)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 735,
+          "title": "Home keeps the owner's notes on the feeds' episodes, filed for the mailbox (SFEED6)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 737,
+          "title": "A paired phone reads each episode's chapters (SFEED4)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 738,
+          "title": "One read of what home is rendering, for Studio › Renders (SFEED13)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 743,
+          "title": "The owner asks home for a template's preview, kept a day (SFEED12)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 801,
+          "title": "Keep each clip's frames on home, walks rendered on the lane"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 811,
+          "title": "A template's preview is on the Renders board"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 812,
+          "title": "Now.progress counts the recorder's scenes and station"
+        }
+      ]
+    },
+    {
+      "id": "motion",
+      "title": "Polished motion, first for release promos",
+      "said": "Videos can now carry real motion, made the same way every time. A release promo comes from one command on home, with a brand open and close and our own sound cues.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2734,
+          "title": "Pin hyperframes at 0.9.22, the same bytes twice (HYPER1)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2738,
+          "title": "A composition as a scene's picture (HYPER2)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2743,
+          "title": "The release promo, one command from a walk to a video (HYPER3)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2754,
+          "title": "The same bytes every run — moving elements keep their own layer (#2739)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2764,
+          "title": "Place a series' brand files from home's /brand (HYPER4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2790,
+          "title": "The sound kit we make ourselves, on the promo's beats (HYPER4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2771,
+          "title": "The brand open and close draw the code's mark in a theme (HYPER5)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2799,
+          "title": "The call and Playoff Delta open and close with the moving mark (HYPER5)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2810,
+          "title": "The release promo on Studio's Templates page (HYPER3)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 728,
+          "title": "HyperFrames compositions in the render image, pinned (HYPER1)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 744,
+          "title": "Make promo, a release's promo on home in one command (HYPER3)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 750,
+          "title": "Make promo plays the release's sound cues from home's brand folder (HYPER4)"
+        }
+      ]
+    },
+    {
+      "id": "rust-rounds",
+      "title": "Rust Rounds, a week from ticket to essay",
+      "said": "Rust Rounds became a whole week: you paste errors from your own code, talk through the tickets, and what stands at the deadline is kept for good. Home renders the week's essay, and the essay now charts which ideas you keep and which fade.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2699,
+          "title": "The weekly exercise's format and its check (RR11)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2704,
+          "title": "A week of Rust Rounds rides brief to home (RR12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2730,
+          "title": "The week on the phone, its takes sent home together (RR13)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2733,
+          "title": "Paste an error from your own code into the week (RR13)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2826,
+          "title": "The Rust Rounds essay's template, played on /essay (RR15)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2830,
+          "title": "What Rust Rounds keeps goes home for good (RR14)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2838,
+          "title": "Record a week's essay with the owner's takes, and list its template (RR16)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2839,
+          "title": "A week stays open until its deadline, and reads back after it (RR22)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2865,
+          "title": "The Monday routine writes the essay and next week from code-checked values (RR18)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2863,
+          "title": "Show each week's Rust Rounds essay in Studio beside the calls (RR17)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2947,
+          "title": "The decay record, its chart and role line (RR19)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 704,
+          "title": "Home keeps each week of Rust Rounds and records its programs (RR12)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 723,
+          "title": "A Rust Rounds note can name a week's ticket (RR13)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 727,
+          "title": "A Rust Rounds note can name an error pasted in a week (RR13)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 763,
+          "title": "Keep each week's answers on home as one record, silence included",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 770,
+          "title": "Keep a week's send as a draft until its deadline, final at it",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 774,
+          "title": "Render each week's Rust Rounds essay on home, from its final record"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 800,
+          "title": "A week let go is never given again (EV5), and a withdrawn week is not listed",
+          "change": "story"
+        }
+      ]
+    },
+    {
+      "id": "home-lane",
+      "title": "Home's heavy work takes turns",
+      "said": "Home's heavy jobs now take turns in one lane. A render yields when the box is busy and picks up where it stopped, every service has a place in who goes first under memory pressure, and an out-of-memory kill always reaches you.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2706,
+          "title": "A cache size it cannot count is never room (VC1)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2914,
+          "title": "Home's compute is a family: LN2, LN3 and the lane's LA1-LA4 (#2716)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 711,
+          "title": "Who is killed first for memory, and every OOM kill heard (LN2, #707)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 713,
+          "title": "The batch lane's decision, a pure function of the kernel's signals (L4a, #708)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 721,
+          "title": "Home's file_host runs the batch lane and shows its decisions (L4b, #708)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 734,
+          "title": "The render worker obeys the lane, and resumes from its kept steps (L4c, #708)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 822,
+          "title": "A busy box is nobody's fault: the contention guard (L1, #706)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 829,
+          "title": "Make up warns when home can't hold every service at its cap (L3 #709)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 823,
+          "title": "Home's compute invariants are written (L3 #709, part 2)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 830,
+          "title": "Prune ollama, which nothing calls (#705, D3)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 834,
+          "title": "Retire ollama's last setting, and envctl's allowance for it"
+        }
+      ]
+    },
+    {
+      "id": "deploy-release",
+      "title": "Home deploys itself, and hears the mailbox",
+      "said": "Home now migrates itself on start, rolls a bad image back, and pulls a newer server only when the phone needs one. Every image comes from one release, by digest. The mailbox also rings home when something lands, so home stops asking every fifteen minutes.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2848,
+          "title": "The marks say when home doesn't work with this version (#2843)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2834,
+          "title": "A bell home listens on, rung when something waits (MBP1)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 776,
+          "title": "File_host migrates on start; make home-deploy rolls a bad image back (AS16, AS18)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 779,
+          "title": "Home pulls a newer file_host on demand, when a client needs one"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 786,
+          "title": "Run home's deploy as envctl deploy, since home has no python3"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 799,
+          "title": "Every compose image from deploy/home/release.json"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 804,
+          "title": "Published images move into home's release by digest"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 806,
+          "title": "Delete scripts/deploy.py, now envctl deploy"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 808,
+          "title": "Kokoro is published by server CI and runs from the release"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 846,
+          "title": "A backup that does not verify is removed and nothing applied"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 848,
+          "title": "The release sets its imaged services' variables, not every IMAGE_ name"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 849,
+          "title": "Deploy alerts name HD2, and an ask home can't record alerts"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 771,
+          "title": "Home listens for the mailbox's bell, and the poll becomes the backstop",
+          "change": "story"
+        }
+      ]
+    },
+    {
+      "id": "engagement",
+      "title": "Every pipeline says whether you use it",
+      "said": "The apps started saying what they offered you and what you took: TOPIK's lessons, Practice Home, aph and LeetType. A weekly report of it now has its writer and its video stage.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2677,
+          "title": "Engagement events ride the app-events pipe (ENG2)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2681,
+          "title": "TOPIK's lesson list says what was offered and taken (ENG3)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2683,
+          "title": "Practice Home says what it offered and what was taken",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2910,
+          "title": "The weekly engagement report's writer and public-safety rule (ENG12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2915,
+          "title": "The engagement report's /report stage and its recorder (ENG12)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2912,
+          "title": "Aph says which views and days I took and which I passed over (ENG9)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2913,
+          "title": "The session log speaks ENGAGE's vocabulary, without a second log (ENG5)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 700,
+          "title": "An engagement family beside outcome (ENG2)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 819,
+          "title": "Read a week's engagement beside last week, a quarter and a year ago"
+        }
+      ]
+    },
+    {
+      "id": "phone-steady",
+      "title": "The phone holds still, and waits for home calmly",
+      "said": "Screens no longer jump under your tap: what the app says floats over the screen. And the phone now paces what it sends home, lets a deleted note go, and treats being away from home as one calm state instead of a stream of failures.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2623,
+          "title": "A tap moves no control it leaves on the screen (HS1)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2625,
+          "title": "Count the error and status lines a phone screen mounts (HS2)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2634,
+          "title": "The phone's screens hold still under a tap (HS1)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2740,
+          "title": "Wait out home's busy, then ask once; pace every lane's requests (AD3)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2758,
+          "title": "Let the person past a paced drain, and pace every request to home (AD3)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2818,
+          "title": "Let a voice note go when home refuses it as deleted for good (LA8)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2939,
+          "title": "Away from home is one state, said once and waited out (AW1)",
+          "change": "defect"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 760,
+          "title": "A note deleted for good is refused with its own code, deleted_for_good"
+        }
+      ]
+    },
+    {
+      "id": "game-week",
+      "title": "Game day goes live",
+      "said": "Game Week Bites passed its replay check, home reads the live game and pushes offers to the phone as they happen, and each bite is matched to its play. Whether home follows games is now your switch.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2907,
+          "title": "Record GWB3's verdict, just-happened entries and the game feed switch",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2917,
+          "title": "The phone takes home's live offers over the game day socket (GWB4)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2927,
+          "title": "The game feed's switch beside Rust Rounds recording",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 817,
+          "title": "The coin toss leaves the offer once the opening kickoff is in"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 818,
+          "title": "Read ESPN's live situation, the snap to come (#570)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 824,
+          "title": "Push live game state to the paired phone over a WebSocket (GWB4)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 832,
+          "title": "Match each game bite to its play, and check a said-first proposal (GWB7)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 835,
+          "title": "The game feed is the operator's home switch, not GAME_FEED_ENABLED"
+        }
+      ]
+    },
+    {
+      "id": "my-data-interview",
+      "title": "Every kept recording plays, and interview takes",
+      "said": "Every row in My data now plays and says what it is. Interview takes became a kind of voice note, heard word for word with fillers kept, and home keeps an interview week's drafts and final.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2930,
+          "title": "Every row plays and says what it is (MD8, #2929)",
+          "change": "defect"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2943,
+          "title": "Interview takes as a voice-note kind (IW1)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2945,
+          "title": "The measured faults of a take, as a pure tested module (IW3)",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2949,
+          "title": "Place the interview week's route module before home serves it",
+          "change": "story"
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2954,
+          "title": "The interview week's draft and final stores",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 838,
+          "title": "My data's kept notes say what they are, and every kind plays back"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 841,
+          "title": "Interview takes are voice notes, kept and played back"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 843,
+          "title": "Interview takes are heard verbatim, fillers and all (IW2)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 847,
+          "title": "Home keeps and serves the interview week, its drafts and final (IW4)"
+        }
+      ]
+    },
+    {
+      "id": "switches-env",
+      "title": "Switches you set, not settings in env",
+      "said": "Home's switches page has its first levers, Rust Rounds recording and now the game feed. And every server setting is classed, so a policy can no longer hide in the deployment's environment.",
+      "pulls": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2712,
+          "title": "Home's switches, Rust Rounds recording first (ADM2)",
+          "change": "story"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 716,
+          "title": "The operator's settings store, and Rust Rounds recording as its first lever (ADM2)"
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 836,
+          "title": "Every variable carries its class; env holds deployment constants only (ENV-CLASS)"
+        }
+      ]
+    }
+  ],
+  "gray": [
+    {
+      "id": "hs1",
+      "title": "A tap never moves the screen",
+      "promise": "HS1",
+      "said": "HS1 now holds on every phone app: a tap never moves a control it leaves on the screen. What the app says about it floats over the screen instead.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2623
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2634
+        }
+      ]
+    },
+    {
+      "id": "ad3",
+      "title": "The phone paces what it sends home",
+      "promise": "AD3",
+      "said": "AD3 was widened three times: every request to home takes a turn on one pace, your taps ahead of the background, and a busy home is waited out, then asked once.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2740
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2758
+        }
+      ]
+    },
+    {
+      "id": "aw1",
+      "title": "Away from home is one state",
+      "promise": "AW1",
+      "said": "A new promise, AW1: away from home is one state, said once and waited out, whatever order the network changes and your taps come in.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2939
+        }
+      ]
+    },
+    {
+      "id": "la8",
+      "title": "A note deleted for good is let go",
+      "promise": "LA8",
+      "said": "LA8 now covers a lost answer: when home says a note was deleted for good, the phone lets its copy go instead of sending it forever.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2818
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 760
+        }
+      ]
+    },
+    {
+      "id": "vm1",
+      "title": "Motion makes the same bytes every run",
+      "promise": "VM1",
+      "said": "VM1 broke once and was fixed: a moving picture comes out the same bytes on every run and every machine, so a video can always be made again.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2738
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2754
+        }
+      ]
+    },
+    {
+      "id": "mdl1",
+      "title": "My data's rows play and say what they are",
+      "promise": "MDL1",
+      "said": "A new promise, MDL1: each kept recording says where it is, what home heard and plays back, whichever version home runs.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2930
+        }
+      ]
+    },
+    {
+      "id": "ev5",
+      "title": "An essay week let go stays gone",
+      "promise": "EV5",
+      "said": "A new promise, EV5: a Rust Rounds week you let go is never rendered again, and its receipt stays.",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 800
+        }
+      ]
+    },
+    {
+      "id": "rt1",
+      "title": "Releases have one owner each",
+      "promise": "RT1",
+      "said": "A new promise, RT1: each release track has one owner, so one package's release no longer sets off a cascade of others.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2820
+        }
+      ]
+    }
+  ],
+  "mine": [
+    {
+      "id": "gwb3-judged",
+      "title": "An agent judged the game replay for you",
+      "said": "Game Week Bites' check said you would step through a replayed game. At your go-with-the-recommended word, an agent judged it instead, and it passed. That was Claude's call.",
+      "options": [
+        "The agent judges the replay",
+        "Wait for you to step through it"
+      ],
+      "chose": 0,
+      "why": "The bar names you as the judge, but you said these weren't blocked on you.",
+      "undo": "Reopen the check and step through the replay yourself.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2077
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 817
+        }
+      ]
+    },
+    {
+      "id": "taps-paced",
+      "title": "Your taps wait their turn too",
+      "said": "Claude chose, alone, to pace every request the phone sends home, yours included, so after a burst a tap can wait up to two seconds.",
+      "options": [
+        "Pace every request, yours included",
+        "Pace only the background sends"
+      ],
+      "chose": 0,
+      "why": "Leaving your taps unpaced gives up the bound on how hard the phone can push home.",
+      "undo": "Let your own requests skip the pace, and narrow the promise to background sends.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2758
+        }
+      ]
+    },
+    {
+      "id": "away-retry",
+      "title": "How the phone retries when you're away",
+      "said": "Away from home, the phone now tries every thirty seconds, doubling to ten minutes, while your own taps still go at once. Claude's call, under your standing word to take the recommended.",
+      "options": [
+        "Back off, taps still go",
+        "A fixed five-minute wait for everything",
+        "Stop until the network changes"
+      ],
+      "chose": 0,
+      "why": "The phone can't tell being away from home being down, so the wait decides how soon things go once you're back.",
+      "undo": "Change the hold times, or hold your taps too.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2939
+        }
+      ]
+    },
+    {
+      "id": "sqlite-advisory",
+      "title": "A SQLite advisory set aside until February",
+      "said": "Claude set aside a security advisory on the SQLite the server bundles, dated to be looked at again by February eleventh, because no fixed version can be reached yet.",
+      "options": [
+        "A dated ignore, backed by a written rule",
+        "Upgrade the database library",
+        "Leave the check red"
+      ],
+      "chose": 0,
+      "why": "The flaw needs a database file someone else wrote, and the server only opens its own. No convention says whether that is enough.",
+      "undo": "Drop the ignore once a library release reaches the fixed SQLite, then upgrade.",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 784
+        }
+      ]
+    },
+    {
+      "id": "draft-red",
+      "title": "Drafts show a red check",
+      "said": "Claude made draft pull requests run no checks, and show a red gate until they're marked ready.",
+      "options": [
+        "Drafts run nothing and fail the gate",
+        "Drafts skip the gate",
+        "Drafts run everything"
+      ],
+      "chose": 0,
+      "why": "A skipped gate would count as passed, so a draft could look green without being checked.",
+      "undo": "Drop the draft conditions from the three workflows.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2825
+        }
+      ]
+    },
+    {
+      "id": "colour-709",
+      "title": "Every new video's colours shift a little",
+      "said": "Claude changed how videos are converted to colour, so every new render, Build Journal shorts included, looks slightly different from before. Old videos are untouched.",
+      "options": [
+        "The new colour standard for every video",
+        "Only for new template versions"
+      ],
+      "chose": 0,
+      "why": "You'd notice it in a re-render, but no check settles which is right.",
+      "undo": "Revert the conversion in the renderer's plan.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2774
+        }
+      ]
+    },
+    {
+      "id": "caps-own-screens",
+      "title": "Two caps stay off Settings",
+      "said": "Claude left Soundbites' six and Studio's take budget off the Settings limits, since each already shows its count beside the recorder.",
+      "options": [
+        "Shown on their own screens only",
+        "A row in Settings as well"
+      ],
+      "chose": 0,
+      "why": "The settings story asks for every cap there, but these two are read where the next take is decided.",
+      "undo": "Add the two rows to Settings' limits.",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2911
+        }
+      ]
+    },
+    {
+      "id": "clip-frames-home",
+      "title": "Home makes clips' frames itself",
+      "said": "Home now draws walk-through clips' frames itself, and frames taken in a session aren't kept. Claude's call, which you agreed to on the eleventh.",
+      "options": [
+        "Home makes the frames",
+        "Carry frames through the mailbox's brief",
+        "A new mailbox folder for frames"
+      ],
+      "chose": 0,
+      "why": "The mailbox refuses images by design, and a new folder needs your amendment.",
+      "undo": "Build the route that carries frames through the mailbox.",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 801
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2894
+        }
+      ]
+    }
+  ],
+  "asks": [
+    {
+      "id": "ask-2861",
+      "question": "May clips cut from shows, songs and podcasts be kept on home, for your practice only?",
+      "said": "Korean practice could keep short clips cut from shows, songs and podcasts on home, for you alone. It's about other people's work, so it's yours.",
+      "whyYours": "It's a question of what risk you're willing to take with other people's work, not a code call.",
+      "options": [
+        {
+          "says": "Yes, kept on home only, never shared or published",
+          "unblocks": "KP7's private cuts: the richest native audio, including drama delivery"
+        },
+        {
+          "says": "No: pointers, notes, open-licence and made-for-us recordings only",
+          "unblocks": "KP7 without private cuts; native spans come mostly from YouTube and recordings"
+        }
+      ],
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2861
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2849
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2856
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 1986
+        }
+      ]
+    },
+    {
+      "id": "ask-2860",
+      "question": "Should Korean practice be set in one shared drama world, with every scene standing alone?",
+      "said": "Korean practice could be set in one shared drama world, where each scene still stands on its own. The agents recommend it.",
+      "whyYours": "It decides what the drama is and how it feels to come back to: a product call about your own practice.",
+      "options": [
+        {
+          "says": "One shared world, every scene stands alone (a sitcom)",
+          "unblocks": "KP6 and KP8, which build and play scenes in it"
+        },
+        {
+          "says": "Each scene self-contained, with no shared cast, as today",
+          "unblocks": "KP6 without a bible; scenes don't share characters"
+        },
+        {
+          "says": "A series in order, with episodes that continue",
+          "unblocks": "KP6 with episodes, but sessions are no longer memoryless"
+        }
+      ],
+      "recommended": 0,
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2860
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2849
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2855
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2857
+        }
+      ]
+    },
+    {
+      "id": "ask-2630",
+      "question": "Should every GitHub Action the workflows use be pinned to a commit, rather than a version tag?",
+      "said": "The workflows could pin every action they use to an exact commit, which is safer and takes more upkeep, or keep version tags with a written reason.",
+      "whyYours": "It trades a supply-chain risk against how much upkeep the workflows take, and the repos are yours to keep.",
+      "options": [
+        {
+          "says": "Pin every action to a commit; Dependabot moves the pins",
+          "unblocks": "U8 opens with every unpinned finding cleared"
+        },
+        {
+          "says": "Keep version tags, and record why in zizmor's config",
+          "unblocks": "U8 opens with the finding set aside, and a reason"
+        }
+      ],
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2630
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2116
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2108
+        }
+      ]
+    },
+    {
+      "id": "ask-2627",
+      "question": "When TOPIK keeps your level across reloads, how should the Show level filter treat it?",
+      "said": "TOPIK can keep your level across reloads, but today one tap on the level filter would hold it for good. Is a look a choice?",
+      "whyYours": "Only the Show level filter sets the level today, so one tap to look would hold that level for good. Whether a look counts as a choice is your call.",
+      "options": [
+        {
+          "says": "The filter remembers it, and All lets go of it",
+          "unblocks": "#2612 lands with a small addition"
+        },
+        {
+          "says": "Only an explicit level choice is kept",
+          "unblocks": "#2612 lands after a level control of its own is added"
+        },
+        {
+          "says": "Keep it as it is, and say so in the store's words",
+          "unblocks": "#2612 lands as it is"
+        }
+      ],
+      "recommended": 0,
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2627
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 1879
+        },
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2612
+        }
+      ]
+    }
+  ],
+  "later": [
+    {
+      "id": "deploy-home",
+      "question": "Run home's deploy once more, for the Renders board and Game day",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 787
+        },
+        {
+          "repo": "server",
+          "kind": "pr",
+          "number": 811
+        }
+      ]
+    },
+    {
+      "id": "testing-access",
+      "question": "Add the testing repository to the routines' cloud environment",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2643
+        }
+      ]
+    },
+    {
+      "id": "amo-merge",
+      "question": "Review and merge the release gate pull request",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "pr",
+          "number": 2897
+        }
+      ]
+    },
+    {
+      "id": "release-token",
+      "question": "Add a bot token so release pull requests merge with no click?",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 787
+        }
+      ]
+    },
+    {
+      "id": "polish-guidance",
+      "question": "Give the phone's redesign its guidance, and say whether the state icons go ahead alone",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2948
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2950
+        }
+      ]
+    },
+    {
+      "id": "pda1",
+      "question": "Agree Playoff Delta's question catalogue in a session",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2878
+        }
+      ]
+    },
+    {
+      "id": "talk-d1-d3",
+      "question": "Decide D1 to D3 for spoken sessions",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2545
+        }
+      ]
+    },
+    {
+      "id": "cards-decisions",
+      "question": "Decide how rendered cards are named and kept",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2465
+        }
+      ]
+    },
+    {
+      "id": "assurance-three",
+      "question": "Rule on the gate's exceptions, the gauge sweep and the alert bound",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2291
+        },
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2272
+        }
+      ]
+    },
+    {
+      "id": "drift-some-ui",
+      "question": "Settle the open calls on some-ui's shared concerns",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2108
+        }
+      ]
+    },
+    {
+      "id": "drift-server",
+      "question": "Settle the open calls on the server's shared concerns",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 481
+        }
+      ]
+    },
+    {
+      "id": "home-first",
+      "question": "Paste the Drive SOP, choose on two Drive-only scenes, and make three server calls",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2174
+        }
+      ]
+    },
+    {
+      "id": "worker-subdomain",
+      "question": "Rotate the mailbox Worker's published address",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 612
+        }
+      ]
+    },
+    {
+      "id": "firebase",
+      "question": "Set up Firebase so Jobs can tell you what the morning run did",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2051
+        }
+      ]
+    },
+    {
+      "id": "jobs-checks",
+      "question": "Do Jobs' two phone checks",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2006
+        }
+      ]
+    },
+    {
+      "id": "censor-listen",
+      "question": "Listen past a YouTube Mix's first songs with some-censor on",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2215
+        }
+      ]
+    },
+    {
+      "id": "sl-popup",
+      "question": "Check Suspender Ledger's popup on the ESR profile",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2513
+        }
+      ]
+    },
+    {
+      "id": "catch-up-where",
+      "question": "Choose where the Drive-to-mailbox catch-up runs",
+      "refs": [
+        {
+          "repo": "some-ui",
+          "kind": "issue",
+          "number": 2643
+        }
+      ]
+    },
+    {
+      "id": "voice-check",
+      "question": "Record a voice note and confirm home heard it",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 460
+        }
+      ]
+    },
+    {
+      "id": "bell-check",
+      "question": "Check home's log says the mailbox's bell is connected",
+      "refs": [
+        {
+          "repo": "server",
+          "kind": "issue",
+          "number": 499
+        }
+      ]
+    }
+  ],
+  "close": {
+    "said": "That's the week. Four asks are open, all filed this week, and twenty more steps are on the list. Eight calls made without you were voiced, out of more than a hundred recorded. Your answers start the next sessions."
+  }
+}
