@@ -1,0 +1,411 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 4: after the render, and the cards",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27500,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · AFTER THE RENDER",
+            "title": "From home's drive to YouTube, by your hand",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Studio › Renders",
+                "command": "GET /renders",
+                "note": "Each job waiting, rendering, paused or done; a part as part k of n."
+              },
+              {
+                "badge": "you",
+                "label": "Watch it on the phone",
+                "command": "the call's videos",
+                "note": "From home, on a paired phone."
+              },
+              {
+                "badge": "you",
+                "label": "Share it to YouTube",
+                "command": "the YouTube app",
+                "note": "The chapters from description.txt go in its description."
+              },
+              {
+                "badge": "you",
+                "label": "Save its link",
+                "note": "Home keeps it with the week."
+              },
+              {
+                "badge": "you",
+                "label": "Let it go",
+                "command": "My data",
+                "note": "Two steps: the video, then the rest of its folder."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26900,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · LETTING GO",
+            "title": "What a let go deletes, and what it keeps",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The receipt",
+                "command": "first, then the files",
+                "note": "Committed before the drive is touched; a step cut short finishes next time."
+              },
+              {
+                "badge": "main",
+                "task": "The video's step",
+                "command": "out of the worker's input",
+                "note": "So it is never rendered again, then the video goes."
+              },
+              {
+                "badge": "main",
+                "task": "One part of a series",
+                "command": "<key>.let-go",
+                "note": "The week's file goes with its last part."
+              },
+              {
+                "badge": "main",
+                "task": "The week's data",
+                "command": "stays in call_week",
+                "note": "As first served: the video can always be made again from it."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · A CARDS ESSAY, LIKE THIS ONE",
+            "title": "The same home, a simpler path",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A session writes the cut list",
+                "command": "CARDS-ROUTINE.md",
+                "note": "Chooses the subject, the cards, each claim's badge, and the stamp."
+              },
+              {
+                "badge": "main",
+                "label": "Check the folder",
+                "command": "render cards-check",
+                "note": "Its index, and each essay as a cut list in a series home holds."
+              },
+              {
+                "badge": "main",
+                "label": "Home keeps it",
+                "command": "cards_essays, hourly",
+                "note": "cards/index.json read as the call's is; each essay kept once."
+              },
+              {
+                "badge": "main",
+                "label": "Draw and join",
+                "command": "record:cards",
+                "note": "Each card drawn on www's burn-ins page in Chromium, joined by ffmpeg."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 19700,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THIS VIDEO'S FILE",
+            "title": "A cards essay is its cut list",
+            "bar": "testing cards/how-essays-4-after-the-render-2026-11-14.json",
+            "lines": [
+              {
+                "keyword": "\"schema\": \"some-ui.cut-list/2\","
+              },
+              {
+                "keyword": "\"series\": {\"id\": \"cheat-sheet\", \"version\": 1},"
+              },
+              {
+                "keyword": "\"picture\": {\"kind\": \"card\"}, \"durationMs\": 27500,",
+                "comment": "  # the first card"
+              },
+              {
+                "comment": "# durationMs: how long a card stays up; nothing is said over it",
+                "badge": "main"
+              },
+              {
+                "comment": "# cards: flow, cheat-sheet, terminal, and a legend and rule to close"
+              },
+              {
+                "keyword": "\"stamp\": {\"sources\": [\"paulgsc/server@743b822\", …]}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 17300,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE CALL, AND A CARDS ESSAY, 1 OF 2",
+            "title": "Where the two paths differ",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Its file",
+                "command": "call/<from>.json | cards/<key>.json"
+              },
+              {
+                "badge": "main",
+                "task": "Who lays out the scenes",
+                "command": "the template | the session",
+                "note": "A card's look is still code's: flow-v1, sheet-v1, terminal-v1."
+              },
+              {
+                "badge": "main",
+                "task": "Voice",
+                "command": "Kokoro | none",
+                "note": "An essay's lengths are written numbers."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 21800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE CALL, AND A CARDS ESSAY, 2 OF 2",
+            "title": "Where they're drawn, what's refused, what's let go",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Drawn on",
+                "command": "/call | /burn-ins"
+              },
+              {
+                "badge": "main",
+                "task": "Too long for a frame",
+                "command": "paged | refused",
+                "note": "A card that doesn't fit is refused when it is drawn; cards-check doesn't test fit."
+              },
+              {
+                "badge": "gap",
+                "task": "Home's copy let go",
+                "command": "after a link | not yet",
+                "note": "For a cards essay, a later story: paulgsc/some-ui#2999."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE WORKER'S OTHER JOBS",
+            "title": "A line each, for contrast",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A Rust Rounds essay",
+                "command": "record:essay",
+                "note": "The tutor in Kokoro's voice; each answer your own take, played whole."
+              },
+              {
+                "badge": "main",
+                "task": "Playoff Delta",
+                "command": "record:playoff-delta",
+                "note": "A week's fill; only a version voiced by home's speaker is made here."
+              },
+              {
+                "badge": "main",
+                "task": "A template's preview",
+                "command": "record:preview",
+                "note": "Its sample, cut to 15 to 30 s; removed a day after it is made."
+              },
+              {
+                "badge": "main",
+                "task": "A clip's walk",
+                "command": "motion walk",
+                "note": "Stills of an app's scripted walk; no voice and no video."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 19400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · CODE, OR A MODEL'S WORDS, 1 OF 2",
+            "title": "Where a model's words come in",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The week's words, the essay's cards",
+                "command": "a model: Claude",
+                "note": "Checked for shape by code, never for truth."
+              },
+              {
+                "badge": "main",
+                "task": "The week's facts",
+                "command": "call-facts",
+                "note": "Read from GitHub and git history, none of it judged."
+              },
+              {
+                "badge": "main",
+                "task": "Shape, order, intro, chapters",
+                "command": "code",
+                "note": "The template, pinned by version."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 19700,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · CODE, OR A MODEL'S WORDS, 2 OF 2",
+            "title": "Everything after the words is deterministic",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Pages, parts, timing",
+                "command": "code",
+                "note": "CF1, callParts, each take's length."
+              },
+              {
+                "badge": "main",
+                "task": "Audio",
+                "command": "Kokoro, seeded per line",
+                "note": "A model too, but the same words give the same bytes."
+              },
+              {
+                "badge": "main",
+                "task": "Pictures and the video",
+                "command": "Chromium, ffmpeg",
+                "note": "The same week on the same image gives the same bytes."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "video-render README",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/server@743b822"
+    ],
+    "date": "2026-11-14"
+  }
+}
