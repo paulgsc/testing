@@ -1,7 +1,20 @@
 {
   "schema": "some-ui.cards-index/1",
   "essays": [
-    { "key": "rust-scratchpad-2026-11-14" },
-    { "key": "nixos-upgrade-2026-11-14" }
+    {
+      "key": "home-deploy-3-on-demand-2026-11-14"
+    },
+    {
+      "key": "home-deploy-2-after-the-deploy-2026-11-14"
+    },
+    {
+      "key": "home-deploy-1-one-release-2026-11-14"
+    },
+    {
+      "key": "rust-scratchpad-2026-11-14"
+    },
+    {
+      "key": "nixos-upgrade-2026-11-14"
+    }
   ]
 }

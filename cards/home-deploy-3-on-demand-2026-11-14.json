@@ -1,0 +1,272 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's deploy, 3: when the phone needs a newer home",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22400,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ON DEMAND",
+            "title": "Home moves only when a client needs a newer server",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The contract epoch",
+                "command": "CONTRACT_EPOCH",
+                "note": "Rises with every route change. The app gets it through the route snapshot."
+              },
+              {
+                "badge": "main",
+                "label": "The phone asks",
+                "command": "/compat?needs=<epoch>",
+                "note": "Unversioned, like /health."
+              },
+              {
+                "badge": "main",
+                "label": "A marker",
+                "command": "deploy/wanted",
+                "note": "file_host writes it under STORAGE, only when the answer is wanted."
+              },
+              {
+                "badge": "main",
+                "label": "The path unit",
+                "command": "deploy --on-demand",
+                "note": "Applies main's release only for a higher file-host epoch; records state.json."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 15200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT /compat SAYS",
+            "title": "Its deploy field: only wanted starts a deploy",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Served as it is",
+                "command": "none"
+              },
+              {
+                "badge": "you",
+                "task": "Update the phone",
+                "command": "client_behind"
+              },
+              {
+                "badge": "main",
+                "task": "Deploy asked for now",
+                "command": "wanted"
+              },
+              {
+                "badge": "main",
+                "task": "Ask again later",
+                "command": "in_flight · cooldown · unavailable"
+              },
+              {
+                "badge": "main",
+                "task": "Past the ceiling",
+                "command": "refused"
+              },
+              {
+                "badge": "gap",
+                "task": "Marker not written",
+                "command": "cannot_request"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 30200,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE BOUNDS",
+            "title": "What keeps it from pulling too often",
+            "bar": "apps/servers/file_host/src/deploy.rs",
+            "lines": [
+              {
+                "comment": "# one marker and one deploy at a time; 10 min at least between two pulls",
+                "badge": "main"
+              },
+              {
+                "keyword": "6 h",
+                "comment": "    # unavailable once a pull found nothing: at most 4 Docker Hub asks"
+              },
+              {
+                "keyword": "+1000",
+                "comment": "  # needs this far above the running epoch: refused, no pull"
+              },
+              {
+                "comment": "# no epoch at or below the running one is ever a reason to pull"
+              },
+              {
+                "comment": "# a newer build of the same contract waits for make home-deploy"
+              },
+              {
+                "comment": "# nothing polls: with no newer client, home sends no request anywhere"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 21800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHEN IT FAILS",
+            "title": "What tells you, and where to look",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Rolled back or failed",
+                "command": "DeployFailed",
+                "note": "Alerts for a deploy in the last hour."
+              },
+              {
+                "badge": "main",
+                "task": "Unanswered 30 min",
+                "command": "DeployStuck"
+              },
+              {
+                "badge": "main",
+                "task": "No marker written",
+                "command": "DeployCannotRequest",
+                "note": "An ask in the last hour whose marker couldn't be written."
+              },
+              {
+                "badge": "main",
+                "task": "The pattern",
+                "command": "STORAGE dashboard, Deploy row",
+                "note": "Asks, runs, pulls against Docker Hub's limit, bytes, backups."
+              },
+              {
+                "badge": "you",
+                "task": "The unit itself",
+                "command": "journalctl -u home-deploy"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 21500,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · INSTALL IT ONCE",
+            "title": "In home's NixOS configuration (paulgsc/dotfiles)",
+            "bar": "home's configuration.nix",
+            "lines": [
+              {
+                "keyword": "imports = [inputs.server.nixosModules.home-deploy];"
+              },
+              {
+                "keyword": "services.home-deploy = { enable = true; user = …; checkout = …; storage = …; };"
+              },
+              {
+                "comment": "# user runs make up and holds the sops key; checkout: its path; storage: STORAGE"
+              },
+              {
+                "prompt": "$",
+                "keyword": "nixos-rebuild switch",
+                "badge": "you"
+              },
+              {
+                "comment": "# the unit runs as root, and runs make as user"
+              },
+              {
+                "prompt": "$",
+                "keyword": "systemctl status home-deploy.path home-deploy"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "the code"
+            ],
+            "wins": "the README"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@37d731c"
+    ],
+    "date": "2026-11-14"
+  }
+}
