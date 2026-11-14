@@ -1,0 +1,7 @@
+{
+  "schema": "some-ui.cards-index/1",
+  "essays": [
+    { "key": "rust-scratchpad-2026-11-14" },
+    { "key": "nixos-upgrade-2026-11-14" }
+  ]
+}
