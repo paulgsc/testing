@@ -1,0 +1,43 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHktVoREyBsWiixvqt",
+  "ended": "2026-11-14",
+  "epics": [
+    "MIC"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2953
+    }
+  ],
+  "did": "Fixed the voice-home record so that what home holds counts only under the pairing that said it (#2437, promise HP1). A phone paired with another home, or a reset one, no longer says a take is on home when the new home doesn't hold it. A capped desk can no longer let a take go on the old home's word. The old home's word is kept, never deleted. Independent reviews found a late answer that could have deleted a waiting copy, and an old record that could have been handed to the next home. Both are fixed before merge. Two smaller gaps of the same kind, game bites' own 'on home' stamp and home's refusals, are filed as #2955.",
+  "calls": [
+    {
+      "title": "What an older build's voice record means after the update",
+      "options": [
+        "take it as the first pairing's word",
+        "read it as held by no home"
+      ],
+      "chose": 0,
+      "why": "Reading it as no home's would mark every take whose audio already left as 'kept on this phone' for good, and as unsendable in Settings; if the phone is first seen unpaired it is kept apart instead (C288).",
+      "undo": "voice-home/model.ts repaired: stash a no-pairing record under UNKNOWN_PAIRING on any pairing"
+    },
+    {
+      "title": "Whether takes read as on home while the phone is unpaired",
+      "options": [
+        "read nothing as held",
+        "keep the last pairing's word"
+      ],
+      "chose": 0,
+      "why": "The phone can't check it, and LG1 and the other lanes already read nothing held while unpaired (C289).",
+      "undo": "voice-home/model.ts repaired: leave the record as it is when the pairing becomes null"
+    }
+  ],
+  "left": [
+    "#2955: game bites' homeSince stamp and home's refusals don't follow a change of pairing.",
+    "Set-aside marks the old home already answered aren't re-sent to a new one (not filed)."
+  ],
+  "waits": []
+}
