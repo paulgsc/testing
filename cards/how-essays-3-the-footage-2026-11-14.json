@@ -1,0 +1,590 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 3: the footage",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ONE SCENE",
+            "title": "A still, a take, and the renderer",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The stage",
+                "command": "/call, on record",
+                "note": "A page of www, one scene per address, served from the render image's own build."
+              },
+              {
+                "badge": "main",
+                "label": "A still",
+                "command": "1920 x 1080 PNG",
+                "note": "Chromium, through Playwright, once the page's fonts are in; animations at rest."
+              },
+              {
+                "badge": "main",
+                "label": "A take",
+                "command": "POST /timed to kokoro",
+                "note": "The scene's said, in its section's voice, with each word's time."
+              },
+              {
+                "badge": "main",
+                "label": "The renderer",
+                "command": "@some-ui/video-render",
+                "note": "Holds the still for the take, captions it, joins every scene with ffmpeg."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 23900,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHAT THE STAGE READS",
+            "title": "The same page plays in a browser and records on home",
+            "bar": "apps/www/src/lib/web-surface/call/feed.ts",
+            "lines": [
+              {
+                "comment": "# in a browser: testing's call/index.json, then call/<from>.json"
+              },
+              {
+                "comment": "# on home: the recorder answers those reads from the kept file alone"
+              },
+              {
+                "keyword": "--week-file /weeks/<from>.json",
+                "comment": "  # a week testing let go records the same",
+                "badge": "main"
+              },
+              {
+                "comment": "# the stage parses the week itself: one it can't draw shows its problems"
+              },
+              {
+                "comment": "# with record, nothing but the frame is drawn"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22700,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE FRAME",
+            "title": "What every scene is drawn in",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Body",
+                "command": "1825 x 573 px",
+                "note": "From version 2, the foot is left empty for the captions."
+              },
+              {
+                "badge": "main",
+                "task": "Text that won't fit",
+                "command": "data-overflow",
+                "note": "The frame says so, and the recorder refuses the scene."
+              },
+              {
+                "badge": "main",
+                "task": "Theme",
+                "command": "Mochi Night",
+                "note": "The palette made for video, from version 3."
+              },
+              {
+                "badge": "main",
+                "task": "Brand intro and outro",
+                "command": "brand-v1",
+                "note": "From version 4, the mark moves: a composition, not the stage."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 28100,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · PAGING A SCENE, CF1",
+            "title": "A scene too long for the frame is paged, never cut",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Measure",
+                "command": "call-fit.ts",
+                "note": "Each scene laid out as the stage lays it, at 1920 px, erring toward too long."
+              },
+              {
+                "badge": "main",
+                "label": "Page",
+                "command": "its title on every page",
+                "note": "Lists and paragraphs carry on in order; every entry on exactly one page."
+              },
+              {
+                "badge": "main",
+                "label": "Hold",
+                "command": "the first page is voiced",
+                "note": "Each page after it is silent, held for its own words' reading time."
+              },
+              {
+                "badge": "main",
+                "label": "Refuse",
+                "command": "too tall for a frame",
+                "note": "call-check names the scene and what to shorten."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 28700,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE SPEAKER",
+            "title": "Kokoro says the same words the same way, byte for byte",
+            "bar": "paulgsc/server infra/kokoro/say.py",
+            "lines": [
+              {
+                "comment": "# Kokoro-82M v1.0; its model file checked against a SHA-256 at start"
+              },
+              {
+                "comment": "# its vocoder draws random noise: seeded before every line"
+              },
+              {
+                "comment": "# one line at a time, under one lock, so nothing else moves the seed"
+              },
+              {
+                "prompt": "$",
+                "keyword": "POST /say",
+                "comment": "    # 24 kHz mono 16-bit WAV"
+              },
+              {
+                "prompt": "$",
+                "keyword": "POST /timed",
+                "comment": "  # the same WAV, and each word's startMs and endMs",
+                "badge": "main"
+              },
+              {
+                "comment": "# no network; it logs a line's length and voice, never its words"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 19700,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · VOICES BY SECTION",
+            "title": "You hear who is speaking change with the section",
+            "bar": "video-render src/call.ts, CALL_VOICES",
+            "lines": [
+              {
+                "keyword": "am_michael",
+                "comment": "  # the host: intro, chapters, the week, board, close",
+                "badge": "main"
+              },
+              {
+                "keyword": "af_heart",
+                "comment": "    # where things stand"
+              },
+              {
+                "keyword": "am_fenrir",
+                "comment": "   # what landed"
+              },
+              {
+                "keyword": "af_bella",
+                "comment": "    # calls in a gray area"
+              },
+              {
+                "keyword": "bm_george",
+                "comment": "   # calls made without you; b is British, a American"
+              },
+              {
+                "keyword": "af_nicole",
+                "comment": "   # waiting on you"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26300,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · TIME AND SOUND",
+            "title": "How long each scene holds, and what you hear",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A voiced scene",
+                "command": "300 ms, the take, 700 ms",
+                "note": "Its length is its take's. A brand slide holds 3 s, silent."
+              },
+              {
+                "badge": "main",
+                "task": "Captions",
+                "command": "the take's timed words",
+                "note": "One burn-in per scene, drawn on www's burn-ins page, in the foot."
+              },
+              {
+                "badge": "main",
+                "task": "The voice",
+                "command": "-16 LUFS",
+                "note": "The takes placed on one track, measured."
+              },
+              {
+                "badge": "main",
+                "task": "The music bed",
+                "command": "lowered under each take",
+                "note": "From --brand, home's folder of your files, from version 3."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26300,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE STEP CACHE",
+            "title": "A retry runs only what changed",
+            "bar": "<out>/<week>/cache/steps",
+            "lines": [
+              {
+                "comment": "# a take: keyed by the speaker's model, the voice and the words"
+              },
+              {
+                "comment": "# an ffmpeg step: its arguments, each input's SHA-256, ffmpeg's version"
+              },
+              {
+                "comment": "# a scene's captions: keyed by what they draw"
+              },
+              {
+                "comment": "# kept under a temporary name, then renamed: a kill leaves no half entry"
+              },
+              {
+                "comment": "# after a stop, every finished step is a cache hit",
+                "badge": "main"
+              },
+              {
+                "comment": "# the worker removes the cache once the video is made"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · FFMPEG",
+            "title": "The renderer's calls, as data, from plan.ts",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Each scene",
+                "command": "a segment",
+                "note": "Picture only, a whole number of frames."
+              },
+              {
+                "badge": "main",
+                "task": "The sound",
+                "command": "voice and bed",
+                "note": "Takes on one track at -16 LUFS; the bed lowered under each."
+              },
+              {
+                "badge": "main",
+                "task": "The assembly",
+                "command": "one call",
+                "note": "Joins the segments, lays the burn-ins over them, adds the sound."
+              },
+              {
+                "badge": "main",
+                "task": "Same bytes",
+                "command": "VR1, bitexact",
+                "note": "One decode thread, two encode threads, no metadata or timestamps."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 29900,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · A WEEK IN PARTS, VERSION 5",
+            "title": "Too long for one video: a series, split at its chapters",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Measure by words",
+                "command": "estimatedMs",
+                "note": "Before anything is said: each scene at its reading time."
+              },
+              {
+                "badge": "main",
+                "label": "Break at a chapter",
+                "command": "aim 8 min, most 10",
+                "note": "Whole sections while a part stays under the aim."
+              },
+              {
+                "badge": "main",
+                "label": "A section too long",
+                "command": "split between items",
+                "note": "Each part filled to the aim; past 10 only for a single item that is."
+              },
+              {
+                "badge": "main",
+                "label": "Each part opens alike",
+                "command": "locked intro, brand",
+                "note": "The intro says part n of m; a section carried over says continued."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE WEEK OF NOV 6, IN PARTS",
+            "title": "Three videos, by its words",
+            "bar": "render call-parts call/2026-11-06.json",
+            "lines": [
+              {
+                "keyword": "part 1 of 3   20 scenes   217200 ms",
+                "comment": "  # about 3.6 minutes",
+                "badge": "main"
+              },
+              {
+                "keyword": "part 2 of 3   24 scenes   470600 ms",
+                "comment": "  # about 7.8 minutes"
+              },
+              {
+                "keyword": "part 3 of 3   32 scenes   371200 ms",
+                "comment": "  # about 6.2 minutes"
+              },
+              {
+                "comment": "# home records each with --part k: its own job, cache and retry"
+              },
+              {
+                "comment": "# an estimate: the takes set each part's real length"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22700,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE TEMPLATE'S VERSIONS",
+            "title": "What each version of the call added",
+            "bar": "templates/conference-call/v1.json to v5.json",
+            "lines": [
+              {
+                "keyword": "v1  sections",
+                "comment": "  # the sections; no caption band",
+                "badge": "main"
+              },
+              {
+                "keyword": "v2  shape",
+                "comment": "  # locked intro, brand, chapter slides, word captions"
+              },
+              {
+                "keyword": "v3  Mochi Night",
+                "comment": "  # the palette made for video, and the music bed"
+              },
+              {
+                "keyword": "v4  moving mark",
+                "comment": "  # brand intro and outro drawn by brand-v1"
+              },
+              {
+                "keyword": "v5  parts",
+                "comment": "  # at most 10 minutes each; 200 items a section"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 23900,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT A RENDER LEAVES",
+            "title": "In renders/call/<key>/, kept until you let it go",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The video",
+                "command": "call.mp4",
+                "note": "Part k of a series under <from>-p<k>."
+              },
+              {
+                "badge": "main",
+                "task": "The chapters",
+                "command": "description.txt",
+                "note": "Each chapter slide and each ask, at their real times, for YouTube."
+              },
+              {
+                "badge": "main",
+                "task": "What it was made from",
+                "command": "week.json, cut-list.json",
+                "note": "And the stills, the takes and shot-times.json."
+              },
+              {
+                "badge": "gap",
+                "task": "A font wider than measured",
+                "command": "can still overflow",
+                "note": "CF1's tolerance; data-overflow refuses it, so no video is cut off."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "video-render README",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/server@743b822",
+      "paulgsc/testing@7eaf9e6"
+    ],
+    "date": "2026-11-14"
+  }
+}

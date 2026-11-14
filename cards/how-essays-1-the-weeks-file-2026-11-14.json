@@ -1,0 +1,547 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 1: the week's file",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · WHO MAKES A CALL",
+            "title": "Four hands: a session writes, code checks, home makes, you watch",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A scheduled session",
+                "command": "CALL-ROUTINE.md",
+                "note": "Writes the week as call/<from>.json in paulgsc/testing. Its part ends there."
+              },
+              {
+                "badge": "main",
+                "label": "Code checks it",
+                "command": "render call-check",
+                "note": "Refuses a week the template can't draw, before it merges."
+              },
+              {
+                "badge": "main",
+                "label": "Home makes the video",
+                "command": "call_weeks, then render",
+                "note": "Reads the index hourly, voices the week with Kokoro, records and renders it."
+              },
+              {
+                "badge": "you",
+                "label": "You watch it",
+                "command": "Studio › Renders",
+                "note": "Then share it to YouTube, save its link, and let home's copy go."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 25700,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHICH DAYS",
+            "title": "A week is seven days, ending the day before the run",
+            "bar": "CALL-ROUTINE.md, The week",
+            "lines": [
+              {
+                "comment": "# the doc's run: every Friday; the week: Friday to Thursday"
+              },
+              {
+                "comment": "# a run on 2026-11-13 covers 2026-11-06 to 2026-11-12"
+              },
+              {
+                "comment": "# a missed run: from the day after the last week's to, up to 14 days"
+              },
+              {
+                "keyword": "call/2026-11-06.json",
+                "comment": "  # the newest week in testing",
+                "badge": "main"
+              },
+              {
+                "comment": "# it runs Nov 6 to Nov 13, eight days; its open says the run moved to Saturday"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 28700,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT call-facts READS",
+            "title": "render call-facts reads the week; nothing in it is judged",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Merged pull requests",
+                "command": "call-facts --from --to",
+                "note": "Each with its Change-Kind, read from GitHub through gh."
+              },
+              {
+                "badge": "main",
+                "task": "Calls in the record",
+                "command": "docs/calls/",
+                "note": "Those that reached main that week, or were agreed to in it, with who made each."
+              },
+              {
+                "badge": "main",
+                "task": "Promises",
+                "command": "Promise: and Relates:",
+                "note": "Commit trailers: each promise declared or amended that week."
+              },
+              {
+                "badge": "main",
+                "task": "Asks and epics",
+                "command": "ask blocks, Where we are",
+                "note": "Each open ask read or refused with why; each moved epic's Why and Where we are."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20300,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT THE SESSION READS ITSELF",
+            "title": "Beside the facts: the notes, and the ledger",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The facts",
+                "command": "facts.json, in its scratchpad",
+                "note": "call-facts' output, handed to the session that writes the week."
+              },
+              {
+                "badge": "main",
+                "task": "Session notes",
+                "command": "testing's sessions/",
+                "note": "Those whose ended falls in the week; a note's left says what is next."
+              },
+              {
+                "badge": "main",
+                "task": "The Residual Ledger",
+                "command": "its items",
+                "note": "Every item not done: the board."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22100,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE FILE'S HEAD",
+            "title": "What a week says about itself before any words",
+            "bar": "paulgsc/testing call/2026-11-06.json",
+            "lines": [
+              {
+                "keyword": "\"schema\": \"some-ui.call-week/1\","
+              },
+              {
+                "keyword": "\"template\": {\"id\": \"conference-call\", \"version\": 5},",
+                "comment": "  # the shape it is drawn in"
+              },
+              {
+                "keyword": "\"week\": {\"from\": \"2026-11-06\", \"to\": \"2026-11-13\"},"
+              },
+              {
+                "keyword": "\"read\": {\"some-ui\": \"6c38f04…\", \"server\": \"3e8910c…\"},",
+                "comment": "  # each main it read"
+              },
+              {
+                "comment": "# then open, board, moved, done, gray, mine, asks, later, close",
+                "badge": "main"
+              },
+              {
+                "comment": "# a strict schema: a key it doesn't name is refused"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE SECTIONS, 1 OF 2",
+            "title": "The week, the board, where epics stand, what landed",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "open · The week",
+                "command": "said",
+                "note": "A few spoken sentences: which week, and what merged."
+              },
+              {
+                "badge": "main",
+                "task": "board · The board",
+                "command": "ledger, title, status, waitsOnYou",
+                "note": "A row per ledger item not done, its title shortened to fit a card."
+              },
+              {
+                "badge": "main",
+                "task": "moved · Where things stand",
+                "command": "tag, epic, said, landed, next",
+                "note": "A scene per epic that moved. Every pull request it says landed is in a batch."
+              },
+              {
+                "badge": "main",
+                "task": "done · What landed",
+                "command": "title, said, pulls",
+                "note": "Every merged pull request, in batches the session groups by story. Bots' left out."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE SECTIONS, 2 OF 2",
+            "title": "Gray-area calls, calls made without you, what waits on you",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "gray · Calls in a gray area",
+                "command": "promise, said, refs",
+                "note": "Each promise declared or amended, said as what it now holds."
+              },
+              {
+                "badge": "main",
+                "task": "mine · Calls made without you",
+                "command": "options, chose, why, undo",
+                "note": "And whose call: Claude's alone, Claude's with you agreeing, or yours."
+              },
+              {
+                "badge": "main",
+                "task": "asks · Waiting on you",
+                "command": "question, whyYours, options",
+                "note": "Two to four options, each with what it unblocks; one may be recommended."
+              },
+              {
+                "badge": "main",
+                "task": "later, then close",
+                "command": "question, refs; said",
+                "note": "later is shown, not voiced; the close says how many asks are open."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE REAL WEEK, COUNTED",
+            "title": "The week of Nov 6, section by section",
+            "bar": "call/2026-11-06.json, 72,952 bytes",
+            "lines": [
+              {
+                "keyword": "board    48",
+                "comment": "  # rows: 23 decide, the rest open or doing",
+                "badge": "main"
+              },
+              {
+                "keyword": "moved    12",
+                "comment": "  # epics that moved"
+              },
+              {
+                "keyword": "done     12",
+                "comment": "  # batches, 153 pull requests in them"
+              },
+              {
+                "keyword": "gray      8",
+                "comment": "  # promises; mine: 8 calls made without you"
+              },
+              {
+                "keyword": "asks      4",
+                "comment": "  # questions; later: 20 steps shown, not voiced"
+              },
+              {
+                "comment": "# its open: 261 pull requests merged by hand, 23 of them defects"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 28100,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHO WRITES WHAT",
+            "title": "The model fills the values; code owns the shape",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Every said, title and batch",
+                "command": "the session (Claude)",
+                "note": "Plain spoken English in your terms; pull requests grouped by story."
+              },
+              {
+                "badge": "main",
+                "task": "The locked intro",
+                "command": "code: callIntro",
+                "note": "Who wrote it, what drew it, that every voice is synthetic. Never the fill."
+              },
+              {
+                "badge": "main",
+                "task": "Chapters, brand, order, voices",
+                "command": "code: the template",
+                "note": "The routine writes none of them."
+              },
+              {
+                "badge": "main",
+                "task": "Pages and parts",
+                "command": "code: CF1, callParts",
+                "note": "A scene too long is paged, a week too long is split; nothing is cut."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · template.version",
+            "title": "The week names its template version, and is drawn in it for good",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Code builds each shape",
+                "command": "shapeOf, call.ts",
+                "note": "Each version pinned as templates/conference-call/v<n>.json, never edited."
+              },
+              {
+                "badge": "main",
+                "label": "The session writes the newest",
+                "command": "CALL_VERSION, now 5",
+                "note": "call-check refuses the newest week written for an older one."
+              },
+              {
+                "badge": "main",
+                "label": "Older weeks keep theirs",
+                "note": "The week of Oct 30 names version 1, and is still drawn in version 1."
+              },
+              {
+                "badge": "main",
+                "label": "Newer than the stage knows",
+                "command": "refused, VS1",
+                "note": "The stage says so; it never draws a week in an older look."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · CHECK, LIST, MERGE",
+            "title": "What has to pass before a week reaches main",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Check the folder",
+                "command": "render call-check",
+                "note": "The index, every week against the schema, each named for its days, none forgotten."
+              },
+              {
+                "badge": "main",
+                "label": "List it first",
+                "command": "call/index.json, keep 8",
+                "note": "A week past keep leaves only once home holds it, byte for byte."
+              },
+              {
+                "badge": "main",
+                "label": "Guard, then a pull request",
+                "command": "scripts/guard.py --staged",
+                "note": "testing's size and media guard; titled data(call)."
+              },
+              {
+                "badge": "main",
+                "label": "Merge",
+                "command": "no CI there",
+                "note": "call-check saying ready is the gate."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · HONEST LIMITS",
+            "title": "What the check holds, and what it can't",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "Whether a said is true",
+                "command": "not checked",
+                "note": "call-check checks shape and cross-references: ids once, each landed PR in a batch."
+              },
+              {
+                "badge": "gap",
+                "task": "An edit after home read it",
+                "command": "never reaches home",
+                "note": "Home keeps a week as first served."
+              },
+              {
+                "badge": "main",
+                "task": "Nothing left out to fit",
+                "command": "#2918",
+                "note": "Each section takes up to 200 items; length becomes parts."
+              },
+              {
+                "badge": "main",
+                "task": "One part taller than a frame",
+                "command": "refused, named",
+                "note": "Shorten that alone, keeping the meaning, and check again."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "CALL-ROUTINE.md",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/testing@7eaf9e6"
+    ],
+    "date": "2026-11-14"
+  }
+}
