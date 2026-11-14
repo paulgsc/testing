@@ -1,0 +1,343 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's deploy, 2: after the deploy",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · NO make up AFTERWARDS",
+            "title": "make home-deploy leaves nothing to start",
+            "steps": [
+              {
+                "badge": "you",
+                "label": "make home-deploy",
+                "note": "Brings the release up and waits for every service."
+              },
+              {
+                "badge": "main",
+                "label": "applied.json",
+                "note": "Written once every service runs the release and is ready."
+              },
+              {
+                "badge": "main",
+                "label": "make up, make compose",
+                "note": "Run that release, from its tree, never the checkout's release.json."
+              },
+              {
+                "badge": "main",
+                "label": "A git pull",
+                "note": "Changes nothing they start, until make home-deploy applies main."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 23900,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · ON HOME NOW",
+            "title": "make up and make compose run the release last applied",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Restart what runs",
+                "command": "make up",
+                "note": "Under the deploy's lock, so never during a deploy."
+              },
+              {
+                "badge": "main",
+                "task": "Any compose command",
+                "command": "make compose ARGS=\"…\"",
+                "note": "One that may change containers holds the lock; ps, logs and exec don't."
+              },
+              {
+                "badge": "main",
+                "task": "No release applied yet",
+                "command": "both refuse",
+                "note": "And name make home-deploy."
+              },
+              {
+                "badge": "you",
+                "task": "Change deploy/home/",
+                "command": "make preflight",
+                "note": "Starts nothing, reads the checkout. Then commit, push, make home-deploy."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 21200,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE GUARD, AT RUN TIME",
+            "title": "What make compose refuses on home",
+            "bar": "envctl compose --role home",
+            "lines": [
+              {
+                "keyword": "pull, build, watch",
+                "comment": "        # each moves one image apart from its release",
+                "badge": "main"
+              },
+              {
+                "keyword": "--build",
+                "comment": "                   # on any command but exec"
+              },
+              {
+                "keyword": "up --watch, up -w"
+              },
+              {
+                "keyword": "up <service>",
+                "comment": "              # an up that names services"
+              },
+              {
+                "keyword": "-f, --project-directory",
+                "comment": "   # another stack"
+              },
+              {
+                "comment": "# a shell's COMPOSE_FILE is dropped; each refusal has a test"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22100,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE GUARD, IN REVIEW",
+            "title": "Lint's Home guard refuses, on every PR",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A foreign image",
+                "command": "${IMAGE_<SERVICE>:?…}",
+                "note": "Every home service's image is this, filled from the release."
+              },
+              {
+                "badge": "main",
+                "task": "A local build",
+                "command": "build:",
+                "note": "Local builds live in dev.build.yml, which home never loads."
+              },
+              {
+                "badge": "main",
+                "task": "A floating tag",
+                "command": ":latest, anywhere"
+              },
+              {
+                "badge": "main",
+                "task": "An entry, no digest",
+                "command": "without @sha256:"
+              },
+              {
+                "badge": "main",
+                "task": "A doc's command",
+                "command": "pull, build, watch, …",
+                "note": "Judged by envctl's rule, ported word for word."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 29900,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHY ONE WAY",
+            "title": "One way onto home, so the set is always the one checked",
+            "bar": "docs/release.md, RL9 and RL12",
+            "lines": [
+              {
+                "comment": "# the owner, 2026-11-11: \"There's only one way to deploy this.\""
+              },
+              {
+                "comment": "# \"We need all of them to be up\""
+              },
+              {
+                "comment": "# an image pulled, built or floated alone makes a set nobody checked"
+              },
+              {
+                "comment": "# a release is checked as a set: each requires met by a provides",
+                "badge": "main"
+              },
+              {
+                "comment": "# CI checks it from the registry; the deploy again from pulled images"
+              },
+              {
+                "comment": "# #756: a www release without its matching render broke every preview"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · RESTORE BY HAND",
+            "title": "Never automatic: a backup lacks the writes made after it",
+            "bar": "home, only when you choose",
+            "lines": [
+              {
+                "prompt": "$",
+                "keyword": "make compose ARGS=\"…\"",
+                "comment": "      # ARGS: stop file-host",
+                "badge": "you"
+              },
+              {
+                "prompt": "$",
+                "keyword": "mv ${STORAGE}/hopium.db ${STORAGE}/backups/<a name of its own>"
+              },
+              {
+                "comment": "# never delete it, and never a -before- name: the prune would count it"
+              },
+              {
+                "prompt": "$",
+                "keyword": "cp ${STORAGE}/backups/<the backup> ${STORAGE}/hopium.db"
+              },
+              {
+                "prompt": "$",
+                "keyword": "make up",
+                "comment": "      # the release last applied, not the checkout's"
+              },
+              {
+                "comment": "# a run that ends with exit 3 names the backup that start took"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · NOT IN THE RELEASE YET",
+            "title": "www and the résumé renderer",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "www today",
+                "command": "the some-ui checkout",
+                "note": "Started there with its own compose; make home-deploy doesn't move it."
+              },
+              {
+                "badge": "next",
+                "task": "www joins the release",
+                "command": "paulgsc/server#853",
+                "note": "With #853's server half, not landed yet, and its requires labels."
+              },
+              {
+                "badge": "next",
+                "task": "The résumé renderer",
+                "command": "resume-render",
+                "note": "Joins with the same server half. It isn't in release.json today."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "docs/release.md"
+            ],
+            "wins": "docs/release.md"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@37d731c",
+      "paulgsc/some-ui@49c0dee"
+    ],
+    "date": "2026-11-14"
+  }
+}

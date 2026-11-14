@@ -1,0 +1,378 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's deploy, 1: one release, one command",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 1
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24200,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE RELEASE",
+            "title": "Home runs one release: every image, by digest",
+            "bar": "deploy/home/release.json on main",
+            "lines": [
+              {
+                "keyword": "\"serial\": 11,",
+                "comment": "  # one number per release"
+              },
+              {
+                "keyword": "\"server_commit\": \"e7a643e…\",",
+                "comment": "  # main's commit it was formed on"
+              },
+              {
+                "keyword": "\"services\": {\"file-host\": {\"image\": \"pgathondu/server:<sha>@sha256:<digest>\"}, …"
+              },
+              {
+                "comment": "# 18 services, third-party ones and render included",
+                "badge": "main"
+              },
+              {
+                "comment": "# CI forms it on main from what is published; home only reads it"
+              },
+              {
+                "comment": "# a tag can move under a release; a digest can't, and every entry has one"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · make home-deploy, STEPS 1-3",
+            "title": "Find the release, and check it before touching anything",
+            "steps": [
+              {
+                "badge": "you",
+                "label": "You run it",
+                "command": "make home-deploy",
+                "note": "It runs envctl deploy. Home has no python, and needs none."
+              },
+              {
+                "badge": "main",
+                "label": "1 · Resolve",
+                "command": "git fetch origin main",
+                "note": "The release at main. The checkout's working tree is never touched."
+              },
+              {
+                "badge": "main",
+                "label": "2 · Pull and check",
+                "command": "every image, by digest",
+                "note": "Each io.paulgsc.requires met by another image's provides. Unmet: nothing replaced."
+              },
+              {
+                "badge": "main",
+                "label": "3 · Nothing differs?",
+                "command": "stop",
+                "note": "Every service on its image and ready: nothing restarts."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · make home-deploy, STEPS 4-7",
+            "title": "Bring it up, wait for every service, or put it all back",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "4 · Up from its own tree",
+                "command": "releases/<commit>/",
+                "note": "A worktree at the release's commit. up -d recreates only what changed."
+              },
+              {
+                "badge": "main",
+                "label": "5 · file_host migrates",
+                "command": "as it starts",
+                "note": "A checked backup first, then every pending migration. None pending: nothing done."
+              },
+              {
+                "badge": "main",
+                "label": "6 · Gate, up to 360 s",
+                "command": "every service",
+                "note": "Healthy, a one-shot exited 0, or running 60 s with no restart."
+              },
+              {
+                "badge": "main",
+                "label": "7 · Roll back whole",
+                "command": "the last release",
+                "note": "Its tree and its images, through the same up and gate. The failed one is remembered."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 29300,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT COMES FROM WHERE",
+            "title": "The release brings its own files; a few still come from the checkout",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Compose files, deploy/home/",
+                "command": "the release's worktree",
+                "note": "Under ~/.local/state/server-deploy/releases/, mounted read-only."
+              },
+              {
+                "badge": "main",
+                "task": "State git doesn't hold",
+                "command": "the checkout (STATE_ROOT)",
+                "note": "file_host's data/, logs/, config/; Grafana's built dashboards."
+              },
+              {
+                "badge": "main",
+                "task": "A main with only code or docs",
+                "command": "nothing restarts",
+                "note": "No image and no compose tree moved: it is the release already applied."
+              },
+              {
+                "badge": "you",
+                "task": "A release needs a newer envctl",
+                "command": "git pull, then again",
+                "note": "envctl is built from the checkout: its preflight fails and the release is put back."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · STEP 5, CLOSER",
+            "title": "file_host backs up, checks, then migrates, on every start",
+            "bar": "file_host, as it starts",
+            "lines": [
+              {
+                "comment": "# nothing pending: nothing done, no backup taken"
+              },
+              {
+                "keyword": "VACUUM INTO ${STORAGE}/backups/hopium-<UTC>-before-<version>.db",
+                "badge": "main"
+              },
+              {
+                "comment": "# the copy is checked, then every pending migration runs; the newest 5 are kept"
+              },
+              {
+                "comment": "# a missing or never-migrated database is refused: an unmounted volume"
+              },
+              {
+                "comment": "# any refusal ends the process: no build serves a schema half applied"
+              },
+              {
+                "comment": "# the same on every start: a reboot, a restart, make up, make dev"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · EXIT CODES",
+            "title": "What make home-deploy's last line means",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Deployed, or nothing to do",
+                "command": "exit 0"
+              },
+              {
+                "badge": "main",
+                "task": "Not deployed",
+                "command": "exit 1",
+                "note": "main unreadable, a pull failed, or the set doesn't fit. Nothing replaced."
+              },
+              {
+                "badge": "main",
+                "task": "Rolled back",
+                "command": "exit 2",
+                "note": "The release didn't come up; the previous one serves."
+              },
+              {
+                "badge": "you",
+                "task": "Nothing ready: look",
+                "command": "exit 3",
+                "note": "The previous release failed too, there was none, or nothing changed: a dependency or the host."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE RECORD",
+            "title": "What the deploy remembers, and how to retry",
+            "bar": "~/.local/state/server-deploy/",
+            "lines": [
+              {
+                "keyword": "applied.json",
+                "comment": "          # the release last applied: what make up runs"
+              },
+              {
+                "keyword": "failed-releases.json",
+                "comment": "  # skipped by its key until another forms"
+              },
+              {
+                "keyword": "releases/",
+                "comment": "             # each release's worktree"
+              },
+              {
+                "comment": "# key: serial + compose trees, so a fix to those on main is tried by itself"
+              },
+              {
+                "comment": "# after fixing the host, or envctl with a git pull: remove its entry",
+                "badge": "you"
+              },
+              {
+                "comment": "# one pass at a time; the on-demand unit writes here too"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 23300,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · HONEST LIMITS",
+            "title": "What the deploy doesn't do",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "Zero downtime",
+                "command": "old stops, new starts",
+                "note": "The old container stops before the new one proves itself. Two behind Caddy: #409, AS20 #566."
+              },
+              {
+                "badge": "gap",
+                "task": "A service a release drops",
+                "command": "keeps running",
+                "note": "up doesn't remove it, and a rollback doesn't stop one the failed release added (#861)."
+              },
+              {
+                "badge": "main",
+                "task": "The database",
+                "command": "never restored",
+                "note": "A migration that ran stays applied. Part 2 has the restore by hand."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 12450,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 10150,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "the code"
+            ],
+            "wins": "the README"
+          }
+        }
+      ]
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@37d731c"
+    ],
+    "date": "2026-11-14"
+  }
+}
