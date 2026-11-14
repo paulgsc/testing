@@ -1,0 +1,102 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHx7S7Po15zKBDnWKB",
+  "ended": "2026-11-14",
+  "epics": [
+    "RELEASE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 856
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 860
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 866
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 868
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 869
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 871
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 876
+    }
+  ],
+  "did": "Home's services now say when they are healthy, so a deploy can wait for them: rust-runner answers a toolchain ask as file_host's user, orchestrator answers its metrics page, and the render worker beats from every loop it turns. On the way it found orchestrator had read unhealthy on home all along, because its image checked with a tool it lacks. Every third-party image home runs is now pinned by tag and digest at what latest gives today, and a refresh moves them in the one release pull request, on its own, once a month has passed without one. Home now has one way on. Every image it runs comes from the release by digest, including the Grafana dashboard builder, which used to be built on the box and is now published like the rest. CI refuses a pull, a build, a floating tag or a NixOS module that names its own image, and envctl refuses the same commands on home. A plain make up on home now restarts the release last applied instead of whatever the checkout holds. On the way the deploy's gate learned that a one-shot which exits cleanly has succeeded, not failed, which would otherwise have rolled back every release. The renders feed also gained each video's size.",
+  "calls": [
+    {
+      "title": "Third-party refreshes share the one release pull request, when due",
+      "options": [
+        "One release pull request: a third-party refresh when due and no app move is pending",
+        "A second, concurrent third-party pull request opened by a monthly run",
+        "One pull request carrying app and third-party moves together"
+      ],
+      "chose": 0,
+      "why": "The second pull request was built first and an independent review rejected it: both took the same serial and merged without a conflict, and a monthly run carried by its trigger could be lost. One pull request carrying both breaks a third-party move being its own release. Due is read from main's history, so no run carries it.",
+      "undo": "Give the third-party refresh its own branch again in release-lock.yml, derive its serial from the open app release's, and drop the due check and the daily schedule for a monthly one."
+    },
+    {
+      "title": "dashboard-builder becomes a published image",
+      "options": [
+        "Publish dashboard-builder through the detector and run it from the release by digest",
+        "Drop the service and build the dashboards with make tool before Grafana starts",
+        "Keep building it locally on home"
+      ],
+      "chose": 0,
+      "why": "make tool adds a manual step every deploy would have to run before Grafana, and a local build is a second way onto home with unpinned bases; publishing follows kokoro's existing path and keeps one deploy command.",
+      "undo": "Restore its build: in monitoring.yml, drop its release entry and its release_lock source, and add it back to the home guard's build exemption."
+    },
+    {
+      "title": "make up on home restarts the release last applied",
+      "options": [
+        "make up and make compose read the release last applied, from its tree, refusing with none applied",
+        "Refuse make up on home entirely and rewrite the restore steps",
+        "Leave make up reading the checkout's release, documented"
+      ],
+      "chose": 0,
+      "why": "Refusing removes the restart the restore steps rely on; leaving it keeps a second way onto home past the deploy's set check, skip list and gate.",
+      "undo": "Revert #876: up and compose read the checkout's release again, and RL12 names the gap."
+    },
+    {
+      "title": "A one-shot that exited 0 under restart: no is ready",
+      "options": [
+        "Teach the gate one-shots in the PR that adds dashboard-builder to the release",
+        "Keep dashboard-builder building on home until a later story teaches the gate",
+        "Mark one-shots apart in the release and skip them in the gate"
+      ],
+      "chose": 0,
+      "why": "Deferring kept a build on home and left the one-way deploy waiting; skipping would let a failed dashboard build pass unseen.",
+      "undo": "Revert the judge change and take dashboard-builder out of the release."
+    }
+  ],
+  "left": [
+    "Six third-party images have only exact-version tags, so a refresh never moves them, and grafana-oss and cadvisor look like frozen sources: filed as server#857 for a later reviewed change.",
+    "Four low review points on the release workflow (the due job running on every run, a test of a changed digest line, two wordings) were listed on #860 and not pushed, to avoid another CI round.",
+    "A rollback to a release from before #871 (serial 8 or older) would build dashboard-builder on home again, until a release with it applies once.",
+    "envctl deploy --state-dir X records into X while make up reads the default state directory; nothing passes --state-dir today.",
+    "A hung one-shot holds compose's up, which has no bound of its own; this was true before.",
+    "Two low review notes on the home guard's docs check: prose that reads like a refused command fails CI loudly, and some valued options lack their own shared case.",
+    "A release that drops a service doesn't remove its container on up: server#861."
+  ],
+  "waits": []
+}
