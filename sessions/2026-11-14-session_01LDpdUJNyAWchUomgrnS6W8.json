@@ -1,0 +1,104 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJNyAWchUomgrnS6W8",
+  "ended": "2026-11-14",
+  "epics": [
+    "FEED",
+    "ORCH",
+    "RELEASE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 872
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3016
+    }
+  ],
+  "did": "Home now renders a long week of the weekly call as its parts, each a video of at most ten minutes, and serves each part on its own. The render worker asks the render image how many parts a week is, once, inside the job the lane admitted. Each part is its own job: part 1 keeps the week's day as its key and folder, and part k is keyed day-pk. Each part records with --part k, resumes from its own step cache, and fails or retries on its own. A week of one part records exactly as before. Each part's YouTube link and let-go receipts are kept in two new append-only tables keyed by week and part. The old tables were copied in as part 1 of 1 and are kept whole, frozen. The phone's call listing gives each part with its week, part and of, through the routes it already had, and the Renders board says part k of n. The contract epoch is 9. The assurance ledger lists the new tables, and with the owner's word its CW4, CW5 and CW7 now describe the call per part. Three independent review rounds on server#872 found one real bug (a part let go kept naming a lane job), one risk (an unreadable part count could let a whole series go with its first part) and one path nit; each was fixed.",
+  "calls": [
+    {
+      "title": "How a part of a week is named and served",
+      "options": [
+        "part keys: the day for part 1 and day-pk after, on the existing routes",
+        "new routes under each week's key, one per part",
+        "one episode per week with a nested list of parts"
+      ],
+      "chose": 0,
+      "why": "A week of one video keeps exactly the key, folder, row and routes it had. Every table, folder, log and job takes the same key, so no route was added.",
+      "undo": "Add nested routes beside the keys; the tables are keyed by week and part either way (C365)."
+    },
+    {
+      "title": "Where each part's links and receipts are kept",
+      "options": [
+        "new tables keyed by week and part, the old rows copied in as part 1, the old tables frozen",
+        "rebuild the old tables with a part column",
+        "the old tables for part 1, a second table for later parts"
+      ],
+      "chose": 0,
+      "why": "Nothing is reshaped in place or dropped. A rolled-back build fails loudly at the frozen tables instead of writing where nothing reads.",
+      "undo": "The down migration drops the copies while they are only copies, and refuses once anything new is in them (C366)."
+    },
+    {
+      "title": "When home asks how many parts a week is",
+      "options": [
+        "inside the week's first admitted job, kept for good",
+        "at every pass's listing, outside the lane",
+        "file_host working it out"
+      ],
+      "chose": 0,
+      "why": "No work may start outside the lane (home-compute invariant 6). Asking once keeps a week's split stable.",
+      "undo": "Change render-calls.sh to ask again rather than read the kept count (server#874). Never delete a week's parts file by hand: home would then read the week as one part, and letting part 1 go would let the whole week go (C367)."
+    },
+    {
+      "title": "How the worker learns a part was let go",
+      "options": [
+        "a mark per part beside the week's file, the week's file going with the last part",
+        "remove the week's file with the first part let go",
+        "the worker reading the database"
+      ],
+      "chose": 0,
+      "why": "The other parts must still render while one is let go. Each receipt records how many parts the week was, so the database says when the week has gone whole.",
+      "undo": "Change the let-go code to take the week's file out with its first part instead of marking each part; the receipts stay (C368)."
+    },
+    {
+      "title": "Whether older phones are still served",
+      "options": [
+        "contract epoch 9, oldest supported unchanged",
+        "contract epoch 9, oldest supported raised to 9",
+        "no rise, the fields being additive"
+      ],
+      "chose": 0,
+      "why": "An older phone still sees part 1 under the week's key, and later parts as extra rows. A newer one needs the shape, so the epoch rises.",
+      "undo": "A later change raises the oldest supported epoch if older phones must update (C369)."
+    }
+  ],
+  "left": [
+    "A week's part count is asked once and never again, so a week a later render image splits differently fails hourly. It needs a rule choice (server#874).",
+    "Nothing in the release states that server's render loop needs a render image with call-parts. The merge order held it this time (server#873).",
+    "CW4 and CW7 should cite the server's per-part tests, which could only be added once server#872 was on main. CW5 and CW7 keep a few per-week phrases, and CW6 and CW8 still describe one folder or video a week (some-ui#3018).",
+    "The phone's Calls screen showing a week's parts is a separate some-ui story, after the contract epoch 9.",
+    "The week of 2026-11-06 is re-stamped to version 5 (testing#11); it renders as three parts once home runs a release with server#872."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3018
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 874
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 873
+    }
+  ]
+}
