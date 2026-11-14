@@ -1,0 +1,29 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFLZxg2SxouWLW9Ldn",
+  "ended": "2026-11-14",
+  "epics": [
+    "CONVEYOR"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2946
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 2944
+    }
+  ],
+  "did": "Built CONVEYOR1's phone half against server#839 (#2944: the take-conveyor model, words and runtime, home-link take stations on the voice lane, the Takes on home station line, and contracts for the three conveyor routes), reshaping it twice as the server changed: kebab slugs and POST-with-from, then moves ordered by seq, never by clock. Placed the server table in the ledger with My data's receipt words, 'each move it made along the conveyor', ahead of server#839 (#2946). Drove 10 independent fresh-context reviews across both PRs' heads, each recorded on its PR; fixes covered control characters, the 409 re-read of station and history, chain-only cascades, off-the-conveyor JSON 404 versus plain-text route 404, a 422 on `at` held owed, and a move another device made standing as taken. Built CONVEYOR2 (the conveyor page) on branch conveyor2-page and wrote CONVEYOR3's plan and shapes on #2875. Filed #2941 (kind:defect): www's build hides a build-audience refusal behind ENOENT scandir. Calls made: C240 and C241 (on main with #2944), and C242 (on branch conveyor2-page, not yet on main).",
+  "calls": [],
+  "left": [
+    "CONVEYOR2 #2874: branch conveyor2-page (12b5ee9), to rebase onto main and open; align its page.moved words with 'Home hasn't taken this move yet.'; offer moves only on rows home names a station for (noted on #2874).",
+    "CONVEYOR3 #2875: the mailbox pickup/picked folders are built (#2959, queued to merge, then the Worker deploys), then the server half, then the routine; plan and shapes on #2875.",
+    "#2873 stays open until CONVEYOR2 lets the owner make a move.",
+    "#2941 unfixed (a one-line closeBundle guard)."
+  ],
+  "waits": []
+}
