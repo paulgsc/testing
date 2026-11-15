@@ -2,6 +2,33 @@
   "schema": "some-ui.cards-index/1",
   "essays": [
     {
+      "key": "how-essays-4-after-the-render-spoken-2026-11-15"
+    },
+    {
+      "key": "how-essays-3-the-footage-spoken-2026-11-15"
+    },
+    {
+      "key": "how-essays-2-home-picks-it-up-spoken-2026-11-15"
+    },
+    {
+      "key": "how-essays-1-the-weeks-file-spoken-2026-11-15"
+    },
+    {
+      "key": "home-deploy-3-on-demand-spoken-2026-11-15"
+    },
+    {
+      "key": "home-deploy-2-after-the-deploy-spoken-2026-11-15"
+    },
+    {
+      "key": "home-deploy-1-one-release-spoken-2026-11-15"
+    },
+    {
+      "key": "rust-scratchpad-spoken-2026-11-15"
+    },
+    {
+      "key": "nixos-upgrade-spoken-2026-11-15"
+    },
+    {
       "key": "how-essays-4-after-the-render-2026-11-14"
     },
     {

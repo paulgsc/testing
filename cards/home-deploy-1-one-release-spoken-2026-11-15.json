@@ -1,0 +1,518 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's deploy, 1: one release, one command",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 51600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE RELEASE",
+            "title": "Home runs one release: every image, by digest",
+            "bar": "deploy/home/release.json on main",
+            "lines": [
+              {
+                "keyword": "\"serial\": 11,",
+                "comment": "  # one number per release"
+              },
+              {
+                "keyword": "\"server_commit\": \"e7a643e…\",",
+                "comment": "  # main's commit it was formed on"
+              },
+              {
+                "keyword": "\"services\": {\"file-host\": {\"image\": \"pgathondu/server:<sha>@sha256:<digest>\"}, …"
+              },
+              {
+                "comment": "# 18 services, third-party ones and render included",
+                "badge": "main"
+              },
+              {
+                "comment": "# CI forms it on main from what is published; home only reads it"
+              },
+              {
+                "comment": "# a tag can move under a release; a digest can't, and every entry has one"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on how home, the server on your own network, takes a new version of its software: part one of three on home's deploy, about the release and the one command that applies it. Reach for it when you've merged server changes and want them running on home, or when a deploy ended in a way you don't recognize. By the end, you'll be able to run make home-deploy, follow its seven steps, read its last line, and retry a release that failed. It is as of November fifteenth, twenty twenty-six, checked against the server repository, which holds home's services and its deploy. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 46800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE RELEASE",
+            "title": "Home runs one release: every image, by digest",
+            "bar": "deploy/home/release.json on main",
+            "lines": [
+              {
+                "keyword": "\"serial\": 11,",
+                "comment": "  # one number per release"
+              },
+              {
+                "keyword": "\"server_commit\": \"e7a643e…\",",
+                "comment": "  # main's commit it was formed on"
+              },
+              {
+                "keyword": "\"services\": {\"file-host\": {\"image\": \"pgathondu/server:<sha>@sha256:<digest>\"}, …"
+              },
+              {
+                "comment": "# 18 services, third-party ones and render included",
+                "badge": "main"
+              },
+              {
+                "comment": "# CI forms it on main from what is published; home only reads it"
+              },
+              {
+                "comment": "# a tag can move under a release; a digest can't, and every entry has one"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. The release: one file that names every image home runs.",
+        "narration": "Everything home runs is named in one file, release dot json, under deploy slash home in the server repository. A release carries a serial, one number per release, and the commit of main it was formed on. Under services it lists all eighteen services, third-party ones and the renderer included, each as an image pinned by its digest, a hash of the image's exact bytes. Continuous integration forms this file on main from what is published, and home only reads it. The digest is the point: a tag can move under a release, and a digest can't, so every entry has one."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 50800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · make home-deploy, STEPS 1-3",
+            "title": "Find the release, and check it before touching anything",
+            "steps": [
+              {
+                "badge": "you",
+                "label": "You run it",
+                "command": "make home-deploy",
+                "note": "It runs envctl deploy. Home has no python, and needs none."
+              },
+              {
+                "badge": "main",
+                "label": "1 · Resolve",
+                "command": "git fetch origin main",
+                "note": "The release at main. The checkout's working tree is never touched."
+              },
+              {
+                "badge": "main",
+                "label": "2 · Pull and check",
+                "command": "every image, by digest",
+                "note": "Each io.paulgsc.requires met by another image's provides. Unmet: nothing replaced."
+              },
+              {
+                "badge": "main",
+                "label": "3 · Nothing differs?",
+                "command": "stop",
+                "note": "Every service on its image and ready: nothing restarts."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. Steps one to three: find the release, and check it before touching anything.",
+        "narration": "On home, you run make home-deploy, and that is your only step. It runs envctl deploy; envctl is a tool built from your checkout of the server repository, so home needs no Python. Step one resolves the release: it fetches origin main and reads the release there, never touching the working tree of your checkout. Step two pulls every image by its digest and checks the set: each image's requires label has to be met by another image's provides label. If one is unmet, nothing is replaced. Step three asks whether anything differs. If every service is already on its image and ready, the deploy stops, and nothing restarts."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 49200,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · make home-deploy, STEPS 4-7",
+            "title": "Bring it up, wait for every service, or put it all back",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "4 · Up from its own tree",
+                "command": "releases/<commit>/",
+                "note": "A worktree at the release's commit. up -d recreates only what changed."
+              },
+              {
+                "badge": "main",
+                "label": "5 · file_host migrates",
+                "command": "as it starts",
+                "note": "A checked backup first, then every pending migration. None pending: nothing done."
+              },
+              {
+                "badge": "main",
+                "label": "6 · Gate, up to 360 s",
+                "command": "every service",
+                "note": "Healthy, a one-shot exited 0, or running 60 s with no restart."
+              },
+              {
+                "badge": "main",
+                "label": "7 · Roll back whole",
+                "command": "the last release",
+                "note": "Its tree and its images, through the same up and gate. The failed one is remembered."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. Steps four to seven: bring it up, wait for every service, or put it all back.",
+        "narration": "Step four brings the release up from its own tree, a git worktree at the release's commit, and recreates only what changed. Step five happens inside file host, the server program that holds home's database, as it starts: a checked backup, then every pending migration. Step six is the gate: for up to three hundred sixty seconds, every service has to be healthy, a one-shot that exited zero, or running sixty seconds with no restart. If not, step seven rolls back the whole release to the last one, its tree and its images, through the same gate. The failed one is remembered."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 53600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT COMES FROM WHERE",
+            "title": "The release brings its own files; a few still come from the checkout",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Compose files, deploy/home/",
+                "command": "the release's worktree",
+                "note": "Under ~/.local/state/server-deploy/releases/, mounted read-only."
+              },
+              {
+                "badge": "main",
+                "task": "State git doesn't hold",
+                "command": "the checkout (STATE_ROOT)",
+                "note": "file_host's data/, logs/, config/; Grafana's built dashboards."
+              },
+              {
+                "badge": "main",
+                "task": "A main with only code or docs",
+                "command": "nothing restarts",
+                "note": "No image and no compose tree moved: it is the release already applied."
+              },
+              {
+                "badge": "you",
+                "task": "A release needs a newer envctl",
+                "command": "git pull, then again",
+                "note": "envctl is built from the checkout: its preflight fails and the release is put back."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. What comes from the release, and what still comes from your checkout.",
+        "narration": "A release brings its own files. The compose files under deploy slash home come from the release's worktree, under dot local slash state slash server-deploy slash releases, mounted read-only. State that git doesn't hold stays in your checkout, the state root: file host's data, logs and config folders, and Grafana's built dashboards. Because of that split, a main that changed only code or docs restarts nothing: no image and no compose tree moved, so it is the release already applied. One case is yours. envctl is built from the checkout, so a release that needs a newer envctl fails its preflight, and the release is put back. Run git pull in the checkout, then make home-deploy again."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 40000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · STEP 5, CLOSER",
+            "title": "file_host backs up, checks, then migrates, on every start",
+            "bar": "file_host, as it starts",
+            "lines": [
+              {
+                "comment": "# nothing pending: nothing done, no backup taken"
+              },
+              {
+                "keyword": "VACUUM INTO ${STORAGE}/backups/hopium-<UTC>-before-<version>.db",
+                "badge": "main"
+              },
+              {
+                "comment": "# the copy is checked, then every pending migration runs; the newest 5 are kept"
+              },
+              {
+                "comment": "# a missing or never-migrated database is refused: an unmounted volume"
+              },
+              {
+                "comment": "# any refusal ends the process: no build serves a schema half applied"
+              },
+              {
+                "comment": "# the same on every start: a reboot, a restart, make up, make dev"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. Step five, closer: a backup before every migration.",
+        "narration": "Each time file host starts with migrations pending, it writes a copy of the database into the backups folder under storage, named with the time and the version it was taken before. The copy is checked, then the migrations run, and the newest five backups are kept. With nothing pending, nothing is done. A missing or never-migrated database means an unmounted volume, and is refused. Any refusal ends the process, so no build serves a schema half applied. This happens on every start, not only a deploy."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 49200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · EXIT CODES",
+            "title": "What make home-deploy's last line means",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Deployed, or nothing to do",
+                "command": "exit 0"
+              },
+              {
+                "badge": "main",
+                "task": "Not deployed",
+                "command": "exit 1",
+                "note": "main unreadable, a pull failed, or the set doesn't fit. Nothing replaced."
+              },
+              {
+                "badge": "main",
+                "task": "Rolled back",
+                "command": "exit 2",
+                "note": "The release didn't come up; the previous one serves."
+              },
+              {
+                "badge": "you",
+                "task": "Nothing ready: look",
+                "command": "exit 3",
+                "note": "The previous release failed too, there was none, or nothing changed: a dependency or the host."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. Reading the last line: four exit codes.",
+        "narration": "The last line of make home-deploy is an exit code, and each one says what to do next. Zero means deployed, or nothing to do. One means not deployed: main couldn't be read, a pull failed, or the set of images doesn't fit together. Nothing was replaced, so home still runs what it ran. Two means rolled back: the new release didn't come up, and the previous one serves. Three is the one that needs you, because nothing is ready. The previous release failed too, or there was none, or nothing had changed, which points at a dependency or the host itself. On a three, look before you run anything else."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 51200,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE RECORD",
+            "title": "What the deploy remembers, and how to retry",
+            "bar": "~/.local/state/server-deploy/",
+            "lines": [
+              {
+                "keyword": "applied.json",
+                "comment": "          # the release last applied: what make up runs"
+              },
+              {
+                "keyword": "failed-releases.json",
+                "comment": "  # skipped by its key until another forms"
+              },
+              {
+                "keyword": "releases/",
+                "comment": "             # each release's worktree"
+              },
+              {
+                "comment": "# key: serial + compose trees, so a fix to those on main is tried by itself"
+              },
+              {
+                "comment": "# after fixing the host, or envctl with a git pull: remove its entry",
+                "badge": "you"
+              },
+              {
+                "comment": "# one pass at a time; the on-demand unit writes here too"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. What the deploy remembers, and how to retry.",
+        "narration": "The deploy keeps its record under dot local slash state slash server-deploy. applied dot json names the release last applied, and it is what make up runs. failed-releases dot json lists the releases that failed, each skipped by its key until another forms. The releases folder holds each release's worktree. A key is the serial plus the compose trees, so a fix to those on main makes a new key, and is tried by itself. If the fault was the host, or envctl fixed with a git pull, remove that release's entry from failed-releases dot json, then deploy again. One pass runs at a time, and the on-demand unit, in part three, writes here too."
+      }
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 40400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · HONEST LIMITS",
+            "title": "What the deploy doesn't do",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "Zero downtime",
+                "command": "old stops, new starts",
+                "note": "The old container stops before the new one proves itself. Two behind Caddy: #409, AS20 #566."
+              },
+              {
+                "badge": "gap",
+                "task": "A service a release drops",
+                "command": "keeps running",
+                "note": "up doesn't remove it, and a rollback doesn't stop one the failed release added (#861)."
+              },
+              {
+                "badge": "main",
+                "task": "The database",
+                "command": "never restored",
+                "note": "A migration that ran stays applied. Part 2 has the restore by hand."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eight. Honest limits: what the deploy doesn't do.",
+        "narration": "Three limits to know. First, there's no zero-downtime switch: the old container stops before the new one proves itself. Running two behind Caddy, the proxy in front of them, is planned, and tracked in issues numbered on the card. Second, a service a release drops keeps running, because up doesn't remove it, and a rollback doesn't stop a service the failed release added. Third, the database is never restored: a migration that ran stays applied, even after a rollback. Part two of this series shows the restore by hand."
+      }
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter nine. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27600,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "the code"
+            ],
+            "wins": "the README"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter ten. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are the server README's section on deploying to home, and the code, and when they disagree, the README wins, because it is the one meant to be kept current. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · make home-deploy, STEPS 1-3",
+            "title": "Find the release, and check it before touching anything",
+            "steps": [
+              {
+                "badge": "you",
+                "label": "You run it",
+                "command": "make home-deploy",
+                "note": "It runs envctl deploy. Home has no python, and needs none."
+              },
+              {
+                "badge": "main",
+                "label": "1 · Resolve",
+                "command": "git fetch origin main",
+                "note": "The release at main. The checkout's working tree is never touched."
+              },
+              {
+                "badge": "main",
+                "label": "2 · Pull and check",
+                "command": "every image, by digest",
+                "note": "Each io.paulgsc.requires met by another image's provides. Unmet: nothing replaced."
+              },
+              {
+                "badge": "main",
+                "label": "3 · Nothing differs?",
+                "command": "stop",
+                "note": "Every service on its image and ready: nothing restarts."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's one release and one command. Next time, run make home-deploy on home and read its last line: zero means done. If it ends in two or three, start with the deploy's record under dot local slash state slash server-deploy, and part two of this series for what comes after the deploy."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@37d731c"
+    ],
+    "date": "2026-11-15"
+  }
+}

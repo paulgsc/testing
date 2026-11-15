@@ -1,0 +1,569 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 4: after the render, and the cards",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 60000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · AFTER THE RENDER",
+            "title": "From home's drive to YouTube, by your hand",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Studio › Renders",
+                "command": "GET /renders",
+                "note": "Each job waiting, rendering, paused or done; a part as part k of n."
+              },
+              {
+                "badge": "you",
+                "label": "Watch it on the phone",
+                "command": "the call's videos",
+                "note": "From home, on a paired phone."
+              },
+              {
+                "badge": "you",
+                "label": "Share it to YouTube",
+                "command": "the YouTube app",
+                "note": "The chapters from description.txt go in its description."
+              },
+              {
+                "badge": "you",
+                "label": "Save its link",
+                "note": "Home keeps it with the week."
+              },
+              {
+                "badge": "you",
+                "label": "Let it go",
+                "command": "My data",
+                "note": "Two steps: the video, then the rest of its folder."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on what happens after a render, and on cards essays like this one: part four of four on how the essays are made. Reach for it when a video is ready and you want to publish it and free home's space, or when you want to make a cards essay of your own. By the end, you'll know the steps from Studio to YouTube, what letting go deletes and keeps, how a cards essay is made and how it differs from the weekly call, and which parts are a model's words and which are code. It is as of November fifteenth, twenty twenty-six, checked against the some-ui repository, which holds the app and the renderer, and the server repository, which holds home's services. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 42000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · AFTER THE RENDER",
+            "title": "From home's drive to YouTube, by your hand",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Studio › Renders",
+                "command": "GET /renders",
+                "note": "Each job waiting, rendering, paused or done; a part as part k of n."
+              },
+              {
+                "badge": "you",
+                "label": "Watch it on the phone",
+                "command": "the call's videos",
+                "note": "From home, on a paired phone."
+              },
+              {
+                "badge": "you",
+                "label": "Share it to YouTube",
+                "command": "the YouTube app",
+                "note": "The chapters from description.txt go in its description."
+              },
+              {
+                "badge": "you",
+                "label": "Save its link",
+                "note": "Home keeps it with the week."
+              },
+              {
+                "badge": "you",
+                "label": "Let it go",
+                "command": "My data",
+                "note": "Two steps: the video, then the rest of its folder."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. After the render: from home's drive to YouTube, by your hand.",
+        "narration": "Studio, under Renders, lists each job from GET slash renders: waiting, rendering, paused or done, and a part as part k of n. The rest is yours. Watch the video on your phone; it plays from home, on a paired phone. Share it to YouTube with the YouTube app, and put the chapters from description dot txt in its description. Save its link, and home keeps it with the week. Then let it go, under My data, in two steps: the video first, then the rest of its folder."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 40400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · LETTING GO",
+            "title": "What a let go deletes, and what it keeps",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The receipt",
+                "command": "first, then the files",
+                "note": "Committed before the drive is touched; a step cut short finishes next time."
+              },
+              {
+                "badge": "main",
+                "task": "The video's step",
+                "command": "out of the worker's input",
+                "note": "So it is never rendered again, then the video goes."
+              },
+              {
+                "badge": "main",
+                "task": "One part of a series",
+                "command": "<key>.let-go",
+                "note": "The week's file goes with its last part."
+              },
+              {
+                "badge": "main",
+                "task": "The week's data",
+                "command": "stays in call_week",
+                "note": "As first served: the video can always be made again from it."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. Letting go: what it deletes, and what it keeps.",
+        "narration": "A let go commits its receipt first, before the drive is touched, so a step cut short finishes the next time. The video's step takes it out of the worker's input first, so it is never rendered again, and then the video goes. One part of a series is let go as its key dot let-go, and the week's file goes with its last part. The week's data stays in the call week table, as first served, so the video can always be made again from it."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 48000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · A CARDS ESSAY, LIKE THIS ONE",
+            "title": "The same home, a simpler path",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A session writes the cut list",
+                "command": "CARDS-ROUTINE.md",
+                "note": "Chooses the subject, the cards, each claim's badge, and the stamp."
+              },
+              {
+                "badge": "main",
+                "label": "Check the folder",
+                "command": "render cards-check",
+                "note": "Its index, and each essay as a cut list in a series home holds."
+              },
+              {
+                "badge": "main",
+                "label": "Home keeps it",
+                "command": "cards_essays, hourly",
+                "note": "cards/index.json read as the call's is; each essay kept once."
+              },
+              {
+                "badge": "main",
+                "label": "Draw and join",
+                "command": "record:cards",
+                "note": "Kokoro says each line; each card is drawn on www's burn-ins page in Chromium, joined by ffmpeg."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. A cards essay, like this one: the same home, a simpler path.",
+        "narration": "A cards essay takes a simpler path through the same home. A session follows CARDS-ROUTINE dot md and writes the cut list: it chooses the subject, the cards, each claim's badge and the stamp, and writes every word that is said. Render cards-check checks the folder: its index, and each essay as a cut list in a series home holds. Home's cards essays worker reads cards slash index dot json hourly, as it reads the call's, and keeps each essay once. Then record cards has Kokoro say each line, draws each card on www's burn-ins page in Chromium, and joins them with ffmpeg."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 47600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THIS VIDEO'S FILE",
+            "title": "A cards essay is its cut list",
+            "bar": "testing cards/how-essays-4-after-the-render-spoken-2026-11-15.json",
+            "lines": [
+              {
+                "keyword": "\"schema\": \"some-ui.cut-list/2\","
+              },
+              {
+                "keyword": "\"series\": {\"id\": \"cheat-sheet\", \"version\": 2},"
+              },
+              {
+                "keyword": "\"picture\": {\"kind\": \"card\"}, \"durationMs\": 60000,",
+                "comment": "  # the intro's card"
+              },
+              {
+                "comment": "# spoken: each card holds for its words' take; durationMs, a guess",
+                "badge": "main"
+              },
+              {
+                "comment": "# cards: flow, cheat-sheet, terminal, and a legend and rule to close"
+              },
+              {
+                "keyword": "\"stamp\": {\"sources\": [\"paulgsc/server@743b822\", …]}"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. This video's own file.",
+        "narration": "A cards essay is its cut list, and this is the one you are watching. Its schema is some-ui dot cut-list slash two, and its series is cheat-sheet, version two, the spoken one. Version one essays are silent, from before this routine; they still play. Each scene is a card picture with a spoken field: the intro first, then a chapter line and narration for each card, and a close. Each duration is written as about how long the words take, and the take sets the real length. The cards are flow, cheat-sheet and terminal, with a legend and a rule to close, and the stamp names the commits read."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 36000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE CALL, AND A CARDS ESSAY, 1 OF 2",
+            "title": "Where the two paths differ",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Its file",
+                "command": "call/<from>.json | cards/<key>.json"
+              },
+              {
+                "badge": "main",
+                "task": "Who lays out the scenes",
+                "command": "the template | the session",
+                "note": "A card's look is still code's: flow-v1, sheet-v1, terminal-v1."
+              },
+              {
+                "badge": "main",
+                "task": "Voice",
+                "command": "Kokoro | Kokoro",
+                "note": "A cards essay's lines are said too; the takes set its length."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. The call and a cards essay, side by side: files, layout and voice.",
+        "narration": "Where the two paths differ. The call's file is call slash its from date dot json; an essay's is cards slash its key dot json. The template lays out the call's scenes, and a session lays out an essay's, though a card's look is still code's: flow v1, sheet v1 and terminal v1. And both are said by Kokoro: a cards essay's lines are said too, and the takes set its length."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 41200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE CALL, AND A CARDS ESSAY, 2 OF 2",
+            "title": "Where they're drawn, what's refused, what's let go",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Drawn on",
+                "command": "/call | /burn-ins"
+              },
+              {
+                "badge": "main",
+                "task": "Too long for a frame",
+                "command": "paged | refused",
+                "note": "A card that doesn't fit is refused when it is drawn; cards-check doesn't test fit."
+              },
+              {
+                "badge": "gap",
+                "task": "Home's copy let go",
+                "command": "after a link | not yet",
+                "note": "For a cards essay, a later story: paulgsc/some-ui#2999."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. The call and a cards essay, side by side: drawing, fit and letting go.",
+        "narration": "The call is drawn on slash call, and a cards essay on slash burn-ins. A scene too long for a frame is paged in the call, and refused in an essay: a card that doesn't fit is refused when it is drawn, and cards-check doesn't test fit. So render an essay once before it merges. Letting go of home's copy works for the call after you save a link, and not yet for a cards essay. That is a known gap, a later story."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 38800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE WORKER'S OTHER JOBS",
+            "title": "A line each, for contrast",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A Rust Rounds essay",
+                "command": "record:essay",
+                "note": "The tutor in Kokoro's voice; each answer your own take, played whole."
+              },
+              {
+                "badge": "main",
+                "task": "Playoff Delta",
+                "command": "record:playoff-delta",
+                "note": "A week's fill; only a version voiced by home's speaker is made here."
+              },
+              {
+                "badge": "main",
+                "task": "A template's preview",
+                "command": "record:preview",
+                "note": "Its sample, cut to 15 to 30 s; removed a day after it is made."
+              },
+              {
+                "badge": "main",
+                "task": "A clip's walk",
+                "command": "motion walk",
+                "note": "Stills of an app's scripted walk; no voice and no video."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. The worker's other jobs, a line each, for contrast.",
+        "narration": "A Rust Rounds essay, from record essay, is the tutor in Kokoro's voice, with each answer your own take, played whole. Playoff Delta, from record playoff-delta, is a week's fill; only a version voiced by home's speaker is made here. A template's preview, from record preview, is its sample, cut to fifteen to thirty seconds, and removed a day after it is made. And a clip's walk, from motion walk, is stills of an app's scripted walk, with no voice and no video."
+      }
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · CODE, OR A MODEL'S WORDS, 1 OF 2",
+            "title": "Where a model's words come in",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The week's words, an essay's cards and words",
+                "command": "a model: Claude",
+                "note": "Checked for shape by code, never for truth."
+              },
+              {
+                "badge": "main",
+                "task": "The week's facts",
+                "command": "call-facts",
+                "note": "Read from GitHub and git history, none of it judged."
+              },
+              {
+                "badge": "main",
+                "task": "Shape, order, intro, chapters",
+                "command": "code",
+                "note": "The template, pinned by version."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eight. Code, or a model's words: where a model comes in.",
+        "narration": "A model, Claude, writes the week's words, and an essay's cards and words. Code checks them for shape, never for truth. The week's facts come from call-facts, read from GitHub and git history, none of it judged. And shape, order, the intro and the chapters are code: the template, pinned by version."
+      }
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · CODE, OR A MODEL'S WORDS, 2 OF 2",
+            "title": "Everything after the words is deterministic",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Pages, parts, timing",
+                "command": "code",
+                "note": "CF1, callParts, each take's length."
+              },
+              {
+                "badge": "main",
+                "task": "Audio",
+                "command": "Kokoro, seeded per line",
+                "note": "A model too, but the same words give the same bytes."
+              },
+              {
+                "badge": "main",
+                "task": "Pictures and the video",
+                "command": "Chromium, ffmpeg",
+                "note": "The same week on the same image gives the same bytes."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter nine. Everything after the words is deterministic.",
+        "narration": "After the words, everything is deterministic. Code does pages, parts and timing: CF1, call parts, and each take's length. Audio is Kokoro, a model too, but seeded per line, so the same words give the same bytes. Pictures and the video are Chromium and ffmpeg, and the same week on the same image gives the same bytes."
+      }
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter ten. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24000,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "video-render README",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eleven. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are the video-render README and the code, and when they disagree, the code wins, because it is what actually runs. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24400,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · AFTER THE RENDER",
+            "title": "From home's drive to YouTube, by your hand",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Studio › Renders",
+                "command": "GET /renders",
+                "note": "Each job waiting, rendering, paused or done; a part as part k of n."
+              },
+              {
+                "badge": "you",
+                "label": "Watch it on the phone",
+                "command": "the call's videos",
+                "note": "From home, on a paired phone."
+              },
+              {
+                "badge": "you",
+                "label": "Share it to YouTube",
+                "command": "the YouTube app",
+                "note": "The chapters from description.txt go in its description."
+              },
+              {
+                "badge": "you",
+                "label": "Save its link",
+                "note": "Home keeps it with the week."
+              },
+              {
+                "badge": "you",
+                "label": "Let it go",
+                "command": "My data",
+                "note": "Two steps: the video, then the rest of its folder."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's the end of the series. Next time a video is ready, start in Studio, under Renders: watch it, share it, save its link, then let it go. If a render failed, its failed log and part two of this series say why, and CARDS-ROUTINE dot md in some-ui is where a cards essay of your own starts."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/server@743b822",
+      "paulgsc/some-ui@bb48f8c"
+    ],
+    "date": "2026-11-15"
+  }
+}

@@ -1,0 +1,709 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 1: the week's file",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 51600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · WHO MAKES A CALL",
+            "title": "Four hands: a session writes, code checks, home makes, you watch",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A scheduled session",
+                "command": "CALL-ROUTINE.md",
+                "note": "Writes the week as call/<from>.json in paulgsc/testing. Its part ends there."
+              },
+              {
+                "badge": "main",
+                "label": "Code checks it",
+                "command": "render call-check",
+                "note": "Refuses a week the template can't draw, before it merges."
+              },
+              {
+                "badge": "main",
+                "label": "Home makes the video",
+                "command": "call_weeks, then render",
+                "note": "Reads the index hourly, voices the week with Kokoro, records and renders it."
+              },
+              {
+                "badge": "you",
+                "label": "You watch it",
+                "command": "Studio › Renders",
+                "note": "Then share it to YouTube, save its link, and let home's copy go."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on how the weekly call is made: part one of four on how the essays are made, about the week's file. The weekly call is a video, made each week, that says what moved, what landed, and what waits on you. Reach for it when a week's video is missing or wrong. By the end, you'll know who makes each part, which days a week covers, what the file holds, and what has to pass before it merges. It is as of November fifteenth, twenty twenty-six, checked against some-ui, which holds the app and the renderer, and testing, which holds the weeks. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 39200,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · WHO MAKES A CALL",
+            "title": "Four hands: a session writes, code checks, home makes, you watch",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A scheduled session",
+                "command": "CALL-ROUTINE.md",
+                "note": "Writes the week as call/<from>.json in paulgsc/testing. Its part ends there."
+              },
+              {
+                "badge": "main",
+                "label": "Code checks it",
+                "command": "render call-check",
+                "note": "Refuses a week the template can't draw, before it merges."
+              },
+              {
+                "badge": "main",
+                "label": "Home makes the video",
+                "command": "call_weeks, then render",
+                "note": "Reads the index hourly, voices the week with Kokoro, records and renders it."
+              },
+              {
+                "badge": "you",
+                "label": "You watch it",
+                "command": "Studio › Renders",
+                "note": "Then share it to YouTube, save its link, and let home's copy go."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. Four hands: a session writes, code checks, home makes, you watch.",
+        "narration": "A scheduled Claude session follows CALL-ROUTINE dot md and writes the week as one file in the testing repository. Its part ends there. Code checks it: render call-check refuses a week the template can't draw, before it merges. Home, the server on your own network, reads the index hourly, voices the week with Kokoro, its speech model, and renders it. Your part is last: watch it in Studio, under Renders, share it to YouTube, save its link, and let home's copy go."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHICH DAYS",
+            "title": "A week is seven days, ending the day before the run",
+            "bar": "CALL-ROUTINE.md, The week",
+            "lines": [
+              {
+                "comment": "# the doc's run: every Friday; the week: Friday to Thursday"
+              },
+              {
+                "comment": "# a run on 2026-11-13 covers 2026-11-06 to 2026-11-12"
+              },
+              {
+                "comment": "# a missed run: from the day after the last week's to, up to 14 days"
+              },
+              {
+                "keyword": "call/2026-11-06.json",
+                "comment": "  # the newest week in testing",
+                "badge": "main"
+              },
+              {
+                "comment": "# it runs Nov 6 to Nov 13, eight days; its open says the run moved to Saturday"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. Which days a week covers.",
+        "narration": "A week is seven days, ending the day before the run. The run is every Friday, so a run on November thirteenth covers the sixth to the twelfth. After a missed run, the next week starts the day after the last one ended, and covers up to fourteen days. The week of November sixth shows the edge: it runs eight days, and its opening says the run moved to Saturday."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT call-facts READS",
+            "title": "render call-facts reads the week; nothing in it is judged",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Merged pull requests",
+                "command": "call-facts --from --to",
+                "note": "Each with its Change-Kind, read from GitHub through gh."
+              },
+              {
+                "badge": "main",
+                "task": "Calls in the record",
+                "command": "docs/calls/",
+                "note": "Those that reached main that week, or were agreed to in it, with who made each."
+              },
+              {
+                "badge": "main",
+                "task": "Promises",
+                "command": "Promise: and Relates:",
+                "note": "Commit trailers: each promise declared or amended that week."
+              },
+              {
+                "badge": "main",
+                "task": "Asks and epics",
+                "command": "ask blocks, Where we are",
+                "note": "Each open ask read or refused with why; each moved epic's Why and Where we are."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. What call-facts reads: the facts, none of them judged.",
+        "narration": "Before any words, render call-facts reads the week, from and to. Merged pull requests, each with its Change-Kind, story or defect, from GitHub. Calls in the record, the choices made in a gray area: those that reached main that week or were agreed to in it, with who made each. Promises, from the Promise and Relates commit trailers. And asks, the decisions only you can make, plus each moved epic's Why and Where we are."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT THE SESSION READS ITSELF",
+            "title": "Beside the facts: the notes, and the ledger",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The facts",
+                "command": "facts.json, in its scratchpad",
+                "note": "call-facts' output, handed to the session that writes the week."
+              },
+              {
+                "badge": "main",
+                "task": "Session notes",
+                "command": "testing's sessions/",
+                "note": "Those whose ended falls in the week; a note's left says what is next."
+              },
+              {
+                "badge": "main",
+                "task": "The Residual Ledger",
+                "command": "its items",
+                "note": "Every item not done: the board."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. What the session reads for itself, beside the facts.",
+        "narration": "The session is handed call-facts' output as facts dot json. Beside it, it reads session notes in testing's sessions folder, those ended in the week, where a note's left says what is next. And it reads the Residual Ledger, your private index of every story: every item not done becomes the board."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 30800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE FILE'S HEAD",
+            "title": "What a week says about itself before any words",
+            "bar": "paulgsc/testing call/2026-11-06.json",
+            "lines": [
+              {
+                "keyword": "\"schema\": \"some-ui.call-week/1\","
+              },
+              {
+                "keyword": "\"template\": {\"id\": \"conference-call\", \"version\": 5},",
+                "comment": "  # the shape it is drawn in"
+              },
+              {
+                "keyword": "\"week\": {\"from\": \"2026-11-06\", \"to\": \"2026-11-13\"},"
+              },
+              {
+                "keyword": "\"read\": {\"some-ui\": \"6c38f04…\", \"server\": \"3e8910c…\"},",
+                "comment": "  # each main it read"
+              },
+              {
+                "comment": "# then open, board, moved, done, gray, mine, asks, later, close",
+                "badge": "main"
+              },
+              {
+                "comment": "# a strict schema: a key it doesn't name is refused"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. The file's head: what a week says about itself.",
+        "narration": "Every week file opens the same way. Its schema, some-ui dot call-week slash one. Its template, conference-call version five, the shape it is drawn in. Its week, from and to. And read, the commit of each main it read. Then the sections: open, board, moved, done, gray, mine, asks, later and close. The schema is strict: a key it doesn't name is refused."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE SECTIONS, 1 OF 2",
+            "title": "The week, the board, where epics stand, what landed",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "open · The week",
+                "command": "said",
+                "note": "A few spoken sentences: which week, and what merged."
+              },
+              {
+                "badge": "main",
+                "task": "board · The board",
+                "command": "ledger, title, status, waitsOnYou",
+                "note": "A row per ledger item not done, its title shortened to fit a card."
+              },
+              {
+                "badge": "main",
+                "task": "moved · Where things stand",
+                "command": "tag, epic, said, landed, next",
+                "note": "A scene per epic that moved. Every pull request it says landed is in a batch."
+              },
+              {
+                "badge": "main",
+                "task": "done · What landed",
+                "command": "title, said, pulls",
+                "note": "Every merged pull request, in batches the session groups by story. Bots' left out."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. The sections, part one: the week, the board, the epics, what landed.",
+        "narration": "Open is a few spoken sentences: which week, and what merged. Board is a row per ledger item not done, with its status and whether it waits on you. Moved is a scene per epic that moved, with what landed and what is next; every pull request it says landed is in a batch. Done is every merged pull request, in batches grouped by story, with bots' left out."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE SECTIONS, 2 OF 2",
+            "title": "Gray-area calls, calls made without you, what waits on you",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "gray · Calls in a gray area",
+                "command": "promise, said, refs",
+                "note": "Each promise declared or amended, said as what it now holds."
+              },
+              {
+                "badge": "main",
+                "task": "mine · Calls made without you",
+                "command": "options, chose, why, undo",
+                "note": "And whose call: Claude's alone, Claude's with you agreeing, or yours."
+              },
+              {
+                "badge": "main",
+                "task": "asks · Waiting on you",
+                "command": "question, whyYours, options",
+                "note": "Two to four options, each with what it unblocks; one may be recommended."
+              },
+              {
+                "badge": "main",
+                "task": "later, then close",
+                "command": "question, refs; said",
+                "note": "later is shown, not voiced; the close says how many asks are open."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. The sections, part two: calls, and what waits on you.",
+        "narration": "Gray holds each promise declared or amended, said as what it now holds. Mine holds calls made without you: the options, the choice, why, how to undo it, and whose call it was. Asks holds each question that waits on you, why it is yours, and two to four options with what each unblocks. Later is shown, not voiced. The close says how many asks are open."
+      }
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE REAL WEEK, COUNTED",
+            "title": "The week of Nov 6, section by section",
+            "bar": "call/2026-11-06.json, 72,952 bytes",
+            "lines": [
+              {
+                "keyword": "board    48",
+                "comment": "  # rows: 23 decide, the rest open or doing",
+                "badge": "main"
+              },
+              {
+                "keyword": "moved    12",
+                "comment": "  # epics that moved"
+              },
+              {
+                "keyword": "done     12",
+                "comment": "  # batches, 153 pull requests in them"
+              },
+              {
+                "keyword": "gray      8",
+                "comment": "  # promises; mine: 8 calls made without you"
+              },
+              {
+                "keyword": "asks      4",
+                "comment": "  # questions; later: 20 steps shown, not voiced"
+              },
+              {
+                "comment": "# its open: 261 pull requests merged by hand, 23 of them defects"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eight. A real week, counted.",
+        "narration": "The week of November sixth, by the numbers. The board had forty-eight rows, twenty-three waiting on your decision. Twelve epics moved. Twelve batches held a hundred fifty-three pull requests. Eight promises, eight calls made without you, four asks, and twenty later steps. Its open said two hundred sixty-one pull requests were merged by hand, twenty-three of them defects."
+      }
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHO WRITES WHAT",
+            "title": "The model fills the values; code owns the shape",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Every said, title and batch",
+                "command": "the session (Claude)",
+                "note": "Plain spoken English in your terms; pull requests grouped by story."
+              },
+              {
+                "badge": "main",
+                "task": "The locked intro",
+                "command": "code: callIntro",
+                "note": "Who wrote it, what drew it, that every voice is synthetic. Never the fill."
+              },
+              {
+                "badge": "main",
+                "task": "Chapters, brand, order, voices",
+                "command": "code: the template",
+                "note": "The routine writes none of them."
+              },
+              {
+                "badge": "main",
+                "task": "Pages and parts",
+                "command": "code: CF1, callParts",
+                "note": "A scene too long is paged, a week too long is split; nothing is cut."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter nine. Who writes what: the model fills the values, code owns the shape.",
+        "narration": "The session, Claude, writes every said, title and batch, in plain spoken English, in your terms. Code writes the rest. The locked intro, callIntro, says who wrote the week, what drew it, and that every voice is synthetic; it is never part of the fill. The template sets chapters, brand, order and voices. And code pages a scene too long, and splits a week too long; nothing is cut."
+      }
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · template.version",
+            "title": "The week names its template version, and is drawn in it for good",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Code builds each shape",
+                "command": "shapeOf, call.ts",
+                "note": "Each version pinned as templates/conference-call/v<n>.json, never edited."
+              },
+              {
+                "badge": "main",
+                "label": "The session writes the newest",
+                "command": "CALL_VERSION, now 5",
+                "note": "call-check refuses the newest week written for an older one."
+              },
+              {
+                "badge": "main",
+                "label": "Older weeks keep theirs",
+                "note": "The week of Oct 30 names version 1, and is still drawn in version 1."
+              },
+              {
+                "badge": "main",
+                "label": "Newer than the stage knows",
+                "command": "refused, VS1",
+                "note": "The stage says so; it never draws a week in an older look."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter ten. The template version: a week is drawn in its version for good.",
+        "narration": "Each week names its template version, and is drawn in it for good. Each version is pinned as a file, never edited. The session writes for the newest, version five, and call-check refuses a newest week written for an older one. The week of October thirtieth names version one, and is still drawn in it. A week newer than the stage knows is refused, never drawn in an older look."
+      }
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · CHECK, LIST, MERGE",
+            "title": "What has to pass before a week reaches main",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Check the folder",
+                "command": "render call-check",
+                "note": "The index, every week against the schema, each named for its days, none forgotten."
+              },
+              {
+                "badge": "main",
+                "label": "List it first",
+                "command": "call/index.json, keep 8",
+                "note": "A week past keep leaves only once home holds it, byte for byte."
+              },
+              {
+                "badge": "main",
+                "label": "Guard, then a pull request",
+                "command": "scripts/guard.py --staged",
+                "note": "testing's size and media guard; titled data(call)."
+              },
+              {
+                "badge": "main",
+                "label": "Merge",
+                "command": "no CI there",
+                "note": "call-check saying ready is the gate."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eleven. Check, list, merge: what has to pass before a week reaches main.",
+        "narration": "Check the folder with render call-check: the index, and every week against the schema, named for its days. List the week in call slash index dot json, which keeps eight; a week past that leaves only once home holds it. Run testing's guard, scripts slash guard dot py dash dash staged, then open a pull request titled data, call. Testing has no continuous integration, so call-check saying ready is the gate."
+      }
+    },
+    {
+      "id": "C12",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 31200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · HONEST LIMITS",
+            "title": "What the check holds, and what it can't",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "Whether a said is true",
+                "command": "not checked",
+                "note": "call-check checks shape and cross-references: ids once, each landed PR in a batch."
+              },
+              {
+                "badge": "gap",
+                "task": "An edit after home read it",
+                "command": "never reaches home",
+                "note": "Home keeps a week as first served."
+              },
+              {
+                "badge": "main",
+                "task": "Nothing left out to fit",
+                "command": "#2918",
+                "note": "Each section takes up to 200 items; length becomes parts."
+              },
+              {
+                "badge": "main",
+                "task": "One part taller than a frame",
+                "command": "refused, named",
+                "note": "Shorten that alone, keeping the meaning, and check again."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter twelve. Honest limits: what the check holds, and what it can't.",
+        "narration": "Call-check checks shape and cross-references, never whether a said is true. An edit after home read a week never reaches home, since home keeps each week as first served. Nothing is left out to fit: a section takes up to two hundred items, and length becomes parts. One part taller than a frame is refused and named: shorten that alone, keeping the meaning."
+      }
+    },
+    {
+      "id": "C13",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter thirteen. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C14",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24000,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "CALL-ROUTINE.md",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter fourteen. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are CALL-ROUTINE dot md and the code, and when they disagree, the code wins, because it is what actually runs. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · CHECK, LIST, MERGE",
+            "title": "What has to pass before a week reaches main",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Check the folder",
+                "command": "render call-check",
+                "note": "The index, every week against the schema, each named for its days, none forgotten."
+              },
+              {
+                "badge": "main",
+                "label": "List it first",
+                "command": "call/index.json, keep 8",
+                "note": "A week past keep leaves only once home holds it, byte for byte."
+              },
+              {
+                "badge": "main",
+                "label": "Guard, then a pull request",
+                "command": "scripts/guard.py --staged",
+                "note": "testing's size and media guard; titled data(call)."
+              },
+              {
+                "badge": "main",
+                "label": "Merge",
+                "command": "no CI there",
+                "note": "call-check saying ready is the gate."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's the week's file. Next time, start from render call-check on testing's call folder, and merge only when it says ready. When it refuses a week, it names what it refused. CALL-ROUTINE dot md in some-ui has the rest, and part two follows the week onto home."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/testing@7eaf9e6"
+    ],
+    "date": "2026-11-15"
+  }
+}

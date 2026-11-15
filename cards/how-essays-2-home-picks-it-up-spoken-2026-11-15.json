@@ -1,0 +1,619 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 2: home picks it up",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · TESTING TO HOME",
+            "title": "file_host's call_weeks worker keeps every week",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Read the index",
+                "command": "every hour",
+                "note": "call/index.json on testing's main, public, no token."
+              },
+              {
+                "badge": "main",
+                "label": "Fetch what's missing",
+                "command": "call/<from>.json",
+                "note": "Only weeks home doesn't hold, at most 1 MiB each, schema and days checked."
+              },
+              {
+                "badge": "main",
+                "label": "Keep it once",
+                "command": "the call_week table",
+                "note": "Append-only, as first served. A week home holds is never fetched again."
+              },
+              {
+                "badge": "main",
+                "label": "Hand it to the worker",
+                "command": "${STORAGE}/call-weeks/",
+                "note": "<from>.json byte for byte, mounted read-only into render."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on how home picks up a week and renders it: part two of four on how the essays are made. Home is the server on your own network. Reach for it when a week has merged but no video appears, or a render failed. By the end, you'll know how home finds a new week, what makes the video, when the worker may run, and what its failures look like. It is as of November fifteenth, twenty twenty-six, checked against the server repository, which holds home's services. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45200,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · TESTING TO HOME",
+            "title": "file_host's call_weeks worker keeps every week",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Read the index",
+                "command": "every hour",
+                "note": "call/index.json on testing's main, public, no token."
+              },
+              {
+                "badge": "main",
+                "label": "Fetch what's missing",
+                "command": "call/<from>.json",
+                "note": "Only weeks home doesn't hold, at most 1 MiB each, schema and days checked."
+              },
+              {
+                "badge": "main",
+                "label": "Keep it once",
+                "command": "the call_week table",
+                "note": "Append-only, as first served. A week home holds is never fetched again."
+              },
+              {
+                "badge": "main",
+                "label": "Hand it to the worker",
+                "command": "${STORAGE}/call-weeks/",
+                "note": "<from>.json byte for byte, mounted read-only into render."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. From testing to home: the call weeks worker keeps every week.",
+        "narration": "File host, home's server program, runs a worker called call weeks. Every hour it reads call slash index dot json on the testing repository's main, which is public, so no token is needed. It fetches only the weeks home doesn't hold, at most one mebibyte each, with the schema and the days checked. It keeps each once, in the call week table: append-only, as first served, and a week home holds is never fetched again. Then it hands the week to the render worker, byte for byte, in the call-weeks folder under storage, mounted read-only into render."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 36000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHY A POLL",
+            "title": "GitHub tells home nothing, and home only asks",
+            "bar": "apps/servers/file_host/src/call_weeks.rs",
+            "lines": [
+              {
+                "keyword": "INTERVAL: 3600 s",
+                "comment": "  # a week arrives once a week"
+              },
+              {
+                "comment": "# an idle pass is that one request"
+              },
+              {
+                "comment": "# a failed pass: tried again in 10 min, then 20, up to an hour"
+              },
+              {
+                "comment": "# failures are counted by kind; no URL or week's words reach a log"
+              },
+              {
+                "comment": "# the mailbox's call index lists each week home holds, with its SHA-256",
+                "badge": "main"
+              },
+              {
+                "comment": "# the routine lets a week leave testing only once that index lists it"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. Why a poll: GitHub tells home nothing, and home only asks.",
+        "narration": "The poll runs hourly, since a week arrives once a week, and an idle pass is one request. A failed pass is tried again in ten minutes, then twenty, up to an hour, and no URL or week's words reach a log. The mailbox, a small service outside home, keeps a call index of each week home holds, with its hash. The routine lets a week leave testing only once that index lists it."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 36800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · TWO SERVICES",
+            "title": "infra/compose/call-render.yml: one network that reaches nothing else",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "kokoro",
+                "command": "the speaker",
+                "note": "Kokoro v1.0. 3 GiB memory cap, 2 CPUs."
+              },
+              {
+                "badge": "main",
+                "task": "render",
+                "command": "the worker",
+                "note": "Runs render-calls.sh, mounted from server. 4 GiB cap, 2 CPUs."
+              },
+              {
+                "badge": "main",
+                "task": "render's image",
+                "command": "built by some-ui's CI",
+                "note": "Recorders, stage, Chromium, ffmpeg and fonts at one commit, pinned by digest."
+              },
+              {
+                "badge": "main",
+                "task": "Both are batch",
+                "command": "cpu_shares: 256",
+                "note": "A quarter of the default CPU weight, and the first the kernel kills."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. Two services, on a network that reaches nothing else.",
+        "narration": "Two services, defined in call-render dot yml, share one network that reaches nothing else. Kokoro is the speaker, the speech model, capped at three gibibytes and two CPUs. Render is the worker, running render-calls dot sh, capped at four gibibytes and two CPUs. Render's image is built by some-ui's continuous integration, with Chromium, ffmpeg and fonts at one commit, pinned by digest. Both are batch: a quarter of the default CPU weight, and the first the kernel kills."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 43600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · ONE WORKER, SIX JOBS",
+            "title": "The render worker makes one episode at a time",
+            "bar": "infra/render/render-calls.sh",
+            "lines": [
+              {
+                "keyword": "call  playoff-delta  preview  rust-essay  clip-walk  cards-essay",
+                "badge": "main"
+              },
+              {
+                "comment": "# one episode at a time: the call's first, each job's oldest first"
+              },
+              {
+                "comment": "# it looks for work every minute; looking never starts a render"
+              },
+              {
+                "comment": "# a week in parts is one job a part: <from>, then <from>-p<k>"
+              },
+              {
+                "comment": "# a failed episode is tried again an hour later, not every minute"
+              },
+              {
+                "comment": "# a finished folder is moved into place whole"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. One worker, six jobs, one episode at a time.",
+        "narration": "The render worker takes six kinds of job: the call, Playoff Delta, a preview, a Rust essay, a clip walk, and a cards essay like this one. It makes one episode at a time: the call's first, then each job's oldest first. It looks for work every minute, and looking never starts a render. A week in parts is one job per part: the from date, then from dash p and the part's number. A failed episode is tried again an hour later, not every minute. And a finished folder is moved into place whole."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 38400,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · THE LANE",
+            "title": "No clock starts a render; room does",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Decide every 5 s",
+                "command": "file_host's lane",
+                "note": "From free memory, memory pressure, and whether interactive work waits."
+              },
+              {
+                "badge": "main",
+                "label": "run",
+                "command": "room for the peak",
+                "note": "Nothing interactive waiting, and the job's peak fits above a 2 GiB floor for 30 s."
+              },
+              {
+                "badge": "main",
+                "label": "pause",
+                "command": "SIGSTOP",
+                "note": "A voice note being heard or a Rust Rounds program recorded: the recorder freezes."
+              },
+              {
+                "badge": "main",
+                "label": "stop",
+                "command": "killed, work kept",
+                "note": "Memory short or pressure past 10%: it waits for room, its step cache intact."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. The lane: no clock starts a render; room does.",
+        "narration": "Every five seconds, file host's lane decides whether render may run. Run means nothing interactive is waiting, and the job's peak fits above a two gibibyte floor for thirty seconds. Pause freezes the recorder while a voice note is heard or a Rust Rounds program is recorded. Stop means memory is short or pressure is past ten percent: the job is killed, and waits for room with its step cache intact. A paused render isn't broken; it is giving way to you."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 38400,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · HOME'S POLICY",
+            "title": "The lane's numbers",
+            "bar": "docs/home-compute.md, Home's policy",
+            "lines": [
+              {
+                "keyword": "floor            2 GiB",
+                "comment": "  # room kept for interactive work",
+                "badge": "main"
+              },
+              {
+                "keyword": "declared peak    5.84 GiB",
+                "comment": "  # until a render is measured"
+              },
+              {
+                "keyword": "free to start    8.09 GiB",
+                "comment": "  # floor plus peak, to start"
+              },
+              {
+                "keyword": "pressure limit   10%",
+                "comment": "  # of some avg10"
+              },
+              {
+                "keyword": "hold-down        30 s",
+                "comment": "  # room has to hold this long"
+              },
+              {
+                "keyword": "stuck after      3 stops",
+                "comment": "  # in a row: LaneStuck tells you"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. Home's policy: the lane's numbers.",
+        "narration": "The numbers come from docs slash home-compute dot md, under home's policy. The floor, two gibibytes, is room kept for interactive work. The declared peak, five point eight four gibibytes, is used until a render is measured. So eight point oh nine gibibytes have to be free to start: floor plus peak. The pressure limit is ten percent of the kernel's some avg ten reading. Room has to hold for thirty seconds. And after three stops in a row, an alert called lane stuck tells you."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 31200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE WORKER'S CAPS",
+            "title": "What one render may take",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Longest video",
+                "command": "15 minutes",
+                "note": "Refused by its words, before anything is said."
+              },
+              {
+                "badge": "main",
+                "task": "Largest video",
+                "command": "500 MB"
+              },
+              {
+                "badge": "main",
+                "task": "One video's step cache",
+                "command": "2048 MB",
+                "note": "Past it a step runs uncached, with a warning, never a failure."
+              },
+              {
+                "badge": "main",
+                "task": "All work waiting",
+                "command": "4096 MB",
+                "note": "Past it, the oldest other episode's work goes; its retry starts over."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. The worker's caps: what one render may take.",
+        "narration": "The longest video is fifteen minutes, refused by its words before anything is said. The largest is five hundred megabytes. One video's step cache may take two thousand forty-eight megabytes; past it, a step runs uncached, with a warning, never a failure. All the work waiting may take four thousand ninety-six megabytes; past it, the oldest other episode's work goes, and its retry starts over."
+      }
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 32000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE CALL'S JOB",
+            "title": "The command render-calls.sh runs for a week",
+            "bar": "render, in /opt/some-ui/apps/www",
+            "lines": [
+              {
+                "prompt": "$",
+                "keyword": "tsx tests/record/call.ts --dist /opt/stage --voices kokoro"
+              },
+              {
+                "keyword": "  --speaker http://kokoro:8880 --brand /brand"
+              },
+              {
+                "keyword": "  --week-file /weeks/<from>.json [--part <k>] --out <work>"
+              },
+              {
+                "comment": "# --part only for a week of more than one part",
+                "badge": "main"
+              },
+              {
+                "comment": "# how many: render call-parts, asked once, inside the admitted job"
+              },
+              {
+                "comment": "# tsx, not pnpm: nothing here reaches the internet"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eight. The command the worker runs for a week.",
+        "narration": "For a week, the worker runs tsx on tests slash record slash call dot ts, inside apps slash www, with voices kokoro, the speaker at kokoro on port eighty-eight eighty, the brand folder, the week's file and an output folder. Dash dash part is added only for a week in parts, counted once with render call-parts. It runs tsx, not pnpm, because nothing here reaches the internet."
+      }
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 40400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · YIELDS AND FAILURES",
+            "title": "Giving way is never failing",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A pause or a stop",
+                "command": "no failed.log",
+                "note": "The job resumes under the same id; every finished step is a cache hit."
+              },
+              {
+                "badge": "main",
+                "task": "Fails soon after a pause",
+                "command": "run again",
+                "note": "Within 5 minutes of it, at most 3 times a job."
+              },
+              {
+                "badge": "main",
+                "task": "A real failure",
+                "command": "<key>.failed.log",
+                "note": "CallRenderFailed reaches you; tried again an hour later."
+              },
+              {
+                "badge": "main",
+                "task": "3 restarts not asked for",
+                "command": "taken as failed",
+                "note": "So a render that kills its own container isn't resumed for good."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter nine. Yields and failures: giving way is never failing.",
+        "narration": "A pause or a stop writes no failed log: the job resumes under the same id, and every finished step is a cache hit. A job that fails within five minutes of a pause runs again, at most three times. A real failure writes its key dot failed dot log, an alert called call render failed reaches you, and it is tried again an hour later. Three restarts nobody asked for are taken as a failure, so a render that kills its own container isn't resumed for good."
+      }
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 38000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · HONEST LIMITS",
+            "title": "What home doesn't do yet",
+            "rows": [
+              {
+                "badge": "gap",
+                "task": "A new week",
+                "command": "up to an hour late",
+                "note": "Home polls; nothing tells it."
+              },
+              {
+                "badge": "gap",
+                "task": "Never 8.09 GiB free",
+                "command": "never renders",
+                "note": "The lane's reason stays memory, and CallRenderOverdue fires."
+              },
+              {
+                "badge": "next",
+                "task": "Caps above home's RAM",
+                "command": "a warning, #709",
+                "note": "The deploy warns when the caps add up past MemTotal; only a warning until home's facts are published."
+              },
+              {
+                "badge": "next",
+                "task": "Steps paid twice on a resume",
+                "command": "L7, #712",
+                "note": "Planned: seeing them."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter ten. Honest limits: what home doesn't do yet.",
+        "narration": "A new week can be up to an hour late, since home polls and nothing tells it. If home never has eight point oh nine gibibytes free, it never renders: the lane's reason stays memory, and an alert called call render overdue fires. Planned, not built: when the caps add up past the machine's total memory, the deploy only warns, until home's facts are published. Also planned: seeing steps paid twice on a resume. Each is a tracked issue, numbered on the card."
+      }
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eleven. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C12",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24800,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "docs/home-compute.md",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter twelve. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are docs slash home-compute dot md and the code, and when they disagree, the code wins, because it is what actually runs. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 22400,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · YIELDS AND FAILURES",
+            "title": "Giving way is never failing",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A pause or a stop",
+                "command": "no failed.log",
+                "note": "The job resumes under the same id; every finished step is a cache hit."
+              },
+              {
+                "badge": "main",
+                "task": "Fails soon after a pause",
+                "command": "run again",
+                "note": "Within 5 minutes of it, at most 3 times a job."
+              },
+              {
+                "badge": "main",
+                "task": "A real failure",
+                "command": "<key>.failed.log",
+                "note": "CallRenderFailed reaches you; tried again an hour later."
+              },
+              {
+                "badge": "main",
+                "task": "3 restarts not asked for",
+                "command": "taken as failed",
+                "note": "So a render that kills its own container isn't resumed for good."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's home's side of the call. Next time a video is late, look in Studio, under Renders, first. If a job failed, read its failed log, and check the lane's reason. Docs slash home-compute dot md in the server repository has the policy, and part three follows a scene from still to video."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@743b822"
+    ],
+    "date": "2026-11-15"
+  }
+}

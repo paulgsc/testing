@@ -1,0 +1,397 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's deploy, 3: when the phone needs a newer home",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 56400,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ON DEMAND",
+            "title": "Home moves only when a client needs a newer server",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The contract epoch",
+                "command": "CONTRACT_EPOCH",
+                "note": "Rises with every route change. The app gets it through the route snapshot."
+              },
+              {
+                "badge": "main",
+                "label": "The phone asks",
+                "command": "/compat?needs=<epoch>",
+                "note": "Unversioned, like /health."
+              },
+              {
+                "badge": "main",
+                "label": "A marker",
+                "command": "deploy/wanted",
+                "note": "file_host writes it under STORAGE, only when the answer is wanted."
+              },
+              {
+                "badge": "main",
+                "label": "The path unit",
+                "command": "deploy --on-demand",
+                "note": "Applies main's release only for a higher file-host epoch; records state.json."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on how home deploys itself when your phone needs a newer server: part three of three on home's deploy. Home is the server on your own network, and the phone's app talks to it. Reach for it when a deploy happened that you didn't start, when the phone says it is behind, or when you set this up on a new machine. By the end, you'll know how the phone asks, what each answer means, what keeps it from pulling too often, where it tells you it failed, and how to install it once. It is as of November fifteenth, twenty twenty-six, checked against the server repository, which holds home's services and its deploy. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 47600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ON DEMAND",
+            "title": "Home moves only when a client needs a newer server",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The contract epoch",
+                "command": "CONTRACT_EPOCH",
+                "note": "Rises with every route change. The app gets it through the route snapshot."
+              },
+              {
+                "badge": "main",
+                "label": "The phone asks",
+                "command": "/compat?needs=<epoch>",
+                "note": "Unversioned, like /health."
+              },
+              {
+                "badge": "main",
+                "label": "A marker",
+                "command": "deploy/wanted",
+                "note": "file_host writes it under STORAGE, only when the answer is wanted."
+              },
+              {
+                "badge": "main",
+                "label": "The path unit",
+                "command": "deploy --on-demand",
+                "note": "Applies main's release only for a higher file-host epoch; records state.json."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. Home moves only when a client needs a newer server.",
+        "narration": "The contract epoch is a number that rises with every route change on the server. The app gets the epoch it needs through the route snapshot, the copy of the server's routes the app's repository keeps. The phone asks home at slash compat, question mark needs equals its epoch; like slash health, it is unversioned. When the answer is wanted, file host, home's server program, writes a marker, deploy slash wanted, under storage. A path unit, which systemd starts when that file appears, runs deploy dash dash on-demand. It applies main's release only for a higher file host epoch, and records state dot json."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 39600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT /compat SAYS",
+            "title": "Its deploy field: only wanted starts a deploy",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Served as it is",
+                "command": "none"
+              },
+              {
+                "badge": "you",
+                "task": "Update the phone",
+                "command": "client_behind"
+              },
+              {
+                "badge": "main",
+                "task": "Deploy asked for now",
+                "command": "wanted"
+              },
+              {
+                "badge": "main",
+                "task": "Ask again later",
+                "command": "in_flight · cooldown · unavailable"
+              },
+              {
+                "badge": "main",
+                "task": "Past the ceiling",
+                "command": "refused"
+              },
+              {
+                "badge": "gap",
+                "task": "Marker not written",
+                "command": "cannot_request"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. What slash compat says, and which answer starts a deploy.",
+        "narration": "The answer has a deploy field, and only one value, wanted, starts a deploy. None means home serves the phone as it is. Client behind means the phone is the older one: update the phone. Wanted means a deploy was asked for, now. In flight, cooldown and unavailable all mean ask again later. Refused means the need is past the ceiling, in the next chapter. And cannot request is a known gap: the marker wasn't written. An alert covers that one, in chapter four."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 52400,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE BOUNDS",
+            "title": "What keeps it from pulling too often",
+            "bar": "apps/servers/file_host/src/deploy.rs",
+            "lines": [
+              {
+                "comment": "# one marker and one deploy at a time; 10 min at least between two pulls",
+                "badge": "main"
+              },
+              {
+                "keyword": "6 h",
+                "comment": "    # unavailable once a pull found nothing: at most 4 Docker Hub asks"
+              },
+              {
+                "keyword": "+1000",
+                "comment": "  # needs this far above the running epoch: refused, no pull"
+              },
+              {
+                "comment": "# no epoch at or below the running one is ever a reason to pull"
+              },
+              {
+                "comment": "# a newer build of the same contract waits for make home-deploy"
+              },
+              {
+                "comment": "# nothing polls: with no newer client, home sends no request anywhere"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. The bounds that keep it from pulling too often.",
+        "narration": "Every pull asks Docker Hub, which limits how often it may be asked, so the path is bounded. There's one marker and one deploy at a time, and at least ten minutes between two pulls. Once a pull found nothing, the answer is unavailable for six hours, which holds it to at most four asks of Docker Hub. A need more than a thousand above the running epoch is refused, with no pull. No epoch at or below the running one is ever a reason to pull, and a newer build of the same contract waits for make home-deploy, the deploy you run by hand. And nothing polls: with no newer client, home sends no request anywhere."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 40000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHEN IT FAILS",
+            "title": "What tells you, and where to look",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Rolled back or failed",
+                "command": "DeployFailed",
+                "note": "Alerts for a deploy in the last hour."
+              },
+              {
+                "badge": "main",
+                "task": "Unanswered 30 min",
+                "command": "DeployStuck"
+              },
+              {
+                "badge": "main",
+                "task": "No marker written",
+                "command": "DeployCannotRequest",
+                "note": "An ask in the last hour whose marker couldn't be written."
+              },
+              {
+                "badge": "main",
+                "task": "The pattern",
+                "command": "STORAGE dashboard, Deploy row",
+                "note": "Asks, runs, pulls against Docker Hub's limit, bytes, backups."
+              },
+              {
+                "badge": "you",
+                "task": "The unit itself",
+                "command": "journalctl -u home-deploy"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. When it fails: what tells you, and where to look.",
+        "narration": "You don't need to watch it; alerts tell you. Deploy failed fires for a deploy in the last hour that rolled back or failed. Deploy stuck fires when an ask has gone thirty minutes unanswered. Deploy cannot request fires for an ask in the last hour whose marker couldn't be written. For the pattern over time, the storage dashboard has a deploy row: asks, runs, pulls against Docker Hub's limit, bytes, and backups. And for the unit itself, run journalctl dash u home-deploy on home."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 42800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · INSTALL IT ONCE",
+            "title": "In home's NixOS configuration (paulgsc/dotfiles)",
+            "bar": "home's configuration.nix",
+            "lines": [
+              {
+                "keyword": "imports = [inputs.server.nixosModules.home-deploy];"
+              },
+              {
+                "keyword": "services.home-deploy = { enable = true; user = …; checkout = …; storage = …; };"
+              },
+              {
+                "comment": "# user runs make up and holds the sops key; checkout: its path; storage: STORAGE"
+              },
+              {
+                "prompt": "$",
+                "keyword": "nixos-rebuild switch",
+                "badge": "you"
+              },
+              {
+                "comment": "# the unit runs as root, and runs make as user"
+              },
+              {
+                "prompt": "$",
+                "keyword": "systemctl status home-deploy.path home-deploy"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. Installing it once, in home's NixOS configuration.",
+        "narration": "The unit is installed once, in home's NixOS configuration, which lives in the dotfiles repository. Import the home-deploy module from the server flake's NixOS modules. Then set services dot home-deploy with enable true and three values: user, the account that runs make up and holds the sops key for secrets; checkout, the path of the server checkout; and storage, the same storage folder file host uses. Then run nixos-rebuild switch. The unit runs as root, and runs make as that user. To check it is there, run systemctl status on home-deploy dot path and home-deploy."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 27600,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "the code"
+            ],
+            "wins": "the README"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are the server README's section on deploying to home, and the code, and when they disagree, the README wins, because it is the one meant to be kept current. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · INSTALL IT ONCE",
+            "title": "In home's NixOS configuration (paulgsc/dotfiles)",
+            "bar": "home's configuration.nix",
+            "lines": [
+              {
+                "keyword": "imports = [inputs.server.nixosModules.home-deploy];"
+              },
+              {
+                "keyword": "services.home-deploy = { enable = true; user = …; checkout = …; storage = …; };"
+              },
+              {
+                "comment": "# user runs make up and holds the sops key; checkout: its path; storage: STORAGE"
+              },
+              {
+                "prompt": "$",
+                "keyword": "nixos-rebuild switch",
+                "badge": "you"
+              },
+              {
+                "comment": "# the unit runs as root, and runs make as user"
+              },
+              {
+                "prompt": "$",
+                "keyword": "systemctl status home-deploy.path home-deploy"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's the on-demand deploy. Next time, start from systemctl status on home-deploy dot path and home-deploy, to see that it's installed. When it fails, an alert names it, and journalctl dash u home-deploy shows the unit's runs. Part one of this series covers the deploy it runs."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@37d731c"
+    ],
+    "date": "2026-11-15"
+  }
+}
