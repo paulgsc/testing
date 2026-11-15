@@ -1,0 +1,757 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "How the essays are made, 3: the footage",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 2
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 44800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ONE SCENE",
+            "title": "A still, a take, and the renderer",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The stage",
+                "command": "/call, on record",
+                "note": "A page of www, one scene per address, served from the render image's own build."
+              },
+              {
+                "badge": "main",
+                "label": "A still",
+                "command": "1920 x 1080 PNG",
+                "note": "Chromium, through Playwright, once the page's fonts are in; animations at rest."
+              },
+              {
+                "badge": "main",
+                "label": "A take",
+                "command": "POST /timed to kokoro",
+                "note": "The scene's said, in its section's voice, with each word's time."
+              },
+              {
+                "badge": "main",
+                "label": "The renderer",
+                "command": "@some-ui/video-render",
+                "note": "Holds the still for the take, captions it, joins every scene with ffmpeg."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on how a week's file becomes footage: part three of four on how the essays are made. Reach for it when a scene looks wrong, a voice sounds off, or a week comes out as several videos. By the end, you'll know how a scene is drawn and said, how long ones are paged and split, and what a render leaves behind. It is as of November fifteenth, twenty twenty-six, checked against some-ui, server and testing, which hold the renderer, the speaker and the weeks. Later commits may have moved things, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · ONE SCENE",
+            "title": "A still, a take, and the renderer",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The stage",
+                "command": "/call, on record",
+                "note": "A page of www, one scene per address, served from the render image's own build."
+              },
+              {
+                "badge": "main",
+                "label": "A still",
+                "command": "1920 x 1080 PNG",
+                "note": "Chromium, through Playwright, once the page's fonts are in; animations at rest."
+              },
+              {
+                "badge": "main",
+                "label": "A take",
+                "command": "POST /timed to kokoro",
+                "note": "The scene's said, in its section's voice, with each word's time."
+              },
+              {
+                "badge": "main",
+                "label": "The renderer",
+                "command": "@some-ui/video-render",
+                "note": "Holds the still for the take, captions it, joins every scene with ffmpeg."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. One scene: a still, a take, and the renderer.",
+        "narration": "The stage is a page of www, the web app, at slash call in record mode, served from the render image's own build. A still is a nineteen twenty by ten eighty picture of it, taken by Chromium through Playwright. A take is the scene's words, said by Kokoro in its section's voice, with each word's time. The renderer holds the still for the take, captions it, and joins every scene with ffmpeg."
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 31600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHAT THE STAGE READS",
+            "title": "The same page plays in a browser and records on home",
+            "bar": "apps/www/src/lib/web-surface/call/feed.ts",
+            "lines": [
+              {
+                "comment": "# in a browser: testing's call/index.json, then call/<from>.json"
+              },
+              {
+                "comment": "# on home: the recorder answers those reads from the kept file alone"
+              },
+              {
+                "keyword": "--week-file /weeks/<from>.json",
+                "comment": "  # a week testing let go records the same",
+                "badge": "main"
+              },
+              {
+                "comment": "# the stage parses the week itself: one it can't draw shows its problems"
+              },
+              {
+                "comment": "# with record, nothing but the frame is drawn"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. What the stage reads, in a browser and on home.",
+        "narration": "The same page plays in a browser and records on home. In a browser it reads testing's call index, then the week's file. On home, the recorder answers those reads from the kept file alone, passed as dash dash week-file, so a week testing has let go records the same. The stage parses the week itself, and one it can't draw shows its problems."
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 29600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE FRAME",
+            "title": "What every scene is drawn in",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Body",
+                "command": "1825 x 573 px",
+                "note": "From version 2, the foot is left empty for the captions."
+              },
+              {
+                "badge": "main",
+                "task": "Text that won't fit",
+                "command": "data-overflow",
+                "note": "The frame says so, and the recorder refuses the scene."
+              },
+              {
+                "badge": "main",
+                "task": "Theme",
+                "command": "Mochi Night",
+                "note": "The palette made for video, from version 3."
+              },
+              {
+                "badge": "main",
+                "task": "Brand intro and outro",
+                "command": "brand-v1",
+                "note": "From version 4, the mark moves: a composition, not the stage."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. The frame every scene is drawn in.",
+        "narration": "The frame's body is eighteen twenty-five by five seventy-three pixels; from version two, the foot is left empty for captions. Text that won't fit sets data-overflow, and the recorder refuses the scene. From version three, the theme is Mochi Night, the palette made for video. From version four, the brand intro and outro are drawn by brand-v1, a composition, not the stage."
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · PAGING A SCENE, CF1",
+            "title": "A scene too long for the frame is paged, never cut",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Measure",
+                "command": "call-fit.ts",
+                "note": "Each scene laid out as the stage lays it, at 1920 px, erring toward too long."
+              },
+              {
+                "badge": "main",
+                "label": "Page",
+                "command": "its title on every page",
+                "note": "Lists and paragraphs carry on in order; every entry on exactly one page."
+              },
+              {
+                "badge": "main",
+                "label": "Hold",
+                "command": "the first page is voiced",
+                "note": "Each page after it is silent, held for its own words' reading time."
+              },
+              {
+                "badge": "main",
+                "label": "Refuse",
+                "command": "too tall for a frame",
+                "note": "call-check names the scene and what to shorten."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. Paging a scene: too long is paged, never cut.",
+        "narration": "A rule called CF1 pages a scene too long for the frame. Call-fit dot ts measures each scene as the stage lays it out, erring toward too long. Each page keeps the title, and every entry is on exactly one page. Only the first page is voiced; each page after is held, silent, for its words' reading time. A scene too tall for one frame is refused, and call-check names what to shorten."
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34800,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE SPEAKER",
+            "title": "Kokoro says the same words the same way, byte for byte",
+            "bar": "paulgsc/server infra/kokoro/say.py",
+            "lines": [
+              {
+                "comment": "# Kokoro-82M v1.0; its model file checked against a SHA-256 at start"
+              },
+              {
+                "comment": "# its vocoder draws random noise: seeded before every line"
+              },
+              {
+                "comment": "# one line at a time, under one lock, so nothing else moves the seed"
+              },
+              {
+                "prompt": "$",
+                "keyword": "POST /say",
+                "comment": "    # 24 kHz mono 16-bit WAV"
+              },
+              {
+                "prompt": "$",
+                "keyword": "POST /timed",
+                "comment": "  # the same WAV, and each word's startMs and endMs",
+                "badge": "main"
+              },
+              {
+                "comment": "# no network; it logs a line's length and voice, never its words"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. The speaker: the same words, the same bytes.",
+        "narration": "The speaker is Kokoro eighty-two M, version one point oh, run by say dot py in the server repository. Its model file is checked against a hash at start. Its vocoder draws random noise, so it is seeded before every line, and lines are said one at a time, under one lock. POST slash timed gives the WAV with each word's start and end. It has no network, and never logs a line's words."
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 25600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · VOICES BY SECTION",
+            "title": "You hear who is speaking change with the section",
+            "bar": "video-render src/call.ts, CALL_VOICES",
+            "lines": [
+              {
+                "keyword": "am_michael",
+                "comment": "  # the host: intro, chapters, the week, board, close",
+                "badge": "main"
+              },
+              {
+                "keyword": "af_heart",
+                "comment": "    # where things stand"
+              },
+              {
+                "keyword": "am_fenrir",
+                "comment": "   # what landed"
+              },
+              {
+                "keyword": "af_bella",
+                "comment": "    # calls in a gray area"
+              },
+              {
+                "keyword": "bm_george",
+                "comment": "   # calls made without you; b is British, a American"
+              },
+              {
+                "keyword": "af_nicole",
+                "comment": "   # waiting on you"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. Voices by section: hearing who speaks change.",
+        "narration": "You hear the speaker change with the section. Michael is the host: the intro, the chapters, the week, the board and the close. Heart says where things stand. Fenrir, what landed. Bella, calls in a gray area. George, the one British voice, calls made without you. And Nicole, what waits on you."
+      }
+    },
+    {
+      "id": "C7",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · TIME AND SOUND",
+            "title": "How long each scene holds, and what you hear",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A voiced scene",
+                "command": "300 ms, the take, 700 ms",
+                "note": "Its length is its take's. A brand slide holds 3 s, silent."
+              },
+              {
+                "badge": "main",
+                "task": "Captions",
+                "command": "the take's timed words",
+                "note": "One burn-in per scene, drawn on www's burn-ins page, in the foot."
+              },
+              {
+                "badge": "main",
+                "task": "The voice",
+                "command": "-16 LUFS",
+                "note": "The takes placed on one track, measured."
+              },
+              {
+                "badge": "main",
+                "task": "The music bed",
+                "command": "lowered under each take",
+                "note": "From --brand, home's folder of your files, from version 3."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter seven. Time and sound: how long a scene holds, and what you hear.",
+        "narration": "A voiced scene holds three hundred milliseconds, its take, then seven hundred, so its length is its take's. A brand slide holds three seconds, silent. Captions are the take's timed words, drawn on www's burn-ins page, in the foot. The voice track is measured at minus sixteen LUFS. From version three, a music bed from dash dash brand, home's folder of your files, is lowered under each take."
+      }
+    },
+    {
+      "id": "C8",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE STEP CACHE",
+            "title": "A retry runs only what changed",
+            "bar": "<out>/<week>/cache/steps",
+            "lines": [
+              {
+                "comment": "# a take: keyed by the speaker's model, the voice and the words"
+              },
+              {
+                "comment": "# an ffmpeg step: its arguments, each input's SHA-256, ffmpeg's version"
+              },
+              {
+                "comment": "# a scene's captions: keyed by what they draw"
+              },
+              {
+                "comment": "# kept under a temporary name, then renamed: a kill leaves no half entry"
+              },
+              {
+                "comment": "# after a stop, every finished step is a cache hit",
+                "badge": "main"
+              },
+              {
+                "comment": "# the worker removes the cache once the video is made"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eight. The step cache: a retry runs only what changed.",
+        "narration": "Each render keeps a step cache. A take is keyed by the speaker's model, the voice and the words; an ffmpeg step by its arguments, each input's hash, and ffmpeg's version; a scene's captions by what they draw. Each entry is written under a temporary name, then renamed, so a kill leaves no half entry. After a stop, every finished step is a cache hit. Once the video is made, the cache is removed."
+      }
+    },
+    {
+      "id": "C9",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 31200,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · FFMPEG",
+            "title": "The renderer's calls, as data, from plan.ts",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Each scene",
+                "command": "a segment",
+                "note": "Picture only, a whole number of frames."
+              },
+              {
+                "badge": "main",
+                "task": "The sound",
+                "command": "voice and bed",
+                "note": "Takes on one track at -16 LUFS; the bed lowered under each."
+              },
+              {
+                "badge": "main",
+                "task": "The assembly",
+                "command": "one call",
+                "note": "Joins the segments, lays the burn-ins over them, adds the sound."
+              },
+              {
+                "badge": "main",
+                "task": "Same bytes",
+                "command": "VR1, bitexact",
+                "note": "One decode thread, two encode threads, no metadata or timestamps."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter nine. ffmpeg: the renderer's calls, as data.",
+        "narration": "The renderer's ffmpeg calls are data, from plan dot ts. Each scene is a segment, picture only, a whole number of frames. The sound is the takes on one track, with the bed lowered under each. One assembly call joins the segments, lays the burn-ins over them, and adds the sound. A rule called VR1 keeps the bytes the same: bitexact, fixed threads, no metadata or timestamps."
+      }
+    },
+    {
+      "id": "C10",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 33600,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · A WEEK IN PARTS, VERSION 5",
+            "title": "Too long for one video: a series, split at its chapters",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Measure by words",
+                "command": "estimatedMs",
+                "note": "Before anything is said: each scene at its reading time."
+              },
+              {
+                "badge": "main",
+                "label": "Break at a chapter",
+                "command": "aim 8 min, most 10",
+                "note": "Whole sections while a part stays under the aim."
+              },
+              {
+                "badge": "main",
+                "label": "A section too long",
+                "command": "split between items",
+                "note": "Each part filled to the aim; past 10 only for a single item that is."
+              },
+              {
+                "badge": "main",
+                "label": "Each part opens alike",
+                "command": "locked intro, brand",
+                "note": "The intro says part n of m; a section carried over says continued."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter ten. A week in parts: too long for one video becomes a series.",
+        "narration": "From version five, a week too long for one video is split, measured by its words before anything is said. Parts break at a chapter, aiming for eight minutes and at most ten. A section too long by itself is split between items. Each part opens with the locked intro and the brand: the intro says part n of m, and a section carried over says continued."
+      }
+    },
+    {
+      "id": "C11",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 33600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE WEEK OF NOV 6, IN PARTS",
+            "title": "Three videos, by its words",
+            "bar": "render call-parts call/2026-11-06.json",
+            "lines": [
+              {
+                "keyword": "part 1 of 3   20 scenes   217200 ms",
+                "comment": "  # about 3.6 minutes",
+                "badge": "main"
+              },
+              {
+                "keyword": "part 2 of 3   24 scenes   470600 ms",
+                "comment": "  # about 7.8 minutes"
+              },
+              {
+                "keyword": "part 3 of 3   32 scenes   371200 ms",
+                "comment": "  # about 6.2 minutes"
+              },
+              {
+                "comment": "# home records each with --part k: its own job, cache and retry"
+              },
+              {
+                "comment": "# an estimate: the takes set each part's real length"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter eleven. The week of November sixth, in parts.",
+        "narration": "Run render call-parts on a week's file to see how it splits. The week of November sixth came out as three videos: twenty scenes and about three point six minutes, then twenty-four scenes and about seven point eight, then thirty-two scenes and about six point two. Home records each with dash dash part, as its own job, with its own cache and retry. These are estimates; the takes set the real length."
+      }
+    },
+    {
+      "id": "C12",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 26400,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE TEMPLATE'S VERSIONS",
+            "title": "What each version of the call added",
+            "bar": "templates/conference-call/v1.json to v5.json",
+            "lines": [
+              {
+                "keyword": "v1  sections",
+                "comment": "  # the sections; no caption band",
+                "badge": "main"
+              },
+              {
+                "keyword": "v2  shape",
+                "comment": "  # locked intro, brand, chapter slides, word captions"
+              },
+              {
+                "keyword": "v3  Mochi Night",
+                "comment": "  # the palette made for video, and the music bed"
+              },
+              {
+                "keyword": "v4  moving mark",
+                "comment": "  # brand intro and outro drawn by brand-v1"
+              },
+              {
+                "keyword": "v5  parts",
+                "comment": "  # at most 10 minutes each; 200 items a section"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter twelve. The template's versions, and what each added.",
+        "narration": "Version one had the sections, and no caption band. Version two gave the shape: the locked intro, the brand, chapter slides and word captions. Version three added Mochi Night and the music bed. Version four, the moving mark. Version five, parts of at most ten minutes, with up to two hundred items a section."
+      }
+    },
+    {
+      "id": "C13",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 34800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT A RENDER LEAVES",
+            "title": "In renders/call/<key>/, kept until you let it go",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The video",
+                "command": "call.mp4",
+                "note": "Part k of a series under <from>-p<k>."
+              },
+              {
+                "badge": "main",
+                "task": "The chapters",
+                "command": "description.txt",
+                "note": "Each chapter slide and each ask, at their real times, for YouTube."
+              },
+              {
+                "badge": "main",
+                "task": "What it was made from",
+                "command": "week.json, cut-list.json",
+                "note": "And the stills, the takes and shot-times.json."
+              },
+              {
+                "badge": "gap",
+                "task": "A font wider than measured",
+                "command": "can still overflow",
+                "note": "CF1's tolerance; data-overflow refuses it, so no video is cut off."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter thirteen. What a render leaves, until you let it go.",
+        "narration": "A render leaves a folder under renders slash call, kept until you let it go. Call dot mp4 is the video. Description dot txt holds the chapters at their real times, for YouTube. Week dot json and cut-list dot json say what it was made from, beside the stills and the takes. One known gap: a font wider than measured can still overflow, but data-overflow refuses it, so no video is cut off."
+      }
+    },
+    {
+      "id": "C14",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35200,
+      "burnIns": [
+        {
+          "kind": "legend",
+          "params": {
+            "kicker": "LEGEND",
+            "title": "Reading the badges"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter fourteen. Reading the badges on these cards.",
+        "narration": "Each claim on a card carries a badge saying how far to trust it. A filled square is on main, the default branch, at the commit the card is stamped with. A half-filled square is an open pull request. An empty square is planned, not built. A triangle is a known gap. A raised hand is a step only you do. Trust the filled squares, and check the others against the repository before you rely on them."
+      }
+    },
+    {
+      "id": "C15",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 24000,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "video-render README",
+              "the code"
+            ],
+            "wins": "the code"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter fifteen. How stale is this?",
+        "narration": "All of this was true on the day it was stamped. If what you see differs, the sources are the video-render README and the code, and when they disagree, the code wins, because it is what actually runs. Compare the stamped commit with main to see how far things have moved."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 20800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT A RENDER LEAVES",
+            "title": "In renders/call/<key>/, kept until you let it go",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The video",
+                "command": "call.mp4",
+                "note": "Part k of a series under <from>-p<k>."
+              },
+              {
+                "badge": "main",
+                "task": "The chapters",
+                "command": "description.txt",
+                "note": "Each chapter slide and each ask, at their real times, for YouTube."
+              },
+              {
+                "badge": "main",
+                "task": "What it was made from",
+                "command": "week.json, cut-list.json",
+                "note": "And the stills, the takes and shot-times.json."
+              },
+              {
+                "badge": "gap",
+                "task": "A font wider than measured",
+                "command": "can still overflow",
+                "note": "CF1's tolerance; data-overflow refuses it, so no video is cut off."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's the footage. Next time, start from the render's folder: the video, its chapters, and what it was made from. If a scene is refused for not fitting, shorten its words and render again. The video-render README in some-ui has the rest, and part four covers what comes after."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@f8b267f",
+      "paulgsc/server@743b822",
+      "paulgsc/testing@7eaf9e6"
+    ],
+    "date": "2026-11-15"
+  }
+}
