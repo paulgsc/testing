@@ -1,0 +1,35 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKJ4WqzcboHGqRToWg",
+  "ended": "2026-11-15",
+  "epics": [
+    "EXPLAIN"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 882
+    }
+  ],
+  "did": "Home's half of making cards essays spoken. Home's render job was already handing the essay recorder Kokoro's address, as the call's job does, so the voice needed only comments, docs and tests here; the lane's memory budget and class already counted the speaker. Then, at your ask, cards essays became a feed among the phone's episodes, each with its title, on the routes the other feeds use, and the contract rose to 10. Linking a YouTube URL and letting an essay's video go are left for their own story. Three independent reviews stood in for Codex; none was blocking.",
+  "calls": [
+    {
+      "title": "How the phone finds cards essays among the episodes",
+      "options": [
+        "a feed on the existing feed routes, with a title on every episode",
+        "keep the essay's own video route and special-case it on the phone"
+      ],
+      "chose": 0,
+      "why": "Every other feed is served that way, so the phone's episode view needed no special case; the essay's own route stays for Renders.",
+      "undo": "Take the cards-essay feed out of the feed list; Renders still plays the essays."
+    }
+  ],
+  "left": [
+    "Linking a YouTube URL and letting a cards essay's video go are not built: each needs its own table beside the append-only essay table (some-ui#2999).",
+    "A title cut at 200 characters can end on a space, and invisible control characters pass through a title; both are minor and carried.",
+    "The essay table's migration comment still says silent video; changing it would change sqlx's checksum.",
+    "A stale branch, claude/explain6-cards-kokoro, is left for you to delete: a force-push and a delete were refused here."
+  ],
+  "waits": []
+}
