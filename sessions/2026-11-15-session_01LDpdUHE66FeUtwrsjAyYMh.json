@@ -1,0 +1,46 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHE66FeUtwrsjAyYMh",
+  "ended": "2026-11-15",
+  "epics": [
+    "FEED"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 881
+    }
+  ],
+  "did": "Fixed server#879: home now takes a re-stamped call week in as a new, appended revision while no part of it has a video, so 2026-11-06 can render as template v5 parts. The record is append-only (call_week_revision). file_host gives the newest revision beside the week as .next, and the render worker alone takes it in before a job, drops the count and the work, and records which revision it took. Three independent reviews found races in two earlier designs; each was raised as drift and the shape changed twice, to one actor owning the take-in. Six fresh-context reviews were recorded on the PR, the last one clean.",
+  "calls": [
+    {
+      "title": "C378: how home learns of and keeps a re-stamped call week",
+      "options": [
+        "Re-fetch each held week with no video once per pass and append differing bytes to a sibling append-only table",
+        "Carry each week's size or SHA in call/index.json and fetch only on a change",
+        "Conditional GET with ETag",
+        "Add a revision column to call_week"
+      ],
+      "chose": 0,
+      "why": "Needs no index-schema change in some-ui; the cost is bounded by the listed weeks still waiting for a video; nothing is rewritten.",
+      "undo": "Revert server#881; the down migration refuses while call_week_revision holds a row."
+    },
+    {
+      "title": "C380: who changes the file the render worker reads",
+      "options": [
+        "The worker takes .next in itself, between jobs, only while no part is made",
+        "Two writers, each window patched: file_host swaps the file and clears .parts, the worker compares checksums",
+        "The worker owns the count via .parts-of, and file_host still swaps the file"
+      ],
+      "chose": 0,
+      "why": "One actor takes the revision in, counts and renders in sequence, so nothing changes under a count or a render; the other two left lock-free windows that three reviews kept finding.",
+      "undo": "Revert server#881; a .next or .taken left behind is ignored by the old worker and by file_host."
+    }
+  ],
+  "left": [
+    "server#887: restore a lost .taken from an identical .next; test the failed-log clear on take-in",
+    "some-ui#3023: CALL-ROUTINE.md says home keeps a week as first served"
+  ],
+  "waits": []
+}
