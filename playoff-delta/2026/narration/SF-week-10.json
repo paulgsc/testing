@@ -1,0 +1,41 @@
+{
+  "schema": "some-ui.pd-narration/1",
+  "season": "2026",
+  "team": "SF",
+  "week": 10,
+  "format": {
+    "id": "playoff-delta-week",
+    "version": 4
+  },
+  "sha256": "83fecbd4662acf46c153adba84b7561c443937d6e946e07b0d53a2e67139f271",
+  "scenes": [
+    {
+      "id": "division",
+      "said": "In our division the floor rose this week, from 6 to 7, and the ceiling held at 13. The Rams and the Seahawks have 12 wins banked between them and 2 games left against each other, so however those go, one of them reaches 7. The Rams can still reach 13. We can finish anywhere from 8 to 16 wins."
+    },
+    {
+      "id": "conference",
+      "said": "Across the conference the floor rose too, from 8 to 9, and the ceiling held at 15. The Lions, the Vikings and the Bears have 21 wins banked and 4 games left against each other, so however those go, one of them reaches 9. And the Lions can still reach 15."
+    },
+    {
+      "id": "results",
+      "said": "This week went both ways. One result moved us toward the best case and one toward the worst. Four games were forced, and two left both poles where they were. The one against us: the Lions won."
+    },
+    {
+      "id": "standings",
+      "said": "The division is in our hands, with 5 greens to go and 9 reds to spare. The number 1 seed is in our hands too, with 7 greens to go and 7 reds to spare."
+    },
+    {
+      "id": "ladder",
+      "said": "We can still finish as high as the number 1 seed, or as low as out. The best rung and the worst are still apart, so keep driving."
+    },
+    {
+      "id": "season",
+      "said": "Ten weeks followed now. In our division the floor has climbed from 2 to 7 and the ceiling has come down from 17 to 13. In the conference the floor went from 6 to 9 and the ceiling from 17 to 15. Over that run, 10 steps came our way and 4 went against us."
+    },
+    {
+      "id": "outro",
+      "said": "The week in one breath: 1 step our way, 1 step against us. The division and the number 1 seed are both in our hands, and we can land anywhere from the top seed to out. Keep driving. Next week, we drive again."
+    }
+  ]
+}
