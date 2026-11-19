@@ -1,0 +1,124 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHqsPUEEWAPr2hPJyJ",
+  "ended": "2026-11-19",
+  "epics": [
+    "RUST-ROUNDS",
+    "INTERVIEW-WEEK",
+    "CARDS",
+    "TAKES",
+    "ENG"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3267
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3256
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3268
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3265
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3266
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3258
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3254
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3260
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3261
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3263
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3262
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3271
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1004
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1008
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1001
+    }
+  ],
+  "did": "Ran the Nov 19 choir through the night while the owner slept: merged fifteen PRs across some-ui and home's server one at a time, each reviewed and checked against main. Rust Rounds gained a recording per speak-to point, an essay that judges each point, the new week format of decisions with an academy, home keeping tracked work time, and the essay's fork scene; the interview essay opens in the owner's voice and lists past weeks; every tappable card on the phone now looks like one. I found and had fixed an overlap in tracked work spans before it merged, fixed home's count of a new-format week's points myself, deployed the Jobs mailbox, wound down six workers with their notes, and wrote where each story stands on its epic.",
+  "calls": [
+    {
+      "title": "Refuse a tracked work span that starts before the last one closed",
+      "options": [
+        "Refuse it on home",
+        "Document that the phone must not replay a refused start"
+      ],
+      "chose": 0,
+      "why": "Spans could overlap and count the same hour twice when a phone came back online; refusing narrows what home accepts without changing the story.",
+      "undo": "Drop the Overlaps check in rust_round work_span start."
+    },
+    {
+      "title": "Count a new-format ticket's points from its forks",
+      "options": [
+        "Forks for a /2 week, speakTo for /1",
+        "speakTo only"
+      ],
+      "chose": 0,
+      "why": "A /2 ticket has no speakTo, so every per-point take of a new-format week would have been refused.",
+      "undo": "Revert points_field in rust_round week.rs."
+    }
+  ],
+  "left": [
+    "Home runs the new week format and work spans only after the next make home-deploy; the routine keeps writing the old format until then.",
+    "The Residual Ledger lines for five epics wait for the owner's word, as asked.",
+    "Five stale handoff branches need deleting by hand: the git proxy drops branch deletes."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3197
+    }
+  ]
+}
