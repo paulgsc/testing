@@ -1,0 +1,91 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGeLpttH1HLqgFiUju",
+  "ended": "2026-11-19",
+  "epics": [
+    "IW"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3255
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3256
+    }
+  ],
+  "did": "Built IW9 and IW10. IW9 is a teleprompter band for reading aloud, paced by the recorder's own microphone level: a pure step plus the runtime and the band component, on the Read it aloud step and every read card. IW10 opens the interview essay in the owner's own voice: an opening card in the week format, written and checked by the Monday routine, listed first on the phone, and played first after the brand by the essay (template v2). Each went through a line pass, two fresh-context reviews plus delta reviews, and three merges with main (IW18's conflicts resolved).",
+  "calls": [
+    {
+      "title": "C615: the teleprompter band as the agreed prototype draws it",
+      "options": [
+        "paced by the voice's level, no transcription",
+        "paced by a clock only",
+        "following the words live with the speech recognizer"
+      ],
+      "chose": 0,
+      "why": "#3176 offered three ways and the owner agreed a prototype (2026-11-17) rather than naming one",
+      "undo": "render Script as a plain list again and drop prompter.ts"
+    },
+    {
+      "title": "C616: the band's pace and hold",
+      "options": [
+        "140 wpm, held after 1 s quiet",
+        "each card's target pace",
+        "a pace the owner sets"
+      ],
+      "chose": 0,
+      "why": "#3176 gives about-figures and the prototype shows behaviour, not numbers",
+      "undo": "change PACE_WPM or HOLD_MS"
+    },
+    {
+      "title": "C617: no drag to nudge",
+      "options": [
+        "no nudge",
+        "a swipe through the shared pager beside buttons",
+        "buttons only"
+      ],
+      "chose": 0,
+      "why": "the agreed prototype leaves it out, and the pager pages nothing during a take",
+      "undo": "put the window on usePager with visible buttons and add a nudge event"
+    },
+    {
+      "title": "C618: the essay's opening is a card",
+      "options": [
+        "a card, first among the cards",
+        "a field of its own with its own take line",
+        "written at render time, read the next week"
+      ],
+      "chose": 0,
+      "why": "#3177 says read as an ordinary card, not where it lives; a card needs no home or mailbox change",
+      "undo": "move it to its own field and take line"
+    },
+    {
+      "title": "C619: the opening's rules",
+      "options": [
+        "a closed list of assessing words refused by code",
+        "the rule in ROUTINE.md only",
+        "a fixed script with topics filled in"
+      ],
+      "chose": 0,
+      "why": "the owner ruled out assessment and a finish line without saying how to hold it",
+      "undo": "edit ASSESSING or OPENING_WORDS"
+    }
+  ],
+  "left": [
+    "w48 is the first week with an opening, and its essay the first at template v2. The essay stage needs www's next Pages deploy before home renders it.",
+    "#3269: the Rust Rounds opening, under #2231.",
+    "A test title in apps/www interview.test.tsx still says 'Read aloud' (the section is now 'Scripts'), a cosmetic nit.",
+    "C619's closed list misses some phrasings ('I assessed my progress', 'self assess' with a space). It fails safe: the routine rewrites."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3180
+    }
+  ]
+}
