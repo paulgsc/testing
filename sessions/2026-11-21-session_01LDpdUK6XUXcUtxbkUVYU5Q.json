@@ -27,10 +27,15 @@
         }
     ],
     "left": [
-        "Whether Jobs refreshes on the real S21 Ultra: only the phone can show it, after the owner installs the new APK at the end of the run.",
+        "Whether Jobs refreshes on the real S21 Ultra: only the owner's phone can show it, after the new APK is installed at the end of the run; it waits on #3100.",
         "#3140's words for a pull that joins a long run are unchanged: Jobs no longer waits on one, but the pull of home still can, and that story stays open."
     ],
     "waits": [
+        {
+            "repo": "some-ui",
+            "kind": "issue",
+            "number": 3100
+        },
         {
             "repo": "some-ui",
             "kind": "issue",
