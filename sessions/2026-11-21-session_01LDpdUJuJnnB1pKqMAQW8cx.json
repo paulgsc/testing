@@ -11,9 +11,14 @@
             "repo": "server",
             "kind": "pr",
             "number": 1087
+        },
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1094
         }
     ],
-    "did": "Found why home's transcriber ran every note of half a minute or more to its ten-minute deadline and starved the renders: each language check costs a full encoder pass however short the speech, so a take's cost grew with its pauses. I measured it on the real model, bounded the checks by the take's length (464 seconds down to 206 for one take), put fresh takes ahead of notes that keep failing, logged one line per attempt, and made the transcriber give a waiting render ten minutes after twenty. That merged as server#1087. Then I gave file-host a third core so whisper hears on two threads; that branch waits to be opened. I also filed the owner's queue panel story, server#1090.",
+    "did": "Found why home's transcriber ran every note of half a minute or more to its ten-minute deadline and starved the renders: each language check costs a full encoder pass however short the speech, so a take's cost grew with its pauses. I measured it on the real model, bounded the checks by the take's length (464 seconds down to 206 for one take), put fresh takes ahead of notes that keep failing, logged one line per attempt, and made the transcriber give a waiting render ten minutes after twenty. That merged as server#1087. Then I gave file-host a third core so whisper hears on two threads; that merged as server#1094. I also filed the owner's queue panel story, server#1090.",
     "calls": [
         {
             "title": "How many language checks a take gets",
@@ -38,7 +43,6 @@
         }
     ],
     "left": [
-        "The three-core branch for file-host is pushed but not opened, waiting for the coordinator's admit.",
         "The turn's limits in server#1088 are unfixed: it can give way to a render the lane holds stopped, and a run's timer restarts between jobs.",
         "Notes over about two minutes of speech can still reach the deadline on one thread.",
         "Takes already final-failed before the fix are not re-heard; that is the owner's hear-again story, some-ui#3339."
