@@ -1,0 +1,75 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGrQMm5Keuu8U851KK",
+  "ended": "2026-11-21",
+  "epics": [
+    "GWB"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3340
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3342
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3357
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3358
+    }
+  ],
+  "did": "Game day's phone half of three Game Week Bites stories landed. In Takes, a bite's row now says the play home matched it to, its unit and its half. The phone reads scenario catalog v2: halftime, the onside kick, halves and big plays. \"Every scenario\" is now one list ranked by what is plausible now, opened from a floating bubble. While a bite is said, a one-tap chip says which unit it is about, and a switch moves it to the other team. A play that just happened names its own unit. Along the way, the check that a tap moves nothing on a phone screen stopped reading a button fixed to the window as moving when the page scrolled under it.",
+  "calls": [
+    {
+      "title": "Where the matched play shows: in Takes, not a new Bites page",
+      "options": [
+        "Say the matched play in Takes' bite line, filtered to a game",
+        "Build a separate Bites page in Game day",
+        "Wait for the whole page before showing anything"
+      ],
+      "chose": 0,
+      "why": "Takes already lists every bite by game and plays it; a second page would be a copy of it.",
+      "undo": "Move the line onto a Bites page if Takes stops listing bites by game (C855)."
+    },
+    {
+      "title": "Catalog v2's words, icons and closed dimensions on the phone",
+      "options": [
+        "These words and icons, with halves and big plays as closed unions",
+        "Read the dimensions as plain strings and show the server's slugs",
+        "Leave the dimensions out until a surface shows them"
+      ],
+      "chose": 0,
+      "why": "A value either side adds then fails until the other side has it, instead of showing a slug.",
+      "undo": "Reword in @some-ui/game-scenarios' words table (C856)."
+    },
+    {
+      "title": "The ranked list and the unit chip on Game day",
+      "options": [
+        "The ranked list in place of the sheet, a floating bubble, and a one-tap unit chip while the bite is said",
+        "A second ranked list beside the Every scenario sheet",
+        "A unit picker of four buttons after the bite stops, during Undo"
+      ],
+      "chose": 0,
+      "why": "One list, always in reach, and the unit is named while the moment is fresh and sent once with the bite.",
+      "undo": "Put the sheet back behind the header's button and drop the chip (C857)."
+    }
+  ],
+  "left": [
+    "GWB18's server half is paulgsc/server#1083 (W16), which merged right after #3357; #3049 closes with it.",
+    "The epic's body still carries the 2026-11-13 Where we are. The 2026-11-21 one and three new story rows are a comment on #2074 for the coordinator to fold in: rewriting a 31 KB body by hand risked corrupting it.",
+    "#3048 (GWB17) has both halves landed (server #1072, #3342) and can be closed once the coordinator confirms nothing is left.",
+    "GWB14 (#3039) still has D15's dimmed moments with no bite, and the live strip under the recorder. Neither is started.",
+    "Accepted and documented on #3357: on a tablet or in the rail layout the bubble floats at the window's edge, and focus drops after a pick from the sheet.",
+    "Residual Ledger item nfl-fan-reaction, for the coordinator to write tomorrow. Summary: Game day now ranks every scenario by what is plausible and names which unit a bite is about; Takes shows each bite's matched play, unit and half; catalog v2 (halftime, onside kick, halves, big plays) is on both sides. Status: open, no flag. First step: GWB14's D15 slice (moments with no bite, dimmed), then the essay template. Issues: #2074, #3039, #3048, #3049, #3040, #3041, #3042."
+  ],
+  "waits": []
+}
