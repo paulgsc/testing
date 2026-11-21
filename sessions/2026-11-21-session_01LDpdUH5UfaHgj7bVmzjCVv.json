@@ -1,0 +1,56 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUH5UfaHgj7bVmzjCVv",
+  "ended": "2026-11-21",
+  "epics": [
+    "SNIPS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3343
+    }
+  ],
+  "did": "I built the some-ui half of SNIPS4, so an essay can show a real screen of the app. A snip, a Clips Library frame and a phone screen card are now one kind of picture, a screen, drawn whole or zoomed to its named parts with the screen-zoom look the renderer already had. A screen sits as large as fits above the captions and never under them, as you ruled. Home hands the pictures to the recorder at render time, fetched by the commit the essay names, and keeps no library of them. The capture now photographs recording stages whole, sets the phone emulator to a real phone size, and finds the floating tab bar, which closes #3137. It merged as #3343 after five independent reviews, with the cards-essay promise in the assurance ledger amended to match.",
+  "calls": [
+    {
+      "title": "A snip, a clip frame and a phone screen card are one kind of picture",
+      "options": [
+        "One screen picture with a closed list of where it comes from",
+        "A separate scene kind for each source"
+      ],
+      "chose": 0,
+      "why": "All three are a picture of a screen of the app with some parts boxed, so one member drawn by the existing screen-zoom look avoids three copies of the same path.",
+      "undo": "Split the screen member of the cut list into one member per source; C865 records it."
+    },
+    {
+      "title": "Where an essay naming a screen home didn't hand is refused",
+      "options": [
+        "When the recorder resolves screens and at render's input check",
+        "When the essay is checked for publishing"
+      ],
+      "chose": 0,
+      "why": "Home hands its screens only at render, so refusing at the publishing check would block every essay that names a snip.",
+      "undo": "Move the refusal into the cut list's resolve step; C866 records it."
+    },
+    {
+      "title": "Recording stages are photographed whole, app screens as a person sees them",
+      "options": [
+        "Whole page for recording stages, the visible window for the rest",
+        "The visible window for every route"
+      ],
+      "chose": 0,
+      "why": "A card's parts below a phone's fold would otherwise be lost from the snip.",
+      "undo": "Empty the stage route list in the capture; C867 records it."
+    }
+  ],
+  "left": [
+    "The SNIPS item in the Residual Ledger: the coordinator writes it. It should read: status doing, no flag. Summary: SNIPS4's some-ui half landed as #3343, so an essay can show a real screen of the app, whole or zoomed, above the captions, from a bundle home fetches by commit and keeps no library of; home's side (SNIPS2) landed the same day as server#1076, and W9's series look as #3359. The desk (SNIPS3) comes next. First step: Snips Capture's first run on main, the first real test of the emulator size and the tab bar.",
+    "SNIPS2, home fetching and handing the bundle, landed as server#1076 the same night; an essay that shows a snip renders once home's render image is rebuilt and a capture bundle exists for the commit it names.",
+    "Snips Capture runs only on main, so the emulator size, the floating tab bar on real dumps and the whole-page stage captures are untested until its first run.",
+    "The series ground and theme for a screen in the recorder landed with W9's #3359.",
+    "SNIPS3, the desk, and SNIPS5 are not started."
+  ],
+  "waits": []
+}
