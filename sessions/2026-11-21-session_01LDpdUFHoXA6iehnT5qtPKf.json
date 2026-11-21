@@ -1,0 +1,37 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFHoXA6iehnT5qtPKf",
+  "ended": "2026-11-21",
+  "epics": [
+    "CARDS",
+    "WALK",
+    "SNIPS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3359
+    }
+  ],
+  "did": "A cards essay can now show the phone's own screens, zoomed into their named parts or whole, sitting among its cards in its series' colours, and kept clear of the captions when it is spoken. I first built a way of naming a screen's parts of my own, then saw the snip work running beside me was the same idea, so I dropped mine and built on that one. What this session added is the look: the series' ground and theme on every screen, the caption band measured once in burn-ins for every recorder that needs it, a refusal of any snip whose picture isn't the size its record says, and a sample cards essay on a mock Rust Rounds card, rendered and proven to give the same bytes twice. It merged as #3359.",
+  "calls": [
+    {
+      "title": "How a cards essay shows the phone's screens (C818)",
+      "options": [
+        "Show them through the snip work's one screen picture, drawn in the series' ground and theme, kept above the captions when the essay is spoken",
+        "A second picture of its own that names a screen's parts, with its own folder of screens beside each essay",
+        "The snip work's screen picture as it was, in the zoom's own brown and theme, with only the caption band kept clear"
+      ],
+      "chose": 0,
+      "why": "A snip and a photographed screen with named parts are one family, and the snip already carries where it was taken and the hash home checks it by, so a second way would have been a copy. Without the series' look, a zoomed screen sat in a brown that matches nothing else in a cards essay.",
+      "undo": "Pass the screen resolver only the caption band in record:cards: every screen then draws in the zoom's own ground and theme."
+    }
+  ],
+  "left": [
+    "The phone-card sample, like main's spoken-intro sample, pins cheat-sheet version 3 while the cards routine now asks new essays for version 4. Moving both needs a fresh render proof, so it is a change of its own.",
+    "The call C869 still names zoomFoot, which is now burn-ins' captionShare. Calls are never edited once on main, so C818 records the new name instead.",
+    "Home hands a cards essay its snips through the generic hand-off another session built (--snips with snips.json and the pictures, server#1067 and #1076, merged the same day); a cards essay that shows a screen renders on home once its render image is rebuilt."
+  ],
+  "waits": []
+}
