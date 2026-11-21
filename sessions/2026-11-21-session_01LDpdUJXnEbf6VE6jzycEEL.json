@@ -1,0 +1,35 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJXnEbf6VE6jzycEEL",
+    "ended": "2026-11-21",
+    "epics": [
+        "WALK"
+    ],
+    "pulls": [],
+    "did": "Slow-lane worker S2 for the APK walkthroughs (WALK5) and silence (#3338), on claude/walk5-voice, no pull request. A module nobody opens for four weeks is now named silent, never one the app doesn't measure, and report:vestiges can list such modules as usage candidates. The walkthrough gained the friction contract home's numbers are read into, Kokoro's lines laid against the screens with each screen held long enough for its line, a friction note on each chapter card and a silence card before the close. The owner then ruled the narration is part promo, part mission, never what's on screen, and recorded that as their call. The rework to that ruling and to home's raw numbers was handed to a successor session at a clean checkpoint.",
+    "calls": [
+        {
+            "title": "How long without an opening makes a module silent (C942)",
+            "options": [
+                "four weeks",
+                "two weeks",
+                "eight weeks"
+            ],
+            "chose": 0,
+            "why": "Long enough that a module used monthly isn't called silent, short enough that a graveyard shows within a walkthrough's 28-day window.",
+            "undo": "Change SILENT_WEEKS in packages/engagement/src/lib/silence.ts."
+        }
+    ],
+    "left": [
+        "Rework to the owner's narration ruling (C945): authored promo and mission lines per stop, chapter cards unvoiced; handed to S2b.",
+        "Deriving the friction file from home's weekly read (frictionOf), with honest words: handed to S2b.",
+        "One opened event per module: 11 of 13 pipelines are still not measured."
+    ],
+    "waits": [
+        {
+            "repo": "some-ui",
+            "kind": "issue",
+            "number": 3367
+        }
+    ]
+}

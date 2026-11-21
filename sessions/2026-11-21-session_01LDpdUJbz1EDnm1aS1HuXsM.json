@@ -1,0 +1,52 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJbz1EDnm1aS1HuXsM",
+    "ended": "2026-11-21",
+    "epics": [
+        "GWB"
+    ],
+    "pulls": [],
+    "did": "Slow-lane worker S6 for Game Week Bites on the server. Branch claude/gwb-engine-nov21 (ENGINE_VERSION 5) fixes three defects. A possession run now ends at a kickoff and at the half (#1077). A fake field goal is no longer read as a kick. ESPN's six play-text team spellings (HST, BLT, ARZ, CLV, LA, WAS) are read as the header's. It also has a fresh review's fixes. Branch claude/gwb-bigplays-nov21 (ENGINE_VERSION 6), built on it, is some-ui#3334: a blocked kick run back is the returners' punt or kick return. It also carries the owner's moved D8: any turnover and any special-teams touchdown is a big play whatever its yards. There is no socket or catalog shape change. Every reading was checked against real ESPN texts from the 2025 and 2026 regular seasons. Clippy ratchet and workspace tests are green. No PRs were opened (slow lane).",
+    "calls": [
+        {
+            "title": "Which plays end a possession run (C964)",
+            "options": [
+                "a kickoff, the end of a half, and a half change",
+                "a kickoff and the end of a half only",
+                "also any punt"
+            ],
+            "chose": 0,
+            "why": "The half change covers a log missing both boundary plays. Punts are left out because a flagged punt often keeps the ball with the kickers on the same drive.",
+            "undo": "Drop the closing conditions in read::SoFar::new and bump ENGINE_VERSION."
+        },
+        {
+            "title": "Which kind a blocked-kick return is (C965)",
+            "options": [
+                "punt-return or kick-return, no new kind",
+                "a new blocked-kick-return kind in catalog v3"
+            ],
+            "chose": 0,
+            "why": "A released catalog never changes, and a new kind would be a fixture pair with some-ui. A return of a blocked kick is a return of that kick.",
+            "undo": "Change the kind in read::gain_by and read::always_big."
+        },
+        {
+            "title": "How ESPN's text team spellings are read (C966)",
+            "options": [
+                "a fixed table of six spellings in read.rs",
+                "read the alias from each summary",
+                "map both sides through the table"
+            ],
+            "chose": 0,
+            "why": "All 32 teams were checked against ESPN's 2025 and 2026 data: only these six differ, and headers always use the header spelling.",
+            "undo": "Remove read::team and its calls; a new spelling needs a row."
+        }
+    ],
+    "left": [
+        "The moments log for GWB14's D15 (GET /games/:gameId/moments) and playId on the takes answer's about.match.play are not started. Reach inward: offer() replayed at a time, and rules::were / plays_that_were.",
+        "A turnover on downs as a big play, and in.big-play's stale covers words, wait on catalog v3.",
+        "server#1089: ESPN's short scoring texts give no yards, so those touchdowns are never big plays.",
+        "server#1092 and server#1093: two Turnover-moment defects in read::turnover.",
+        "A muffed-kick turnover's big play carries yards 0."
+    ],
+    "waits": []
+}

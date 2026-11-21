@@ -1,0 +1,42 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUHTU19xKUqZmVFjwLH",
+    "ended": "2026-11-21",
+    "epics": [
+        "GWB"
+    ],
+    "pulls": [],
+    "did": "On Game day, under the recorder, the phone now lists the picked game's newest three bites. Each row shows its length, whether it is on the phone or on home, Play while its sound is still on the phone, and a line saying the clock, the scenario and the unit. The list comes from the phone's own record, so it is still there after a reload, and it replaces the old single row for the bite just kept. An Undo hides the row until the phone has answered, and a failed Undo brings it back. I also wrote the logic for the big moments of a game with no bite said about them, against a list home doesn't serve yet: scores, turnovers, big plays and onside kicks count. All of it is on the branch claude/gwb14-moments, with no pull request, for the coordinator to admit.",
+    "calls": [
+        {
+            "title": "The strip under the recorder shows the picked game's newest three bites, replacing the single kept-bite row (C970)",
+            "options": [
+                "The newest three of the picked game, from the phone's own record",
+                "Keep the one row and add a separate strip beside it",
+                "Read the strip from home's list of takes",
+                "Show every bite of the game"
+            ],
+            "chose": 0,
+            "why": "The one row was the single-bite case of this list. A bite just said isn't on home yet, and a longer list turns the recorder into Takes, which already lists a game's bites.",
+            "undo": "Change RECENT_BITES in the game-week package's machine file, for example to 1 for the newest bite only."
+        },
+        {
+            "title": "Which moments count as big when no bite was said about them (C971)",
+            "options": [
+                "Scores, turnovers, big plays and onside kicks, but not kicks",
+                "Count every kick too",
+                "Every moment of the game",
+                "Have home mark which moments are big"
+            ],
+            "chose": 0,
+            "why": "A kick moment is also every punt. The owner then ruled that field goals stay out.",
+            "undo": "Flip the entry in BIG_MOMENTS in the game-week package's moments file."
+        }
+    ],
+    "left": [
+        "The dimmed moments aren't on screen yet: home doesn't list a game's moments. A new server session is building that list and adding each bite's matched play id to the list of takes.",
+        "The phone half of any change to the live socket, which waits for the server's final shape.",
+        "If home ever sends an empty game clock, a row's line starts with the possession instead. Takes reads it the same way."
+    ],
+    "waits": []
+}

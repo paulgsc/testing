@@ -1,0 +1,40 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUKY7NFo9BiBMwMsBEX",
+    "ended": "2026-11-21",
+    "epics": [
+        "HEARD"
+    ],
+    "pulls": [],
+    "did": "Worked the HEARD follow-ups on the server's slow lane, on branch claude/heard-followups, no pull request. A Rust Rounds or interview take heard as only white space is now judged nothing said and filed as a silence, and a migration judges failed the takes whose attempts ran out before home judged attempts, so a week stops waiting on them (server#913). The chosen-ending tiebreak (server#923) turned out not to be a defect: a schema index already lets a model end a note only once, so the order is total, and a test now pins that.",
+    "calls": [
+        {
+            "title": "C976: judge every kind of take that ran out before HEARD1 as failed",
+            "options": [
+                "Every kind, as the verdict promise covers every kind",
+                "Only Rust Rounds and interview takes",
+                "Judge none and close that half of server#913"
+            ],
+            "chose": 0,
+            "why": "Home's promise is that every final attempt carries a verdict, and a failure can be judged after the fact exactly as it would have been; the owner's call on how many old takes reach Needs your attention is asked of them.",
+            "undo": "Narrow the migration to Rust Rounds and interview before it ships, or mark the old ones kept on Needs your attention."
+        },
+        {
+            "title": "C977: words that are only white space are nothing said",
+            "options": [
+                "Judge them nothing said and file them as a silence",
+                "Keep judging them on their signals and only widen the filer",
+                "Store them as silent at the engine"
+            ],
+            "chose": 0,
+            "why": "A take with no words was not answered, and the week's essay should read it as a silence.",
+            "undo": "Drop the blank-text arm from judge and narrow the filer back to silent takes."
+        }
+    ],
+    "left": [
+        "server#920, linking a record-again to its new take, waits for W12's hear-again to land, since both change the attention table; the shape is agreed with the coordinator.",
+        "server#910, QM-311's recording level, needs home itself: ffmpeg volumedetect on the two QM-311 takes.",
+        "A silent take kept before HEARD1 has no verdict and still holds its note; noted on server#913."
+    ],
+    "waits": []
+}
