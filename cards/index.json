@@ -2,6 +2,9 @@
   "schema": "some-ui.cards-index/1",
   "essays": [
     {
+      "key": "rust-rounds-how-it-works-2026-11-20"
+    },
+    {
       "key": "how-essays-4-after-the-render-spoken-2026-11-15"
     },
     {
