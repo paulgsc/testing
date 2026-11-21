@@ -1,0 +1,30 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJnkPjLLbjhdP7WvX1",
+  "ended": "2026-11-21",
+  "epics": ["SNIPS", "WALK"],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 1067 },
+    { "repo": "server", "kind": "pr", "number": 1076 }
+  ],
+  "did": "Home now hands a cards essay everything it names in one way: the owner's takes, screens of the app from the snips library, and frames of a clip. Each kind goes in its own folder beside the essay. The essay waits for anything not ready, is refused and said on Studio's Renders for anything missing, and its copies go once the video is made. Then home learned to fetch a snips bundle from GitHub when an essay names one, check it whole, and hand its pictures over. Following the owner's ruling, it keeps no picture library and no table; the essay's cut list is the record.",
+  "calls": [
+    {
+      "title": "A snips bundle GitHub no longer has is refused, never captured again by home (C875)",
+      "options": [
+        "Refuse the essay as snip-gone and ask the owner to run Snips Capture again at that commit",
+        "Have home dispatch Snips Capture itself, which needs the token widened to Actions write",
+        "Let the essay wait without a word until a bundle appears"
+      ],
+      "chose": 0,
+      "why": "Starting CI is the owner's call and the token is read only; waiting silently would hide an essay that can never be made.",
+      "undo": "Treat a gone commit as a wait instead, or add a dispatch once the token is widened (docs/snips.md, Call C875)."
+    }
+  ],
+  "left": [
+    "Putting each snip's record in the mailbox for the routine waits on the mailbox Worker gaining a snips folder (server#1082).",
+    "some-ui still needs its snips doc's first step rewritten for the per-commit fetch, words for the snip-missing, clip-missing and snip-gone refusals, and call C875's JSON; the coordinator carries these.",
+    "No test shows a withdrawal removing an essay's snips folder; the code covers it because tidy removes every kind's folder."
+  ],
+  "waits": []
+}
