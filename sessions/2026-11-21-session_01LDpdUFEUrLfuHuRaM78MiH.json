@@ -1,0 +1,69 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFEUrLfuHuRaM78MiH",
+  "ended": "2026-11-21",
+  "epics": [
+    "GWB"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1068
+    }
+  ],
+  "did": "Home no longer asks ESPN for the scoreboard all day. The game feed now sleeps when no chosen team's game is near: it reads the scoreboard an hour before the next chosen kickoff, at each game's expected end, and otherwise once a day, so a day with no game costs one request instead of about 144. A new setting, the teams followed live, limits the fifteen-second play-by-play to those teams' games; every other game still has its final result fetched once it ends, as the owner chose, so the record keeps every game and voice bites still match their plays. The GAME FEED dashboard now shows whether the feed is asleep and when it next reads, and the stale alert still means the worker died, not that it sleeps. Codex was out of usage, so three fresh-context reviews were recorded on the pull request instead; the second caught that the week's last game could lose its final, which was fixed before it merged.",
+  "calls": [
+    {
+      "title": "How long the scoreboard sleeps, and how early it wakes before a kickoff",
+      "options": [
+        "Wake an hour before a chosen kickoff; read at least once a day",
+        "Wake 30 minutes before a chosen kickoff; read at least once a day",
+        "Wake an hour before a chosen kickoff; read at least every 6 hours",
+        "Read at a fixed time each morning instead of a rolling day"
+      ],
+      "chose": 0,
+      "why": "One read a day is the issue's own bar for a quiet day, and the NFL announces a flexed game at least six days ahead, so a daily read catches it. An hour is six reads before kickoff, enough to catch a delay announced on the day before the play-by-play starts.",
+      "undo": "Change CADENCE.margin and CADENCE.refresh in the server's game_feed.rs; nothing stores them."
+    },
+    {
+      "title": "Where the followed teams are kept",
+      "options": [
+        "A setting of its own, game-teams, beside the game-feed switch",
+        "A teams field inside the game-feed switch"
+      ],
+      "chose": 0,
+      "why": "The web app sets the switch by sending only whether home follows, so a teams field kept inside it would be wiped every time the switch was flipped.",
+      "undo": "Remove the game-teams setting from the server's settings and the read of it in the game feed; the teams already saved stay, unread."
+    },
+    {
+      "title": "How a team is named",
+      "options": [
+        "ESPN's abbreviation as the scoreboard spells it (SF, WSH)",
+        "ESPN's numeric team id",
+        "A table of full team names of our own"
+      ],
+      "chose": 0,
+      "why": "The phone's game day already labels games by ESPN's abbreviations, and the phone has no team choice of its own to reuse, so nothing new is invented.",
+      "undo": "Change the team check in the server's settings; teams already saved that no longer pass it would then stop the feed until set again."
+    },
+    {
+      "title": "How the feed sleeps between games",
+      "options": [
+        "New states of the feed's existing schedule",
+        "A calendar of game windows kept by hand",
+        "The owner's four-hour lease, switched on from the web app"
+      ],
+      "chose": 0,
+      "why": "The schedule already knows every listed game's kickoff, so new states of it need no remembering and catch Thursday, Saturday and international games without a calendar. The lease would lose a game the owner forgot to switch on; if wanted, it fits as a third state of the same switch.",
+      "undo": "Revert the sleep states in the server's game_feed/pass.rs; the scoreboard goes back to every ten minutes."
+    }
+  ],
+  "left": [
+    "A finished game whose summary never reports a final score is fetched without end, and for a chosen team's game it also keeps the scoreboard awake. It predates this work and is filed on server#534 as item 8 with a proposed bound.",
+    "The clip of the GAME FEED dashboard's new panels is owed: this session could not write to the testing repository's clips folder.",
+    "The web settings row for the followed teams, and the ledger amendments and calls, are on some-ui: W11 and the coordinator carry them.",
+    "cargo sqlx prepare was not run because sqlx-cli is not installed here; the change adds no SQL, so the query cache is unaffected."
+  ],
+  "waits": []
+}
