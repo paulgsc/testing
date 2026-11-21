@@ -6,7 +6,7 @@
         "GWB"
     ],
     "pulls": [],
-    "did": "On Game day, under the recorder, the phone now lists the picked game's newest three bites. Each row shows its length, whether it is on the phone or on home, Play while its sound is still on the phone, and a line saying the clock, the scenario and the unit. The list comes from the phone's own record, so it is still there after a reload, and it replaces the old single row for the bite just kept. An Undo hides the row until the phone has answered, and a failed Undo brings it back. I also wrote the logic for the big moments of a game with no bite said about them, against a list home doesn't serve yet: scores, turnovers, big plays and onside kicks count. All of it is on the branch claude/gwb14-moments, with no pull request, for the coordinator to admit.",
+    "did": "On Game day, under the recorder, the phone now lists the picked game's newest three bites. Each row shows its length, whether it is on the phone or on home, Play while its sound is still on the phone, and a line saying the clock, the scenario and the unit. The list comes from the phone's own record, so it is still there after a reload, and it replaces the old single row for the bite just kept. An Undo hides the row until the phone has answered, and a failed Undo brings it back. I also wrote the logic for the big moments of a game with no bite said about them, against a list home doesn't serve yet: scores, turnovers, big plays and onside kicks count. All of it is on the branch claude/gwb14-moments, with no pull request, for the coordinator to admit. Since then: the phone now reads home's list of a game's moments exactly as the server branch serves it, and Takes keeps the id of the play home matched each bite to, which is how a moment with a bite is told apart from one without. I placed the server's new games module in the assurance ledger, which has to land here before the server's route snapshot can. I then stopped at a clean point, before drawing the dimmed moments on screen, and handed that work over in full. It is all on the branch claude/gwb14-moments at 2d0960c, with no pull request.",
     "calls": [
         {
             "title": "The strip under the recorder shows the picked game's newest three bites, replacing the single kept-bite row (C970)",
@@ -34,8 +34,8 @@
         }
     ],
     "left": [
-        "The dimmed moments aren't on screen yet: home doesn't list a game's moments. A new server session is building that list and adding each bite's matched play id to the list of takes.",
-        "The phone half of any change to the live socket, which waits for the server's final shape.",
+        "The dimmed moments with no bite aren't drawn yet: a slot in Takes for what a topic holds with no take, a runtime on the phone that fetches a game's moments, and the dimmed rows. A fresh session continues it on the same branch.",
+        "The route's contract waits on the server's route snapshot: a contract for a route the snapshot doesn't list fails this repo's drift check, so it goes in its own small PR after the snapshot lands.",
         "If home ever sends an empty game clock, a row's line starts with the possession instead. Takes reads it the same way."
     ],
     "waits": []

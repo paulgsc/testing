@@ -1,0 +1,46 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUHayT22SQYTWKEQ2gx",
+    "ended": "2026-11-21",
+    "epics": [
+        "WALK"
+    ],
+    "pulls": [],
+    "did": "Continued the APK walkthrough (WALK5) on claude/walk5-voice, no pull request. Each stop now says authored narration, part promo and part mission, never what is on screen, followed by what real use shows of that stop; the chapter and silence cards stay silent, as the owner ruled. Home's weekly numbers are read onto the app's own module list (frictionOf), said honestly as moved on and stretches, with any count under five withheld. The walkthrough command can now ask home's speaker for its lines itself, and Applying's debrief is said. A fresh review's nine findings were fixed, among them narration that claimed more privacy than is true.",
+    "calls": [
+        {
+            "title": "Where a stop's spoken lines come from (C1000)",
+            "options": [
+                "authored narration per stop, then its real-use measures",
+                "the captions read aloud",
+                "measures only"
+            ],
+            "chose": 0,
+            "why": "The owner ruled the narration adds what the screen can't show: part promo, part mission (C945).",
+            "undo": "Point walkthroughLines back at the captions."
+        },
+        {
+            "title": "How home's weekly numbers become the walkthrough's (C1002)",
+            "options": [
+                "derive them in the app from home's raw rows, against the app's module list",
+                "have home emit the walkthrough's numbers"
+            ],
+            "chose": 0,
+            "why": "Only the app knows which screen is a module's root and which modules a build offers, so one module list stays the app's.",
+            "undo": "Move the derivation to home behind a contract that carries the module list."
+        }
+    ],
+    "left": [
+        "One opened event per module (#3338 part 1): 11 of 13 pipelines are still not measured.",
+        "A contract-harness contract for home's weekly read, which has none yet.",
+        "The speaker mode was not run against a live Kokoro.",
+        "The narration text is worth the owner's read before a public render."
+    ],
+    "waits": [
+        {
+            "repo": "some-ui",
+            "kind": "issue",
+            "number": 3367
+        }
+    ]
+}

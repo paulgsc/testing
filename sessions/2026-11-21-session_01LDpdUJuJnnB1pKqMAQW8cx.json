@@ -1,0 +1,53 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJuJnnB1pKqMAQW8cx",
+    "ended": "2026-11-21",
+    "epics": [
+        "LANE",
+        "HEARD"
+    ],
+    "pulls": [
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1087
+        }
+    ],
+    "did": "Found why home's transcriber ran every note of half a minute or more to its ten-minute deadline and starved the renders: each language check costs a full encoder pass however short the speech, so a take's cost grew with its pauses. I measured it on the real model, bounded the checks by the take's length (464 seconds down to 206 for one take), put fresh takes ahead of notes that keep failing, logged one line per attempt, and made the transcriber give a waiting render ten minutes after twenty. That merged as server#1087. Then I gave file-host a third core so whisper hears on two threads; that branch waits to be opened. I also filed the owner's queue panel story, server#1090.",
+    "calls": [
+        {
+            "title": "How many language checks a take gets",
+            "options": [
+                "one check for every pause of a second or more, as before",
+                "at most one plus four per thirty seconds of speech, the longest pieces first, and only while the decode keeps its time",
+                "one check per take"
+            ],
+            "chose": 1,
+            "why": "It bounds the cost by the take's length, and still checks every piece in a take with few pauses, so a Korean phrase inside an English answer is still heard in Korean there.",
+            "undo": "Raise DETECTS_PER_WINDOW in the server's transcribe engine, or ask for a story to restore a check for every pause."
+        },
+        {
+            "title": "Leaving the lane turn's known limits for later",
+            "options": [
+                "fix them in server#1087 before merging",
+                "file them as server#1088 and merge the fix that unblocks the essays"
+            ],
+            "chose": 1,
+            "why": "Each is bounded by the ten-minute give, and the review cap said to stop opening new rounds on a PR that unblocks the owner's renders.",
+            "undo": "Schedule server#1088 next."
+        }
+    ],
+    "left": [
+        "The three-core branch for file-host is pushed but not opened, waiting for the coordinator's admit.",
+        "The turn's limits in server#1088 are unfixed: it can give way to a render the lane holds stopped, and a run's timer restarts between jobs.",
+        "Notes over about two minutes of speech can still reach the deadline on one thread.",
+        "Takes already final-failed before the fix are not re-heard; that is the owner's hear-again story, some-ui#3339."
+    ],
+    "waits": [
+        {
+            "repo": "server",
+            "kind": "issue",
+            "number": 1090
+        }
+    ]
+}
