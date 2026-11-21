@@ -1,0 +1,96 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFHnXcBLEBv2sJbKXz",
+  "ended": "2026-11-21",
+  "epics": [
+    "GWB"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1069
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1072
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1083
+    }
+  ],
+  "did": "I built the server half of Game Week Bites' next three stories, and all three are on main. First, a bite taken on an offer of the snap to come, like a third and long or a fourth down, now matches that snap instead of the play before it. The engine says which way each moment's bite looks, and old matches are redone once per engine version. Second, catalog v2 is on main: halftime, the onside kick, which half a take is in, and a big-play reading that credits a return to the returners. Third, every bite can say what it is about, offense, defense, special teams or coaching, and whose. Home suggests a default for each, sends the phone one ranked list of every scenario, and stores the unit the phone sends with the bite. Each landed paired with W13's some-ui half.",
+  "calls": [
+    {
+      "title": "C870: where a bite on the snap to come looks for its play",
+      "options": [
+        "Anchor it on the first snap home had not seen while the offer was on its screen, with the direction per moment from the engine",
+        "Keep looking back to the nearest accepted play, as before",
+        "Take the nearer play in time either side, for every bite"
+      ],
+      "chose": 0,
+      "why": "Only the snap that was still to come is what the owner was talking about; looking back gave the play before it, and either way still picks the wrong play on a quick tap.",
+      "undo": "Change offered_said in scenario_engine to return After for every moment, and bump ENGINE_VERSION so stored matches are redone."
+    },
+    {
+      "title": "C871: the third big-play size, and when a kick return is big",
+      "options": [
+        "Sizes big, huge and memorable (20, 40, 60 yards), with a kick return big from 40",
+        "Sizes big and huge only, every kind big from 20"
+      ],
+      "chose": 0,
+      "why": "An ordinary kickoff return runs 20 to 39 yards, out of the end zone to about the 25, so counting it from 20 would call most kickoffs big.",
+      "undo": "Edit Size and Kind::least in game_scenarios, then regenerate the catalog dump and some-ui's copy."
+    },
+    {
+      "title": "C872: where a take's half comes from",
+      "options": [
+        "Derive it when the take is read, from its matched play or else the latest quarter home had seen",
+        "Store it on the bite's match"
+      ],
+      "chose": 0,
+      "why": "Nothing new is stored, and it follows a re-match by itself.",
+      "undo": "Add a half column to bite_match and fill it in the reconciler."
+    },
+    {
+      "title": "C873: units go into catalog v2, not a new v3",
+      "options": [
+        "Add units to v2, which no phone has shipped yet",
+        "Release units as catalog v3"
+      ],
+      "chose": 0,
+      "why": "v2 and units ship together in the same phone build, so a v3 would mark a version no phone ever saw. The coordinator agreed.",
+      "undo": "Move units to a catalog.v3.json and bump CATALOG_VERSION, with some-ui's copy in the same pair."
+    },
+    {
+      "title": "C874: the always-plausible tier, and the default-unit rules",
+      "options": [
+        "Always: what the game means for the paths and whether it fits a pattern; defaults by who did it, as the scenario engine's README writes them",
+        "No always tier, and no default unit, so the owner picks every time"
+      ],
+      "chose": 0,
+      "why": "It is my reading of the owner's outline: a list ranked by the moment, with one tap to change the unit, saves a pick on almost every bite.",
+      "undo": "Edit ALWAYS and default_unit in scenario_engine's rules.rs; the phone takes whatever the list says."
+    }
+  ],
+  "left": [
+    "The Residual Ledger's GWB item was not written, because there were no artifact writes tonight. It should say: GWB's server halves of #3040, #3048 and #3049 are on main (server #1069, #1072, #1083), each paired with W13's some-ui half. Status open, no flag. First step: the owner confirms C874's default units, then server#1077's possession run gets fixed. Issues: #2074, #3040, #3048, #3049, server#1077, #3356, #3334. Keywords: game week bites, bite match, snap to come, catalog v2, halftime, onside kick, big play, unit, ranked list.",
+    "C874's always tier and default-unit rules are this session's reading of the owner's outline, written in crates/scenario_engine/README.md and noted on #3049, for the owner to confirm or change.",
+    "server#1077 is not fixed: a possession run doesn't end at a kickoff or the half, so a drive bite late in the 2nd quarter can match the next half's score, and a recovered onside kick can still offer the opening drive. The fix is small, splitting runs at kickoffs and the end of a half and bumping ENGINE_VERSION, but it came after #1072's review and was left so the merge order held.",
+    "#3356 waits on the owner: BM4 bounds the reconciler's rows by bites, but since server#1069 each ENGINE_VERSION bump adds one small row per bite of a final game, which the bound doesn't name. Loosening BM4's bound is the owner's call.",
+    "#3334: a blocked punt returned for a touchdown isn't read as a big play, and a fake field-goal run is dropped. Both are rare, and both were found in #1072's review.",
+    "WINDOW (90 s) and LAG (5 s), which decide how far a bite looks for its snap, are still to be tuned on a real Sunday.",
+    "The first reconciler pass after deploy re-matches every past game's bites once, because ENGINE_VERSION moved to 4. That's expected, but worth watching on home.",
+    "This session's GitHub access no longer reached some-ui, so the coordinator posted its updates on #3040, #3048, #3049 and #2074."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3356
+    }
+  ]
+}

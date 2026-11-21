@@ -1,0 +1,52 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHiuh878FSNMDJryEj",
+  "ended": "2026-11-21",
+  "epics": [
+    "WALK",
+    "ENG"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3336
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3341
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3344
+    }
+  ],
+  "did": "I built the first four steps of the APK walkthrough videos and landed them. The walk runner now walks the real phone app on an emulator as well as a web page, on one week of made-up Jobs data, with a stand-in microphone so a take is recorded and played back. The walkthrough is the promo with a chapter per stop; the owner approved its look, and its first render, captions only, is on the prototype page. I also took the owner's real contact details out of the Jobs sample, replacing them with a made-up person. Then I started the honest friction the narration will speak: the Jobs wing now says, in the existing vocabulary, which step of a pick, the record or the interview week is on screen and for how long, and every module now says whether its opening is measured at all, so a module that sends nothing reads not measured rather than silent.",
+  "calls": [
+    {
+      "title": "C860: how to build the APK walkthrough (WALK's reach)",
+      "options": [
+        "Generalize the existing walk runner over stages, with a story sample as a stand-in home routes file and Playwright's Android driver doing the walking",
+        "Use Maestro's YAML flows on the emulator",
+        "Use Appium with a WebDriver client",
+        "Record the emulator's screen and cut it by hand"
+      ],
+      "chose": 0,
+      "why": "Everything the walkthrough needs already existed in part: the web walk runner and its walk file, the stand-in home, and the Android driver Snips Capture uses on real work. Extending them at their family's level adds one stage, not a second runner, and keeps the output the promo already reads.",
+      "undo": "Put the walk runner's steps back to the old tap-and-hold shape with the sandbox inlined, and drop the APK stage, apps/mobile/walk and the Jobs story sample."
+    }
+  ],
+  "left": [
+    "WALK5 step 2: home aggregates the friction measures the owner allowed in C861 (days opened out of 28 per module; finished vs left part-way and median time per step; Applying's debrief friction), under the fewer-than-5 rule, from the events #3344 now sends. Not started: it is home's work and needed #3344 first.",
+    "WALK5 step 3: each walkthrough stop gets spoken words for Kokoro, each screen retimed to its caption's speech, and a friction burn-in per stop. Waits on step 2's aggregate.",
+    "WALK5 step 4: the Jobs walkthrough rendered on home, proven twice-equal, shown in Studio's Renders. Waits on steps 2 and 3.",
+    "Taps per step are not measured: that needs a new field on the engagement event, which is the owner's call, so I did not add it.",
+    "Whether a module was opened is known per module, not per surface, so Jobs on the desktop is counted only by its own take. Left for a later story.",
+    "WALK2's Rust Rounds week and sending the take home as a walk stop are not built; both are on #3282.",
+    "The APK walk uses the debug build's whole-screen pictures and does not freeze the page clock, so in-app times can drift by minutes. Known gaps, noted in #3341.",
+    "Residual Ledger item for WALK (not written tonight, at the coordinator's word): summary 'APK walkthrough videos. WALK1 to WALK4 landed (#3341): the real app walked on an emulator over one mock Jobs week, a stand-in microphone, and the walkthrough template the owner approved. Step 1 of the honest friction landed (#3344): Jobs says which step is on screen and every module says whether its opening is measured.' status open, no flag. first_step 'WALK5 (#3337): home aggregates the C861 friction measures, then Kokoro voices each stop and the walkthrough renders on home.' issues #3282, #3325, #3326, #3327, #3337, #3338. keywords walkthrough, APK walk, motion walkthrough, friction, silence, Kokoro, WALK."
+  ],
+  "waits": []
+}
