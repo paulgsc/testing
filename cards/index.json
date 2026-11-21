@@ -2,6 +2,9 @@
   "schema": "some-ui.cards-index/1",
   "essays": [
     {
+      "key": "home-database-safety-2026-11-21"
+    },
+    {
       "key": "rust-rounds-how-it-works-2026-11-20"
     },
     {

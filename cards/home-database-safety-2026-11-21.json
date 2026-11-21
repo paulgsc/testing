@@ -1,0 +1,525 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Home's database, asked and answered",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 3
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 28000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHAT EXISTS TODAY",
+            "title": "One database file, on one machine, with its copies beside it",
+            "bar": "home: ${STORAGE}/, mounted at /app/dbs",
+            "lines": [
+              {
+                "keyword": "hopium.db",
+                "comment": "                  # the one SQLite file file_host opens",
+                "badge": "main"
+              },
+              {
+                "keyword": "hopium.db-wal",
+                "comment": "              # recent writes, folded in at each checkpoint"
+              },
+              {
+                "keyword": "backups/hopium-<UTC>-before-<n>.db",
+                "comment": "  # a copy per migrating start, newest 5"
+              },
+              {
+                "comment": "# same folder, same disk: no second machine, no cloud copy",
+                "badge": "gap"
+              },
+              {
+                "comment": "# file_host.yml:42,49 · migrate.rs:24-28 · docs/home-compute.md:3"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is a spoken cheat sheet on home's database, the server on your own network, in questions and answers. You ask eight questions, and I answer from the code: what this shape defends, what it costs, and the risks it carries. It is an assessment, not a to-do list, as of November twenty-first, twenty twenty-six, and every card is stamped with the commits it was checked against."
+      }
+    },
+    {
+      "id": "C1",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 11600,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT IT SURVIVES",
+            "title": "Five failures, and what home has for each",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A migration that errors",
+                "command": "survives",
+                "note": "Exit, roll back the image, the earlier migrations stay. Nothing to restore."
+              },
+              {
+                "badge": "you",
+                "task": "A file deleted by accident",
+                "command": "by hand",
+                "note": "Refused at the next start. The newest copy, less the writes since."
+              },
+              {
+                "badge": "you",
+                "task": "A corrupt database file",
+                "command": "by hand",
+                "note": "The newest copy, as old as the last schema change."
+              },
+              {
+                "badge": "gap",
+                "task": "A dead disk, a box that won't boot",
+                "command": "does not survive",
+                "note": "The copies share the disk. The phone and Drive keep their part."
+              },
+              {
+                "badge": "you",
+                "task": "A new box",
+                "command": "by hand",
+                "note": "Dotfiles and the server repo; secrets open with your admin key."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. When the file, or the box, goes wrong.",
+        "narration": "A damaged file, and a file or a whole machine lost: what home has for each."
+      }
+    },
+    {
+      "id": "qFailure",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 1000,
+      "burnIns": [],
+      "spoken": {
+        "role": "spoken",
+        "category": "questions",
+        "exchanges": [
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "4cace715-e305-4fb9-bc7b-43599be970cb"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Nothing repairs it, and nothing checks the live file for damage. Home runs on until a request touches a damaged page, and that one fails. Your way back is the newest copy in the backups folder, only as recent as the last change to the database's shape, and restoring it by hand loses everything written since. For one person at home, that's a fair trade: a daily check would only tell you sooner, not make the copy newer. A closer look, for the internals. Home's readiness check reads almost none of the file's pages. The only integrity check runs on a fresh backup, as it's taken. After a power cut, the last few commits can be lost; the file stays consistent."
+            }
+          },
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "4a0d91e5-1b98-4d3c-9f4e-1acd4a5f668f"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Yes, it's an ordinary file, so you could. Home would carry on, writing to a file nobody can see. At its next start it refuses, saying there's no database and asking whether the disk is mounted; it never starts over with an empty one. You copy the newest backup back, and lose the writes since. The worse case is the mini PC itself: a disk that dies, or a box that won't boot. The copies share the database's disk, so everything home held is gone, back to the beginning. What survives is what the phone still holds, its unsent work, sessions and Jobs log, and what's in Drive. Recovery by hand is a new box from your dotfiles and the server repository, and a database started empty unless the old disk can be read. That's the real risk of this shape, and the one it accepts. A closer look, for the internals. The refusal comes before anything could create a file, and the new box's secrets open with your admin key."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "C2",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 9600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · WHAT GRAFANA READS",
+            "title": "The disk is the limit; the runway is a straight line",
+            "bar": "STORAGE row, docs/storage.md",
+            "lines": [
+              {
+                "keyword": "sqlite_db_bytes",
+                "comment": "              # every 10 s: the file's length",
+                "badge": "main"
+              },
+              {
+                "keyword": "storage_growth_bytes_per_day",
+                "comment": " # hourly, over 7 and 90 days"
+              },
+              {
+                "keyword": "storage_runway_days",
+                "comment": "          # free disk / the 7-day rate; -1 not growing"
+              },
+              {
+                "comment": "# the daily size pass has 5 minutes: about 30 GB on a cold disk"
+              },
+              {
+                "comment": "# voice audio is meant to leave the file at about 20 GB"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. How big it grows, and why SQLite.",
+        "narration": "How far the file can grow, and what SQLite costs over time."
+      }
+    },
+    {
+      "id": "qSize",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 1000,
+      "burnIns": [],
+      "spoken": {
+        "role": "spoken",
+        "category": "questions",
+        "exchanges": [
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "3e8b050c-2f7b-4ea6-8768-ad2f647af127"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "The real limit is the disk, not SQLite. Grafana's projection divides the free disk by how fast the database grew over the past week, and shows that as days left. Before the disk, voice audio is meant to leave the database at about twenty gigabytes. A closer look, for the internals. The size is read every ten seconds; hourly come the growth over seven and ninety days, and the runway, a straight line. The daily size pass has five minutes, about thirty gigabytes on a cold disk."
+            }
+          },
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "bf8b519b-c313-483e-a061-decf34505ad9"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "I found no reason written down, so I can't say why it was chosen, only what it does for you. It's one file, with no server to run, and a backup is a file copy. Your data is mostly append-only, from one person, which suits it. The long-run costs: it ties everything to one machine, the audio makes the file large, and each backup copies the whole file. At one user on one box, none of those bites yet. A closer look, for the internals. SQLite takes one writer at a time. Its bundled version carries an advisory that is set aside, because home only opens files it wrote itself."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "C3",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 7600,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · THE ONE COPY",
+            "title": "Before any migration runs, a whole copy, checked, and five kept",
+            "bar": "file_host, as it starts with migrations pending",
+            "lines": [
+              {
+                "comment": "# nothing pending: nothing done, no copy taken"
+              },
+              {
+                "keyword": "VACUUM INTO backups/hopium-<UTC>-before-<first pending>.db",
+                "badge": "main"
+              },
+              {
+                "keyword": "PRAGMA integrity_check",
+                "comment": "   # on the copy, opened read-only: must say ok"
+              },
+              {
+                "comment": "# and the copy must hold as many applied migrations as the live file"
+              },
+              {
+                "comment": "# then migrate, then keep the newest 5 (owner, 2026-11-10)"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. The copies.",
+        "narration": "The copies a migration makes, and what they look like on disk."
+      }
+    },
+    {
+      "id": "qCopies",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 1000,
+      "burnIns": [],
+      "spoken": {
+        "role": "spoken",
+        "category": "questions",
+        "exchanges": [
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "12e1874e-a5dc-4c9b-8f88-fd09ec357693"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Half right, and the half that's off is in your favour. A copy is made before the migrations run, but it isn't dropped afterwards: the newest five are kept, whether the migration succeeded or failed. On disk, each is a whole dot d b file in a backups folder beside the database, named for when it was taken and the migration that came next. A sixth pushes out the oldest. A closer look, for the internals. Each copy must pass SQLite's integrity check and hold the same migrations as the live file before anything is applied. Keeping five is your ruling of November tenth."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "C4",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 8000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WRITES",
+            "title": "One writer, small writes, each whole or not at all",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Readers and a writer",
+                "command": "WAL mode",
+                "note": "Many readers beside one writer; a lock waited on for up to 5 s."
+              },
+              {
+                "badge": "main",
+                "task": "Connections",
+                "command": "at most 5",
+                "note": "None within 3 s: answered busy. Every request answered within 8 s."
+              },
+              {
+                "badge": "main",
+                "task": "A write",
+                "command": "one transaction",
+                "note": "Whole or not at all; a crash leaves the database as it was."
+              },
+              {
+                "badge": "main",
+                "task": "The record",
+                "command": "no update, no delete",
+                "note": "Triggers refuse both on most record tables."
+              },
+              {
+                "badge": "main",
+                "task": "A power cut",
+                "command": "last commits may go",
+                "note": "The file stays consistent; the log checksums each frame."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. Writes.",
+        "narration": "Whether one person puts any pressure on it, and how each write stays whole."
+      }
+    },
+    {
+      "id": "qWrites",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 1000,
+      "burnIns": [],
+      "spoken": {
+        "role": "spoken",
+        "category": "questions",
+        "exchanges": [
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "9c3abbe3-0034-4dff-89b4-fb62d0a4d046"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Not really, by design. SQLite lets many readers work beside one writer, and your writes are small and come from one person. Home holds at most five database connections, and a request that can't get one within three seconds is answered busy, so the phone hears busy, not silence. The single writer is the limit, not the four cores, and at this load it's far from full. Nothing measures lock waits; at one user, nothing needs to. A closer look, for the internals. A lock is waited on for up to five seconds, and every request is answered within eight."
+            }
+          },
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "61cf3ef0-c1eb-4639-a03f-c11a7a8e0f2b"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Each write is a transaction: it lands whole or not at all, and a crash mid-write leaves the database as it was. Most of what you keep also refuses being changed or deleted once written, so no later write can quietly rewrite the record. A write corrupted on its way to the disk shows up only when something reads it, and the answer is the backups, as in the first question. A closer look, for the internals. Triggers refuse updates and deletes on most record tables, and the write-ahead log checksums each frame, so a torn one is dropped on recovery."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "C5",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 8800,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · IF A SIGNAL EVER FORCED IT",
+            "title": "A proposal, not a fact: the order things would come in",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Today, the floor",
+                "note": "One file, a checked copy per schema change, no cost."
+              },
+              {
+                "label": "A copy on a clock",
+                "note": "If the newest copy grows older than you'd accept losing."
+              },
+              {
+                "label": "On another disk",
+                "note": "If a disk starts failing."
+              },
+              {
+                "label": "Audio out",
+                "note": "Near 20 GB, or a runway under 90 days."
+              },
+              {
+                "label": "A second machine",
+                "note": "The ceiling, behind a measured judgment (C789)."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. How far to go.",
+        "narration": "How naive this is meant to be, and what would ever move it."
+      }
+    },
+    {
+      "id": "qNaive",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 1000,
+      "burnIns": [],
+      "spoken": {
+        "role": "spoken",
+        "category": "questions",
+        "exchanges": [
+          {
+            "ask": {
+              "voice": "owner",
+              "take": "b99d3858-41e6-4195-a8a9-8ea98c37465f"
+            },
+            "answer": {
+              "voice": "kokoro",
+              "said": "Today is the floor, on purpose: one file, a checked copy before every change to its shape, a rollback that never touches your data, and no cost. Your rules hold it there: never lose the record, nothing paid until your judgment is measured, no third party holding your data. Its known risk is the one the second question named: one box, one disk. No signal for now you need more is written down anywhere, so what follows is a proposal, not a fact. If a signal ever forced it, things would come in this order. First, the newest copy older than you'd accept losing: a copy on a clock. Second, a disk that starts failing: that copy on another disk. Third, the file near twenty gigabytes, or the runway under ninety days: the audio moves out. Last, the ceiling, behind your measured judgment: a second machine. None of these is owed today. A closer look, for the internals. Measured today: the runway, the growth, and the backups' count and size. Not measured: the newest backup's age."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "C6",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 15200,
+      "burnIns": [
+        {
+          "kind": "rule",
+          "params": {
+            "kicker": "FRESHNESS",
+            "title": "How stale is this card?",
+            "sources": [
+              "README: Deploying to home",
+              "file_host's migrate.rs"
+            ],
+            "wins": "migrate.rs"
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter six. How stale is this?",
+        "narration": "This was true on the day it was stamped. The sources are the server README and file host's migrate dot r s, and when they disagree, the code wins."
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 16800,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT IT SURVIVES",
+            "title": "Five failures, and what home has for each",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "A migration that errors",
+                "command": "survives",
+                "note": "Exit, roll back the image, the earlier migrations stay. Nothing to restore."
+              },
+              {
+                "badge": "you",
+                "task": "A file deleted by accident",
+                "command": "by hand",
+                "note": "Refused at the next start. The newest copy, less the writes since."
+              },
+              {
+                "badge": "you",
+                "task": "A corrupt database file",
+                "command": "by hand",
+                "note": "The newest copy, as old as the last schema change."
+              },
+              {
+                "badge": "gap",
+                "task": "A dead disk, a box that won't boot",
+                "command": "does not survive",
+                "note": "The copies share the disk. The phone and Drive keep their part."
+              },
+              {
+                "badge": "you",
+                "task": "A new box",
+                "command": "by hand",
+                "note": "Dotfiles and the server repo; secrets open with your admin key."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "That's home's database today: one file, and a checked copy before every change to its shape, on one disk of one small machine. Its one real risk is that machine. Come back to this when something changes, and compare."
+      }
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@ce9c75d",
+      "paulgsc/some-ui@1bb5c76"
+    ],
+    "date": "2026-11-21"
+  }
+}
