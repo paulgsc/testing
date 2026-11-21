@@ -33,15 +33,55 @@
       "repo": "server",
       "kind": "pr",
       "number": 1047
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3345
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3350
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3351
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3353
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3355
     }
   ],
-  "did": "I coordinated the run that let your own voice into the video essays and gave the essays a face. The Rust essay now photographs your phone's Rust Rounds cards and zooms into them; Studio gained Spoken, a teleprompter for a pasted script whose takes go home; a cards essay can hold spoken cards where you and Kokoro take turns, either of you asking; and the speaking bubbles draw you as the mochi and Kokoro as tin birds. I wrote your two new rules into CLAUDE.md, reach inward first and name the family, and pushed back with them: the dark look became a theme of the one template, the characters one shared bubble, the inverted Q&A the same card with its turns swapped. A fresh review caught home reading your takes in the old shape before it merged, and we fixed it. The home database essay is researched and drafted from the code, waiting on you to read its eight questions.",
+  "did": "I coordinated the run that let your own voice into the video essays and gave the essays a face. The Rust essay now photographs your phone's Rust Rounds cards and zooms into them; Studio gained Spoken, a teleprompter for a pasted script whose takes go home; a cards essay can hold spoken cards where you and Kokoro take turns, either of you asking; and the speaking bubbles draw you as the mochi and Kokoro as tin birds. I wrote your two new rules into CLAUDE.md, reach inward first and name the family, and pushed back with them: the dark look became a theme of the one template, the characters one shared bubble, the inverted Q&A the same card with its turns swapped. A fresh review caught home reading your takes in the old shape before it merged, and we fixed it. The home database essay is researched and drafted from the code, waiting on you to read its eight questions. Later the same day, through the night, I ran the closed lane: no new work, only driving the branches already built to green and merging them. A strict one-at-a-time merge queue on each repo replaced the race that kept every PR behind main. Landed on some-ui: the outbound-requests, game-feed-sleep, cards-withdrawal, essay-media and bite-matching promises in the assurance ledger, the APK walkthrough's first steps and its friction measures, the Game Week Bites catalog v2 and bite units, the screens of the app in an essay and their series look, Kokoro's voice changing per chapter, the teams-followed setting, and a fix to the stay-still check. Landed on the server: a deleted take withdrawing its cards video, catalog v2, a bite matched to the snap it was said about, each bite's unit, and home fetching an essay's snips. Two duplicate migration numbers were caught before they broke the build, and every worker's session note is in.",
   "calls": [],
   "left": [
-    "The APK build waits on your mobile-release approval in GitHub Actions.",
-    "The home database essay waits on your eight takes in Studio › Spoken; then the cut list and its push to testing.",
-    "The characters' motion (PDA6 step 2) waits on your look at the still characters.",
-    "Not started: zoom in cards essays, Kokoro's voice per chapter (#3321), the showcase cut list, and server#1055 (a take deleted after its video stays in it)."
+    "Rebuild home's render image (VS1) before the next Rust, interview or cards essay; it carries tonight's voice and screen changes.",
+    "W16's session could not be archived (the permission check refused it, mine too); archive it from the app. W10 and W12 stay for hear-again, W20 and W21 for the fast lane.",
+    "Ask #3356: may home keep one more small bite-match row per bite each time the matching rule changes (BM4's bound)?",
+    "#3339 questions (a) and (b) for hear-again: do good old words stay hidden when the fresh hearing fails, and do they show marked 'being heard again' while it runs?",
+    "C874 (W16's default units and always-plausible tier) needs an ask filed for the owner's confirmation.",
+    "Residual Ledger items were not written tonight; each worker's note says what its item should become (GWB, SNIPS, WALK, TAKES, EXPLAIN).",
+    "Fold W13's and W16's 2026-11-21 comments into epic #2074's body; some-ui's snips doc step 1, the snip-missing, clip-missing and snip-gone words, and C875's call record are owed.",
+    "Tomorrow's fast lane: W20's transcriber deadline fix, then 3 cores for file_host, W21's shared stages (#1066), hear-again once the owner answers, and the WALK5 steps."
   ],
-  "waits": []
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3356
+    },
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3339
+    }
+  ]
 }
