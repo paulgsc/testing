@@ -1,0 +1,98 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJtWfyYXnmVoeanpa7",
+  "ended": "2026-11-21",
+  "epics": [
+    "WALK",
+    "EXPLAIN",
+    "GWB"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3346
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3354
+    }
+  ],
+  "did": "I wrote the showcase essay's spoken introduction for Studio, which the owner read, and its cut list of cards, which the coordinator holds for testing. Pull request 3346 records the essay's calls and gives the Rust Rounds screen stage a sample week with a real rustc run, so a capture can show the compiler's error. Pull request 3354 lets home's settings page choose which teams' games home follows live, and Game Day on the phone links there in the browser, as it does the résumé builder. With the server's half merged, issue 3329 is closed as done.",
+  "calls": [
+    {
+      "title": "Which of the showcase introduction's answers the owner reads",
+      "options": [
+        "two read, the third in the owner's own words",
+        "all three read",
+        "all three in the owner's own words"
+      ],
+      "chose": 0,
+      "why": "The first two make claims the record can check; the third, why Rust Rounds, is the owner's own story.",
+      "undo": "Flip the part to Read in Studio's Spoken screen and record it again."
+    },
+    {
+      "title": "How the showcase's host intro follows the owner's introduction",
+      "options": [
+        "reword it to follow, keep the earlier stamp",
+        "re-stamp at today's main without re-checking",
+        "keep the wording that announces the introduction"
+      ],
+      "chose": 0,
+      "why": "The introduction now comes first, and the stamp names the commits the claims were checked against.",
+      "undo": "Reword the intro and publish it under a new key."
+    },
+    {
+      "title": "Which sample week the Rust Rounds screen stage shows",
+      "options": [
+        "Tallowbrook with TB-101's recorded rustc run, shared with the fit page",
+        "a second sample week with a run",
+        "Quillmoss with no run, as before"
+      ],
+      "chose": 0,
+      "why": "The showcase's cards speak of Tallowbrook and TB-101's error, and only a week with a run shows rustc's result.",
+      "undo": "Point the stage's sample back at the Quillmoss week."
+    },
+    {
+      "title": "How home's settings page holds a setting that isn't on or off",
+      "options": [
+        "one family typed by each setting's value",
+        "a separate teams module beside the switches",
+        "a value of unknown shape each row parses"
+      ],
+      "chose": 0,
+      "why": "A new setting is then a new member the compiler checks, not a copy of the switches.",
+      "undo": "Split the teams out into a module of their own."
+    },
+    {
+      "title": "How the owner chooses the teams home follows live",
+      "options": [
+        "chips, and Save sends the whole list",
+        "each chip saves at once",
+        "a text field of abbreviations"
+      ],
+      "chose": 0,
+      "why": "One save per choice, offered only when it changes what home follows.",
+      "undo": "Make each chip save on its own and drop Save."
+    },
+    {
+      "title": "Where the phone finds the teams setting",
+      "options": [
+        "a link at the foot of Game Day, in the browser",
+        "a link in Settings, Home",
+        "the setting built into the app"
+      ],
+      "chose": 0,
+      "why": "The owner asked for the résumé builder's way, and Game Day is where the followed games show.",
+      "undo": "Drop the link from Game Day, or move it to Settings."
+    }
+  ],
+  "left": [
+    "The showcase essay's version with phone screens waits on a Snips Capture run: a snip's id is its picture's hash, and the last capture's bundle has expired.",
+    "On the capture's phone size, rustc's first diagnostic falls below the fold; a full-page capture of stage routes would show it whole.",
+    "The game feed's GA3 objective still reads unproven: nothing yet measures the requests home makes to ESPN.",
+    "Whether Game Day's link scrolls to the teams row, after a sign-in too, is not checked in a browser."
+  ],
+  "waits": []
+}

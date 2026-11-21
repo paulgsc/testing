@@ -1,0 +1,54 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJUvLTKfZ8jUEq9cze",
+  "ended": "2026-11-21",
+  "epics": [
+    "EXPLAIN",
+    "ESSAY-GRAPH",
+    "TAKES",
+    "ORCH"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3349
+    }
+  ],
+  "did": "Each Kokoro voice in a video essay now moves on at each chapter, and only there. One voice policy serves every essay kind: the asker and the answerer of an exchange keep two different voices, and code picks them, never the owner. It is switched on in Rust essay v7, interview essay v4 and cheat-sheet v4; every pinned version keeps its old voices byte for byte, and the weekly call keeps its fixed voices. It merged as #3349 after four fresh reviews, and #3321 is closed. I also built the phone half of asking home to hear a take again, with links back to a take's source and Spoken cards in Takes, on a branch that waits for home's half.",
+  "calls": [
+    {
+      "title": "One voice policy for every essay kind (C840)",
+      "options": [
+        "One policy, fixed or per-role lanes that move on at each chapter a role speaks in",
+        "A rotation written into each essay kind on its own",
+        "Random voices chosen at render time"
+      ],
+      "chose": 0,
+      "why": "Every kind is a case of one family, so the next kind is a new case, not a copy. Round robin over the chapters keeps every render the same, and new versions opt in, so pinned essays keep their takes.",
+      "undo": "Pin a series or template version without a voices field; it renders with one voice per speaker as before."
+    },
+    {
+      "title": "Every new Rust and interview essay takes the voices' version (C841)",
+      "options": [
+        "Write the newest, voiced version for every new essay",
+        "Keep writing the lowest version that draws the essay"
+      ],
+      "chose": 0,
+      "why": "The owner asked for the voices to change in every video essay, and the lowest version would never reach them.",
+      "undo": "Move C841 back to the lowest-version ladder in the two producers' finish steps."
+    }
+  ],
+  "left": [
+    "The next Rust, interview or cards essay waits for home's render image to be rebuilt from a some-ui with #3349 (VS1), as after C822; that is the owner's step on home.",
+    "The phone half of #3339 (ask home to hear a take again, a link back to its source, Spoken cards in Takes) is pushed on some-ui's claude/take-hear-again with no PR yet. It waits on W12's server half merging and the owner's answers on #3339, and this session holds it for tomorrow.",
+    "The Residual Ledger was not written tonight. The TAKES item should say: the phone half of hearing a take again is built and reviewed on claude/take-hear-again, waiting on home's server half and the owner's answers on #3339. The EXPLAIN item should say: voices change with each chapter, merged in #3349, waiting only on the render image rebuild."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3339
+    }
+  ]
+}
