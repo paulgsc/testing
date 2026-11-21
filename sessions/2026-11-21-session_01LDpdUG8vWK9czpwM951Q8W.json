@@ -1,0 +1,49 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUG8vWK9czpwM951Q8W",
+    "ended": "2026-11-21",
+    "epics": [
+        "SNIPS"
+    ],
+    "pulls": [],
+    "did": "On the branch claude/snips-desk, the mailbox gained a snips folder: for each capture home fetches, home puts the capture's list of snips, records and never a picture, so the routine can name a snip without seeing one. I filed the desk where you keep or drop each snip as #3364, with the four things home must serve first, and built its core, grouping a capture's snips by part of the app with your newest mark and note on each, but no screen until home serves the pictures. Studio's clip page now shows each frame as home sends it, asks only for frames that can still change, and no longer hides a frame when home is away. Two independent reviews' findings are fixed.",
+    "calls": [
+        {
+            "title": "What home puts in the mailbox for a capture of the app",
+            "options": [
+                "one file per capture run, the capture's own list of snips, never archived",
+                "one file per snip",
+                "one file per commit, which a second capture of that commit could not add to"
+            ],
+            "chose": 0,
+            "why": "The list the capture already writes says everything the routine needs, the same run fetched twice adds nothing, and a capture can make it again, so home keeps no copy (C946).",
+            "undo": "Say so, and the lists are archived like other files, or split per snip."
+        },
+        {
+            "title": "How the clip page shows frames as they come",
+            "options": [
+                "the query library's own streaming, each answer in its place, keeping what showed",
+                "a coordinator of our own"
+            ],
+            "chose": 0,
+            "why": "The library already streams answers into the page, so nothing of ours is needed, and what you saw stays while home is away (C947).",
+            "undo": "Say so, and the frames come all at once again."
+        },
+        {
+            "title": "The snips desk before home serves it",
+            "options": [
+                "its core now, the screen once home serves the pictures and marks",
+                "a screen now that could only say home didn't answer"
+            ],
+            "chose": 0,
+            "why": "A screen that can't show anything would not do what it appears to do (C948).",
+            "undo": "Say so, and the core is deleted until the screen is built."
+        }
+    ],
+    "left": [
+        "The mailbox isn't deployed: that follows the merge, before home's half (server#1082) lands.",
+        "The desk's screen waits on home serving captures, their pictures and your marks (#3364's server half).",
+        "Bytes that look like a picture but don't open stay shown as unreadable until the app restarts."
+    ],
+    "waits": []
+}

@@ -6,7 +6,7 @@
         "DRIFT"
     ],
     "pulls": [],
-    "did": "Slow-lane worker S4 on the drift epic. I built three stories on claude/drift-ui-nov21, one commit each, verified locally and pushed, with no pull request. Workflow security: actionlint and zizmor now run on every pull request and fail on a high finding, and high findings went from 9 to 0 (U8, promise WS2). Time formatting: six hand-written m:ss clocks now use the one shared formatter, and lint bans another copy (U4). Kept stores: the readers that salvage part of a saved value share one JSON step, and topik's hand-written loops are gone (#2196 item 2). An independent review found no bugs and five inaccurate claims, all fixed. U9's phone-route contracts had already landed in #2263, so the epic's next-step list was stale there.",
+    "did": "Slow-lane worker S4 on the drift epic. I built three stories on claude/drift-ui-nov21, one commit each, verified locally and pushed, with no pull request. Workflow security: actionlint and zizmor now run on every pull request and fail on a high finding, and high findings went from 9 to 0 (U8, promise WS2). Time formatting: six hand-written m:ss clocks now use the one shared formatter, and lint bans another copy (U4). Kept stores: the readers that salvage part of a saved value share one JSON step, and topik's hand-written loops are gone (#2196 item 2). An independent review found no bugs and five inaccurate claims, all fixed. U9's phone-route contracts had already landed in #2263, so the epic's next-step list was stale there. Then, at the owner's go-ahead on #2116, on claude/workflow-hash-pins: every uses: reference (115 refs over 19 actions) is hash-pinned to the commit its tag named, with a version comment; zizmor now fails a tag ref, Dependabot reads composite actions too, and the changesets guard reads a pin's version comment (C953, which moves C952).",
     "calls": [
         {
             "title": "How strict the workflow security check is (C952)",
@@ -23,7 +23,8 @@
     "left": [
         "#2196 item 3 (session-reflection onto openKept): it would change when the old list moves when copying it aside fails, for little gain; the reason is on #2196.",
         "#2196 items 4 to 6, and U4's snapshot store, id generators and the 14 kept copies: not reached this session.",
-        "Two knip findings in files I did not touch (scripts/release/inputs.mjs, a suspender-ledger popup type), which I took to be on main already."
+        "Two knip findings in files I did not touch (scripts/release/inputs.mjs, a suspender-ledger popup type), which I took to be on main already.",
+        "Hash pins: the online impostor-commit audit isn't run, and the changesets guard trusts a pin's version comment."
     ],
     "waits": [
         {
