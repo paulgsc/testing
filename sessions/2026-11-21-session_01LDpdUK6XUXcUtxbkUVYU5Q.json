@@ -1,0 +1,40 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUK6XUXcUtxbkUVYU5Q",
+    "ended": "2026-11-21",
+    "epics": [
+        "HERD"
+    ],
+    "pulls": [
+        {
+            "repo": "some-ui",
+            "kind": "pr",
+            "number": 3365
+        }
+    ],
+    "did": "Found why Jobs didn't refresh on a pull on the S21 Ultra while Studio did: a pull on Jobs never read home itself, it waited for the jobs lane's background run, which queues behind Practice's, sends first, and goes at the drain's slowed pace, so the check gave up before the picks came. Now a pull on Jobs reads this morning's picks and the run records itself, as the person's own read of home, the way Studio's screens do, and the background run still goes for what waits to be sent. Merged as some-ui#3365, promise JP1; only the owner's phone can confirm it after the APK install.",
+    "calls": [
+        {
+            "title": "How a pull on Jobs gets this morning's picks (C988)",
+            "options": [
+                "the Jobs pull reads the picks itself, as Studio's screens do",
+                "keep waiting on the jobs lane's run, and only change the words",
+                "move the jobs lane ahead of the other lanes in the pull"
+            ],
+            "chose": 0,
+            "why": "Reading itself is what Studio's screens already do, so Jobs joins that family instead of a fix for one lane; it costs two more requests to home on every pull while a Jobs screen shows.",
+            "undo": "Put lib/jobs/pull.ts back to waiting on the jobs lane's end in the pull of home, and drop askJobsPicks."
+        }
+    ],
+    "left": [
+        "Whether Jobs refreshes on the real S21 Ultra: only the phone can show it, after the owner installs the new APK at the end of the run.",
+        "#3140's words for a pull that joins a long run are unchanged: Jobs no longer waits on one, but the pull of home still can, and that story stays open."
+    ],
+    "waits": [
+        {
+            "repo": "some-ui",
+            "kind": "issue",
+            "number": 3135
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUK8McgJrVHUT9NmFLQ",
+    "ended": "2026-11-21",
+    "epics": [
+        "GWB"
+    ],
+    "pulls": [],
+    "did": "Built a game's moment log on server claude/gwb-moments-log (slow lane, no PR): every play as the scenarios it was, in the same shape as just happened plus its quarter and clock, served to a paired phone for any week's game, with just happened now reading the same per-play function. Found that the list of takes already carries each bite's matched play id, so the phone only had to read it. A fresh review's findings were fixed or recorded. On the coordinator's call, a play keeps its own unit after the final, while a new bite said after it is still about the game (engine version 7).",
+    "calls": [
+        {
+            "title": "Serve a game's whole moment log rather than its missed moments (C1006)",
+            "options": [
+                "the whole log, every reading of it on the phone",
+                "a missed-moments route",
+                "moments on the takes answer"
+            ],
+            "chose": 0,
+            "why": "Missed moments, just happened and later the chains are all readings of one log, so the server serves the record and not a policy.",
+            "undo": "Delete the games route and moment_log."
+        },
+        {
+            "title": "The log keeps going while the game feed is paused (C1008)",
+            "options": [
+                "the log is a record and only stops growing",
+                "answer nothing while paused"
+            ],
+            "chose": 0,
+            "why": "The socket hides stale offers when paused, but a log of plays already seen is still true.",
+            "undo": "Read the feed's switch in moment_log."
+        }
+    ],
+    "left": [
+        "The route's contract in some-ui waits on the route snapshot after the server merges.",
+        "A play with no ESPN sequence number sorts to the start of the log."
+    ],
+    "waits": []
+}
