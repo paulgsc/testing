@@ -1,1 +1,47 @@
-{"schema":"some-ui.session-note/1","session":"session_01LDpdUHqsPUEEWAPr2hPJyJ","ended":"2026-11-21","epics":["paulgsc/some-ui#3311","RUST-ROUNDS","WALK","EXPLAIN","PD-ASKS"],"pulls":[{"repo":"some-ui","kind":"pr","number":3318},{"repo":"some-ui","kind":"pr","number":3319},{"repo":"some-ui","kind":"pr","number":3320},{"repo":"some-ui","kind":"pr","number":3323},{"repo":"server","kind":"pr","number":1047}],"did":"I coordinated the run that let your own voice into the video essays and gave the essays a face. The Rust essay now photographs your phone's Rust Rounds cards and zooms into them; Studio gained Spoken, a teleprompter for a pasted script whose takes go home; a cards essay can hold spoken cards where you and Kokoro take turns, either of you asking; and the speaking bubbles draw you as the mochi and Kokoro as tin birds. I wrote your two new rules into CLAUDE.md, reach inward first and name the family, and pushed back with them: the dark look became a theme of the one template, the characters one shared bubble, the inverted Q&A the same card with its turns swapped. A fresh review caught home reading your takes in the old shape before it merged, and we fixed it. The home database essay is researched and drafted from the code, waiting on you to read its eight questions.","calls":["Owner, 2026-11-20: reach inward first (C820) and name the family, push back on the granular (C830), both in CLAUDE.md","Owner, 2026-11-20: add it - spoken cards join the essay-render exception for your recordings on home","Owner, 2026-11-21: Kokoro's voice changes only at a chapter, never at random (#3321)","Owner, 2026-11-21: the mochi and the tin birds; the owl kept for later"],"left":["The APK build waits on your mobile-release approval in GitHub Actions.","The home database essay waits on your eight takes in Studio › Spoken; then the cut list and its push to testing.","The characters' motion (PDA6 step 2) waits on your look at the still characters.","Not started: zoom in cards essays, Kokoro's voice per chapter (#3321), the showcase cut list, and server#1055 (a take deleted after its video stays in it)."],"waits":["Approve the APK build","Read the eight database-essay questions in Studio › Spoken"]}
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHqsPUEEWAPr2hPJyJ",
+  "ended": "2026-11-21",
+  "epics": [
+    "RUST-ROUNDS",
+    "WALK",
+    "EXPLAIN",
+    "PD-ASKS"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3318
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3319
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3320
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3323
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1047
+    }
+  ],
+  "did": "I coordinated the run that let your own voice into the video essays and gave the essays a face. The Rust essay now photographs your phone's Rust Rounds cards and zooms into them; Studio gained Spoken, a teleprompter for a pasted script whose takes go home; a cards essay can hold spoken cards where you and Kokoro take turns, either of you asking; and the speaking bubbles draw you as the mochi and Kokoro as tin birds. I wrote your two new rules into CLAUDE.md, reach inward first and name the family, and pushed back with them: the dark look became a theme of the one template, the characters one shared bubble, the inverted Q&A the same card with its turns swapped. A fresh review caught home reading your takes in the old shape before it merged, and we fixed it. The home database essay is researched and drafted from the code, waiting on you to read its eight questions.",
+  "calls": [],
+  "left": [
+    "The APK build waits on your mobile-release approval in GitHub Actions.",
+    "The home database essay waits on your eight takes in Studio › Spoken; then the cut list and its push to testing.",
+    "The characters' motion (PDA6 step 2) waits on your look at the still characters.",
+    "Not started: zoom in cards essays, Kokoro's voice per chapter (#3321), the showcase cut list, and server#1055 (a take deleted after its video stays in it)."
+  ],
+  "waits": []
+}

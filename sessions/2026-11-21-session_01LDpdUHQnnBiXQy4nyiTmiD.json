@@ -1,1 +1,46 @@
-{"schema":"some-ui.session-note/1","session":"session_01LDpdUHQnnBiXQy4nyiTmiD","ended":"2026-11-21","epics":["paulgsc/some-ui#3311"],"pulls":[{"repo":"paulgsc/server","kind":"pr","number":1051},{"repo":"paulgsc/server","kind":"pr","number":1054}],"did":"W3 in run #3311. RR31 server half: file_host gives a rust essay week.json, the route's own bytes, and render-calls.sh hands it to record:essay as --week-file (server#1051, merged). WALK7 server half: a cards essay's spoken cards are given the owner's takes they name (audio, word times, transcript) through one take hand-off now shared with rust_essays (take_files::hand_off). Takes not yet heard are held. Missing or unclear takes are refused as take-missing or take-unheard on Studio > Renders. Copies are tidied once the video is made or a take is deleted. The cards render is named in identity.md as an owner-ruled exception. A late fix reads spoken takes in the C817 { ask, answer } turn shape, tested against some-ui's own spoken-intro sample (server#1054, merged). Raised one landing-order hazard (strict parseArgs refusing --week-file) and one identity.md drift; both were decided.","calls":["Coordinator: sequence --week-file behind the render pin, not a source-text probe","Coordinator: one shared take hand-off for every essay, no second exporter (recon some-ui#3317)","Owner, 2026-11-20: 'add it' - cards spoken cards join the essay-render exception in identity.md"],"left":["server#1055: a take deleted after a cards render starts, or after its video is made, leaves the voice in the video","No test drives the no-subject withdrawal of given cards essays (noted on #1054)"],"waits":["Ledger lines for rust-essays/given and the cards-essay requirement, applied by the coordinator in some-ui"]}
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHQnnBiXQy4nyiTmiD",
+  "ended": "2026-11-21",
+  "epics": [],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1051
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1054
+    }
+  ],
+  "did": "W3 in run #3311. RR31 server half: file_host gives a rust essay week.json, the route's own bytes, and render-calls.sh hands it to record:essay as --week-file (server#1051, merged). WALK7 server half: a cards essay's spoken cards are given the owner's takes they name (audio, word times, transcript) through one take hand-off now shared with rust_essays (take_files::hand_off). Takes not yet heard are held. Missing or unclear takes are refused as take-missing or take-unheard on Studio > Renders. Copies are tidied once the video is made or a take is deleted. The cards render is named in identity.md as an owner-ruled exception. A late fix reads spoken takes in the C817 { ask, answer } turn shape, tested against some-ui's own spoken-intro sample (server#1054, merged). Raised one landing-order hazard (strict parseArgs refusing --week-file) and one identity.md drift; both were decided.",
+  "calls": [
+    {
+      "title": "Sequence the week file behind the render pin",
+      "options": [
+        "Wait until home's renderer is pinned to a version that reads it",
+        "Probe the recorder's source text for support"
+      ],
+      "chose": 0,
+      "why": "The pin is a fact home already holds; a text probe guesses at what the recorder can do.",
+      "undo": "Hand the week file whatever the renderer's version, and remove the pin check."
+    },
+    {
+      "title": "One shared take hand-off for every essay",
+      "options": [
+        "One hand-off for every essay kind",
+        "A second exporter for cards essays"
+      ],
+      "chose": 0,
+      "why": "The recon on #3317 found a copy per essay kind of the same take path; reaching inward first means one.",
+      "undo": "Give cards essays their own take exporter again."
+    }
+  ],
+  "left": [
+    "server#1055: a take deleted after a cards render starts, or after its video is made, leaves the voice in the video",
+    "No test drives the no-subject withdrawal of given cards essays (noted on #1054)"
+  ],
+  "waits": []
+}
