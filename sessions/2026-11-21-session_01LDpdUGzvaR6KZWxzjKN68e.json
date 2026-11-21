@@ -1,0 +1,40 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUGzvaR6KZWxzjKN68e",
+    "ended": "2026-11-21",
+    "epics": [
+        "DRIFT"
+    ],
+    "pulls": [],
+    "did": "On the server's drift epic, every table now says how its rows live. A test fails if a kept record loses its guard, or if code deletes one outside the voice-note deletes you already ruled on. The nudge waker, the biggest file in the repo, is split into its stages, and a test stops any of them growing back. Dead code and a missing README on thirty-six crates are gone, with a check so a manifest can't name a file that isn't there. The clock clean-up was left alone because it reaches into the transcriber's files. Everything is on a branch waiting to be admitted.",
+    "calls": [
+        {
+            "title": "Which references may block an account's deletion (C958)",
+            "options": [
+                "no reference points at a table scoped to one person, and a parent that isn't deleted with its child must never be deleted",
+                "neither end of a reference scoped to a person",
+                "raise it and stop"
+            ],
+            "chose": 0,
+            "why": "It holds for every reference on main today, including the one the cards-essay withdrawal added, and still keeps every account deletable.",
+            "undo": "Tighten the reference test to reject a scoped child too."
+        },
+        {
+            "title": "How a split file is kept from growing back (C961)",
+            "options": [
+                "a 700-line ceiling per nudge stage",
+                "one ceiling for every file in file_host",
+                "no guard"
+            ],
+            "chose": 0,
+            "why": "Other busy files already exceed a repo-wide 500, so a scoped ceiling fails only what this split owns.",
+            "undo": "Raise or delete STAGE_MODULE_CEILING."
+        }
+    ],
+    "left": [
+        "About 640 unneeded pub items to narrow, and dead code in the transcriber and game-week lanes, written on server#491.",
+        "The shared clock (server#483) reaches the transcriber's files, so it waits for that lane to settle.",
+        "The assurance ledger's three nudge proofs must be re-pointed in some-ui and merged as a pair with this branch."
+    ],
+    "waits": []
+}

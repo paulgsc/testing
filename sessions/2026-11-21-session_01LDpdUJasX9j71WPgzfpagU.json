@@ -1,0 +1,69 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJasX9j71WPgzfpagU",
+    "ended": "2026-11-21",
+    "epics": [
+        "OBS",
+        "CHECKS",
+        "LANE"
+    ],
+    "pulls": [
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1066
+        }
+    ],
+    "did": "Built shared stages: one closed contract for every node other pipelines wait on, with the transcriber as its first case. Home now says how old the oldest unheard note is and how many wait, read over the whole queue, and pages when a note waits past 25 minutes or when the transcriber keeps trying and almost nothing gets heard. The file_host dashboard opens on a Shared stages row saying OK, slow or stuck, and what waits: notes, cards essays held for a take, and how much of the hour renders were held for notes or Rust Rounds. Then made the reach for #1091, so that what an essay waits on inherits its urgency.",
+    "calls": [
+        {
+            "title": "The transcriber's promise is 25 minutes, not 15",
+            "options": [
+                "25 minutes, covering a turn given to the renders, an interval and one long note ahead",
+                "15 minutes, which would page on every turn given to the renders",
+                "exempt the turn in the alert, which would hide a turn that never ends"
+            ],
+            "chose": 0,
+            "why": "After #1087 a turn given to the renders holds every note for up to 10 minutes by design, so a tighter promise would page on work home does on purpose.",
+            "undo": "Lower HEARD_WITHIN in transcribe.rs; its compile-time check says what it no longer covers."
+        },
+        {
+            "title": "Export when the oldest note arrived, not how old it is",
+            "options": [
+                "a timestamp that Prometheus ages",
+                "an age set once per pass"
+            ],
+            "chose": 0,
+            "why": "A broken pass can last hours, and an age set at its start would stand still the whole time.",
+            "undo": "Swap the gauge and drop the recording rule."
+        },
+        {
+            "title": "Broken needs more than one note's worth of failures",
+            "options": [
+                "more attempts in an hour than one note gets",
+                "three attempts in an hour"
+            ],
+            "chose": 0,
+            "why": "One bad note failing its three attempts is that note's problem, not a broken transcriber.",
+            "undo": "Change the comparison in the StageBroken rule and in the dashboard tile."
+        },
+        {
+            "title": "Urgency is inherited along what waits on what, built as a want record and not a workflow engine",
+            "options": [
+                "a want record plus a recursive query, urgency first in each queue's order",
+                "adopt Airflow or Temporal on home",
+                "a fast-track column read only by the transcriber"
+            ],
+            "chose": 0,
+            "why": "Only home knows which of its pipelines wait on which and which roots the owner cares about; an engine would replace every worker, and a column would be copied per pair.",
+            "undo": "Drop the want table and the urgency term; each queue keeps its own order."
+        }
+    ],
+    "left": [
+        "VH7 lands in some-ui's ledger after #1066: the coordinator places it.",
+        "The render lane, Kokoro and the mailbox are declared as future stage cases, not built.",
+        "#1091 (urgency inherited along the waits-on graph) is next for this session, after its want store's ledger entry lands in some-ui.",
+        "W12's hear-again change must mirror its new per-note key into backlog's copy of the queue's WHERE; W12 has agreed to."
+    ],
+    "waits": []
+}
