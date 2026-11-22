@@ -1,0 +1,92 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJasX9j71WPgzfpagU",
+    "ended": "2026-11-22",
+    "epics": [
+        "LANE",
+        "HEARD"
+    ],
+    "pulls": [
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1098
+        },
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1100
+        }
+    ],
+    "did": "Since my last note, I made what waits on a note put it first in home's transcriber. An essay held back for its takes now says which takes it waits on, and those are heard ahead of notes nothing waits on. Then I built the owner's fast-track: one tap puts a voice note at the front of the line, and its first try skips the turn the transcriber gives the renders. Both feed one urgency order, and a note that keeps failing still never holds the queue. Two reviews caught real gaps on the way: a re-marked note jumping fresher ones, and a stale mark after a model change. Both were fixed before it landed.",
+    "calls": [
+        {
+            "title": "What waits on a note is a row the waiter rewrites, not a time kept",
+            "options": [
+                "One row per note a waiter waits on now, replaced on every pass of that waiter",
+                "A timestamp of when the wait began, aged into a priority"
+            ],
+            "chose": 0,
+            "why": "The wait being there is what matters; a kept time would have to be aged and cleaned up, and could outlive the wait.",
+            "undo": "Drop stage_want and the wanted term in the queue's order (C1013)."
+        },
+        {
+            "title": "Wanted notes go first only among notes tried as often",
+            "options": [
+                "After fewest attempts, so a note that keeps failing still never holds the queue",
+                "Ahead of fewest attempts"
+            ],
+            "chose": 0,
+            "why": "TR1 is a promise to the owner; putting wanted first outright would let one failing take an essay waits on hold every fresh note.",
+            "undo": "Move the wanted term before tried in waiting_first (C1015)."
+        },
+        {
+            "title": "The fast-track mark is append-only, newest act decides",
+            "options": [
+                "One row per act, fast or cancel",
+                "A flag on the note updated in place"
+            ],
+            "chose": 0,
+            "why": "Nothing is ever edited, so how often the owner marks and takes back stays visible.",
+            "undo": "Drop voice_note_fast_track; the queue then reads no marks (C1016)."
+        },
+        {
+            "title": "A fast-tracked note gets one try at the head of the line",
+            "options": [
+                "One try while untried, then it waits behind fresher notes like any other",
+                "Hold the head of the line across every retry"
+            ],
+            "chose": 0,
+            "why": "Holding the head across retries would loosen TR1, which is the owner's to decide; one try is what their ruling on #1090 asked for.",
+            "undo": "Drop the FastTrack rank and first_try's exemption in the pass (C1017)."
+        },
+        {
+            "title": "Urgency is one closed type and one term in the queue's order",
+            "options": [
+                "None, Wanted, FastTrack, ranked by one SQL case a test ties to the type",
+                "Separate order terms for each source"
+            ],
+            "chose": 0,
+            "why": "The owner asked for one source of urgency in that mechanism, not a one-off term per source, and the next stages will reuse it.",
+            "undo": "Replace the urgency term with the separate columns (C1018)."
+        },
+        {
+            "title": "Refuse a fast-track the queue would do nothing with",
+            "options": [
+                "Answer 409 for a note already heard, set aside, out of attempts or without audio",
+                "Record the mark anyway"
+            ],
+            "chose": 0,
+            "why": "A mark that orders nothing would tell the phone it worked when it did not.",
+            "undo": "Drop the not-waiting check in fast_track::act (C1019)."
+        }
+    ],
+    "left": [
+        "The render worker seam is held for a later run: the render lane orders its jobs in bash, so urgency reaches it only once file_host writes an order the worker reads (#1091).",
+        "Urgency across more than one edge waits for the first stage whose waiter is itself waited on, such as Kokoro or a render of a part (#1091).",
+        "#1090's queue view, pause-and-approve and retry are not built; I reopened #1090, which my PR had closed too early.",
+        "Right after a model bump, a fast-track may be refused for a note the new model would hear, because the check keeps no model key; documented in fast_track::act.",
+        "W12's hear-again must keep the urgency case and the queue's order as written when it rewrites the queue (#1091's seam)."
+    ],
+    "waits": []
+}
