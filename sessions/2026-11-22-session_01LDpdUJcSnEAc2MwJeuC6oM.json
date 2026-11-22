@@ -1,0 +1,26 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUJcSnEAc2MwJeuC6oM",
+    "ended": "2026-11-22",
+    "epics": [],
+    "pulls": [
+        {
+            "repo": "some-ui",
+            "kind": "pr",
+            "number": 3388
+        },
+        {
+            "repo": "some-ui",
+            "kind": "pr",
+            "number": 3394
+        }
+    ],
+    "did": "I was CI1 in run #3361's choir, and both of my pull requests merged. The first fixed a defect: the filter that decides which CI jobs a pull request runs had a Markdown exclusion that, under the filter's defaults, matched nearly every file. So Rust CI, the Rust deny checks and the license audit ran on pull requests that couldn't fail them, about a quarter of the runner minutes. Each filter now names what its jobs read, and the promise CD1 holds that, with a test that runs the action's own matching and a check that fails the bad pattern. The second, a story, runs each end-to-end suite only when its own files change and the license audit only when dependencies do, so a job no longer pays for setup and then runs nothing.",
+    "calls": [],
+    "left": [
+        "The merge queue, CodeQL's advanced setup, the render stage's gate and pages.yml were out of scope for this run; they need the owner or more care.",
+        "The server's deny and metric-contract gates are the server's; the coordinator hands them to a server session.",
+        "THUMB's recorder-path edit to pr.yml now belongs in the record filter in _detect-changes.yml; THUMB rebases onto #3394."
+    ],
+    "waits": []
+}
