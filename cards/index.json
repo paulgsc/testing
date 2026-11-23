@@ -2,6 +2,9 @@
   "schema": "some-ui.cards-index/1",
   "essays": [
     {
+      "key": "merge-queue-2026-11-23"
+    },
+    {
       "key": "home-database-safety-2026-11-21"
     },
     {
