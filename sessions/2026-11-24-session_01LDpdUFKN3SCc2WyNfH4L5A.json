@@ -1,0 +1,36 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFKN3SCc2WyNfH4L5A",
+  "ended": "2026-11-24",
+  "epics": [],
+  "pulls": [],
+  "did": "An ideation sketch for the owner's essay host, with nothing landed. Teen Bird turned out to be Tin Bird, the cast's tin owlet. I gave it a rig: the cast's own drawing split into moving parts, plus wings to point with, six poses by six expressions, and seeded blinks, glances, breath and the key spin from C823. I rendered a four-scene sample essay through main's motion video twice: A as the live SVG rig, which gave the same bytes on two renders, and B as a 1,440-cell sprite sheet of the same bird. Both are on a private page with a live template sheet and the proposed schema. The prototype source is kept on the claude/host-ab branch, with no PR.",
+  "calls": [
+    {
+      "title": "Which medium the host is drawn in",
+      "options": [
+        "A live SVG rig drawn from the cast's data",
+        "A sprite sheet baked from the same drawing"
+      ],
+      "chose": 0,
+      "why": "Poses, expressions and aim combine as parameters, it stays sharp in a close-up, and it is deterministic. The sheet grows with every case multiplied together (19.6 MB for six by six) and blurs at full frame.",
+      "undo": "Bake the sheet with the kept sheet script and render with medium sprite."
+    },
+    {
+      "title": "Where the host lands in the schema",
+      "options": [
+        "A new host field on a shot beside its burn-ins",
+        "A host kind in the burn-ins' closed union"
+      ],
+      "chose": 1,
+      "why": "Burn-ins already have a pure frame at each time, an alpha layer over any picture, and a preview, so the host joins that family instead of starting its own.",
+      "undo": "Add the field to the shot schema instead; the beats' unions carry over unchanged."
+    }
+  ],
+  "left": [
+    "No code on main, by the owner's word: building waits until next week.",
+    "No voice: home's speaker can't be reached from a cloud session, so the beak follows a fixed rhythm instead of word timings.",
+    "The corner region is the owner's choice: carve one out of the body or declare the host an exception to the burn-ins' no-overlap rule."
+  ],
+  "waits": []
+}
