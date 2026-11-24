@@ -1,0 +1,29 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKhtiwuZVSbwCVaWh8",
+  "ended": "2026-11-24",
+  "epics": [
+    "CONSERVE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1210
+    }
+  ],
+  "did": "You chose an open-failures gauge for failures that persist, rather than a table that counts each once, and I built it. Home now sets failures_open for each step afresh on every pass, and HomeFailuresOpen tells you when one stays open for two hours, through a restart too, held by four promtool cases. The mailbox's restore, incoming read and index put are its first steps. A refused file that a newer kept one passes over is now counted once as lost. A condition nothing can fix, a held week, is counted once when first seen instead of paging for good. The fresh review found a stale flag and tests that could not tell a set from an add, and both are fixed. It merged as server#1210, closing #1201.",
+  "calls": [],
+  "left": [
+    "Five more conditions that persist join the gauge, one open step each: the essay week, the render observation, no device accepted, the deploy's state file and the clips mismatch. A new worker has them.",
+    "Weeks kept before server#1198 were never counted, and nothing counts them now.",
+    "A metrics snapshot in tests empties the gauge, so a test sets a sentinel value before each pass it asserts."
+  ],
+  "waits": [
+    { "repo": "server", "kind": "issue", "number": 1178 },
+    { "repo": "server", "kind": "issue", "number": 1179 },
+    { "repo": "server", "kind": "issue", "number": 1180 },
+    { "repo": "server", "kind": "issue", "number": 1181 },
+    { "repo": "server", "kind": "issue", "number": 809 }
+  ]
+}
