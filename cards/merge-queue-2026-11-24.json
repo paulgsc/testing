@@ -1,0 +1,817 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Why our merges wait in line on a free GitHub account",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 6
+  },
+  "look": "plain",
+  "voice": "read",
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "OPEN QUESTION",
+            "title": "Why our merges wait in line",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "The pain",
+                "note": "Measured in runner-minutes"
+              },
+              {
+                "badge": "main",
+                "label": "The constraints",
+                "note": "GitHub, a free account"
+              },
+              {
+                "badge": "main",
+                "label": "What we chose",
+                "note": "Settle first, land in buckets"
+              },
+              {
+                "badge": "gap",
+                "label": "What still hurts"
+              },
+              {
+                "badge": "you",
+                "label": "The open question",
+                "note": "Your better idea"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "This is an open question, not an explainer. Two repositories, one person, and a crowd of agent sessions all merge into GitHub on a free personal account, and the merges wait in line. I'll show where the time goes, with the numbers, what we settled on, and why we still don't like it. If you know a better pattern that stays on GitHub and costs nothing, that's the part I'm asking for. It's as of November twenty-fourth, twenty twenty-six, and the pages you'll see were photographed that day; the numbers were measured on November twenty-first.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "The evidence behind the open-question essay on merges"
+          }
+        ]
+      },
+      "durationMs": 31900
+    },
+    {
+      "id": "P1",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "pages",
+          "url": "https://github.com/paulgsc/some-ui/pull/3376/files",
+          "capturedAt": "2026-11-24T18:00:02.674Z",
+          "file": "github-com-paulgsc-some-ui-pull-3376-files-123a52b0b6d9.png",
+          "run": "45454355461"
+        }
+      },
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. The pain.",
+        "narration": "Start with one small pull request, merged on November twenty-first. It adds three records of decisions and one entry to a ledger. Four JSON files, sixty-one lines, and no code at all.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1013.json",
+            "quote": "\"id\": \"C1013\""
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"docs/calls/C1013.json\",\"docs/calls/C1014.json\",\"docs/calls/C1015.json\",\"packages/assurance/src/ledger.json\""
+          }
+        ]
+      },
+      "durationMs": 13800
+    },
+    {
+      "id": "P2",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "pages",
+          "url": "https://github.com/paulgsc/some-ui/actions/runs/44944305421",
+          "capturedAt": "2026-11-24T18:00:05.634Z",
+          "file": "github-com-paulgsc-some-ui-actions-runs-44944305421-303927112e5b.png",
+          "run": "45454355461"
+        }
+      },
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "narration": "Its main workflow ran for fifteen and a half minutes of wall time, and its checks spent thirty-three runner-minutes in all. The Rust build and tests, and five Rust dependency checks, all ran and all passed. The pull request touched no Rust, so none of them could have failed.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"name\":\"Deny Checks / Rust Deny (advisories)\""
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "whether the PR's files could fail the job"
+          }
+        ]
+      },
+      "durationMs": 21100
+    },
+    {
+      "id": "P3",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "LOG · WHY THEY RAN",
+            "title": "The filter matched four JSON files as Rust",
+            "bar": "changes / Detect Changed Paths · run 44944305421",
+            "lines": [
+              {
+                "keyword": "Filter rust",
+                "text": " = true",
+                "badge": "gap"
+              },
+              {
+                "text": "docs/calls/C1013.json [added]"
+              },
+              {
+                "text": "docs/calls/C1014.json [added]"
+              },
+              {
+                "text": "docs/calls/C1015.json [added]"
+              },
+              {
+                "text": "packages/assurance/src/ledger.json [modified]"
+              },
+              {
+                "keyword": "Filter node",
+                "text": " = true"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "The job that decides what runs logged why. A filter called rust matched every one of the four files. GitHub shows this log only to people who sign in, so these lines are copied from it, word for word.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/ci-architecture.md",
+            "quote": "a leading-`!` pattern matches every file it does"
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"docs/calls/C1013.json\",\"docs/calls/C1014.json\",\"docs/calls/C1015.json\",\"packages/assurance/src/ledger.json\""
+          }
+        ]
+      },
+      "durationMs": 18400
+    },
+    {
+      "id": "P4",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "CODE · _detect-changes.yml, before CD1",
+            "title": "A negation, read as one more way to match",
+            "bar": ".github/workflows/_detect-changes.yml",
+            "lines": [
+              {
+                "keyword": "rust:"
+              },
+              {
+                "text": "  - 'crates/**'"
+              },
+              {
+                "text": "  - 'Cargo.toml'"
+              },
+              {
+                "text": "  - …"
+              },
+              {
+                "text": "  - 'nix/**'"
+              },
+              {
+                "text": "  - '!**/*.md'",
+                "comment": "  # matches any file not Markdown",
+                "badge": "gap"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Here is the cause. The Rust and Node lists each ended with a pattern meant to leave Markdown out. But the filter's default rule is that a file counts when any one pattern matches it, and 'not Markdown' matches nearly every file there is. So the Rust flag and the Node flag were on for almost every pull request. That pattern has since been fixed, and a check now refuses it.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/ci-architecture.md",
+            "quote": "a leading-`!` pattern matches every file it does"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": ".github/workflows/_detect-changes.yml",
+            "quote": "No leading `!` under the default `some`, where it adds every"
+          }
+        ]
+      },
+      "durationMs": 24200
+    },
+    {
+      "id": "P5",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "bars",
+          "params": {
+            "kicker": "CHART · LAST 30 MERGED PRS",
+            "title": "1,000 of 3,793 runner-minutes couldn't fail",
+            "series": [
+              "couldn't fail",
+              "could fail"
+            ],
+            "unit": "min",
+            "rows": [
+              {
+                "label": "Rust dep checks (5 jobs)",
+                "values": [
+                  604.8,
+                  20.6
+                ],
+                "note": "605 of 625"
+              },
+              {
+                "label": "Rust CI",
+                "values": [
+                  149.8,
+                  5.1
+                ],
+                "note": "150 of 155"
+              },
+              {
+                "label": "Node license audit",
+                "values": [
+                  113.2,
+                  21.8
+                ],
+                "note": "113 of 135"
+              },
+              {
+                "label": "Node e2e",
+                "values": [
+                  76.9,
+                  783.9
+                ],
+                "note": "77 of 861"
+              },
+              {
+                "label": "Render image",
+                "values": [
+                  50.8,
+                  132.0
+                ],
+                "note": "51 of 183"
+              },
+              {
+                "label": "Node checks (3 jobs)",
+                "values": [
+                  4.9,
+                  1172.5
+                ],
+                "note": "5 of 1,177"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Over the last thirty merged pull requests, that's a thousand of three thousand eight hundred runner-minutes, about a quarter, spent on jobs the change could not fail. Most of it is the Rust dependency checks, on twenty-eight pull requests that had no Rust in them.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "1,000 of 3,793 runner-minutes went to"
+          }
+        ]
+      },
+      "durationMs": 20000
+    },
+    {
+      "id": "P6",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "bars",
+          "params": {
+            "kicker": "CHART · TWO SMALL PRS",
+            "title": "Two small PRs, in runner-minutes",
+            "series": [
+              "could fail",
+              "couldn't fail",
+              "update-branch rerun"
+            ],
+            "unit": "min",
+            "rows": [
+              {
+                "label": "#3376 · 4 JSON files",
+                "values": [
+                  19.0,
+                  14.2,
+                  0
+                ],
+                "note": "33 min"
+              },
+              {
+                "label": "#3377 · 1 test fixture",
+                "values": [
+                  29.0,
+                  17.6,
+                  39.0
+                ],
+                "note": "86 min"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Another pull request that evening changed one test fixture and spent eighty-six minutes. Seventeen of them couldn't fail. Thirty-nine more were the whole suite run again, because another branch had merged first and this one had to catch up.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"title\":\"test(game-week): live socket fixture at engine version 5"
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"updateBranch\":true"
+          }
+        ]
+      },
+      "durationMs": 17700
+    },
+    {
+      "id": "P7",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "bars",
+          "params": {
+            "kicker": "CHART · PR RUNS ON 2026-11-21",
+            "title": "A merge of main, then every PR runs again",
+            "series": [
+              "update-branch rerun",
+              "content push"
+            ],
+            "unit": "min",
+            "rows": [
+              {
+                "label": "some-ui",
+                "values": [
+                  2647,
+                  4405
+                ],
+                "note": "2,647 of 7,052"
+              },
+              {
+                "label": "server",
+                "values": [
+                  798,
+                  4095
+                ],
+                "note": "798 of 4,893"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Catching up is the bigger cost. Both repositories require a branch to be up to date before it merges. So each merge puts every open pull request behind, and each one runs its whole suite again with no change of its own. On one day, that was thirty-eight percent of the minutes here, and sixteen percent on the server.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "update-branch reruns were"
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "2,647 of 7,052"
+          }
+        ]
+      },
+      "durationMs": 25700
+    },
+    {
+      "id": "P8",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "pages",
+          "url": "https://github.com/paulgsc/some-ui/actions?query=event%3Apull_request+branch%3Aclaude%2Fcoord-fast-track-store",
+          "capturedAt": "2026-11-24T18:00:08.763Z",
+          "file": "github-com-paulgsc-some-ui-actions-f21c853b7838.png",
+          "run": "45454355461"
+        }
+      },
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "narration": "In the list of runs it looks like this. A later pull request's branch, on November twenty-first: twelve runs from four pushes. Three were its author's own fixes. The fourth carried nothing of its own, only a merge of main, so it could catch up, and it ran the whole suite again. And through that day, CI found no fault that review had missed.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "while CI found no fault review had missed on Nov 21"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1421.json",
+            "quote": "since the unfiltered list is live"
+          }
+        ]
+      },
+      "durationMs": 23400
+    },
+    {
+      "id": "K1",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "pages",
+          "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue",
+          "capturedAt": "2026-11-24T18:00:11.405Z",
+          "file": "docs-github-com-en-repositories-configuring-branches-and-merges-in-your-repository-configuring-p-87956f2ba170.png",
+          "run": "45454355461",
+          "at": [
+            "who-can-use"
+          ]
+        }
+      },
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. The constraints.",
+        "narration": "The tool built for this is GitHub's merge queue. It gives the same safety as up to date, without making each author re-run. GitHub's own page says who gets it: public repositories owned by an organization, or private ones on Enterprise Cloud. Ours belong to a personal account, so it isn't offered to us.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "GitHub's merge queue, if the repos can have it"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "The merge queue and branch protection are the owner's settings"
+          }
+        ]
+      },
+      "durationMs": 22300
+    },
+    {
+      "id": "K2",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CONSTRAINTS",
+            "title": "What a better pattern has to keep",
+            "rows": [
+              {
+                "task": "GitHub",
+                "command": "github.com",
+                "note": "the code, the runs and the reviews stay there"
+              },
+              {
+                "task": "Free",
+                "command": "$0 a month",
+                "note": "no paid plan, no runner minutes bought"
+              },
+              {
+                "task": "Up to date",
+                "command": "strict status checks",
+                "note": "main is never red from two green branches"
+              },
+              {
+                "task": "CI stays",
+                "command": "CI Gate",
+                "note": "it is what makes drift loud"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "So the answer has to keep four things. It stays on GitHub. It costs nothing. Main never goes red because two green branches met for the first time after merging. And CI stays, because it is what makes drift loud, even on the days it finds nothing.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/ci-architecture.md",
+            "quote": "is the one check branch protection requires"
+          }
+        ]
+      },
+      "durationMs": 21100
+    },
+    {
+      "id": "W1",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "CALL C1021 · BUCKETS",
+            "title": "Settle every branch, then land them together",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "Settle",
+                "note": "Review, fixes and local checks, before any PR"
+              },
+              {
+                "badge": "main",
+                "label": "Bucket",
+                "note": "One to seven settled branches in one PR"
+              },
+              {
+                "badge": "main",
+                "label": "One CI round",
+                "note": "Instead of one per branch, per merge"
+              },
+              {
+                "badge": "main",
+                "label": "Fix the filter",
+                "note": "CD1 (#3388) and #3394, landed"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. What we chose.",
+        "narration": "What we settled on has two parts. First, a branch does all its settling before it ever opens a pull request: review, fixes, and the checks a laptop can run. Then one to seven settled branches land together in one bucket, so one CI round covers all of them. Second, fix the filter, so a change only runs the jobs it can fail.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "Worker branches are settled (fresh review, fixes, local checks) before any PR"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1421.json",
+            "quote": "buckets of one to seven settled branches, as they ran"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": ".github/workflows/_detect-changes.yml",
+            "quote": "a flag is true only for a file it"
+          }
+        ]
+      },
+      "durationMs": 27700
+    },
+    {
+      "id": "H1",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "STILL HURTS",
+            "title": "What buckets don't fix",
+            "rows": [
+              {
+                "task": "A red bucket",
+                "command": "1-7 branches wait",
+                "note": "one flaky test holds back every branch in it",
+                "badge": "gap"
+              },
+              {
+                "task": "A revert",
+                "command": "pick it out of a bucket",
+                "note": "is coarser: it lands with its bucket",
+                "badge": "gap"
+              },
+              {
+                "task": "Pairs",
+                "command": "some-ui, then server",
+                "note": "a ledger or fixture lands here first, then the server re-runs",
+                "badge": "gap"
+              },
+              {
+                "task": "One pool",
+                "command": "both repos, one queue",
+                "note": "both repos share the runners; the queue never clears",
+                "badge": "gap"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. What still hurts.",
+        "narration": "Buckets trade one pain for others. A single flaky test now holds back several branches, not one. Reverting a feature means picking it back out of a bucket. Changes that come in pairs across the two repositories still go one after the other. And both repositories share one pool of runners, so under load the queue never clears.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "a bucket makes a red check block several branches and a revert coarser"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": ".claude/skills/coordinate/SKILL.md",
+            "quote": "the pair order (some-ui half first, then the server re-run)"
+          }
+        ]
+      },
+      "durationMs": 25700
+    },
+    {
+      "id": "H2",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "pages",
+          "url": "https://github.com/paulgsc/server/pull/1098/checks",
+          "capturedAt": "2026-11-24T18:00:15.154Z",
+          "file": "github-com-paulgsc-server-pull-1098-checks-42409f498ac6.png",
+          "run": "45454355461"
+        }
+      },
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "narration": "This is the other half of the first pull request, on the server, with its long list of checks. It had to wait until the ledger line had landed here. Then one of its checks, the assurance check, further down this list, reads this repository's ledger, and it had to run again before the server change could merge.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": ".claude/skills/coordinate/SKILL.md",
+            "quote": "the pair order (some-ui half first, then the server re-run)"
+          },
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/jobs.json",
+            "quote": "\"title\":\"chore(assurance): place stage_want"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "CLAUDE.md",
+            "quote": "the server's `Assurance ledger` check"
+          }
+        ]
+      },
+      "durationMs": 18000
+    },
+    {
+      "id": "Q1",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "OPEN QUESTION",
+            "title": "Is there a better pattern, free, on GitHub?",
+            "rows": [
+              {
+                "task": "An organization",
+                "command": "transfer to a free org",
+                "note": "move the repos to a free organization: the queue is offered there",
+                "badge": "you"
+              },
+              {
+                "task": "A merge train",
+                "command": "bot/train",
+                "note": "a bot branch that tests a batch once, then fast-forwards main",
+                "badge": "you"
+              },
+              {
+                "task": "Gate after merge",
+                "command": "revert on red",
+                "note": "loose gate on the PR, full suite on main, revert on red",
+                "badge": "you"
+              },
+              {
+                "task": "Your idea",
+                "command": "#3387",
+                "note": "the one we haven't thought of",
+                "badge": "you"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. The open question.",
+        "narration": "Here's where I'd like help. A free organization seems to get the merge queue on public repositories, so moving there might be the whole answer, if nothing else breaks. Or a train: a bot branch that tests a batch once and then fast-forwards main. Or a looser gate on the pull request, the full suite on main, and a revert when it goes red. Each one gives something up. Which would you pick, or what are we missing?",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "docs/calls/C1021.json",
+            "quote": "dropping strict up-to-date branch protection"
+          }
+        ]
+      },
+      "durationMs": 33400
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "SOURCES",
+            "title": "Every number here is public",
+            "rows": [
+              {
+                "task": "The two PRs",
+                "command": "paulgsc/some-ui#3376, #3377"
+              },
+              {
+                "task": "The audit",
+                "command": "paulgsc/testing@a5ec27e",
+                "note": "recon/2026-11-21-ci-audit/: data and scripts"
+              },
+              {
+                "task": "The filter",
+                "command": ".github/workflows/_detect-changes.yml"
+              },
+              {
+                "task": "The queue",
+                "command": "docs.github.com: Managing a merge queue"
+              },
+              {
+                "task": "Answer here",
+                "command": "paulgsc/some-ui#3387",
+                "badge": "you"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "The audit's data and scripts are public in our testing repository, the workflow file in some-ui, and the description links each. If you have a pattern that keeps all four constraints, the issue is open.",
+        "sources": [
+          {
+            "repo": "paulgsc/testing",
+            "path": "recon/2026-11-21-ci-audit/README.md",
+            "quote": "The raw pulls"
+          }
+        ]
+      },
+      "durationMs": 14600
+    }
+  ],
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/some-ui@0d84628",
+      "paulgsc/testing@01b81bf"
+    ],
+    "date": "2026-11-24"
+  }
+}
