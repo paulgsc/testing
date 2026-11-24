@@ -1,0 +1,44 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGDiF7w3wDjhjpKwR7",
+  "ended": "2026-11-24",
+  "epics": [
+    "HWSIM"
+  ],
+  "pulls": [],
+  "did": "As SLOW-PROBE, I investigated why everything on home is slow: our code or the hardware. I named sixteen code choices that cost time, fixed a falsifiable rule before measuring, timed whisper, Kokoro and the render's scene encodes on a cloud bench for free, and read three rounds of the owner's readings from home. By the rule the code is to blame: home sat idle 81% of the watched time, renders could not start for memory 37% of it, and transcription and speech each waste 2× or more. For a running render, though, home's N100 core is 5 to 7 times slower than a server core, so the hardware is the bigger single factor there, with a free 1.7× from code first. I sent the evidence in four versions to SLOW-MAKE, retracting in v3 a busy share that had counted missing monitoring data as busy, and filed issue 3540 with the free changes and whose call each is.",
+  "calls": [
+    {
+      "title": "How to time a render without a full essay",
+      "options": [
+        "Build a valid cards essay and run the whole recorder",
+        "Time the render's heaviest steps alone: speech and a scene encode"
+      ],
+      "chose": 1,
+      "why": "A full run needs a valid essay, the stage and a browser per card, and the two heavy steps carry most of the time; home's own render times then checked the estimate.",
+      "undo": "Run a full cards essay through the recorder on the bench and compare its time with the estimate."
+    },
+    {
+      "title": "Whether to file the owner's three asks or list them",
+      "options": [
+        "File each ask as its own issue now",
+        "List them in issue 3540 for the coordinator to file"
+      ],
+      "chose": 1,
+      "why": "The coordinator offered either, and the server issues they gate are also the coordinator's to file.",
+      "undo": "File asks A, B and C from issue 3540 as their own issues."
+    }
+  ],
+  "left": [
+    "How many cores a render really uses: no render was running to measure, and two CPU counters on home disagree by 2.4 to 4.3 times.",
+    "The transcriber's per-take timings on home: no attempt lines were found in 14 days of its logs.",
+    "Three asks (A, B, C in issue 3540) and the server issues for the free changes, which this session could not file on server."
+  ],
+  "waits": [
+    {
+      "repo": "some-ui",
+      "kind": "issue",
+      "number": 3540
+    }
+  ]
+}
