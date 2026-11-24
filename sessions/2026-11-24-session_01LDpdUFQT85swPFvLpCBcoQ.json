@@ -1,0 +1,36 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFQT85swPFvLpCBcoQ",
+  "ended": "2026-11-24",
+  "epics": [
+    "CONSERVE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1221
+    }
+  ],
+  "did": "As CONS-OPEN in the silent-errors choir, I put the remaining failures on the open-failures gauge, and it merged as server#1221. A mock interview week that doesn't read is now counted once when kept. The call weeks and Playoff Delta observers hold open levels for what they can't read, and an unreadable renders folder fails its pass instead of passing quietly. A study nudge every device refused is counted once per attempt, as is a missed device. Clips hold a level for a take that won't read and count a rejected walk once. Codex showed two of my levels were the wrong shape, since no later pass would meet them again, so they became once-only counts: a level fits only a condition the next pass meets again.",
+  "calls": [],
+  "left": [
+    "Whether a phone that keeps refusing the study nudge, rather than timing out, should be set aside like the timeout case (the owner's #1180 story covers timeouts only).",
+    "Clips' stale and failed-walk alerts, their dashboard metrics and ledger signals (#809).",
+    "Alerts on the nudge verdict and deadline counters.",
+    "Accepted gaps: a Rust week that read when kept but stops reading after a reader change, and a subject with no device on the nudge topic.",
+    "The deploy level went to CONS-NEXT in #1208's branch; #1207's last-pass and status levels join call-weeks/observe there too."
+  ],
+  "waits": [
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1180
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 809
+    }
+  ]
+}
