@@ -1,0 +1,47 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFj15vmiMPEJekzwQ5",
+  "ended": "2026-11-24",
+  "epics": ["PAGES"],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 3472 }],
+  "did": "The landing's server episode now shows file_host's own Grafana dashboards, drawn on GitHub over a made-up week of telemetry instead of home's real numbers. A CI job builds the server's dashboards from their jsonnet, serves them from a throwaway Grafana over a throwaway Prometheus, and photographs sixteen panels, eight whole dashboard rows and the cores panel. Two runs give the same bytes. The episode draws four of the eight rows on each visit. On desktop a band under the stage shows the whole row, marked as sample data, and a standing line says why these rows and that new dashboards are one pull request away. The old path is gone: home's picture job, the mailbox's site-assets folder and pages role, the walk's token and the keys ask, #3423.",
+  "calls": [
+    {
+      "title": "What the sample week looks like",
+      "options": [
+        "Flat random numbers for every series",
+        "One fixed week with a story each panel shows: deploys, a NATS outage, a scraper meeting the limiter, a nightly render taking the cores"
+      ],
+      "chose": 1,
+      "why": "A panel only shows what it is for if the data does something it can catch, and a fixed seed keeps every run's pictures identical.",
+      "undo": "Change the events in packages/video-motion/src/walk/dashboard-telemetry.ts, or replace it with flat noise; the walk does not care what the numbers say."
+    },
+    {
+      "title": "Keep the render lane's panels honest on made-up data",
+      "options": [
+        "Draw the lane's verdicts by hand in the sample week",
+        "Port the lane's step function from the server, so the sample only reaches states the real lane can"
+      ],
+      "chose": 1,
+      "why": "A review caught hand-drawn lane states the real lane can never reach; a copy of its step keeps the picture truthful.",
+      "undo": "Go back to hand-written verdicts in dashboard-telemetry.ts; call C1442 records the port and what it moves."
+    },
+    {
+      "title": "Where the whole dashboard row shows on desktop",
+      "options": [
+        "Put the row inside the cube faces, cropped",
+        "A band under the stage, on the show's clock, holding the last server row while other episodes play",
+        "Show rows only on the server episode's turn and nothing otherwise"
+      ],
+      "chose": 1,
+      "why": "A row is wide and short and would be cropped on a cube face; a band always present keeps the page from jumping and keeps the dashboards in view.",
+      "undo": "Remove dashBand from apps/www/src/landing/render.ts and the scenes' row field in show.ts; call C1443 records it."
+    }
+  ],
+  "left": [
+    "The server side of the removal (home's site-shots job) is written on #3401 for a server session; its site_shots part landed in server#1152.",
+    "#3474: when a producer of the site's pictures fails, the owner still doesn't hear of it.",
+    "Panel 33 of the server's CALL dashboard draws a grey '-∞+' in Grafana 13.0.2, a value-mapping slip in the server's jsonnet; it is not walked, so nothing here shows it."
+  ],
+  "waits": []
+}
