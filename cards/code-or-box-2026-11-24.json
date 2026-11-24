@@ -1,0 +1,762 @@
+{
+  "schema": "some-ui.cut-list/2",
+  "title": "Slow: is it our code, or home's box?",
+  "series": {
+    "id": "cheat-sheet",
+    "version": 7
+  },
+  "look": "plain",
+  "voice": "read",
+  "burnIns": [],
+  "stamp": {
+    "sources": [
+      "paulgsc/server@a938a3d",
+      "paulgsc/some-ui@0a6063f"
+    ],
+    "date": "2026-11-24"
+  },
+  "shots": [
+    {
+      "id": "intro",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · THE QUESTION",
+            "title": "Slow: our code, or the box?",
+            "steps": [
+              {
+                "badge": "main",
+                "label": "A stage is slow",
+                "note": "SHARED STAGES says SLOW: its oldest note waited past the promise."
+              },
+              {
+                "badge": "main",
+                "label": "Is the box full?",
+                "note": "Every core busy, and work queued for one."
+              },
+              {
+                "badge": "main",
+                "label": "Or a ceiling of ours?",
+                "note": "The box has room; a cap, a thread count or a turn holds the stage."
+              },
+              {
+                "badge": "you",
+                "label": "Then the call",
+                "note": "A ceiling is a setting to move. A full box is a question for hardware, measured first."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "intro",
+        "said": "One morning, the shared stages row on home's file host dashboard said the transcriber was slow. Its oldest note had waited about a week and a half, five notes were waiting, and the render lane had been held for voice a quarter of the last hour. The service itself was healthy. That reading is only the example that prompted this essay, and it isn't pictured here. The question is this: when a stage on home is slow, is the limit our code and its settings, or the box itself, home's four cores? By the end, you'll know which panels to read, which commands to type on home, and which files set each ceiling, so you can make that call yourself, before any money moves. It is as of November twenty-fourth, twenty twenty-six, checked against two repositories: server, which holds home, and some-ui, which holds the app and its rules. Later commits may have moved things.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "three of home's four cores"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/stage-panels.libsonnet",
+            "quote": "lane held for it, last hour"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "CLAUDE.md",
+            "quote": "Spend last on hardware, behind a measured judgment"
+          }
+        ]
+      }
+    },
+    {
+      "id": "halves",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 50000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WHAT EACH CASE LOOKS LIKE",
+            "title": "Four answers to one question",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "The box is full",
+                "command": "CPU busy, CPU WAIT high",
+                "note": "Every core working, and work queued for one."
+              },
+              {
+                "badge": "main",
+                "task": "Our cap holds it",
+                "command": "near its own limit, throttled",
+                "note": "The host can be idle meanwhile."
+              },
+              {
+                "badge": "main",
+                "task": "Our code leaves room",
+                "command": "host busy low, stage still slow",
+                "note": "Threads, beam, passes the code chose."
+              },
+              {
+                "badge": "main",
+                "task": "Our turn order holds it",
+                "command": "lane held, notes in the give",
+                "note": "Policy: who goes first."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter one. Four shapes of slow, and only one is the box.",
+        "narration": "Slowness has four shapes, and each leaves a different mark. The box is full when every core is busy and work is queued for one: the kernel's pressure file says some task waited. That is home's limit. Our cap holds it when one container sits near its own limit and is throttled, even while the host has cores to spare. Our code leaves room when the host is mostly idle and the stage is slow anyway: the transcriber uses only the threads it was given, and does the work its settings ask for. And our turn order holds it when a note waits because the transcriber gave the renders a turn. Only the first is a question about hardware. The other three are settings in our files.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "A busy CPU or another service's memory only makes home slower"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/contention.rs",
+            "quote": "`/proc/pressure/cpu`'s `some` total"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/compose/file_host.yml",
+            "quote": "cpus: 3.0"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "One fewer than the cores this process may use"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/turn.rs",
+            "quote": "while batch work waits: two notes at their deadline"
+          }
+        ]
+      }
+    },
+    {
+      "id": "stages",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "walks",
+          "run": "45449369906",
+          "app": "home-pressure",
+          "steps": [
+            1,
+            1
+          ]
+        }
+      },
+      "durationMs": 40000,
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter two. Grafana: the stage, then the cores.",
+        "narration": "In Grafana, start at the shared stages row of the file host dashboard. What you see here is drawn from the server's own dashboards over a made-up week, not home's numbers. State says OK, SLOW or STUCK: slow means the oldest note has waited past the promise, twenty-five minutes from reaching home. Oldest waiting says how long. Who waits says what is held behind it: notes waiting, cards essays held for a take, and how much of the last hour the lane held renders back for voice or for Rust Rounds. Slow tells you something waits. It never tells you why. For that, read the cores.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/stage-panels.libsonnet",
+            "quote": "SLOW: something has"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/stage-panels.libsonnet",
+            "quote": "a note is heard within 25 minutes of reaching home"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/stage-panels.libsonnet",
+            "quote": "cards essays held for a take"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/call_weeks/lane.rs",
+            "quote": "Self::RustRounds => \"rust_rounds\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "cores",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "walks",
+          "run": "45449369906",
+          "app": "home-pressure",
+          "steps": [
+            2,
+            2
+          ]
+        }
+      },
+      "durationMs": 50000,
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "narration": "Then the WHO DUNNIT dashboard's CPU row, again on the made-up week. The trend on the right is the one that answers the question: busy, the share of all cores working, against waiting, the share of time some task waited for a core. Busy and not waiting is a well used machine. Waiting climbing with busy near the top is a full box. In the middle, each container against its own limit: near a hundred percent means its cap, not the host, is the wall. Below, on the left, throttled: the share of periods a container wanted more than its cap and was paused. Sustained throttling is latency we chose with a number, however idle the host is.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/sympathy-panels.libsonnet",
+            "quote": "The gap between them is the story"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/sympathy-panels.libsonnet",
+            "quote": "CPU each container is using as a share of its own compose"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/lib/sympathy-panels.libsonnet",
+            "quote": "independent of how busy the host is"
+          }
+        ]
+      }
+    },
+    {
+      "id": "metal",
+      "picture": {
+        "kind": "screen",
+        "of": {
+          "from": "walks",
+          "run": "45449369906",
+          "app": "home-pressure",
+          "steps": [
+            3,
+            3
+          ]
+        }
+      },
+      "durationMs": 30000,
+      "burnIns": [],
+      "spoken": {
+        "role": "scene",
+        "narration": "Last, the file host dashboard's metal row, still made-up data: each service's CPU and memory against its own limit, side by side. Read the transcriber here as file host, since it runs inside that container and shares its cap with every request. If file host sits at its limit while the cores row shows the host with room, the answer is a cap of ours.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/dashboard.jsonnet",
+            "quote": "Metal — what the services cost the host"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "Anything that runs inside `file-host` takes its class"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pressure",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · ON HOME",
+            "title": "Is the box full?",
+            "bar": "home",
+            "lines": [
+              {
+                "prompt": "$",
+                "keyword": "nproc",
+                "badge": "you",
+                "atMs": 700
+              },
+              {
+                "comment": "# the host's cores: the most any work here can ever use",
+                "badge": "main",
+                "atMs": 1800
+              },
+              {
+                "prompt": "$",
+                "keyword": "cat",
+                "text": " /proc/pressure/cpu",
+                "badge": "you",
+                "atMs": 3000
+              },
+              {
+                "comment": "# some: the share of time a task waited for a core",
+                "badge": "main",
+                "atMs": 5000
+              },
+              {
+                "comment": "# avg10, avg60, avg300: the last ten seconds, minute, five minutes",
+                "atMs": 5900
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter three. On home: the kernel, the containers, the transcriber.",
+        "narration": "The week's panels show the past. On home, the kernel says what is happening now. First, nproc: the host's cores, the most any work can use. Then cat slash proc slash pressure slash cpu. Its some line is the share of time at least one task waited for a core, averaged over ten seconds, a minute and five minutes. Read it while a note is being heard. File host's own contention guard calls ten percent of a window contended: under that, the box is not what holds the note.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/contention.rs",
+            "quote": "pub const PSI_CPU: &str = \"/proc/pressure/cpu\";"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "contended at a stall share of 10% of the window or more"
+          }
+        ]
+      }
+    },
+    {
+      "id": "containers",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · ON HOME",
+            "title": "Is a cap of ours the wall?",
+            "bar": "home",
+            "lines": [
+              {
+                "prompt": "$",
+                "keyword": "docker stats",
+                "text": " --no-stream",
+                "badge": "you",
+                "atMs": 700
+              },
+              {
+                "comment": "# CPU % per container: a hundred is one whole core",
+                "badge": "main",
+                "atMs": 2700
+              },
+              {
+                "comment": "# file-host-server's cap is three cores; render's and kokoro's, two each",
+                "atMs": 3600
+              },
+              {
+                "prompt": "$",
+                "keyword": "docker exec",
+                "text": " file-host-server cat /sys/fs/cgroup/cpu.stat",
+                "badge": "you",
+                "atMs": 4800
+              },
+              {
+                "comment": "# nr_throttled climbing between two reads: its own cap paused it",
+                "badge": "main",
+                "atMs": 8600
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Next, the containers. docker stats, dash dash no stream, shows each container's CPU, where a hundred percent is one whole core. File host may use three cores; the render and the speaker, two each. File host near three hundred while the pressure file stays low means its cap, not the box. To see the cap bite, read the container's own control group: docker exec file host server, cat slash sys slash fs slash cgroup slash cpu dot stat. Read it twice, a minute apart. If nr throttled climbs between the reads, the kernel paused file host for its own limit.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/compose/file_host.yml",
+            "quote": "cpus: 3.0"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/compose/call-render.yml",
+            "quote": "cpus: 2.0"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/compose/file_host.yml",
+            "quote": "container_name: file-host-server"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/render/render-calls.sh",
+            "quote": "The render container's own cgroup"
+          }
+        ]
+      }
+    },
+    {
+      "id": "transcriber",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 55000,
+      "burnIns": [
+        {
+          "kind": "terminal",
+          "params": {
+            "kicker": "TERMINAL · ON HOME",
+            "title": "What did each hearing cost?",
+            "bar": "home",
+            "lines": [
+              {
+                "prompt": "$",
+                "keyword": "top -H",
+                "text": " -p \"$(pgrep -x file_host)\"",
+                "badge": "you",
+                "atMs": 700
+              },
+              {
+                "comment": "# while a note is heard: two threads near a full core each",
+                "badge": "main",
+                "atMs": 3200
+              },
+              {
+                "prompt": "$",
+                "keyword": "docker logs",
+                "text": " --since 24h file-host-server 2>&1 | grep 'transcription attempt'",
+                "badge": "you",
+                "atMs": 4400
+              },
+              {
+                "text": "voice-note transcription attempt  took_s  audio_s  speech_s",
+                "badge": "main",
+                "atMs": 9000
+              },
+              {
+                "comment": "# took_s over speech_s: above one, slower than the speech itself",
+                "atMs": 9900
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Then the transcriber. top, dash capital H, dash p, with the file host process: it lists threads. While a note is heard you should see two of them near a full core each, never more, because it hears on one fewer thread than its container's cores. Then its own record. docker logs for the last day, filtered for transcription attempt. Each line gives took, audio and speech, in seconds. Divide took by speech: that is the real time factor. Measured on one slow core, the decode alone runs about one point three seconds per second of speech, and two threads a little over half that. A factor near that on a quiet box is our code doing what it was told. A factor that only climbs while the pressure file climbs is the box.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "took_s = took.as_secs()"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "\"voice-note transcription attempt\""
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "the decode takes about 1.3 s a second of speech"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "cores.get().saturating_sub(1).max(1)"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/docker/Dockerfile.server",
+            "quote": "ENTRYPOINT [\"/usr/local/bin/file_host\"]"
+          }
+        ]
+      }
+    },
+    {
+      "id": "policy",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 50000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · THE CEILINGS WE CHOSE",
+            "title": "Policy: caps, weights and turns",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "file-host's cores",
+                "command": "cpus: 3.0",
+                "note": "infra/compose/file_host.yml"
+              },
+              {
+                "badge": "main",
+                "task": "Render and speaker",
+                "command": "cpus: 2.0, cpu_shares: 256",
+                "note": "infra/compose/call-render.yml"
+              },
+              {
+                "badge": "main",
+                "task": "The transcriber's turn",
+                "command": "TURN 20 min, GIVE 10 min",
+                "note": "transcribe/turn.rs"
+              },
+              {
+                "badge": "main",
+                "task": "The promise",
+                "command": "HEARD_WITHIN 25 min",
+                "note": "transcribe.rs"
+              },
+              {
+                "badge": "main",
+                "task": "One batch job at a time",
+                "command": "the lane",
+                "note": "docs/home-compute.md"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter four. The code that sets each ceiling.",
+        "narration": "Now the files that set each ceiling. First the policy, the numbers someone chose. File host may use three of the four cores, so the transcriber hears on two threads. The render and the speaker may use two cores each, at a quarter of the default weight, so anything else gets the CPU first. After twenty minutes of hearing while a render waits, the transcriber hears nothing for ten, so renders are never starved. And the promise that turns the stage slow is twenty-five minutes. Every one of these is a constant, moved by a call. A note that waits through a give was held by a turn we chose.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "`file-host` may use three of home's four cores"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/compose/call-render.yml",
+            "quote": "cpu_shares: 256"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/turn.rs",
+            "quote": "pub const TURN: Duration = Duration::from_secs(20 * 60);"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/turn.rs",
+            "quote": "pub const GIVE: Duration = Duration::from_secs(10 * 60);"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "pub const HEARD_WITHIN: Duration = Duration::from_secs(25 * 60);"
+          }
+        ]
+      }
+    },
+    {
+      "id": "code",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 45000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · WORK THE CODE ASKS FOR",
+            "title": "Code: what each hearing does",
+            "rows": [
+              {
+                "badge": "main",
+                "task": "Threads per hearing",
+                "command": "default_threads",
+                "note": "one fewer than its cores"
+              },
+              {
+                "badge": "main",
+                "task": "Search per hearing",
+                "command": "beam_size: 5",
+                "note": "transcribe/engine.rs"
+              },
+              {
+                "badge": "main",
+                "task": "Language passes",
+                "command": "most_detections",
+                "note": "an encoder pass each"
+              },
+              {
+                "badge": "main",
+                "task": "The speaker's threads",
+                "command": "torch.set_num_threads(1)",
+                "note": "infra/kokoro/say.py"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "narration": "Then the work the code asks for. The transcriber's threads come from its container's cores, less one. Each hearing searches with a beam of five, which costs more than a greedy pass. Each language detection is a full encoder pass over thirty seconds, whatever the cut's length, bounded to a few per window of speech. And the speaker, Kokoro, runs on one thread, inside a two core cap. None of these is the box. Each is a line in our code that a measurement can justify, or move.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe.rs",
+            "quote": "fn default_threads() -> usize"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/engine.rs",
+            "quote": "beam_size: 5"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/engine.rs",
+            "quote": "is an encoder pass over 30 seconds of mel"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/transcribe/engine.rs",
+            "quote": "const DETECTS_PER_WINDOW: usize = 4;"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/kokoro/say.py",
+            "quote": "torch.set_num_threads(1)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "call",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 50000,
+      "burnIns": [
+        {
+          "kind": "flow",
+          "params": {
+            "kicker": "FLOW · MAKING THE CALL",
+            "title": "Read, type, name, then predict",
+            "steps": [
+              {
+                "badge": "you",
+                "label": "Read the stage",
+                "note": "SLOW, how long, and who waits."
+              },
+              {
+                "badge": "you",
+                "label": "Read the cores",
+                "note": "Busy against waiting; each cap; throttled."
+              },
+              {
+                "badge": "you",
+                "label": "Type the checks",
+                "note": "Pressure, stats, cpu.stat, the attempt log."
+              },
+              {
+                "badge": "you",
+                "label": "Name the ceiling",
+                "note": "Box, cap, code or turn: the file that sets it."
+              },
+              {
+                "badge": "you",
+                "label": "Predict, then measure",
+                "note": "Write what a change would buy before trying it."
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "scene",
+        "chapter": "Chapter five. Making the call, before any money moves.",
+        "narration": "So the call goes in order. Read the stage: slow, for how long, and who waits. Read the cores: busy against waiting, each container against its cap, and throttling. Type the checks on home while a note is heard. Then name the ceiling, and the file that sets it. If the box has room, the ceiling is ours, and moving it is a change with a call behind it, costing nothing. Only when every core is busy and work still queues is it a question of hardware. Even then, the rule is to spend last: write down what more cores would buy, measure, and let the numbers decide before any money moves.",
+        "sources": [
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "CLAUDE.md",
+            "quote": "Stay away from anything that results in us paying for anything until we are"
+          },
+          {
+            "repo": "paulgsc/some-ui",
+            "path": "CLAUDE.md",
+            "quote": "the owner's predictions, made before"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "docs/home-compute.md",
+            "quote": "The owner chose it (C919)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "close",
+      "picture": {
+        "kind": "card"
+      },
+      "durationMs": 35000,
+      "burnIns": [
+        {
+          "kind": "cheat-sheet",
+          "params": {
+            "kicker": "CHEAT SHEET · KEEP THIS ONE",
+            "title": "Slow: our code, or the box?",
+            "rows": [
+              {
+                "badge": "you",
+                "task": "Is the box full?",
+                "command": "cat /proc/pressure/cpu",
+                "note": "Read while a note is heard."
+              },
+              {
+                "badge": "you",
+                "task": "Which container?",
+                "command": "docker stats --no-stream"
+              },
+              {
+                "badge": "you",
+                "task": "Is our cap biting?",
+                "command": "docker exec file-host-server cat /sys/fs/cgroup/cpu.stat",
+                "note": "nr_throttled, read twice."
+              },
+              {
+                "badge": "you",
+                "task": "What did a hearing cost?",
+                "command": "docker logs --since 24h file-host-server",
+                "note": "Grep transcription attempt; took over speech."
+              },
+              {
+                "badge": "you",
+                "task": "Over the week",
+                "command": "Grafana: SHARED STAGES, then WHO DUNNIT"
+              }
+            ]
+          }
+        }
+      ],
+      "spoken": {
+        "role": "close",
+        "said": "Keep this card. When a stage turns slow, read the pressure file while a note is heard, then docker stats, then the container's cpu stat, twice. Then the attempt log, took over speech. In Grafana, read the shared stages row, then WHO DUNNIT's CPU row. If the pressure stays low, the ceiling is ours: name its file. Only a full box is a hardware question, and it is measured before it is bought.",
+        "sources": [
+          {
+            "repo": "paulgsc/server",
+            "path": "apps/servers/file_host/src/contention.rs",
+            "quote": "`/proc/pressure/cpu`'s `some` total"
+          },
+          {
+            "repo": "paulgsc/server",
+            "path": "infra/grafana/dashboards/processor.jsonnet",
+            "quote": "CPU — who is using it, and who is waiting"
+          }
+        ]
+      }
+    }
+  ]
+}

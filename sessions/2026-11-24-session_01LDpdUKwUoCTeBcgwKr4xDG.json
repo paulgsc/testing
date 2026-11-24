@@ -1,0 +1,40 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUKwUoCTeBcgwKr4xDG",
+  "ended": "2026-11-24",
+  "epics": [
+    "EXPLAIN"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3505
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3506
+    }
+  ],
+  "did": "I wrote the essay you asked for after the transcriber read slow: Slow, is it our code or home's box? It runs about nine minutes and teaches the method, not a verdict. It covers which Grafana rows to read, the commands to type on home (the pressure file, docker stats, the container's own cpu stat, the transcriber's threads and its attempt log, where took over speech is the real-time factor), and the files that set each ceiling: the three-core cap, the two threads, the turn and the give, beam five, and Kokoro on one thread. It ends on spending last, after a measured prediction. To show Grafana rather than describe it, I added a walk of three rows, the shared stages, WHO DUNNIT's CPU row and file host's metal, over the made-up week with its band. Snips Capture drew it, and I looked at every picture. Along the way I found the made-up week labelled the lane's busy work with names home never uses, and fixed that as its own defect. Your real reading appears only in words.",
+  "calls": [
+    {
+      "title": "Which dashboard rows the essay's walk shows",
+      "options": [
+        "Three rows: the shared stages, WHO DUNNIT's CPU row, and file host's metal",
+        "WHO DUNNIT's eight top tiles as well",
+        "The transcriber's own dashboard instead of the shared stages row"
+      ],
+      "chose": 0,
+      "why": "Those three answer the question in order: is the stage slow, is the box full or is our cap biting, and which service. The top tiles are not one row the walk can crop, and the transcriber's dashboard says nothing about the cores.",
+      "undo": "Edit PRESSURE_ROWS in packages/video-motion/src/walk/home-dashboards.ts, and the essay's walk scenes, in a new essay."
+    }
+  ],
+  "left": [
+    "The made-up week's process CPU can exceed the host's busy cores, so an off-row WHO DUNNIT tile would read red. No walk shows it yet: issue 3503.",
+    "The made-up week gives file host a two-core cap where compose gives three. No picture shows the absolute number: issue 3504.",
+    "The essay teaches how to measure, and does not take home's measurements. The CORES review's numbers are still yours to take."
+  ],
+  "waits": []
+}
