@@ -2,6 +2,12 @@
   "schema": "some-ui.cards-index/1",
   "essays": [
     {
+      "key": "it-didnt-run-2026-11-24"
+    },
+    {
+      "key": "rust-rounds-how-it-works-2026-11-24"
+    },
+    {
       "key": "merge-queue-2026-11-23"
     },
     {
