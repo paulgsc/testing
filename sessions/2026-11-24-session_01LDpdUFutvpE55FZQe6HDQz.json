@@ -1,0 +1,28 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFutvpE55FZQe6HDQz",
+  "ended": "2026-11-24",
+  "epics": [
+    "CONSERVE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1204
+    }
+  ],
+  "did": "You chose no excuses for errors the server silently drops, and I built it. A second clippy pass now forces the three erasure lints through every allow and expect, reasoned or not, so none can hide one. The check holds that pass against a list of the 830 that exist today, which can only shrink, and the older clippy list stays at 887 with no finding counted twice. It replaced #1194's reading of the source text, which kept leaking at its edges. A fresh review before the pull request found three real gaps, and Codex then found none. It merged as server#1204, closing #1202.",
+  "calls": [],
+  "left": [
+    "The clippy ratchet folds every use of a macro into one finding, the same gap this check fixed for itself (server#1203).",
+    "Forcing the lints also shows other policies under their allows, so the forced pass runs on its own, about a minute and a half more of CI."
+  ],
+  "waits": [
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1203
+    }
+  ]
+}
