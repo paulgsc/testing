@@ -1,0 +1,77 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGhpgG6vG48iUzX1Cf",
+  "ended": "2026-11-24",
+  "epics": [
+    "CONSERVE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1193
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1194
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1197
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1198
+    }
+  ],
+  "did": "Built the failure accounting the owner asked for: every failure home meets is now one count and one error line, made together by a sealed Failure token, and a new HomeFailures alert sends any count to Slack. The first user is the Jobs mailbox: a handing it refuses, can never take, or holds other bytes for is counted and logged with the mailbox's reason, and a file it can never take is no longer handed again. Beside that, a separate shrink-only ratchet now stops any new silent erasure of a Result, without touching the clippy baseline rule. Of the mailbox pass's other sites, only a kept body that does not read as its name is one event, and that is counted; the sites where a failure persists, and would be counted again every pass or restart, wait on the owner's choice.",
+  "calls": [
+    {
+      "title": "Make a failure's step a closed list rather than a free string",
+      "options": [
+        "A closed Step table, each step naming its process, started at zero at boot",
+        "A free string per call site, as the proposal sketched"
+      ],
+      "chose": 0,
+      "why": "A series born at its first failure is invisible to increase(), so a step's first failure, and the first after a restart, would never alert; a closed list can start every series at zero.",
+      "undo": "Swap Step for a string in failure.rs and give HomeFailures an arm for a series' first sample."
+    },
+    {
+      "title": "Count a conflicting mailbox handing as a failure, not only a refusal",
+      "options": [
+        "Count conflict, refused and unfit handings",
+        "Count only refused handings"
+      ],
+      "chose": 0,
+      "why": "A conflict is final and the file never reaches the routine, the same loss as a refusal.",
+      "undo": "Drop the Conflict arm's count in mailbox/pass.rs's Handing."
+    }
+  ],
+  "left": [
+    "The mailbox failures that persist (an open restore ask, a skipped newest file, an unreadable held week, a refused index put) are not counted, since each pass or restart would count them again; the owner chooses a counted-once table or an open-failures gauge (server#1201).",
+    "Counting the files the Jobs indexes skip waits on reading them once at keep time (server#1200).",
+    "A routine's status still says waiting for a refused or absent take; that is a wording change, not accounting, split out for the owner (server#1199).",
+    "The erasure ratchet reads hidden erasures lexically; letting clippy see them with --force-warn needs a policy call on reasoned exceptions (server#1202).",
+    "The other high-risk CONSERVE children (#1176 to #1182 and #809) are not started."
+  ],
+  "waits": [
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1201
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1202
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1199
+    }
+  ]
+}
