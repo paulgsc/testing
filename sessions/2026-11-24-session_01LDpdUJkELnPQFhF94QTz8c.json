@@ -1,1 +1,112 @@
-{"schema": "some-ui.session-note/1", "session": "session_01LDpdUJkELnPQFhF94QTz8c", "ended": "2026-11-24", "epics": ["EXPLAIN", "HERD"], "pulls": [{"repo": "some-ui", "kind": "pr", "number": 3482}, {"repo": "some-ui", "kind": "pr", "number": 3485}, {"repo": "some-ui", "kind": "pr", "number": 3486}, {"repo": "some-ui", "kind": "pr", "number": 3490}, {"repo": "some-ui", "kind": "pr", "number": 3492}, {"repo": "some-ui", "kind": "pr", "number": 3495}, {"repo": "some-ui", "kind": "pr", "number": 3496}, {"repo": "some-ui", "kind": "pr", "number": 3500}, {"repo": "some-ui", "kind": "pr", "number": 3502}], "did": "I built the pieces the two essays about the app needed, then drafted both. Commands now type themselves on screen in a new cheat-sheet version, and an essay can play a walk through the app in motion, the Rust Rounds week among them. The phone's pictures from Snips Capture showed \"Asking home…\" instead of the sample: the phone's pace stalled under the capture's frozen clock, and the capture never waited for reads it couldn't see, so it now waits for every screen to finish reading and lists one that never does rather than photographing it. Rendering the essays found two more faults, now fixed: no essay could show a screen of a nested route such as Renders, and the dashboard walks were recorded a screen taller than their pictures, which would have stretched them. Both essays, the \"it didn't run\" diagnosis and the Rust Rounds remake, are drafted from main's own capture and pass the cards check, and both render silently.", "calls": [{"title": "Typed commands are a new terminal design, pinned by a new series version (C1425)", "options": ["A new terminal design, terminal-v2, pinned by cheat-sheet v7, each line at the time v1 gives it", "Change terminal-v1 in place, so every published essay types", "A per-card typing flag"], "chose": 0, "why": "A design is frozen once a published video uses it, so typing had to be a new version an essay chooses.", "undo": "Pin cheat-sheet v6 in an essay, or record a call that moves this one."}, {"title": "A dashboard walk records a screen as tall as its tallest picture (WALK10, #3502)", "options": ["The walk records its pictures' size, and the renderer never stretches a picture", "Only loosen the essay recorder's shape check", "Give every walk frame a size of its own in the walk schema"], "chose": 0, "why": "The renderer stretched every picture to the walk's screen, so loosening the check alone would have squashed the rows, and a per-frame size would change a record home also reads.", "undo": "Revert #3502; the dashboard walks then can't play in an essay until they record their rows' shape another way."}], "left": ["Both essays wait to go to paulgsc/testing until home runs release 1170's render image, after the owner's make home-deploy.", "The Rust Rounds remake's opening spoken card plays three of the owner's takes, which home hands in at render; the silent render left that card out.", "The diagnosis essay's Grafana chapter must be pointed at the fresh Snips Capture run on main after #3502, so the call dashboard's walk carries its row-shaped screen.", "The capture's release pass still can't tell a screen that is reading, and its motion check's second picture isn't watched; both are named in #3495's tolerance.", "Reading lines drawn other than as Reading (My data's Notice, game-week, the interview essay, skeletons) are still outside the capture's wait.", "How the screen-zoom composition draws a shorter picture is held by no test, only by one end-to-end render."], "waits": []}
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUJkELnPQFhF94QTz8c",
+  "ended": "2026-11-24",
+  "epics": [
+    "EXPLAIN",
+    "HERD"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3482
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3485
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3486
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3490
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3492
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3495
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3496
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3500
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3502
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3513
+    },
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3520
+    }
+  ],
+  "did": "I built the pieces the two essays about the app needed, then drafted both. Commands now type themselves on screen in a new cheat-sheet version, and an essay can play a walk through the app in motion, the Rust Rounds week among them. The phone's pictures from Snips Capture showed \"Asking home…\" instead of the sample: the phone's pace stalled under the capture's frozen clock, and the capture never waited for reads it couldn't see, so it now waits for every screen to finish reading and lists one that never does rather than photographing it. Rendering the essays found two more faults, now fixed: no essay could show a screen of a nested route such as Renders, and the dashboard walks were recorded a screen taller than their pictures, which would have stretched them. Both essays, the \"it didn't run\" diagnosis and the Rust Rounds remake, are drafted from main's own capture and pass the cards check, and both render silently. Later the same day, both essays went to testing, and three real failures on home became a second part: worked cases, each a symptom, one question, one command, home's own output and a decision. The essays had waited on takes home had heard, because the Jobs mailbox refused every transcript; they then waited on the capture's bundles, one fetched a pass; and the merge queue essay failed every hour because home gave it without its pages folder and never looked at it again (#3512), so its pages expired before it could wait for them. A walk can now scroll, and a walk of Renders reaches its stations and its Coming row (#3513), so the second part shows the phone's own words. Home's first render of the diagnosis essay then failed on every scene with no chapter line: the recorder kept that scene's take under its line's name and the cut list asked for the scene's, now one name (#3520, promise CT1).",
+  "calls": [
+    {
+      "title": "Typed commands are a new terminal design, pinned by a new series version (C1425)",
+      "options": [
+        "A new terminal design, terminal-v2, pinned by cheat-sheet v7, each line at the time v1 gives it",
+        "Change terminal-v1 in place, so every published essay types",
+        "A per-card typing flag"
+      ],
+      "chose": 0,
+      "why": "A design is frozen once a published video uses it, so typing had to be a new version an essay chooses.",
+      "undo": "Pin cheat-sheet v6 in an essay, or record a call that moves this one."
+    },
+    {
+      "title": "A dashboard walk records a screen as tall as its tallest picture (WALK10, #3502)",
+      "options": [
+        "The walk records its pictures' size, and the renderer never stretches a picture",
+        "Only loosen the essay recorder's shape check",
+        "Give every walk frame a size of its own in the walk schema"
+      ],
+      "chose": 0,
+      "why": "The renderer stretched every picture to the walk's screen, so loosening the check alone would have squashed the rows, and a per-frame size would change a record home also reads.",
+      "undo": "Revert #3502; the dashboard walks then can't play in an essay until they record their rows' shape another way."
+    },
+    {
+      "title": "A worked-case essay is a member of the cards-essay family, and a case without its outputs and screen waits (C1482)",
+      "options": [
+        "Worked cases in the cards-essay family, a case missing its outputs or screen split out",
+        "A reference sheet of every command",
+        "All three cases in one essay, the third told without its outputs"
+      ],
+      "chose": 0,
+      "why": "The owner asked for a granular tutorial from real failures; an output that isn't home's own can't be shown, so the third case waits for its own.",
+      "undo": "Record a call that moves this one, or fold the third case back in once its outputs and screen exist."
+    }
+  ],
+  "left": [
+    "Part two's third case, essays stuck in line or waiting for an oven, needs its own essay; the renders walk now shows both stations on sample data.",
+    "The merge queue essay can't render as written: its pages expired, so it needs a fresh Public Pages Capture and a new cut list, the owner's call (#3512).",
+    "#3512's fix, home taking back an essay given without a media folder it names, is open; so is server#1191, the pickup log naming which bundle it fetched.",
+    "The diagnosis essay renders on home only once the render image carrying #3520 is deployed; a voiced render was not run here.",
+    "The renders walk took two identical pictures for two of its scroll steps (the In line row and the failed row were already on screen); harmless, but its steps say less than they look.",
+    "The capture's release pass still can't tell a screen that is reading, and its motion check's second picture isn't watched; both are named in #3495's tolerance.",
+    "How the screen-zoom composition draws a shorter picture is held by no test, only by one end-to-end render."
+  ],
+  "waits": []
+}
