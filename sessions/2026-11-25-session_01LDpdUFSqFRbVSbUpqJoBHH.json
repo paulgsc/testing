@@ -1,0 +1,70 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUFSqFRbVSbUpqJoBHH",
+  "ended": "2026-11-25",
+  "epics": [
+    "CONSERVE"
+  ],
+  "pulls": [
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1223
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1226
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1228
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1230
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1231
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1235
+    },
+    {
+      "repo": "server",
+      "kind": "pr",
+      "number": 1236
+    }
+  ],
+  "did": "As CONS-NEXT in the silent-errors choir, I landed CONS-SITES' two branches and the rest of the epic's open gaps. A runner request not read in time is retried, and a Jobs notice every phone refused waits for the next pass (server#1223). An unreadable deploy record is held open and its totals kept as last read, so a healing deploy's rollback is still told (server#1226, C1511). Call-week and Playoff Delta render gauges show no data when storage can't be read (server#1228, C1512). The Jobs notice and Snips pickup failures are counted, with a notice that expires untold counted as a loss (server#1230). A browser or phone that keeps failing on its own is set aside after 3 strikes and tried once a day within real sends (server#1231, C1513). The Jobs notice and Snips pickup passes now say when they can't look (server#1235), and the report and cards render gauges stop freezing (server#1236). Three design points went to the coordinator as raised drift instead of further patches.",
+  "calls": [],
+  "left": [
+    "A lone browser is never set aside for timeouts until home's online proof uses any outbound request (server#1232).",
+    "MailboxPollerStale can fire while a Snips pickup runs out its 300 s deadline, more often while Snips fails (server#1234); options are on the issue, none decided.",
+    "envctl erases a deploy record it can't read and restarts its totals (server#1224).",
+    "Two worktrees must not share CARGO_TARGET_DIR or DATABASE_URL; a nohup'd run can die when the shell resets; a for: window must match the pass's real cadence, which promtool's synthetic series miss."
+  ],
+  "waits": [
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1232
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1234
+    },
+    {
+      "repo": "server",
+      "kind": "issue",
+      "number": 1224
+    }
+  ]
+}
