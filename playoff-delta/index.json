@@ -24,6 +24,12 @@
       "team": "SF",
       "week": 10,
       "sha256": "8ceddfd080e98c4be4be366cc6692e445bf1a38f5012f0f1273b87492f70366f"
+    },
+    {
+      "season": "2026",
+      "team": "SF",
+      "week": 11,
+      "sha256": "ce64d07971a5abd5c49303d07267585621fb95523eccb80c50d393839f8ec2c7"
     }
   ]
 }
