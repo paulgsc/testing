@@ -1,0 +1,41 @@
+{
+  "schema": "some-ui.pd-narration/1",
+  "season": "2026",
+  "team": "SF",
+  "week": 11,
+  "format": {
+    "id": "playoff-delta-week",
+    "version": 4
+  },
+  "sha256": "7c12974a0b9b92c3e6f43cc3b62631ac065727e8435aab249640d8ad559cfad3",
+  "scenes": [
+    {
+      "id": "division",
+      "said": "In our division, the floor held at seven and the ceiling held at thirteen. The Rams and the Seahawks have twelve wins banked between them and two games left against each other, so however those go, one of them reaches seven. That pair is what keeps the floor from dropping. The Rams can still reach thirteen. For us, the finish runs anywhere from nine to sixteen wins."
+    },
+    {
+      "id": "conference",
+      "said": "Across the conference it held too: the floor at nine, the ceiling at fifteen. The Lions and the Bears have sixteen wins banked and two games left against each other, so one of them reaches nine whatever happens. The Lions can still climb as high as fifteen."
+    },
+    {
+      "id": "results",
+      "said": "This week, one result moved us toward the best case. Two were forced, rivals playing each other where one of them had to win. Six were idle and moved neither pole. Nothing pushed against us, so it was a clean run."
+    },
+    {
+      "id": "standings",
+      "said": "The division is in our hands, with four greens to go and nine reds to spare. The number one seed is in our hands too, with six greens to go and seven reds to spare. Win out and both are ours, whatever anyone else does."
+    },
+    {
+      "id": "ladder",
+      "said": "We can still finish as high as the number one seed, or as low as out. The top and the bottom of the ladder are still apart, so keep driving."
+    },
+    {
+      "id": "season",
+      "said": "We've followed eleven weeks now. In our division, the floor has risen from two to seven and the ceiling has come down from seventeen to thirteen. In the conference, the floor went from six to nine and the ceiling from seventeen to fifteen. Over the season, that's eleven steps our way and four steps against us."
+    },
+    {
+      "id": "outro",
+      "said": "A clean run: one step our way, none against us. The division and the number one seed are both in our hands, and we can land anywhere from the top seed to out. Keep driving. Next week, we drive again."
+    }
+  ]
+}
