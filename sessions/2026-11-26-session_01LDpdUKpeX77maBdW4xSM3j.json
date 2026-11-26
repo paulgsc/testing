@@ -1,0 +1,51 @@
+{
+ "schema": "some-ui.session-note/1",
+ "session": "session_01LDpdUKpeX77maBdW4xSM3j",
+ "ended": "2026-11-26",
+ "epics": [
+  "HOST"
+ ],
+ "pulls": [
+  {
+   "repo": "some-ui",
+   "kind": "pr",
+   "number": 3563
+  }
+ ],
+ "did": "Built the record a conversation essay moves through, from the topic and the owner's spoken points, through the agent's podcast versions and the owner's flags on them, to the version the owner green-lights. It is an append-only log replayed by a pure state machine, so every version, flag and withdrawal is kept. The next version answers every open flag, says how, and names every turn it changed. A version has any number of speakers, each a cast member with a voice, so an essay is the two-speaker case and a short drama's script is the same record. The owner's choice that they review the podcast and the signature but still edit nothing is recorded as C1536, which moves C1028.",
+ "calls": [
+  {
+   "title": "Where a conversation's record lives",
+   "options": [
+    "On home as an append-only log, with the mailbox carrying only text between home and the agent",
+    "In the mailbox itself",
+    "In the repository, beside the calls",
+    "In Drive"
+   ],
+   "chose": 0,
+   "why": "The topic, flags and notes are the owner's own words, so they belong on home; the agent reaches home through the mailbox, as Rust essays and transcripts already do, and the takes' audio never leaves home (C1535).",
+   "undo": "Record a call that moves C1535; only the transport changes, not the schema."
+  },
+  {
+   "title": "The record's shape",
+   "options": [
+    "Speakers as cast members with a voice, segues as agent turns, every open flag answered and every change named, a flag may be kept with a reason, the green light closes the record",
+    "Owner and agent fixed as the two speakers, a segue as a field on each turn",
+    "Flags may stay open across versions, and changes need not be named"
+   ],
+   "chose": 0,
+   "why": "It keeps owner and agent as roles so a drama fits the same record, and makes every change between versions say which flag it answers (C1537).",
+   "undo": "Edit ANSWERS_OF, FLAG_VOICE or CONVERSATION_ACCEPTS in packages/video-render/src/conversation.ts behind a /2 schema."
+  }
+ ],
+ "left": [
+  "HOST12: a too-quiet, too-fast or too-slow flag is answered as conditioned, with the same take in the same turn; the version doesn't yet carry the conditioning's parameters, so adding them to an owner's turn is a /2 schema. ownerTakes(version) lists the takes in order.",
+  "HOST13: render a PodcastVersion's turns in order; each turn names its speaker, whose character and voice the version declares.",
+  "HOST14: Studio writes the owner's events (topic, point, flag, withdraw, green-light) and reads openFlags and the phase; its words need their own table, since refusalLine is for routines and tests, not a screen.",
+  "HOST15: the agent writes version events; a version must answer every open flag exactly once, name every turn it changed by a rewrite or a retake, and a refusal says exactly what it missed. A new point reaches a version only through a flag, such as misses-point with a note.",
+  "Home's store for the record and its mailbox folder are not built; C1535 says the shape, and the server and mailbox work falls to HOST14 and HOST15.",
+  "For CONVO-GH: turn ids and speaker ids last across versions; a turn keeps its voice; each cast member is at most one speaker per version; recasting a speaker counts as a change to its turns; events must be in date order.",
+  "Small test gaps left as nits on #3563: no test for a retake that changes speaker, none for the 81-id rewrite bound, and a stale doc comment above the walk's text helper."
+ ],
+ "waits": []
+}
