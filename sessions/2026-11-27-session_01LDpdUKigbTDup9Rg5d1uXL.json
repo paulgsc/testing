@@ -1,0 +1,62 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUKigbTDup9Rg5d1uXL",
+    "ended": "2026-11-27",
+    "epics": [
+        "KPLAY"
+    ],
+    "pulls": [
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1265
+        },
+        {
+            "repo": "server",
+            "kind": "pr",
+            "number": 1266
+        }
+    ],
+    "did": "Built home's half of the phrase shop. Home now holds the phrase shelf's English intents in its meaning index, and a lookup route answers with the Korean phrases a hunch finds, or says it kept the hunch. A miss is kept in an append-only store in the same request. A spoken hunch is a new kind of voice note, heard in English and never told a phrase, and home looks up every hunch it hears itself, so one the phone stopped waiting for is still kept for the routine that writes phrases. Both pull requests merged.",
+    "calls": [
+        {
+            "title": "How home gets the phrase shelf's intents (C1605)",
+            "options": [
+                "a synced copy compiled into the server",
+                "the build pushes them to home over a route, kept in a table",
+                "the phone sends them with every lookup"
+            ],
+            "chose": 0,
+            "why": "The shelf is the build's, not the owner's data, so it needs no table. Each side copes with the other being ahead: the phone drops ids it doesn't hold, and home names only ids in its copy.",
+            "undo": "Replace the compiled-in file in file_host::phrases with a pushed store, and delete the copy."
+        },
+        {
+            "title": "The lookup's threshold (C1606)",
+            "options": [
+                "0.75, with runners-up within 0.1, erring toward a miss",
+                "0.6, more paraphrases hit but unrelated sentences sharing words hit too",
+                "the best phrase alone"
+            ],
+            "chose": 0,
+            "why": "On the real model, unrelated sentences that share an intent's words reach about 0.62 to 0.75, and a miss is kept for the routine while a wrong phrase would be shown to the owner.",
+            "undo": "Change THRESHOLD and NEAR in file_host::phrases with a new call."
+        },
+        {
+            "title": "How a spoken hunch is heard (C1607)",
+            "options": [
+                "a new voice-note kind the transcriber hears, which can take a minute or more",
+                "a route that hears on the request's path"
+            ],
+            "chose": 0,
+            "why": "Hearing never runs on a request's path, so it reuses the voice-note routes. The take is kept either way, so nothing is lost while it waits.",
+            "undo": "Drop the hunch kind and roll back its migration, which refuses once a hunch note is held."
+        }
+    ],
+    "left": [
+        "A check that home's copy of the intents matches some-ui's shelf (server#1262); the shelf reached some-ui main with #3597, so it can be built now.",
+        "The phone's adapter and the spoken-hunch port are some-ui's, with KPLAY-LAND (some-ui#3611).",
+        "KP5, the routine that reads the kept hunches, is the next story.",
+        "A flaky interview-weeks test seen once locally, unrelated to this work (server#1264)."
+    ],
+    "waits": []
+}
