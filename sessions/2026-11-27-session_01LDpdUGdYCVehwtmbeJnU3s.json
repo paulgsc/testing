@@ -1,0 +1,41 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGdYCVehwtmbeJnU3s",
+  "ended": "2026-11-27",
+  "epics": ["HOST"],
+  "pulls": [
+    { "repo": "server", "kind": "pr", "number": 1251 },
+    { "repo": "some-ui", "kind": "pr", "number": 3593 },
+    { "repo": "server", "kind": "pr", "number": 1254 }
+  ],
+  "did": "Since my last note, home's half of the conversation previews was finished and proven. Home now lists your conversations for the phone's previews screen: newest first by the order they were kept, at most fifty. A conversation whose record doesn't replay is named apart instead of hiding the others. The conversation contracts landed in some-ui, along with a corpus that walks every order of a set of events through the record's rules: a thousand and twenty-eight cases. Home replays every one of them and must answer as the phone does wherever home holds the rule. CI fails if home's copy of the corpus goes stale. Writing that check found one rule, a pick naming a variant the preview never offered, that home held but the test had never compared. It's compared now.",
+  "calls": [
+    {
+      "title": "How home orders the list of conversations",
+      "options": [
+        "By when each conversation's newest event was kept on home, the table's insert order",
+        "By the newest event's own time, the writer's clock",
+        "By when each conversation began"
+      ],
+      "chose": 0,
+      "why": "The record's events are ordered by their number, never by a clock, and the phone, Studio and the agent each have their own clock. Insert order is home's own, and it survives a database compaction.",
+      "undo": "Ask for another order; it is one query in conversation_repo::list."
+    },
+    {
+      "title": "How to record a conversation that no longer replays in the list",
+      "options": [
+        "Log it as an error the home error alert counts, by where it stops, never its id or words",
+        "Count it as a failure of a named process in the failures table"
+      ],
+      "chose": 0,
+      "why": "The list is a request, not a background process, and the failures table only takes the assurance ledger's processes; a new process there would need a ledger entry first. An error log already reaches your Slack through the home error alert.",
+      "undo": "Add a conversations process to the ledger and record it there instead."
+    }
+  ],
+  "left": [
+    "Two of home's rules are beyond the corpus's walk, forty points and a flag on a speaker no version has, so only home's own tests hold them; reaching them would make the corpus far bigger.",
+    "The phone half of the previews screen is HOST-NEXT's some-ui#3586; server#1243 closes when it lands.",
+    "I didn't edit the HOST epic's body; its Milestone 3 line for HOST16 is restated in a comment on some-ui#3521 for whoever next edits it."
+  ],
+  "waits": []
+}
