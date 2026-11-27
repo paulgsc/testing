@@ -1,0 +1,35 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUGvuikmNwrKB5xBVAN",
+  "ended": "2026-11-27",
+  "epics": [
+    "HOST"
+  ],
+  "pulls": [
+    {
+      "repo": "some-ui",
+      "kind": "pr",
+      "number": 3586
+    }
+  ],
+  "did": "Studio's Previews on the phone now keeps the owner's picks on home instead of on the phone. It reads the conversations home lists and each one's previews, and sends a pick as the record's approval, a change naming the pick it moves. A variant's Use this waits until its clip has played on the phone, and the transitions sample sits below, labelled, keeping nothing. Review kept finding the screen out of step with home, six times in one place, so the shape changed: the screen's step now says exactly what to ask home (read, approve, read again) and the runtime sends only that. What stands is home's alone, so any pick whose outcome is uncertain, a kept one not read back included, is read again before the next, and a failed read keeps the screen and the owner's words, with Try again. Only the Android app's build carries the screen, and its requests to home are pinned beside the phone's other ways to home.",
+  "calls": [
+    {
+      "title": "What stands on Studio's Previews after a pick (C1583)",
+      "options": [
+        "Read again any pick whose outcome is uncertain, a kept one not read back included, so what stands is home's alone",
+        "Let a pick kept and not read back stand on the screen as sent, the screen's own copy",
+        "Keep the screen's copy, and clear the moved preview as the record does",
+        "Show nothing as standing until the screen is opened again"
+      ],
+      "chose": 0,
+      "why": "A copy kept on the screen drifted from home's record on moves, leaving standing the preview a pick moved its rule from, so the next pick said already or named a move that no longer stood. Reading home again costs one request and can't drift.",
+      "undo": "Let a pick kept and not read back stand on the screen as sent again, its moved preview cleared as the record clears it."
+    }
+  ],
+  "left": [
+    "Fetching home's clips is #3587, one clip source on the phone with feeds and previews as its cases; until it lands, home's variants keep their Use this held.",
+    "Closing server#1243 now the phone half has landed: this session can't reach paulgsc/server, so the coordinator closes it."
+  ],
+  "waits": []
+}
