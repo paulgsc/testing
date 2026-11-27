@@ -36,6 +36,24 @@
           { "file": "after/03-beside.png", "label": "The best fit beside the answer, on SOLO's whole scale" }
         ]
       }
+    },
+    {
+      "id": "shop-hunch",
+      "title": "Say what you want to say in English, and home finds the Korean phrases for it with the parts each is built from",
+      "app": "topik",
+      "change": { "repo": "some-ui", "kind": "pr", "number": 3611 },
+      "landed": "2026-11-27",
+      "before": null,
+      "after": {
+        "made": "session",
+        "snips": [
+          { "file": "after/1-door.png", "label": "The door on What are you hungry for?", "sha256": "e9e2006fe65ec4674ea973842439d41405522a82e24b7e202d040aa139767479" },
+          { "file": "after/2-found.png", "label": "Phrases found with their parts, one in the basket", "sha256": "c5bc40555d116fc6664ce40d817c127a4daf1cad77e158f113e7456b5825a73a" },
+          { "file": "after/3-miss-kept.png", "label": "A miss home kept", "sha256": "d185a4673f0568d904863a2b4ac983e9d5bcfbff59984875456059378a4cfe6d" },
+          { "file": "after/4-waiting-for-home.png", "label": "Home out of reach: kept on this phone", "sha256": "18d620beb4b1b15d4c5351f8af5ee9d7475fefe58b19aec6227287f3864f8562" },
+          { "file": "after/5-heard.png", "label": "A spoken take home is hearing", "sha256": "66c638e72e85dc4980ce632469b4d3645b4be31907067e6a57e294f78d4adafb" }
+        ]
+      }
     }
   ]
 }
