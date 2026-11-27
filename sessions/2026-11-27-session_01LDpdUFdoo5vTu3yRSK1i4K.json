@@ -1,0 +1,40 @@
+{
+    "schema": "some-ui.session-note/1",
+    "session": "session_01LDpdUFdoo5vTu3yRSK1i4K",
+    "ended": "2026-11-27",
+    "epics": [
+        "HOST"
+    ],
+    "pulls": [
+        {
+            "repo": "some-ui",
+            "kind": "pr",
+            "number": 3581
+        },
+        {
+            "repo": "some-ui",
+            "kind": "pr",
+            "number": 3594
+        }
+    ],
+    "did": "I finished the living cast's follow-ups. A host that moves keeps the emotion it was showing, the bubble's clipping test now catches a broken clip, and a character listening while the other one talks waits for a pause before it fidgets. You chose that last one from an A/B preview: \"B for the listener, approved\". The helper that tells a listener what it hears is in place, and the record-to-video bridge has to call it. Along the way I fixed a slow test that timed out in CI, a cache that missed every frame, and cross-talk that opened false pauses, and I gave another session my podcast recipe.",
+    "calls": [
+        {
+            "title": "Where an emotion's run ends, for the notes a host shows",
+            "options": [
+                "at a change of emotion or of character, so a move inside it changes nothing",
+                "at every beat, as before, which cut a note short when the host moved"
+            ],
+            "chose": 0,
+            "why": "A move is where the host stands, not a new feeling; the note it was showing should carry on, and a new character or emotion should start fresh.",
+            "undo": "Say a move should restart the emotion; one function decides where the run ends."
+        }
+    ],
+    "left": [
+        "#3555: the bridge from a conversation record to the video must call `hearsOf` for every listener beat, or a listener plays over the other speaker, the option you turned down.",
+        "#3577: the cast is still drawn by a separate screenshot pass, at 46 ms a frame against 0.3 ms to draw it.",
+        "#3374: the soundbites test's fixed 5 ms wait failed two of my CI runs before their re-runs; it needs its own fix.",
+        "CI lesson: marking a PR ready in the same second as a push gives a run that still sees a draft, and a ready PR is checked against the newest main, so merge main in while it's a draft and let that run finish before marking it ready."
+    ],
+    "waits": []
+}
