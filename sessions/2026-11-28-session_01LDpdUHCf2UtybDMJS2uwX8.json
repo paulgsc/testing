@@ -1,0 +1,27 @@
+{
+  "schema": "some-ui.session-note/1",
+  "session": "session_01LDpdUHCf2UtybDMJS2uwX8",
+  "ended": "2026-11-28",
+  "epics": ["QUIZ"],
+  "pulls": [{ "repo": "some-ui", "kind": "pr", "number": 3622 }],
+  "did": "I drafted the question bank for Mochi's quiz, a video essay that tests your mental model of the system against the code. It has 32 rounds across steady state, database growth and replication, and caching. Each round holds Mochi's question, the case behind it, and Tin Bird's answer of record from both repositories, with your answer left empty for a take in your own voice. Eleven rounds have \"not measured\" or \"we don't know\" as the honest answer, among them your own Grafana example: home draws its rest, but nothing says what rest should cost or turns red. I filed the epic and the ask, and recorded how the game will be built as a call: each piece is a new member of a set the code already has, where one exists.",
+  "calls": [
+    {
+      "title": "The quiz is built from the sets we already have",
+      "options": [
+        "New members of the existing sets: the conversation record, the sound kit, Mochi's ceremonies, the game card",
+        "A quiz module of its own",
+        "A hosted quiz tool"
+      ],
+      "chose": 0,
+      "why": "Each game piece is one more case of something the essays already do, so building it separately would make a second copy. A hosted tool makes a live game, not a video built from your takes and the code.",
+      "undo": "Say so on the epic, and the pieces are built as a module of their own instead (C1640)."
+    }
+  ],
+  "left": [
+    "Nothing is built or rendered: the bank waits for your sharpening, and the game's rules are your five questions in the ask.",
+    "Three findings are held on the epic as candidates, not filed: the at-rest dashboard can't go red, two kinds of waste promise have no objectives, and two documents go stale when the database draft lands.",
+    "I couldn't read the server's issues 1274 and 1276, because this session could only read that repository's code."
+  ],
+  "waits": [{ "repo": "some-ui", "kind": "issue", "number": 3621 }]
+}
